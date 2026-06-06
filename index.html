@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Founders LATAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sw:240px; --rw:268px;
+  --coral:#e07a54; --coral-d:#c9533f; --coral-t:#fff3ef; --coral-m:#fde4d8;
+  --amber:#c9a84c; --amber-t:#fef6e4;
+  --purple:#8b5cf6; --purple-t:#f3eeff;
+  --blue:#3b82f6; --blue-t:#eff6ff;
+  --green:#22c55e; --green-t:#f0fdf4;
+  --bg:#f7f8fc; --card:#fff; --sb:#fff;
+  --t1:#111827; --t2:#6b7280; --t3:#9ca3af;
+  --bdr:#f0f1f5;
+  --sh1:0 1px 3px rgba(0,0,0,.06),0 2px 8px rgba(0,0,0,.04);
+  --sh2:0 4px 20px rgba(0,0,0,.09),0 1px 4px rgba(0,0,0,.04);
+  --sh3:0 10px 40px rgba(0,0,0,.13),0 2px 10px rgba(0,0,0,.06);
+  --font:'Plus Jakarta Sans',sans-serif;
+}
+html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t1);overflow:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── LAYOUT ────────────────────────── */
+.layout{display:flex;height:100vh}
+
+/* ── SIDEBAR ──────────────────────── */
+.sidebar{
+  width:var(--sw);min-width:var(--sw);height:100vh;background:var(--sb);
+  box-shadow:2px 0 12px rgba(0,0,0,.06);
+  display:flex;flex-direction:column;
+  position:fixed;left:0;top:0;z-index:100;
+  transition:transform .28s cubic-bezier(.4,0,.2,1);
+}
+.sb-in{flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#f0f1f5 transparent;padding-bottom:28px}
+.sb-in::-webkit-scrollbar{width:3px}
+.sb-in::-webkit-scrollbar-thumb{background:#e5e7eb;border-radius:4px}
+
+.sb-brand{padding:18px 16px 14px;border-bottom:1px solid var(--bdr)}
+.brand-row{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.brand-ico{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--coral),var(--coral-d));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.brand-ico svg{display:block}
+.brand-name{font-size:13.5px;font-weight:800;color:var(--t1);line-height:1.15;letter-spacing:-.02em}
+.brand-sub{font-size:10px;color:var(--t3);margin-top:1px}
+.pill-free{display:inline-block;background:var(--coral-t);color:var(--coral);font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px}
+
+.nav-group{padding-top:16px}
+.nav-glbl{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);padding:0 16px 6px}
+.nav-list{list-style:none}
+.nav-list a{display:flex;align-items:center;gap:9px;padding:8px 16px;font-size:13px;font-weight:500;color:var(--t2);text-decoration:none;border-radius:0;border-left:2.5px solid transparent;transition:color .14s,background .14s,transform .14s;cursor:pointer;line-height:1.4}
+.nav-list a .ico{width:16px;height:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:.6;transition:opacity .14s}
+.nav-list a:hover{color:var(--t1);background:#f9fafb;transform:translateX(2px)}
+.nav-list a:hover .ico{opacity:.9}
+.nav-list a.active{color:var(--coral);background:var(--coral-t);font-weight:600;border-left-color:var(--coral)}
+.nav-list a.active .ico{opacity:1}
+
+/* ── MAIN WRAP ────────────────────── */
+.main-wrap{margin-left:var(--sw);flex:1;display:flex;height:100vh;overflow:hidden}
+.main-scroll{flex:1;overflow-y:scroll;height:100vh}
+.main-inner{padding:28px 28px 72px;max-width:1050px;margin:0 auto}
+
+/* ── RIGHT PANEL ──────────────────── */
+.right-panel{width:var(--rw);min-width:var(--rw);height:100vh;overflow-y:auto;padding:28px 18px 32px;display:flex;flex-direction:column;gap:14px;border-left:1px solid var(--bdr);background:var(--card);scrollbar-width:thin;scrollbar-color:#f0f1f5 transparent}
+.right-panel::-webkit-scrollbar{width:3px}
+.right-panel::-webkit-scrollbar-thumb{background:#e5e7eb;border-radius:4px}
+
+/* ── HAMBURGER ────────────────────── */
+.hamburger{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--coral);border:none;border-radius:9px;width:38px;height:38px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px;padding:8px}
+.hamburger span{display:block;width:16px;height:2px;background:#fff;border-radius:2px}
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99}
+
+/* ── BREADCRUMB ───────────────────── */
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--t3);margin-bottom:20px}
+.breadcrumb .sep{color:#d1d5db}
+.breadcrumb .cur{color:var(--t1)}
+
+/* ── HERO BANNER ──────────────────── */
+.hero{background:linear-gradient(135deg,#e07a54 0%,#d45a38 45%,#b83a24 100%);border-radius:18px;padding:26px 28px 26px 28px;display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50px;right:100px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.06)}
+.hero::after{content:'';position:absolute;bottom:-70px;right:10px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.04)}
+.hero-l{position:relative;z-index:1}
+.hero-greet{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.78);margin-bottom:6px}
+.hero-title{font-size:21px;font-weight:800;color:#fff;line-height:1.3;letter-spacing:-.02em;max-width:420px;margin-bottom:18px}
+.hero-btns{display:flex;gap:10px}
+.btn-w{background:#fff;color:var(--coral-d);font:700 12.5px var(--font);padding:9px 18px;border:none;border-radius:9px;cursor:pointer;transition:box-shadow .15s,transform .15s}
+.btn-w:hover{box-shadow:0 4px 14px rgba(0,0,0,.18);transform:translateY(-1px)}
+.btn-ghost{background:rgba(255,255,255,.15);color:#fff;font:600 12.5px var(--font);padding:9px 18px;border:1.5px solid rgba(255,255,255,.35);border-radius:9px;cursor:pointer;transition:background .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.22)}
+.hero-r{position:relative;z-index:1;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.hero-badge{background:rgba(255,255,255,.14);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:12px 18px;text-align:center;min-width:90px}
+.hb-num{font-size:28px;font-weight:800;color:#fff;line-height:1}
+.hb-lbl{font-size:10px;font-weight:600;color:rgba(255,255,255,.75);letter-spacing:.07em;text-transform:uppercase;margin-top:3px}
+
+/* ── STATS BAR ────────────────────── */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:26px}
+.scard{background:var(--card);border-radius:14px;box-shadow:var(--sh1);padding:18px 18px 16px;display:flex;flex-direction:column;gap:11px;transition:box-shadow .18s,transform .18s;cursor:default}
+.scard:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
+.s-ico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.si1{background:var(--coral-t)} .si2{background:var(--amber-t)} .si3{background:var(--blue-t)} .si4{background:var(--green-t)}
+.s-num{font-size:34px;font-weight:800;color:var(--t1);line-height:1;letter-spacing:-.03em}
+.s-lbl{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--t3);margin-top:3px}
+
+/* ── SECTION HEADER ───────────────── */
+.sec-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px}
+.sec-title{font-size:18px;font-weight:700}
+.sec-meta{font-size:12.5px;color:var(--t2)}
+
+/* ── MODULE SEPARATOR ─────────────── */
+.mod-sep{display:flex;align-items:center;gap:10px;padding:10px 0 14px}
+.mod-pill{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3.5px 10px;border-radius:20px;flex-shrink:0}
+.mp-c{background:var(--coral-t);color:var(--coral)}
+.mp-a{background:var(--amber-t);color:#956528}
+.mp-n{background:var(--purple-t);color:var(--purple)}
+.mp-co{background:var(--blue-t);color:var(--blue)}
+.mod-name{font-size:14px;font-weight:700;color:var(--t1);flex-shrink:0}
+.mod-line{flex:1;height:1px;background:var(--bdr)}
+.mod-cnt{font-size:12px;color:var(--t3);flex-shrink:0}
+
+/* ── CARDS GRID ───────────────────── */
+.cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:4px}
+
+/* ── LESSON CARD ──────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.lcard{background:var(--card);border-radius:16px;box-shadow:var(--sh1);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;opacity:0;animation:fadeUp .38s ease both;transition:box-shadow .2s ease,transform .2s ease}
+.lcard:hover{box-shadow:var(--sh3);transform:translateY(-4px)}
+.lcard.ac{box-shadow:0 0 0 2.5px var(--coral),var(--sh2)}
+.lcard.soon{cursor:default}
+.lcard.soon:hover{box-shadow:var(--sh1);transform:none}
+
+.lthumb{position:relative;aspect-ratio:16/9;background:#f2ede7;overflow:hidden}
+.lthumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.lcard:not(.soon):hover .lthumb img{transform:scale(1.06)}
+.lthumb-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f2ede7}
+.ph-btn{width:40px;height:40px;border-radius:50%;background:rgba(224,122,84,.1);border:2px solid rgba(224,122,84,.2);display:flex;align-items:center;justify-content:center;opacity:.6}
+.nbadge{position:absolute;top:8px;left:8px;z-index:2;background:rgba(0,0,0,.54);color:#fff;font-size:10px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:6px;backdrop-filter:blur(6px)}
+.pov{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);transition:background .2s}
+.lcard:not(.soon):hover .pov{background:rgba(0,0,0,.2)}
+.pov-btn{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.93);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.72);transition:opacity .2s,transform .2s;box-shadow:0 2px 14px rgba(0,0,0,.2)}
+.lcard:not(.soon):hover .pov-btn{opacity:1;transform:scale(1)}
+
+.lbody{padding:13px 13px 12px;flex:1;display:flex;flex-direction:column;gap:8px}
+.lcat{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:20px;width:fit-content}
+.lcat.cc{background:var(--coral-t);color:var(--coral)}
+.lcat.ca{background:var(--amber-t);color:#956528}
+.lcat.cn{background:var(--purple-t);color:var(--purple)}
+.lcat.co{background:var(--blue-t);color:var(--blue)}
+.ltitle{font-size:13.5px;font-weight:600;color:var(--t1);line-height:1.42;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ltitle.dim{color:#c3c3c3}
+.lftr{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.lstat{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:500;color:var(--t2)}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dot.ok{background:var(--green)} .dot.soon{background:#d1d5db}
+.larw{font-size:14px;color:#d1d5db;transition:color .15s,transform .15s}
+.lcard:not(.soon):hover .larw{color:var(--coral);transform:translateX(3px)}
+
+/* ── VIDEO VIEW ───────────────────── */
+.view-lesson{display:none}
+.view-lesson.on{display:block}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1.5px solid #e5e7eb;color:var(--t2);font:600 12.5px var(--font);padding:8px 15px;border-radius:9px;cursor:pointer;margin-bottom:20px;transition:border-color .15s,color .15s}
+.back-btn:hover{border-color:var(--coral);color:var(--coral)}
+
+.player-grid{display:grid;grid-template-columns:1fr 318px;gap:22px;align-items:start}
+.player-l{}
+.vbox{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:var(--sh3)}
+.vbox iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+
+.ptabs{display:flex;border-bottom:1.5px solid var(--bdr);margin-top:20px;margin-bottom:18px}
+.ptab{font-size:13px;font-weight:600;color:var(--t3);padding:9px 16px;cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1.5px;transition:color .14s,border-color .14s}
+.ptab:hover:not(.on){color:var(--t1)}
+.ptab.on{color:var(--coral);border-bottom-color:var(--coral)}
+.tpanel{display:none}
+.tpanel.on{display:block}
+.p-title{font-size:21px;font-weight:800;letter-spacing:-.02em;color:var(--t1);line-height:1.3;margin-bottom:8px}
+.p-meta-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.p-desc{font-size:13.5px;color:var(--t2);line-height:1.7}
+.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px 14px;margin-top:16px}
+.learn-item{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--t2);line-height:1.4}
+.lchk{width:18px;height:18px;border-radius:50%;background:var(--coral-t);color:var(--coral);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* Accordion */
+.player-r{}
+.pr-title{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--t3);margin-bottom:10px}
+.acc{margin-bottom:6px;border-radius:10px;border:1.5px solid var(--bdr);overflow:hidden}
+.acc-hdr{display:flex;align-items:center;gap:9px;padding:11px 14px;background:#fafbfc;cursor:pointer;user-select:none}
+.acc-n{font-size:10.5px;font-weight:700;color:var(--t3);flex-shrink:0}
+.acc-t{font-size:13px;font-weight:700;color:var(--t1);flex:1}
+.acc-c{font-size:10.5px;color:var(--t3);flex-shrink:0}
+.acc-arr{font-size:11px;color:var(--t3);transition:transform .2s;flex-shrink:0}
+.acc.open .acc-arr{transform:rotate(90deg)}
+.acc-body{display:none}
+.acc.open .acc-body{display:block}
+.aitem{display:flex;align-items:center;gap:9px;padding:8px 14px;border-top:1px solid #f3f4f6;cursor:pointer;transition:background .13s}
+.aitem:hover{background:#fafbfc}
+.aitem.playing{background:var(--coral-t)}
+.ai-icon{font-size:10px;color:var(--t3);flex-shrink:0}
+.aitem.playing .ai-icon{color:var(--coral)}
+.ai-title{font-size:12px;color:var(--t2);flex:1;line-height:1.4}
+.aitem.playing .ai-title{color:var(--coral);font-weight:600}
+.ai-status{font-size:10px;color:var(--t3);flex-shrink:0}
+
+/* ── RIGHT PANEL CARDS ────────────── */
+.rp-card{background:var(--card);border-radius:14px;box-shadow:var(--sh1);padding:18px 16px}
+.rp-card-t{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);margin-bottom:12px}
+.streak-row{display:flex;align-items:center;gap:12px}
+.streak-fire{font-size:30px}
+.streak-num{font-size:24px;font-weight:800;color:var(--t1);line-height:1}
+.streak-lbl{font-size:11px;color:var(--t2);margin-top:2px}
+.streak-msg{font-size:12px;color:var(--t2);margin-top:10px;line-height:1.55}
+.prog-wrap{margin-top:12px}
+.prog-row{display:flex;justify-content:space-between;font-size:11px;color:var(--t2);margin-bottom:5px}
+.prog-bar{height:7px;background:#f0f1f5;border-radius:4px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--coral),var(--amber));border-radius:4px;width:14%;transition:width .6s ease}
+.go-btn{width:100%;margin-top:13px;background:var(--coral);color:#fff;font:700 13px var(--font);padding:10px;border:none;border-radius:9px;cursor:pointer;transition:background .15s,box-shadow .15s}
+.go-btn:hover{background:var(--coral-d);box-shadow:0 4px 14px rgba(224,122,84,.35)}
+
+.rp-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rp-s{background:var(--bg);border-radius:10px;padding:13px;text-align:center}
+.rp-s-n{font-size:22px;font-weight:800;color:var(--t1);line-height:1}
+.rp-s-l{font-size:9.5px;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-top:3px}
+
+.next-card{background:linear-gradient(135deg,var(--coral-t),var(--amber-t));border-radius:14px;padding:16px}
+.next-lbl{font-size:9.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--coral);margin-bottom:5px}
+.next-title{font-size:13px;font-weight:700;color:var(--t1);line-height:1.42;margin-bottom:13px}
+.cont-btn{width:100%;background:var(--coral);color:#fff;font:700 12.5px var(--font);padding:9px;border:none;border-radius:8px;cursor:pointer;transition:background .15s}
+.cont-btn:hover{background:var(--coral-d)}
+
+/* ── RESPONSIVE ───────────────────── */
+@media(max-width:1260px){.right-panel{display:none}}
+@media(max-width:1060px){.cards-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:820px){
+  .hamburger{display:flex}
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .ov.open{display:block}
+  .main-wrap{margin-left:0}
+  .main-inner{padding:20px 16px 52px}
+  .breadcrumb{margin-top:44px}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .hero{flex-direction:column;align-items:flex-start;gap:14px}
+  .hero-r{align-items:flex-start;flex-direction:row}
+  .player-grid{grid-template-columns:1fr}
+  .player-r{display:none}
+}
+@media(max-width:520px){
+  .cards-grid{grid-template-columns:1fr}
+  .learn-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<button class="hamburger" id="hamBtn"><span></span><span></span><span></span></button>
+<div class="ov" id="ov"></div>
+
+<div class="layout">
+
+<!-- ═══════════ SIDEBAR ═══════════ -->
+<aside class="sidebar" id="sidebar">
+<div class="sb-in">
+
+  <div class="sb-brand">
+    <div class="brand-row">
+      <div class="brand-ico">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 2L20 8.5V15.5L12 22L4 15.5V8.5L12 2Z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.8" fill="#fff"/></svg>
+      </div>
+      <div><div class="brand-name">AI Founders LATAM</div><div class="brand-sub">IA para founders y equipos de LATAM</div></div>
+    </div>
+    <span class="pill-free">100% gratis</span>
+  </div>
+
+  <!-- MAIN MENU -->
+  <div class="nav-group">
+    <div class="nav-glbl">Main Menu</div>
+    <ul class="nav-list">
+      <li><a href="#" class="active" data-s="BIENVENIDA" data-i="¿Qué vas a aprender aquí?" data-view="ov">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+        Bienvenida
+      </a></li>
+    </ul>
+  </div>
+
+  <!-- COURSES -->
+  <div class="nav-group">
+    <div class="nav-glbl">Cursos</div>
+    <ul class="nav-list">
+      <li><a href="#" data-s="CLAUDE" data-i="Claude Cowork" data-lesson="1">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2L20 8.5V15.5L12 22L4 15.5V8.5L12 2Z"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/></svg></span>
+        Claude Cowork
+      </a></li>
+      <li><a href="#" data-s="CLAUDE" data-i="Claude Code" data-lesson="2">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+        Claude Code
+      </a></li>
+      <li><a href="#" data-s="CLAUDE" data-i="Skills, Connectors y Plugins" data-lesson="3">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg></span>
+        Skills, Connectors y Plugins
+      </a></li>
+      <li><a href="#" data-s="AUTOMATIZACIONES" data-i="Chatbot de WhatsApp con n8n" data-lesson="4">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+        WhatsApp con n8n
+      </a></li>
+      <li><a href="#" data-s="AUTOMATIZACIONES" data-i="Ideas de contenido de LinkedIn" data-lesson="5">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+        Ideas LinkedIn
+      </a></li>
+      <li><a href="#" data-s="AUTOMATIZACIONES" data-i="Mensajes personalizados" data-lesson="6">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+        Mensajes personalizados
+      </a></li>
+      <li><a href="#" data-s="AUTOMATIZACIONES" data-i="Automatización para reels virales" data-lesson="7">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg></span>
+        Reels virales
+      </a></li>
+      <li><a href="#" data-s="AUTOMATIZACIONES" data-i="LinkedIn ideas con AI" data-lesson="8">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></span>
+        LinkedIn ideas con AI
+      </a></li>
+      <li><a href="#" data-s="NOTEBOOKLM" data-i="¿Qué es NotebookLM?" data-lesson="9">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
+        NotebookLM
+      </a></li>
+      <li><a href="#" data-s="AUTOMATIZACIONES" data-i="WhatsApp chatbot (formato más fácil)" data-lesson="10">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+        WhatsApp (fácil)
+      </a></li>
+    </ul>
+  </div>
+
+  <!-- COMMUNITY -->
+  <div class="nav-group">
+    <div class="nav-glbl">Comunidad</div>
+    <ul class="nav-list">
+      <li><a href="#" data-s="COMUNIDAD" data-i="Feed" data-view="ov"><span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></span>Feed</a></li>
+      <li><a href="#" data-s="COMUNIDAD" data-i="Say Hello" data-view="ov"><span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span>Say Hello</a></li>
+      <li><a href="#" data-s="COMUNIDAD" data-i="Discussion Circle" data-view="ov"><span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>Discussion Circle</a></li>
+      <li><a href="#" data-s="COMUNIDAD" data-i="Events &amp; Schedule" data-view="ov"><span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>Events &amp; Schedule</a></li>
+      <li><a href="#" data-s="COMUNIDAD" data-i="Share Wins &amp; Progress" data-view="ov"><span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>Share Wins &amp; Progress</a></li>
+    </ul>
+  </div>
+
+  <!-- RESOURCES -->
+  <div class="nav-group">
+    <div class="nav-glbl">Recursos</div>
+    <ul class="nav-list">
+      <li><a href="#" data-s="RECURSOS" data-i="Recordings &amp; Videos" data-view="ov"><span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></span>Recordings &amp; Videos</a></li>
+      <li><a href="#" data-s="RECURSOS" data-i="AI Prompts &amp; Resources" data-view="ov"><span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 8v4l3 3"/></svg></span>AI Prompts &amp; Resources</a></li>
+      <li><a href="#" data-s="RECURSOS" data-i="Setup Guides" data-view="ov"><span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg></span>Setup Guides</a></li>
+      <li><a href="#" data-s="RECURSOS" data-i="Articles" data-view="ov"><span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>Articles</a></li>
+    </ul>
+  </div>
+
+</div>
+</aside>
+
+<!-- ═══════════ MAIN WRAP ═══════════ -->
+<div class="main-wrap" id="mainWrap">
+
+  <div class="main-scroll" id="mainScroll">
+  <div class="main-inner">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb"><span id="bS">BIENVENIDA</span><span class="sep">›</span><span class="cur" id="bI">¿Qué vas a aprender aquí?</span></div>
+
+    <!-- ══ VIEW: OVERVIEW ══ -->
+    <div id="vOv">
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-l">
+          <p class="hero-greet">¡Bienvenido de nuevo! 👋</p>
+          <h1 class="hero-title">Domina las herramientas de IA que usan los mejores founders de LATAM</h1>
+          <div class="hero-btns">
+            <button class="btn-w" onclick="startFirstLesson()">▶ Comenzar ahora</button>
+            <button class="btn-ghost">Ver módulos</button>
+          </div>
+        </div>
+        <div class="hero-r">
+          <div class="hero-badge"><div class="hb-num">7</div><div class="hb-lbl">Videos</div></div>
+          <div class="hero-badge"><div class="hb-num">100%</div><div class="hb-lbl">Gratis</div></div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-bar">
+        <div class="scard"><div class="s-ico si1">📋</div><div><div class="s-num">11</div><div class="s-lbl">Lecciones</div></div></div>
+        <div class="scard"><div class="s-ico si2">📚</div><div><div class="s-num">4</div><div class="s-lbl">Módulos</div></div></div>
+        <div class="scard"><div class="s-ico si3">▶️</div><div><div class="s-num">7</div><div class="s-lbl">Videos</div></div></div>
+        <div class="scard"><div class="s-ico si4">🎁</div><div><div class="s-num">100%</div><div class="s-lbl">Gratis</div></div></div>
+      </div>
+
+      <div class="sec-hdr"><h2 class="sec-title">Lecciones del curso</h2><span class="sec-meta">11 lecciones · 4 módulos</span></div>
+
+      <!-- Módulo 1: Claude -->
+      <div class="mod-sep"><span class="mod-pill mp-c">Módulo 1</span><span class="mod-name">Claude</span><div class="mod-line"></div><span class="mod-cnt">3 lecciones</span></div>
+      <div class="cards-grid" id="grid1">
+
+        <div class="lcard" data-lesson="1">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/wpYDisTBlE8/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/wpYDisTBlE8/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">01</span></div>
+          <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">Tutorial completo de Claude Cowork</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard soon" data-lesson="2">
+          <div class="lthumb"><div class="lthumb-ph"><div class="ph-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="#c9bfb8"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">02</span></div>
+          <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">¿Qué es Claude Code y cómo funciona?</p><div class="lftr"><div class="lstat"><span class="dot soon"></span>Próximamente</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard soon" data-lesson="3">
+          <div class="lthumb"><div class="lthumb-ph"><div class="ph-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="#c9bfb8"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">03</span></div>
+          <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">Skills, Connectors y Plugins explicados</p><div class="lftr"><div class="lstat"><span class="dot soon"></span>Próximamente</div><span class="larw">→</span></div></div>
+        </div>
+
+      </div>
+
+      <!-- Módulo 2: Automatizaciones -->
+      <div class="mod-sep" style="margin-top:10px"><span class="mod-pill mp-a">Módulo 2</span><span class="mod-name">Automatizaciones</span><div class="mod-line"></div><span class="mod-cnt">6 lecciones</span></div>
+      <div class="cards-grid" id="grid2">
+
+        <div class="lcard" data-lesson="4">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/y3NWAa5z6HU/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/y3NWAa5z6HU/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">04</span></div>
+          <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">Chatbot de WhatsApp con n8n</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="5">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/kJn-jDJL71s/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/kJn-jDJL71s/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">05</span></div>
+          <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">Ideas de contenido infinitas de LinkedIn</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="6">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/2vt4rm1n-3o/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/2vt4rm1n-3o/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">06</span></div>
+          <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">Automatización de mensajes personalizados</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="7">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/GTW_Z85lQJU/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/GTW_Z85lQJU/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">07</span></div>
+          <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">Automatización para reels virales</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="8">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/loczkTaZ05g/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/loczkTaZ05g/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">08</span></div>
+          <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">LinkedIn ideas con AI</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="10">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/4o29hLQAWmw/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/4o29hLQAWmw/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">10</span></div>
+          <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">WhatsApp chatbot (formato más fácil)</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+      </div>
+
+      <!-- Módulo 3: NotebookLM -->
+      <div class="mod-sep" style="margin-top:10px"><span class="mod-pill mp-n">Módulo 3</span><span class="mod-name">NotebookLM</span><div class="mod-line"></div><span class="mod-cnt">1 lección</span></div>
+      <div class="cards-grid" id="grid3">
+        <div class="lcard soon" data-lesson="9">
+          <div class="lthumb"><div class="lthumb-ph"><div class="ph-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="#c9bfb8"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">09</span></div>
+          <div class="lbody"><span class="lcat cn">NotebookLM</span><p class="ltitle">¿Qué es NotebookLM y cuándo usarlo?</p><div class="lftr"><div class="lstat"><span class="dot soon"></span>Próximamente</div><span class="larw">→</span></div></div>
+        </div>
+      </div>
+
+      <!-- Módulo 4: Comunidad -->
+      <div class="mod-sep" style="margin-top:10px"><span class="mod-pill mp-co">Módulo 4</span><span class="mod-name">Comunidad</span><div class="mod-line"></div><span class="mod-cnt">1 lección</span></div>
+      <div class="cards-grid" id="grid4">
+        <div class="lcard soon" data-lesson="11">
+          <div class="lthumb"><div class="lthumb-ph"><div class="ph-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="#c9bfb8"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">11</span></div>
+          <div class="lbody"><span class="lcat co">Comunidad</span><p class="ltitle dim">Próximamente</p><div class="lftr"><div class="lstat"><span class="dot soon"></span>Próximamente</div><span class="larw">→</span></div></div>
+        </div>
+      </div>
+
+    </div><!-- /vOv -->
+
+    <!-- ══ VIEW: LESSON PLAYER ══ -->
+    <div class="view-lesson" id="vLesson">
+      <button class="back-btn" id="backBtn">← Volver al curso</button>
+      <div class="player-grid">
+        <div class="player-l">
+          <div class="vbox"><iframe id="vFrame" src="" title="Lección" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="ptabs">
+            <div class="ptab on" data-tab="0">Overview</div>
+            <div class="ptab" data-tab="1">Contenido</div>
+            <div class="ptab" data-tab="2">Autor</div>
+          </div>
+          <!-- Tab 0: Overview -->
+          <div class="tpanel on" id="tp0">
+            <div class="p-meta-row"><span class="lcat" id="vCat">Claude</span><span style="font-size:11px;color:var(--t3)" id="vNum">Lección 01</span></div>
+            <h2 class="p-title" id="vTitle">Tutorial completo de Claude Cowork</h2>
+            <p class="p-desc" id="vDesc"></p>
+            <div class="learn-grid" id="learnGrid"></div>
+          </div>
+          <!-- Tab 1: Contenido -->
+          <div class="tpanel" id="tp1"><div id="accFull"></div></div>
+          <!-- Tab 2: Autor -->
+          <div class="tpanel" id="tp2">
+            <div style="display:flex;gap:16px;align-items:flex-start;margin-top:8px">
+              <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--coral-d));display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;color:#fff;font-weight:800">L</div>
+              <div>
+                <div style="font-size:15px;font-weight:700;color:var(--t1);margin-bottom:4px">Luciano Musella</div>
+                <div style="font-size:12.5px;color:var(--t2);line-height:1.65">Founder y experto en automatizaciones con IA para LATAM. Creador de AI Founders LATAM, la plataforma 100% gratuita para founders y equipos que quieren dominar las herramientas de inteligencia artificial.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: course content accordion -->
+        <div class="player-r">
+          <p class="pr-title">Contenido del curso</p>
+          <div id="accSide"></div>
+        </div>
+      </div>
+    </div><!-- /vLesson -->
+
+  </div>
+  </div><!-- /main-scroll -->
+
+  <!-- ══ RIGHT PANEL ══ -->
+  <aside class="right-panel">
+
+    <div class="rp-card">
+      <div class="rp-card-t">Tu progreso</div>
+      <div class="streak-row">
+        <div class="streak-fire">🔥</div>
+        <div><div class="streak-num">1</div><div class="streak-lbl">día de racha</div></div>
+      </div>
+      <p class="streak-msg">¡Empieza hoy y construye el hábito! Un módulo al día es todo lo que necesitas.</p>
+      <div class="prog-wrap">
+        <div class="prog-row"><span>Progreso general</span><span>1 / 7</span></div>
+        <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+      </div>
+      <button class="go-btn" onclick="startFirstLesson()">▶ Empezar primera lección</button>
+    </div>
+
+    <div class="rp-stats">
+      <div class="rp-s"><div class="rp-s-n">11</div><div class="rp-s-l">Lecciones</div></div>
+      <div class="rp-s"><div class="rp-s-n">7</div><div class="rp-s-l">Videos</div></div>
+      <div class="rp-s"><div class="rp-s-n">4</div><div class="rp-s-l">Módulos</div></div>
+      <div class="rp-s"><div class="rp-s-n">100%</div><div class="rp-s-l">Gratis</div></div>
+    </div>
+
+    <div class="next-card">
+      <div class="next-lbl">Próxima lección</div>
+      <div class="next-title">Tutorial completo de Claude Cowork</div>
+      <button class="cont-btn" onclick="startFirstLesson()">Continuar →</button>
+    </div>
+
+    <div class="rp-card">
+      <div class="rp-card-t">Módulos</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px"><span style="font-weight:600;color:var(--t1)">Claude</span><span style="font-size:11px;color:var(--t3)">3 lecciones</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px"><span style="font-weight:600;color:var(--t1)">Automatizaciones</span><span style="font-size:11px;color:var(--t3)">6 lecciones</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px"><span style="font-weight:600;color:var(--t1)">NotebookLM</span><span style="font-size:11px;color:var(--t3)">1 lección</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px"><span style="font-weight:600;color:var(--t1)">Comunidad</span><span style="font-size:11px;color:var(--t3)">1 lección</span></div>
+      </div>
+    </div>
+
+  </aside>
+
+</div><!-- /main-wrap -->
+</div><!-- /layout -->
+
+<script>
+(function(){
+
+// ── Data ─────────────────────────────────────────
+const LS=[
+  {id:1,num:'01',s:'CLAUDE',i:'Claude Cowork',cat:'cc',catL:'Claude',yt:'wpYDisTBlE8',
+   title:'Tutorial completo de Claude Cowork',
+   desc:'Aprende a usar Claude Cowork para delegar tareas complejas: organizar archivos, construir hojas de cálculo, redactar documentos y mucho más, todo sin código.',
+   learns:['Qué es Claude Cowork','Cómo configurarlo paso a paso','Casos de uso para founders','Delegar tareas con IA','Workflows de productividad','Integración con tu flujo de trabajo']},
+  {id:2,num:'02',s:'CLAUDE',i:'Claude Code',cat:'cc',catL:'Claude',yt:null,
+   title:'¿Qué es Claude Code y cómo funciona?',
+   desc:'Próximamente — Este video estará disponible muy pronto.',learns:[]},
+  {id:3,num:'03',s:'CLAUDE',i:'Skills, Connectors y Plugins',cat:'cc',catL:'Claude',yt:null,
+   title:'Skills, Connectors y Plugins explicados',
+   desc:'Próximamente — Este video estará disponible muy pronto.',learns:[]},
+  {id:4,num:'04',s:'AUTOMATIZACIONES',i:'Chatbot de WhatsApp con n8n',cat:'ca',catL:'Automatizaciones',yt:'y3NWAa5z6HU',
+   title:'Chatbot de WhatsApp con n8n',
+   desc:'Crea un bot de WhatsApp totalmente funcional en solo 10 minutos usando n8n. Responde mensajes automáticamente, integra con GPT y escala sin límite.',
+   learns:['Conectar WhatsApp con n8n','Configurar respuestas automáticas','Integrar con IA','Escalar el chatbot','Sin código necesario','Deploy en minutos']},
+  {id:5,num:'05',s:'AUTOMATIZACIONES',i:'Ideas de contenido de LinkedIn',cat:'ca',catL:'Automatizaciones',yt:'kJn-jDJL71s',
+   title:'Ideas de contenido infinitas de LinkedIn',
+   desc:'Automatización con N8N que genera ideas de contenido para LinkedIn de forma automática y continua, usando inteligencia artificial.',
+   learns:['Generar ideas con IA','Automatizar con N8N','Escalar contenido','Posts que generan engagement','Reducir tiempo 90%','Flujo completamente automático']},
+  {id:6,num:'06',s:'AUTOMATIZACIONES',i:'Mensajes personalizados',cat:'ca',catL:'Automatizaciones',yt:'2vt4rm1n-3o',
+   title:'Automatización de mensajes personalizados',
+   desc:'Envía 500 mensajes ultra-personalizados en LinkedIn sin escribir ni uno solo. Usa IA para personalizar cada mensaje y multiplicar tu alcance.',
+   learns:['Personalización masiva con IA','Automatizar outreach','500 mensajes sin escribir','Aumentar tasa de respuesta','LinkedIn automation ético','Escalar tu red profesional']},
+  {id:7,num:'07',s:'AUTOMATIZACIONES',i:'Automatización para reels virales',cat:'ca',catL:'Automatizaciones',yt:'GTW_Z85lQJU',
+   title:'Automatización para reels virales',
+   desc:'Automatiza el análisis de los reels más virales en Instagram y usa esa data para crear tu propio contenido que pegue, en solo 5 pasos.',
+   learns:['Analizar reels virales','Extraer patterns ganadores','Automatizar análisis','Crear contenido data-driven','5 pasos simples','Resultados medibles']},
+  {id:8,num:'08',s:'AUTOMATIZACIONES',i:'LinkedIn ideas con AI',cat:'ca',catL:'Automatizaciones',yt:'loczkTaZ05g',
+   title:'LinkedIn ideas con AI',
+   desc:'Genera ideas infinitas para LinkedIn con Inteligencia Artificial y N8N. Un flujo completamente automático que nunca se queda sin ideas.',
+   learns:['Workflow en N8N','Usar IA para generar ideas','Ideas contextualmente relevantes','Programar posts automáticos','Consistencia de contenido','Resultados en LinkedIn']},
+  {id:9,num:'09',s:'NOTEBOOKLM',i:'¿Qué es NotebookLM?',cat:'cn',catL:'NotebookLM',yt:null,
+   title:'¿Qué es NotebookLM y cuándo usarlo?',
+   desc:'Próximamente — Este video estará disponible muy pronto.',learns:[]},
+  {id:10,num:'10',s:'AUTOMATIZACIONES',i:'WhatsApp chatbot (formato más fácil)',cat:'ca',catL:'Automatizaciones',yt:'4o29hLQAWmw',
+   title:'WhatsApp chatbot (formato más fácil)',
+   desc:'Tutorial paso a paso para crear un chatbot de WhatsApp de la forma más sencilla y rápida posible. Ideal para comenzar sin experiencia previa.',
+   learns:['Setup en minutos','Sin conocimientos previos','Chatbot funcional básico','Personalizar respuestas','Conectar con tu negocio','Escalar después']},
+  {id:11,num:'11',s:'COMUNIDAD',i:'Comunidad',cat:'co',catL:'Comunidad',yt:null,
+   title:'Próximamente',desc:'Próximamente.',learns:[]},
+];
+
+const byId=id=>LS.find(l=>l.id===id);
+const MODS=[
+  {name:'Claude',   pill:'mp-c', lessons:[1,2,3]},
+  {name:'Automatizaciones',pill:'mp-a',lessons:[4,5,6,7,8,10]},
+  {name:'NotebookLM',pill:'mp-n',lessons:[9]},
+  {name:'Comunidad',pill:'mp-co',lessons:[11]},
+];
+
+// ── DOM refs ──────────────────────────────────────
+const navLinks=document.querySelectorAll('.nav-list a');
+const lcards=document.querySelectorAll('.lcard');
+const vOv=document.getElementById('vOv');
+const vLesson=document.getElementById('vLesson');
+const vFrame=document.getElementById('vFrame');
+const vTitle=document.getElementById('vTitle');
+const vCat=document.getElementById('vCat');
+const vNum=document.getElementById('vNum');
+const vDesc=document.getElementById('vDesc');
+const learnGrid=document.getElementById('learnGrid');
+const accSide=document.getElementById('accSide');
+const accFull=document.getElementById('accFull');
+const backBtn=document.getElementById('backBtn');
+const bS=document.getElementById('bS');
+const bI=document.getElementById('bI');
+const mainScroll=document.getElementById('mainScroll');
+
+// ── Stagger animation ─────────────────────────────
+lcards.forEach((c,i)=>{ c.style.animationDelay=(i*48)+'ms'; });
+
+// ── Build accordion helper ────────────────────────
+function buildAcc(container,activeLessonId){
+  container.innerHTML='';
+  MODS.forEach((mod,mi)=>{
+    const a=document.createElement('div');
+    a.className='acc'+(mi===0?' open':'');
+    const lessons=mod.lessons.map(id=>byId(id)).filter(Boolean);
+    a.innerHTML=`
+      <div class="acc-hdr">
+        <span class="acc-n">0${mi+1}</span>
+        <span class="acc-t">${mod.name}</span>
+        <span class="acc-c">${lessons.length} lecciones</span>
+        <span class="acc-arr">›</span>
+      </div>
+      <div class="acc-body">
+        ${lessons.map(l=>`
+          <div class="aitem${l.id===activeLessonId?' playing':''}" data-lid="${l.id}">
+            <span class="ai-icon">${l.yt?'▶':'○'}</span>
+            <span class="ai-title">${l.title}</span>
+            <span class="ai-status">${l.yt?'Video':'Pronto'}</span>
+          </div>`).join('')}
+      </div>`;
+    a.querySelector('.acc-hdr').addEventListener('click',()=>a.classList.toggle('open'));
+    a.querySelectorAll('.aitem').forEach(item=>{
+      item.addEventListener('click',()=>{
+        const lid=parseInt(item.dataset.lid);
+        const l=byId(lid);
+        if(l&&l.yt) openLesson(lid);
+      });
+    });
+    container.appendChild(a);
+  });
+}
+
+// ── Open lesson ───────────────────────────────────
+function openLesson(id){
+  const l=byId(id);
+  if(!l) return;
+  bS.textContent=l.s;
+  bI.textContent=l.i;
+  vTitle.textContent=l.title;
+  vNum.textContent='Lección '+l.num;
+  vCat.className='lcat '+l.cat;
+  vCat.textContent=l.catL;
+  vDesc.textContent=l.desc;
+  learnGrid.innerHTML=l.learns.map(x=>`<div class="learn-item"><span class="lchk">✓</span><span>${x}</span></div>`).join('');
+  vFrame.src=l.yt?`https://www.youtube.com/embed/${l.yt}?autoplay=1&rel=0&modestbranding=1`:'';
+  buildAcc(accSide,id);
+  buildAcc(accFull,id);
+  vOv.style.display='none';
+  vLesson.classList.add('on');
+  // reset tabs
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.tpanel').forEach(p=>p.classList.remove('on'));
+  document.querySelector('.ptab[data-tab="0"]').classList.add('on');
+  document.getElementById('tp0').classList.add('on');
+  // highlight nav
+  navLinks.forEach(a=>a.classList.toggle('active',parseInt(a.dataset.lesson)===id));
+  lcards.forEach(c=>c.classList.toggle('ac',parseInt(c.dataset.lesson)===id));
+  mainScroll.scrollTo({top:0,behavior:'smooth'});
+  if(window.innerWidth<820) closeSidebar();
+}
+
+function openOverview(s,i){
+  vFrame.src='';
+  vLesson.classList.remove('on');
+  vOv.style.display='';
+  if(s) bS.textContent=s;
+  if(i) bI.textContent=i;
+  lcards.forEach(c=>c.classList.remove('ac'));
+}
+
+window.startFirstLesson=function(){ openLesson(1); };
+
+// ── Tabs ─────────────────────────────────────────
+document.querySelectorAll('.ptab').forEach(tab=>{
+  tab.addEventListener('click',function(){
+    const idx=this.dataset.tab;
+    document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('on'));
+    document.querySelectorAll('.tpanel').forEach(p=>p.classList.remove('on'));
+    this.classList.add('on');
+    document.getElementById('tp'+idx).classList.add('on');
+  });
+});
+
+// ── Back button ───────────────────────────────────
+backBtn.addEventListener('click',()=>openOverview('BIENVENIDA','¿Qué vas a aprender aquí?'));
+
+// ── Nav clicks ────────────────────────────────────
+navLinks.forEach(link=>{
+  link.addEventListener('click',function(e){
+    e.preventDefault();
+    const lid=parseInt(this.dataset.lesson);
+    const isOv=this.dataset.view==='ov';
+    navLinks.forEach(a=>a.classList.remove('active'));
+    this.classList.add('active');
+    if(!isNaN(lid)){
+      const l=byId(lid);
+      if(l&&l.yt) openLesson(lid);
+      else openOverview(this.dataset.s,this.dataset.i);
+    } else {
+      openOverview(this.dataset.s,this.dataset.i);
+    }
+  });
+});
+
+// ── Card clicks ───────────────────────────────────
+lcards.forEach(card=>{
+  card.addEventListener('click',function(){
+    if(this.classList.contains('soon')) return;
+    const l=byId(parseInt(this.dataset.lesson));
+    if(l&&l.yt) openLesson(l.id);
+  });
+});
+
+// ── Hamburger ─────────────────────────────────────
+const hamBtn=document.getElementById('hamBtn');
+const sidebar=document.getElementById('sidebar');
+const ov=document.getElementById('ov');
+function openSidebar(){sidebar.classList.add('open');ov.classList.add('open');document.body.style.overflow='hidden'}
+function closeSidebar(){sidebar.classList.remove('open');ov.classList.remove('open');document.body.style.overflow=''}
+hamBtn.addEventListener('click',()=>sidebar.classList.contains('open')?closeSidebar():openSidebar());
+ov.addEventListener('click',closeSidebar);
+window.addEventListener('resize',()=>{if(window.innerWidth>=820)closeSidebar()});
+
+// ── Animate progress bar ──────────────────────────
+setTimeout(()=>{ const f=document.getElementById('progFill'); if(f) f.style.width='14%'; },400);
+
+})();
+</script>
+</body>
+</html>
