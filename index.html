@@ -586,9 +586,9 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
       <!-- Módulo 3: NotebookLM -->
       <div class="mod-sep" style="margin-top:10px"><span class="mod-pill mp-n">Módulo 3</span><span class="mod-name">NotebookLM</span><div class="mod-line"></div><span class="mod-cnt">1 lección</span></div>
       <div class="cards-grid" id="grid3">
-        <div class="lcard soon" data-lesson="9">
-          <div class="lthumb"><div class="lthumb-ph"><div class="ph-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="#c9bfb8"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">09</span></div>
-          <div class="lbody"><span class="lcat cn">NotebookLM</span><p class="ltitle">¿Qué es NotebookLM y cuándo usarlo?</p><div class="lftr"><div class="lstat"><span class="dot soon"></span>Próximamente</div><span class="larw">→</span></div></div>
+        <div class="lcard" data-lesson="9" onclick="openLesson(9)">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/wiGN309SE5U/maxresdefault.jpg" alt="NotebookLM" onerror="this.src='https://img.youtube.com/vi/wiGN309SE5U/hqdefault.jpg'"><div class="pov"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polygon points="5 3 19 12 5 21 5 3" fill="white"/></svg></div><span class="nbadge">09</span></div>
+          <div class="lbody"><span class="lcat cn">NotebookLM</span><p class="ltitle">¿Qué es NotebookLM y cuándo usarlo?</p><div class="lftr"><div class="lstat"><span class="dot"></span>Disponible</div><span class="larw">→</span></div></div>
         </div>
       </div>
 
@@ -727,9 +727,10 @@ const LS=[
    title:'LinkedIn ideas con AI',
    desc:'Genera ideas infinitas para LinkedIn con Inteligencia Artificial y N8N. Un flujo completamente automático que nunca se queda sin ideas.',
    learns:['Workflow en N8N','Usar IA para generar ideas','Ideas contextualmente relevantes','Programar posts automáticos','Consistencia de contenido','Resultados en LinkedIn']},
-  {id:9,num:'09',s:'NOTEBOOKLM',i:'¿Qué es NotebookLM?',cat:'cn',catL:'NotebookLM',yt:null,
+  {id:9,num:'09',s:'NOTEBOOKLM',i:'¿Qué es NotebookLM?',cat:'cn',catL:'NotebookLM',yt:'wiGN309SE5U',
    title:'¿Qué es NotebookLM y cuándo usarlo?',
-   desc:'Próximamente — Este video estará disponible muy pronto.',learns:[]},
+   desc:'Aprende a usar NotebookLM de Google para analizar documentos, extraer insights y crear podcasts de audio a partir de tus fuentes. La herramienta de investigación más poderosa para founders.',
+   learns:['Qué es NotebookLM y por qué lo usan top founders','Cargar y analizar documentos, PDFs y webs','Generar resúmenes y preguntas clave automáticamente','Crear podcasts de audio con tus propios documentos']},
   {id:10,num:'10',s:'AUTOMATIZACIONES',i:'WhatsApp chatbot (formato más fácil)',cat:'ca',catL:'Automatizaciones',yt:'4o29hLQAWmw',
    title:'WhatsApp chatbot (formato más fácil)',
    desc:'Tutorial paso a paso para crear un chatbot de WhatsApp de la forma más sencilla y rápida posible. Ideal para comenzar sin experiencia previa.',
