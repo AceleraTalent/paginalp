@@ -540,9 +540,9 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
           <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">¿Qué es Claude Code y cómo funciona?</p><div class="lftr"><div class="lstat"><span class="dot soon"></span>Próximamente</div><span class="larw">→</span></div></div>
         </div>
 
-        <div class="lcard soon" data-lesson="3">
-          <div class="lthumb"><div class="lthumb-ph"><div class="ph-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="#c9bfb8"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">03</span></div>
-          <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">Skills, Connectors y Plugins explicados</p><div class="lftr"><div class="lstat"><span class="dot soon"></span>Próximamente</div><span class="larw">→</span></div></div>
+        <div class="lcard" data-lesson="3" onclick="openLesson(3)">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/sn3zkOGdfsM/maxresdefault.jpg" alt="Skills, Connectors y Plugins" onerror="this.src='https://img.youtube.com/vi/sn3zkOGdfsM/hqdefault.jpg'"><div class="pov"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polygon points="5 3 19 12 5 21 5 3" fill="white"/></svg></div><span class="nbadge">03</span></div>
+          <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">Skills, Connectors y Plugins explicados</p><div class="lftr"><div class="lstat"><span class="dot"></span>Disponible</div><span class="larw">→</span></div></div>
         </div>
 
       </div>
@@ -703,9 +703,10 @@ const LS=[
   {id:2,num:'02',s:'CLAUDE',i:'Claude Code',cat:'cc',catL:'Claude',yt:null,
    title:'¿Qué es Claude Code y cómo funciona?',
    desc:'Próximamente — Este video estará disponible muy pronto.',learns:[]},
-  {id:3,num:'03',s:'CLAUDE',i:'Skills, Connectors y Plugins',cat:'cc',catL:'Claude',yt:null,
+  {id:3,num:'03',s:'CLAUDE',i:'Skills, Connectors y Plugins',cat:'cc',catL:'Claude',yt:'sn3zkOGdfsM',
    title:'Skills, Connectors y Plugins explicados',
-   desc:'Próximamente — Este video estará disponible muy pronto.',learns:[]},
+   desc:'Descubre cómo extender las capacidades de Claude con Skills, Connectors y Plugins. Integra herramientas externas y automatiza flujos de trabajo avanzados.',
+   learns:['Qué son los Skills y cómo crearlos','Conectar Claude con apps externas via Connectors','Plugins más útiles para founders','Casos de uso reales en equipos LATAM']},
   {id:4,num:'04',s:'AUTOMATIZACIONES',i:'Chatbot de WhatsApp con n8n',cat:'ca',catL:'Automatizaciones',yt:'y3NWAa5z6HU',
    title:'Chatbot de WhatsApp con n8n',
    desc:'Crea un bot de WhatsApp totalmente funcional en solo 10 minutos usando n8n. Responde mensajes automáticamente, integra con GPT y escala sin límite.',
