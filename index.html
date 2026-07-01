@@ -803,7 +803,7 @@ function buildAcc(container,activeLessonId){
 }
 
 // ── Open lesson ───────────────────────────────────
-function openLesson(id){
+function openLesson(id, pushHistory=true){
   const l=byId(id);
   if(!l) return;
   bS.textContent=l.s;
@@ -829,15 +829,18 @@ function openLesson(id){
   lcards.forEach(c=>c.classList.toggle('ac',parseInt(c.dataset.lesson)===id));
   mainScroll.scrollTo({top:0,behavior:'smooth'});
   if(window.innerWidth<=768) closeSidebar();
+  // update URL hash for sharable deep link
+  if(pushHistory) history.pushState({lesson:id},'','#lesson-'+id);
 }
 
-function openOverview(s,i){
+function openOverview(s,i, pushHistory=true){
   vFrame.src='';
   vLesson.classList.remove('on');
   vOv.style.display='';
   if(s) bS.textContent=s;
   if(i) bI.textContent=i;
   lcards.forEach(c=>c.classList.remove('ac'));
+  if(pushHistory) history.pushState({overview:true},'',location.pathname+location.search);
 }
 
 window.startFirstLesson=function(){ openLesson(1); };
@@ -897,6 +900,26 @@ const sbCloseBtn=document.getElementById('sbCloseBtn');
 if(sbCloseBtn) sbCloseBtn.addEventListener('click',closeSidebar);
 ov.addEventListener('click',closeSidebar);
 window.addEventListener('resize',()=>{if(window.innerWidth>=820)closeSidebar()});
+
+// ── Deep link: load from URL hash on page open ────
+(function(){
+  const m = location.hash.match(/^#lesson-(\d+)$/);
+  if(m){
+    const id=parseInt(m[1]);
+    const l=byId(id);
+    if(l&&l.yt){ openLesson(id, false); return; }
+  }
+  history.replaceState({overview:true},'',location.href);
+})();
+
+// ── Browser back / forward ────────────────────────
+window.addEventListener('popstate', e=>{
+  if(e.state&&e.state.lesson){
+    openLesson(e.state.lesson, false);
+  } else {
+    openOverview('BIENVENIDA','¿Qué vas a aprender aquí?', false);
+  }
+});
 
 // ── Animate progress bar ──────────────────────────
 setTimeout(()=>{ const f=document.getElementById('progFill'); if(f) f.style.width='14%'; },400);
