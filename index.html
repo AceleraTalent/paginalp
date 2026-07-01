@@ -271,6 +271,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .lm-access-btn{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font:700 14px var(--font);padding:12px 24px;border-radius:11px;text-decoration:none;transition:background .15s}
 .lm-access-btn:hover{background:var(--coral-d)}
 
+.lm-seen-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:var(--green);background:#f0fdf4;border-radius:6px;padding:3px 8px;margin-bottom:7px}
 @media(max-width:1060px){.lm-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){.lm-grid{grid-template-columns:1fr;gap:10px}}
 
@@ -1046,9 +1047,11 @@ setTimeout(()=>{ const f=document.getElementById('progFill'); if(f) f.style.widt
 <script>
 (function(){
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNEtZuSl_emmSz7hhtYI5w5-9NK3c2IevQv-xvJpJWZmznqtYquydAzTZ0cFDBW2wgvg/exec';
-  const LS_KEY = 'afl_lead_done';
+  const LS_KEY  = 'afl_lead_done';
+  const LS_USER = 'afl_user';
 
-  if(localStorage.getItem(LS_KEY)) return; // already seen
+  // Already registered via any form → never show popup again
+  if(localStorage.getItem(LS_KEY) || localStorage.getItem(LS_USER)) return;
 
   const overlay = document.getElementById('leadOverlay');
   const form    = document.getElementById('leadForm');
@@ -1111,6 +1114,7 @@ setTimeout(()=>{ const f=document.getElementById('progFill'); if(f) f.style.widt
     form.style.display = 'none';
     okMsg.style.display = 'block';
     localStorage.setItem(LS_KEY,'1');
+    localStorage.setItem(LS_USER, JSON.stringify({nombre, email, telefono}));
     setTimeout(()=>overlay.classList.remove('show'), 2800);
   });
 })();
@@ -1219,22 +1223,74 @@ const LM_THEMES = {
 
 /* ── LEAD MAGNET MODAL LOGIC ─────── */
 const LM_SHEET_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+const LM_LS_USER  = 'afl_user';
+const LM_LS_SEEN  = 'afl_lm_seen'; // JSON array of accessed IDs
 let _currentLM = null;
+
+function lmGetUser(){ try{ return JSON.parse(localStorage.getItem(LM_LS_USER)||'null'); }catch(e){ return null; } }
+function lmGetSeen(){ try{ return JSON.parse(localStorage.getItem(LM_LS_SEEN)||'[]'); }catch(e){ return []; } }
+function lmMarkSeen(id){ const s=lmGetSeen(); if(!s.includes(id)){ s.push(id); localStorage.setItem(LM_LS_SEEN,JSON.stringify(s)); } }
+function lmSaveUser(u){ localStorage.setItem(LM_LS_USER,JSON.stringify(u)); }
+
+function lmRevealLink(){
+  document.getElementById('lmFormWrap').style.display = 'none';
+  document.getElementById('lmAccessLink').href = _currentLM.link;
+  document.getElementById('lmAccess').style.display = 'block';
+  lmMarkSeen(_currentLM.id);
+  lmRefreshCards();
+}
+
+function lmRefreshCards(){
+  const seen = lmGetSeen();
+  document.querySelectorAll('.lm-card[data-lm]').forEach(card=>{
+    const id = parseInt(card.dataset.lm);
+    const btn = card.querySelector('.lm-btn');
+    if(seen.includes(id)){
+      card.querySelector('.lm-thumb').setAttribute('data-seen','1');
+      if(btn && !card.querySelector('.lm-seen-badge')){
+        const badge = document.createElement('div');
+        badge.className = 'lm-seen-badge';
+        badge.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Ya accediste';
+        card.querySelector('.lm-body').insertBefore(badge, btn);
+        btn.textContent = 'Ver de nuevo';
+        btn.style.background = 'var(--green)';
+      }
+    }
+  });
+}
 
 window.openLMModal = function(id){
   _currentLM = LM_DATA.find(l=>l.id===id);
   if(!_currentLM) return;
   const th = LM_THEMES[_currentLM.cat] || LM_THEMES.ai;
+  const savedUser = lmGetUser();
+  const alreadySeen = lmGetSeen().includes(id);
+
   // fill preview
   document.getElementById('lmPrevIco').innerHTML = `<div style="width:40px;height:40px;border-radius:10px;background:${th.bg};display:flex;align-items:center;justify-content:center">${th.svg.replace('width="54"','width="22"').replace('height="54"','height="22"')}</div>`;
   document.getElementById('lmPrevTitle').textContent = _currentLM.titulo;
-  // reset state
-  document.getElementById('lmFormWrap').style.display = '';
-  document.getElementById('lmAccess').style.display = 'none';
-  document.getElementById('lmNombre').value = '';
-  document.getElementById('lmEmail').value = '';
-  document.getElementById('lmSubmit').textContent = 'Desbloquear acceso';
-  document.getElementById('lmSubmit').disabled = false;
+
+  if(alreadySeen || savedUser){
+    // Known user — skip form, go straight to content
+    const name = savedUser?.nombre ? savedUser.nombre.split(' ')[0] : null;
+    const greeting = name ? `Hola de nuevo, ${name} 👋` : 'Ya eres parte de la comunidad 👋';
+    document.getElementById('lmFormWrap').style.display = 'none';
+    document.getElementById('lmAccess').style.display = 'block';
+    document.getElementById('lmAccessLink').href = _currentLM.link;
+    // Show greeting in the subtitle area
+    document.querySelector('.lm-modal-sub').textContent = greeting;
+    lmMarkSeen(id);
+    lmRefreshCards();
+  } else {
+    // New user — show form
+    document.getElementById('lmFormWrap').style.display = '';
+    document.getElementById('lmAccess').style.display = 'none';
+    document.getElementById('lmNombre').value = '';
+    document.getElementById('lmEmail').value = '';
+    document.getElementById('lmSubmit').textContent = 'Desbloquear acceso';
+    document.getElementById('lmSubmit').disabled = false;
+    document.querySelector('.lm-modal-sub').textContent = 'Déjanos tu nombre y correo — te enviamos el enlace directo.';
+  }
   document.getElementById('lmOverlay').classList.add('show');
 };
 
@@ -1250,6 +1306,9 @@ document.getElementById('lmSubmit').addEventListener('click', async function(){
   this.textContent = 'Enviando...';
   this.disabled = true;
 
+  // Save user for future sessions
+  lmSaveUser({nombre, email});
+
   try {
     await fetch(LM_SHEET_URL, {
       method:'POST', mode:'no-cors',
@@ -1261,11 +1320,11 @@ document.getElementById('lmSubmit').addEventListener('click', async function(){
     });
   } catch(e){}
 
-  // reveal link
-  document.getElementById('lmFormWrap').style.display = 'none';
-  document.getElementById('lmAccessLink').href = _currentLM.link;
-  document.getElementById('lmAccess').style.display = 'block';
+  lmRevealLink();
 });
+
+// Mark already-seen cards on page load
+lmRefreshCards();
 </script>
 </body>
 </html>
