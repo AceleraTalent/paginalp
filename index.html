@@ -519,15 +519,13 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
       <!-- Stats -->
       <div class="stats-bar">
         <div class="scard"><div class="s-ico si1">📋</div><div><div class="s-num">11</div><div class="s-lbl">Lecciones</div></div></div>
-        <div class="scard"><div class="s-ico si2">📚</div><div><div class="s-num">4</div><div class="s-lbl">Módulos</div></div></div>
+        <div class="scard"><div class="s-ico si2">🛠️</div><div><div class="s-num">3</div><div class="s-lbl">Herramientas</div></div></div>
         <div class="scard"><div class="s-ico si3">▶️</div><div><div class="s-num">7</div><div class="s-lbl">Videos</div></div></div>
         <div class="scard"><div class="s-ico si4">🎁</div><div><div class="s-num">100%</div><div class="s-lbl">Gratis</div></div></div>
       </div>
 
-      <div class="sec-hdr"><h2 class="sec-title">Lecciones del curso</h2><span class="sec-meta">11 lecciones · 4 módulos</span></div>
+      <div class="sec-hdr"><h2 class="sec-title">Todas las lecciones</h2><span class="sec-meta" id="secMeta">11 lecciones · en orden de publicación</span></div>
 
-      <!-- Módulo 1: Claude -->
-      <div class="mod-sep"><span class="mod-pill mp-c">Módulo 1</span><span class="mod-name">Claude</span><div class="mod-line"></div><span class="mod-cnt">3 lecciones</span></div>
       <div class="cards-grid" id="grid1">
 
         <div class="lcard" data-lesson="1">
@@ -542,14 +540,8 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 
         <div class="lcard" data-lesson="3" onclick="openLesson(3)">
           <div class="lthumb"><img src="https://img.youtube.com/vi/sn3zkOGdfsM/maxresdefault.jpg" alt="Skills, Connectors y Plugins" onerror="this.src='https://img.youtube.com/vi/sn3zkOGdfsM/hqdefault.jpg'"><div class="pov"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polygon points="5 3 19 12 5 21 5 3" fill="white"/></svg></div><span class="nbadge">03</span></div>
-          <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">Skills, Connectors y Plugins explicados</p><div class="lftr"><div class="lstat"><span class="dot"></span>Disponible</div><span class="larw">→</span></div></div>
+          <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">Skills, Connectors y Plugins explicados</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
         </div>
-
-      </div>
-
-      <!-- Módulo 2: Automatizaciones -->
-      <div class="mod-sep" style="margin-top:10px"><span class="mod-pill mp-a">Módulo 2</span><span class="mod-name">Automatizaciones</span><div class="mod-line"></div><span class="mod-cnt">6 lecciones</span></div>
-      <div class="cards-grid" id="grid2">
 
         <div class="lcard" data-lesson="4">
           <div class="lthumb"><img src="https://img.youtube.com/vi/y3NWAa5z6HU/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/y3NWAa5z6HU/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">04</span></div>
@@ -576,29 +568,21 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
           <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">LinkedIn ideas con AI</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
         </div>
 
+        <div class="lcard" data-lesson="9" onclick="openLesson(9)">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/wiGN309SE5U/maxresdefault.jpg" alt="NotebookLM" onerror="this.src='https://img.youtube.com/vi/wiGN309SE5U/hqdefault.jpg'"><div class="pov"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polygon points="5 3 19 12 5 21 5 3" fill="white"/></svg></div><span class="nbadge">09</span></div>
+          <div class="lbody"><span class="lcat cn">NotebookLM</span><p class="ltitle">¿Qué es NotebookLM y cuándo usarlo?</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
         <div class="lcard" data-lesson="10">
           <div class="lthumb"><img src="https://img.youtube.com/vi/4o29hLQAWmw/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/4o29hLQAWmw/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">10</span></div>
           <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">WhatsApp chatbot (formato más fácil)</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
         </div>
 
-      </div>
-
-      <!-- Módulo 3: NotebookLM -->
-      <div class="mod-sep" style="margin-top:10px"><span class="mod-pill mp-n">Módulo 3</span><span class="mod-name">NotebookLM</span><div class="mod-line"></div><span class="mod-cnt">1 lección</span></div>
-      <div class="cards-grid" id="grid3">
-        <div class="lcard" data-lesson="9" onclick="openLesson(9)">
-          <div class="lthumb"><img src="https://img.youtube.com/vi/wiGN309SE5U/maxresdefault.jpg" alt="NotebookLM" onerror="this.src='https://img.youtube.com/vi/wiGN309SE5U/hqdefault.jpg'"><div class="pov"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polygon points="5 3 19 12 5 21 5 3" fill="white"/></svg></div><span class="nbadge">09</span></div>
-          <div class="lbody"><span class="lcat cn">NotebookLM</span><p class="ltitle">¿Qué es NotebookLM y cuándo usarlo?</p><div class="lftr"><div class="lstat"><span class="dot"></span>Disponible</div><span class="larw">→</span></div></div>
-        </div>
-      </div>
-
-      <!-- Módulo 4: Comunidad -->
-      <div class="mod-sep" style="margin-top:10px"><span class="mod-pill mp-co">Módulo 4</span><span class="mod-name">Comunidad</span><div class="mod-line"></div><span class="mod-cnt">1 lección</span></div>
-      <div class="cards-grid" id="grid4">
         <div class="lcard soon" data-lesson="11">
           <div class="lthumb"><div class="lthumb-ph"><div class="ph-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="#c9bfb8"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">11</span></div>
-          <div class="lbody"><span class="lcat co">Comunidad</span><p class="ltitle dim">Próximamente</p><div class="lftr"><div class="lstat"><span class="dot soon"></span>Próximamente</div><span class="larw">→</span></div></div>
+          <div class="lbody"><span class="lcat co">Comunidad</span><p class="ltitle">Próximamente</p><div class="lftr"><div class="lstat"><span class="dot soon"></span>Próximamente</div><span class="larw">→</span></div></div>
         </div>
+
       </div>
 
     </div><!-- /vOv -->
