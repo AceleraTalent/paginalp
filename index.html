@@ -1060,7 +1060,9 @@ setTimeout(()=>{ const f=document.getElementById('progFill'); if(f) f.style.widt
 function stripCountryCode(raw, code){
   const digits = raw.replace(/\D/g,'');
   const codeDigits = code.replace(/\D/g,'');
-  if(digits.startsWith(codeDigits)) return digits.slice(codeDigits.length);
+  // Strip leading zeros (00xx international format) then check for country code
+  const noLeadZeros = digits.replace(/^0+/,'');
+  if(noLeadZeros.startsWith(codeDigits)) return noLeadZeros.slice(codeDigits.length);
   return digits;
 }
 function isRealPhone(raw){
