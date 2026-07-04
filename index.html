@@ -1057,6 +1057,21 @@ setTimeout(()=>{ const f=document.getElementById('progFill'); if(f) f.style.widt
 </div>
 
 <script>
+function stripCountryCode(raw, code){
+  const digits = raw.replace(/\D/g,'');
+  const codeDigits = code.replace(/\D/g,'');
+  if(digits.startsWith(codeDigits)) return digits.slice(codeDigits.length);
+  return digits;
+}
+function isRealPhone(raw){
+  const d = raw.replace(/\D/g,'');
+  if(!d || d.length < 7 || d.length > 15) return false;
+  if(/^(\d)\1+$/.test(d)) return false;
+  const fakes=['1234567890','0987654321','1234567','0000000','9999999','1111111','1231231234'];
+  if(fakes.some(f=>d.startsWith(f)||d===f)) return false;
+  return true;
+}
+
 (function(){
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNEtZuSl_emmSz7hhtYI5w5-9NK3c2IevQv-xvJpJWZmznqtYquydAzTZ0cFDBW2wgvg/exec';
   const LS_KEY  = 'afl_lead_done';
@@ -1077,15 +1092,6 @@ setTimeout(()=>{ const f=document.getElementById('progFill'); if(f) f.style.widt
   document.getElementById('leadClose').addEventListener('click', hidePopup);
   document.getElementById('leadSkip').addEventListener('click', hidePopup);
   overlay.addEventListener('click', e=>{ if(e.target===overlay) hidePopup(); });
-
-  function isRealPhone(raw){
-    const d = raw.replace(/\D/g,'');
-    if(!d || d.length < 7 || d.length > 15) return false;
-    if(/^(\d)\1+$/.test(d)) return false; // all same digit (3333333333)
-    const fakes=['1234567890','0987654321','1234567','0000000','9999999','1111111','1231231234'];
-    if(fakes.some(f=>d.startsWith(f)||d===f)) return false;
-    return true;
-  }
 
   document.getElementById('leadSubmit').addEventListener('click', async function(){
     const nombre   = document.getElementById('lNombre').value.trim();
@@ -1109,7 +1115,8 @@ setTimeout(()=>{ const f=document.getElementById('progFill'); if(f) f.style.widt
       document.getElementById('lNombre').focus(); return;
     }
 
-    const telefono = telRaw ? code + ' ' + telRaw : '';
+    const localNum = stripCountryCode(telRaw, code);
+    const telefono = telRaw ? code + ' ' + localNum : '';
 
     this.textContent = 'Enviando...';
     this.disabled = true;
@@ -1127,6 +1134,7 @@ setTimeout(()=>{ const f=document.getElementById('progFill'); if(f) f.style.widt
     okMsg.style.display = 'block';
     localStorage.setItem(LS_KEY,'1');
     localStorage.setItem(LS_USER, JSON.stringify({nombre, email, telefono}));
+    window.open('https://chat.whatsapp.com/FJwqTceWj4gBKpYKBAWEWW?mlu=0&s=sh&p=i','_blank');
     setTimeout(()=>overlay.classList.remove('show'), 2800);
   });
 })();
@@ -1353,7 +1361,7 @@ document.getElementById('lmSubmit').addEventListener('click', async function(){
   }
   telErr.style.display = 'none';
 
-  const telefono = code + rawTel.replace(/\D/g,'');
+  const telefono = code + stripCountryCode(rawTel, code);
 
   this.textContent = 'Enviando...';
   this.disabled = true;
