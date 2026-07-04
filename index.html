@@ -238,8 +238,10 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .lm-card:hover{box-shadow:var(--sh3);transform:translateY(-3px)}
 .lm-card:hover .lm-img{transform:scale(1.04)}
 .lm-thumb{aspect-ratio:16/9;position:relative;overflow:hidden;flex-shrink:0}
-.lm-img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
-.lm-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative}
+.lm-img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease;position:absolute;inset:0}
+.lm-card:hover .lm-img{transform:scale(1.06)}
+.lm-img-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.lm-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.45) 0%,transparent 55%);pointer-events:none}
 .lm-ph-svg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.85}
 .lm-ph-svg svg{width:54px;height:54px}
 .lm-ph-label{position:absolute;bottom:8px;left:12px;font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75)}
@@ -1348,30 +1350,54 @@ function isRealPhone(raw){
 <script>
 /* ── LEAD MAGNETS DATA ────────────────────────────── */
 const LM_DATA = [
-  {id:1, slug:'guia-skill-debrief-claude',             titulo:"Guía: Skill DEBRIEF en Claude",desc:"Conecta Claude con Google Calendar y Notion para automatizar tus debriefs de reunión paso a paso.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Guia-paso-a-paso-Skill-DEBRIEF-088e4ca3df4d441983862e8a7dc41eb3"},
-  {id:2, slug:'gpt-image-2-nuevo-modelo-openai',        titulo:"GPT Image 2.0: El nuevo modelo de OpenAI",desc:"Análisis del modelo de imágenes de OpenAI y cómo aprovecharlo en tu negocio desde hoy.",cat:"ai",catL:"IA",link:"https://quiet-fiber-044.notion.site/GPT-Image-2-0-350c40c66f09809c9fd8f25cfee4379f"},
-  {id:3, slug:'agente-ia-hace-mercado-exito',           titulo:"Cómo construí un agente que hace el mercado",desc:"Paso a paso de cómo automaticé mis compras del Éxito con un agente de IA que cualquiera puede replicar.",cat:"auto",catL:"Agentes",link:"https://quiet-fiber-044.notion.site/Como-construi-un-agente-351c40c66f09806eac59ccb95b063b9c"},
-  {id:4, slug:'guia-contenido-linkedin-paso-a-paso',    titulo:"Guía: Contenido en LinkedIn paso a paso",desc:"Sistema probado para crear contenido consistente en LinkedIn que genera leads y visibilidad real.",cat:"linkedin",catL:"LinkedIn",link:"https://quiet-fiber-044.notion.site/Guia-contenido-LinkedIn-352c40c66f098089a4b1e238b52bf3b2"},
-  {id:5, slug:'content-system-planea-crea-publica',     titulo:"Content System",desc:"El sistema que uso para planear, crear y publicar contenido sin gastar horas cada semana.",cat:"contenido",catL:"Contenido",link:"https://quiet-fiber-044.notion.site/Content-System-352c40c66f09801ca6c7ceaa2c039f55"},
-  {id:6, slug:'mi-stack-de-ai-como-funciona-mi-empresa',titulo:"Mi Stack de AI: cómo funciona mi empresa",desc:"Las herramientas exactas de IA que uso en mi empresa para operar 10x más rápido.",cat:"ai",catL:"IA",link:"https://quiet-fiber-044.notion.site/Mi-Stack-de-AI-35ec40c66f09809988e4d384e8281d89"},
-  {id:7, slug:'marketing-higgsfield-claude-videos-ia',  titulo:"La revolución del marketing: Higgsfield + Claude",desc:"Crea videos de marketing profesionales en minutos combinando Higgsfield y Claude.",cat:"video",catL:"Video",link:"https://quiet-fiber-044.notion.site/Higgsfield-Claude-362c40c66f0980909625ca17decde760"},
-  {id:8, slug:'fitness-coach-personal-con-claude',      titulo:"Fitness Coach con Claude",desc:"Cómo construir un coach de fitness personal usando Claude — entrena con IA personalizada.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Fitness-Coach-Claude-363c40c66f0980be9317c625e6710b0a"},
-  {id:9, slug:'automatizacion-fathom-make-notion',      titulo:"Automatización Fathom → Make → Notion",desc:"Guía para automatizar tus notas de reunión: de Fathom a Make a Notion sin tocar nada.",cat:"auto",catL:"Automatización",link:"https://quiet-fiber-044.notion.site/Automatizacion-Fathom-Make-Notion-321c40c66f0981e48a5fdb2e47057d36"},
-  {id:10,slug:'5-mcps-esenciales-para-claude',          titulo:"5 MCPs que debes instalar hoy",desc:"Los 5 Model Context Protocols más útiles y cómo instalarlos en Claude en minutos.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/5-MCPs-367c40c66f0980c5a00ccbd47eb70dbe"},
-  {id:11,slug:'ai-luxury-tecnologia-marcas-de-lujo',    titulo:"AI LUXURY: Tecnología en las marcas de lujo",desc:"Cómo las marcas de lujo están adoptando IA para diferenciarse y escalar su experiencia.",cat:"ai",catL:"IA",link:"https://quiet-fiber-044.notion.site/AI-LUXURY-Tech-36ac40c66f09801ab327cc3394270a34"},
-  {id:12,slug:'obsidian-claude-segundo-cerebro',        titulo:"Obsidian + Claude: La Guía Esencial",desc:"Convierte Obsidian en tu segundo cerebro potenciado con Claude para pensar y crear mejor.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Obsidian-Claude-374c40c66f09817b8c6df87fa2c82f48"},
-  {id:13,slug:'claude-higgsfield-crea-video-con-ia',    titulo:"Claude + Higgsfield: Crea video con IA",desc:"Tutorial para crear videos con IA directamente desde Claude usando el conector de Higgsfield.",cat:"video",catL:"Video",link:"https://quiet-fiber-044.notion.site/Claude-Higgsfield-Video-374c40c66f09810cbfadf306508a4135"},
-  {id:14,slug:'nexus-sistema-operacion-con-ia',         titulo:"Nexus",desc:"El sistema Nexus para centralizar toda tu operación con IA en un solo lugar.",cat:"ai",catL:"IA",link:"https://quiet-fiber-044.notion.site/Nexus-387c40c66f0980b5b294d89d4d754ddd"},
-  {id:15,slug:'linkedin-estrategia-founders-latam',     titulo:"LinkedIn: Estrategia para founders",desc:"Estrategia de LinkedIn para founders que quieren visibilidad y leads sin postear todos los días.",cat:"linkedin",catL:"LinkedIn",link:"https://quiet-fiber-044.notion.site/LinkedIn-359c40c66f098071a660d4adb8724fc8"},
-  {id:16,slug:'linkedin-plantillas-oportunidades-negocio',titulo:"LinkedIn: Plantillas que generan oportunidades",desc:"Plantillas y fórmulas de LinkedIn probadas para generar conversaciones y oportunidades de negocio.",cat:"linkedin",catL:"LinkedIn",link:"https://quiet-fiber-044.notion.site/LinkedIn-353c40c66f098009829ac20f911dd63a"},
-  {id:17,slug:'open-design-70-estilos-marcas-top',      titulo:"Open Design: 70+ estilos de marcas top",desc:"70+ estilos de las mejores marcas del mundo para diseñar con cualquier IA generativa.",cat:"diseno",catL:"Diseño",link:"https://quiet-fiber-044.notion.site/Open-Design-375c40c66f0981e88933e8c34713e220"},
-  {id:18,slug:'small-business-claude-gestiona-negocio', titulo:"Small Business: Claude gestiona tu negocio",desc:"El plugin de Claude que gestiona ventas, atención al cliente y tareas de tu negocio en uno.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Small-Business-Claude-375c40c66f098148a75afcaeb497ee59"},
-  {id:19,slug:'claude-council-5-agentes-evaluan-idea',  titulo:"Claude Council: 5 agentes evalúan tu idea",desc:"5 agentes de Claude evalúan tu idea de negocio desde distintos ángulos en segundos.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Claude-Council-37bc40c66f0981be835fd5b764e02fad"},
-  {id:20,slug:'linkedin-claude-encuentra-vacantes',     titulo:"LinkedIn + Claude: Encuentra vacantes en 10s",desc:"Sistema para encontrar las mejores vacantes de empleo en menos de 10 segundos con Claude.",cat:"linkedin",catL:"LinkedIn",link:"https://quiet-fiber-044.notion.site/LinkedIn-Claude-Vacantes-381c40c66f098155af9cec2838cd815c"},
-  {id:21,slug:'hermes-agente-ia-que-ejecuta',           titulo:"Hermes: El agente que ejecuta, no solo responde",desc:"Cómo construí Hermes, el agente de IA que no conversa sino que toma acción por ti.",cat:"auto",catL:"Agentes",link:"https://quiet-fiber-044.notion.site/Hermes-38ac40c66f0981c0a2befd95dee2f632"},
-  {id:22,slug:'atencion-cliente-claude-sin-gmail',      titulo:"Atención al Cliente con Claude sin tocar Gmail",desc:"Sistema para responder clientes automáticamente con Claude integrado a Gmail.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Atencion-Cliente-Claude-38ac40c66f098185bc63cf82f559f96e"},
-  {id:23,slug:'notebooklm-presentaciones-que-cierran',  titulo:"NotebookLM: Presentaciones que cierran",desc:"Convierte cualquier documento en una presentación profesional que convence y cierra con NotebookLM.",cat:"notebook",catL:"NotebookLM",link:"https://quiet-fiber-044.notion.site/NotebookLM-Presentaciones-38ac40c66f0981f6a76edd845aee1f1b"},
-  {id:24,slug:'find-skills-claude-skill-correcto',      titulo:"Find Skills: El skill que encuentra el skill correcto",desc:"El skill de Claude que analiza tu problema y te recomienda el skill exacto que necesitas.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Find-Skills-38cc40c66f0981eabe24d34cdccb84fa"}
+  {id:1, slug:'guia-skill-debrief-claude',             titulo:"Guía: Skill DEBRIEF en Claude",desc:"Conecta Claude con Google Calendar y Notion para automatizar tus debriefs de reunión paso a paso.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Guia-paso-a-paso-Skill-DEBRIEF-088e4ca3df4d441983862e8a7dc41eb3",
+   photo:"https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:2, slug:'gpt-image-2-nuevo-modelo-openai',        titulo:"GPT Image 2.0: El nuevo modelo de OpenAI",desc:"Análisis del modelo de imágenes de OpenAI y cómo aprovecharlo en tu negocio desde hoy.",cat:"ai",catL:"IA",link:"https://quiet-fiber-044.notion.site/GPT-Image-2-0-350c40c66f09809c9fd8f25cfee4379f",
+   photo:"https://images.unsplash.com/photo-1675557009875-436f7a7da37a?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:3, slug:'agente-ia-hace-mercado-exito',           titulo:"Cómo construí un agente que hace el mercado",desc:"Paso a paso de cómo automaticé mis compras del Éxito con un agente de IA que cualquiera puede replicar.",cat:"auto",catL:"Agentes",link:"https://quiet-fiber-044.notion.site/Como-construi-un-agente-351c40c66f09806eac59ccb95b063b9c",
+   photo:"https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:4, slug:'guia-contenido-linkedin-paso-a-paso',    titulo:"Guía: Contenido en LinkedIn paso a paso",desc:"Sistema probado para crear contenido consistente en LinkedIn que genera leads y visibilidad real.",cat:"linkedin",catL:"LinkedIn",link:"https://quiet-fiber-044.notion.site/Guia-contenido-LinkedIn-352c40c66f098089a4b1e238b52bf3b2",
+   photo:"https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:5, slug:'content-system-planea-crea-publica',     titulo:"Content System",desc:"El sistema que uso para planear, crear y publicar contenido sin gastar horas cada semana.",cat:"contenido",catL:"Contenido",link:"https://quiet-fiber-044.notion.site/Content-System-352c40c66f09801ca6c7ceaa2c039f55",
+   photo:"https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:6, slug:'mi-stack-de-ai-como-funciona-mi-empresa',titulo:"Mi Stack de AI: cómo funciona mi empresa",desc:"Las herramientas exactas de IA que uso en mi empresa para operar 10x más rápido.",cat:"ai",catL:"IA",link:"https://quiet-fiber-044.notion.site/Mi-Stack-de-AI-35ec40c66f09809988e4d384e8281d89",
+   photo:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:7, slug:'marketing-higgsfield-claude-videos-ia',  titulo:"La revolución del marketing: Higgsfield + Claude",desc:"Crea videos de marketing profesionales en minutos combinando Higgsfield y Claude.",cat:"video",catL:"Video",link:"https://quiet-fiber-044.notion.site/Higgsfield-Claude-362c40c66f0980909625ca17decde760",
+   photo:"https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:8, slug:'fitness-coach-personal-con-claude',      titulo:"Fitness Coach con Claude",desc:"Cómo construir un coach de fitness personal usando Claude — entrena con IA personalizada.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Fitness-Coach-Claude-363c40c66f0980be9317c625e6710b0a",
+   photo:"https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:9, slug:'automatizacion-fathom-make-notion',      titulo:"Automatización Fathom → Make → Notion",desc:"Guía para automatizar tus notas de reunión: de Fathom a Make a Notion sin tocar nada.",cat:"auto",catL:"Automatización",link:"https://quiet-fiber-044.notion.site/Automatizacion-Fathom-Make-Notion-321c40c66f0981e48a5fdb2e47057d36",
+   photo:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:10,slug:'5-mcps-esenciales-para-claude',          titulo:"5 MCPs que debes instalar hoy",desc:"Los 5 Model Context Protocols más útiles y cómo instalarlos en Claude en minutos.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/5-MCPs-367c40c66f0980c5a00ccbd47eb70dbe",
+   photo:"https://images.unsplash.com/photo-1555421689-491a97ff2040?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:11,slug:'ai-luxury-tecnologia-marcas-de-lujo',    titulo:"AI LUXURY: Tecnología en las marcas de lujo",desc:"Cómo las marcas de lujo están adoptando IA para diferenciarse y escalar su experiencia.",cat:"ai",catL:"IA",link:"https://quiet-fiber-044.notion.site/AI-LUXURY-Tech-36ac40c66f09801ab327cc3394270a34",
+   photo:"https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:12,slug:'obsidian-claude-segundo-cerebro',        titulo:"Obsidian + Claude: La Guía Esencial",desc:"Convierte Obsidian en tu segundo cerebro potenciado con Claude para pensar y crear mejor.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Obsidian-Claude-374c40c66f09817b8c6df87fa2c82f48",
+   photo:"https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:13,slug:'claude-higgsfield-crea-video-con-ia',    titulo:"Claude + Higgsfield: Crea video con IA",desc:"Tutorial para crear videos con IA directamente desde Claude usando el conector de Higgsfield.",cat:"video",catL:"Video",link:"https://quiet-fiber-044.notion.site/Claude-Higgsfield-Video-374c40c66f09810cbfadf306508a4135",
+   photo:"https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:14,slug:'nexus-sistema-operacion-con-ia',         titulo:"Nexus",desc:"El sistema Nexus para centralizar toda tu operación con IA en un solo lugar.",cat:"ai",catL:"IA",link:"https://quiet-fiber-044.notion.site/Nexus-387c40c66f0980b5b294d89d4d754ddd",
+   photo:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:15,slug:'linkedin-estrategia-founders-latam',     titulo:"LinkedIn: Estrategia para founders",desc:"Estrategia de LinkedIn para founders que quieren visibilidad y leads sin postear todos los días.",cat:"linkedin",catL:"LinkedIn",link:"https://quiet-fiber-044.notion.site/LinkedIn-359c40c66f098071a660d4adb8724fc8",
+   photo:"https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:16,slug:'linkedin-plantillas-oportunidades-negocio',titulo:"LinkedIn: Plantillas que generan oportunidades",desc:"Plantillas y fórmulas de LinkedIn probadas para generar conversaciones y oportunidades de negocio.",cat:"linkedin",catL:"LinkedIn",link:"https://quiet-fiber-044.notion.site/LinkedIn-353c40c66f098009829ac20f911dd63a",
+   photo:"https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:17,slug:'open-design-70-estilos-marcas-top',      titulo:"Open Design: 70+ estilos de marcas top",desc:"70+ estilos de las mejores marcas del mundo para diseñar con cualquier IA generativa.",cat:"diseno",catL:"Diseño",link:"https://quiet-fiber-044.notion.site/Open-Design-375c40c66f0981e88933e8c34713e220",
+   photo:"https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:18,slug:'small-business-claude-gestiona-negocio', titulo:"Small Business: Claude gestiona tu negocio",desc:"El plugin de Claude que gestiona ventas, atención al cliente y tareas de tu negocio en uno.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Small-Business-Claude-375c40c66f098148a75afcaeb497ee59",
+   photo:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:19,slug:'claude-council-5-agentes-evaluan-idea',  titulo:"Claude Council: 5 agentes evalúan tu idea",desc:"5 agentes de Claude evalúan tu idea de negocio desde distintos ángulos en segundos.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Claude-Council-37bc40c66f0981be835fd5b764e02fad",
+   photo:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:20,slug:'linkedin-claude-encuentra-vacantes',     titulo:"LinkedIn + Claude: Encuentra vacantes en 10s",desc:"Sistema para encontrar las mejores vacantes de empleo en menos de 10 segundos con Claude.",cat:"linkedin",catL:"LinkedIn",link:"https://quiet-fiber-044.notion.site/LinkedIn-Claude-Vacantes-381c40c66f098155af9cec2838cd815c",
+   photo:"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:21,slug:'hermes-agente-ia-que-ejecuta',           titulo:"Hermes: El agente que ejecuta, no solo responde",desc:"Cómo construí Hermes, el agente de IA que no conversa sino que toma acción por ti.",cat:"auto",catL:"Agentes",link:"https://quiet-fiber-044.notion.site/Hermes-38ac40c66f0981c0a2befd95dee2f632",
+   photo:"https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:22,slug:'atencion-cliente-claude-sin-gmail',      titulo:"Atención al Cliente con Claude sin tocar Gmail",desc:"Sistema para responder clientes automáticamente con Claude integrado a Gmail.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Atencion-Cliente-Claude-38ac40c66f098185bc63cf82f559f96e",
+   photo:"https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:23,slug:'notebooklm-presentaciones-que-cierran',  titulo:"NotebookLM: Presentaciones que cierran",desc:"Convierte cualquier documento en una presentación profesional que convence y cierra con NotebookLM.",cat:"notebook",catL:"NotebookLM",link:"https://quiet-fiber-044.notion.site/NotebookLM-Presentaciones-38ac40c66f0981f6a76edd845aee1f1b",
+   photo:"https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:24,slug:'find-skills-claude-skill-correcto',      titulo:"Find Skills: El skill que encuentra el skill correcto",desc:"El skill de Claude que analiza tu problema y te recomienda el skill exacto que necesitas.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Find-Skills-38cc40c66f0981eabe24d34cdccb84fa",
+   photo:"https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=340&fit=crop&auto=format&q=80"}
 ];
 
 /* ── PLACEHOLDERS POR CATEGORÍA ──── */
@@ -1394,10 +1420,13 @@ const LM_THEMES = {
     const th = LM_THEMES[lm.cat] || LM_THEMES.ai;
     return `<div class="lm-card" data-lm="${lm.id}">
       <div class="lm-thumb">
-        <div class="lm-img-ph" style="background:${th.bg}">
+        <img class="lm-img" src="${lm.photo}" alt="${lm.titulo}" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="lm-img-ph" style="background:${th.bg};display:none">
           <div class="lm-ph-svg">${th.svg}</div>
-          <span class="lm-ph-label">${lm.catL}</span>
         </div>
+        <div class="lm-photo-overlay"></div>
+        <span class="lm-ph-label">${lm.catL}</span>
       </div>
       <div class="lm-body">
         <span class="lm-cat-pill lm-cat-${lm.cat}">${lm.catL}</span>
