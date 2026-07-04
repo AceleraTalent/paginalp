@@ -397,6 +397,43 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   .lead-modal{padding:26px 20px 22px;border-radius:18px}
   .lead-title{font-size:18px}
 }
+
+/* ── PROGRESS PANEL ─────────────────────────────── */
+.prog-panel{background:var(--card);border:1.5px solid var(--bdr);border-radius:16px;padding:18px 20px 16px;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.prog-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.prog-title{font-size:13px;font-weight:700;color:var(--t1);letter-spacing:.3px;text-transform:uppercase}
+.prog-pct{font-size:13px;font-weight:700;color:var(--coral)}
+.prog-bar-wrap{height:6px;background:var(--bdr);border-radius:99px;margin-bottom:14px;overflow:hidden}
+.prog-bar-fill{height:100%;background:linear-gradient(90deg,var(--coral),#f0a07a);border-radius:99px;transition:width .6s ease}
+.prog-stats{display:flex;gap:0;margin-bottom:14px;border:1.5px solid var(--bdr);border-radius:12px;overflow:hidden}
+.prog-stat{flex:1;padding:10px 0;text-align:center;border-right:1.5px solid var(--bdr)}
+.prog-stat:last-child{border-right:none}
+.prog-stat-n{font-size:20px;font-weight:800;color:var(--t1);line-height:1.1}
+.prog-stat-tot{font-size:13px;font-weight:500;color:var(--t3)}
+.prog-stat-l{font-size:10.5px;color:var(--t2);margin-top:2px;font-weight:500}
+.prog-next{display:flex;align-items:center;justify-content:space-between;background:var(--coral-t);border:1.5px solid var(--coral-m);border-radius:12px;padding:11px 14px;margin-bottom:14px;cursor:pointer;transition:background .15s}
+.prog-next:hover{background:var(--coral-m)}
+.prog-next-tag{font-size:10.5px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px}
+.prog-next-title{font-size:13px;font-weight:600;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}
+.prog-next-btn{font-size:12px;font-weight:700;color:#fff;background:var(--coral);border:none;border-radius:8px;padding:6px 12px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.prog-activity-label{font-size:10.5px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.prog-heatmap{display:flex;gap:2px}
+.prog-week{display:flex;flex-direction:column;gap:2px}
+.prog-cell{width:9px;height:9px;border-radius:2px;background:var(--bdr)}
+.prog-cell.act-1{background:#fcd5c0}
+.prog-cell.act-2{background:#f0a07a}
+.prog-cell.act-3{background:var(--coral)}
+/* Watched badge on lesson cards */
+.lcard.watched .lftr .lstat::before{content:'✓ ';color:var(--green);font-weight:700}
+.lcard.watched{border-color:rgba(34,197,94,.25)!important}
+.watched-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;color:var(--green);background:var(--green-t);padding:2px 7px;border-radius:99px;margin-left:6px}
+@media(max-width:768px){
+  .prog-stats{gap:0}
+  .prog-stat-n{font-size:17px}
+  .prog-next-title{max-width:180px}
+  .prog-heatmap{display:none}
+  .prog-activity-label{display:none}
+}
 </style>
 </head>
 <body>
@@ -552,6 +589,9 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
           </button>
         </div>
       </div>
+
+      <!-- Progress Panel (shown for returning users who watched ≥1 video) -->
+      <div id="progressPanel" style="display:none;margin-bottom:16px"></div>
 
       <!-- Hero -->
       <div class="hero">
@@ -812,6 +852,108 @@ const bS=document.getElementById('bS');
 const bI=document.getElementById('bI');
 const mainScroll=document.getElementById('mainScroll');
 
+// ── Progress tracking ─────────────────────────────
+const AFL_WATCHED   = 'afl_watched';
+const AFL_ACTIVITY  = 'afl_activity';
+const AFL_FIRST_VIS = 'afl_first_visit';
+const TOTAL_VIDEOS  = LS.filter(l=>l.yt).length;
+
+function getWatched(){ try{ return JSON.parse(localStorage.getItem(AFL_WATCHED)||'[]'); }catch(e){ return []; } }
+function getActivity(){ try{ return JSON.parse(localStorage.getItem(AFL_ACTIVITY)||'{}'); }catch(e){ return {}; } }
+
+function markWatched(id){
+  const w=getWatched();
+  if(!w.includes(id)){
+    w.push(id);
+    localStorage.setItem(AFL_WATCHED,JSON.stringify(w));
+  }
+  const today=new Date().toISOString().slice(0,10);
+  const act=getActivity();
+  act[today]=(act[today]||0)+1;
+  localStorage.setItem(AFL_ACTIVITY,JSON.stringify(act));
+  renderProgressPanel();
+  refreshWatchedCards();
+}
+
+function calcStreak(){
+  const act=getActivity();
+  const today=new Date();
+  let streak=0;
+  for(let i=0;i<365;i++){
+    const d=new Date(today); d.setDate(d.getDate()-i);
+    const k=d.toISOString().slice(0,10);
+    if(act[k]!==undefined) streak++;
+    else if(i>0) break;
+  }
+  return streak;
+}
+
+function renderProgressPanel(){
+  const panel=document.getElementById('progressPanel');
+  if(!panel) return;
+  const watched=getWatched();
+  if(watched.length===0){ panel.style.display='none'; return; }
+  const pct=Math.round((watched.length/TOTAL_VIDEOS)*100);
+  const activeDays=Object.keys(getActivity()).length;
+  const streak=calcStreak();
+  const nextLesson=LS.find(l=>l.yt&&!watched.includes(l.id));
+  const lastId=watched[watched.length-1];
+  const resumeLesson=nextLesson||LS.find(l=>l.id===lastId);
+  const resumeLabel=nextLesson?'▶ Continúa con':'🔄 Última vista';
+  // Heatmap — last 10 weeks
+  const DAYS=70; const today2=new Date();
+  let heatCells=[];
+  for(let i=DAYS-1;i>=0;i--){
+    const d2=new Date(today2); d2.setDate(d2.getDate()-i);
+    const k=d2.toISOString().slice(0,10);
+    heatCells.push({k,c:getActivity()[k]||0});
+  }
+  let weeksHtml='';
+  for(let w=0;w<10;w++){
+    const slice=heatCells.slice(w*7,(w+1)*7);
+    weeksHtml+=`<div class="prog-week">${slice.map(d=>`<div class="prog-cell${d.c>0?' act-'+Math.min(d.c,3):''}" title="${d.k}"></div>`).join('')}</div>`;
+  }
+  panel.style.display='';
+  panel.innerHTML=`
+<div class="prog-panel">
+  <div class="prog-header"><span class="prog-title">Tu progreso</span><span class="prog-pct">${pct}% completado</span></div>
+  <div class="prog-bar-wrap"><div class="prog-bar-fill" style="width:${pct}%"></div></div>
+  <div class="prog-stats">
+    <div class="prog-stat"><div class="prog-stat-n">${watched.length}<span class="prog-stat-tot">/${TOTAL_VIDEOS}</span></div><div class="prog-stat-l">Lecciones vistas</div></div>
+    <div class="prog-stat"><div class="prog-stat-n">${activeDays}</div><div class="prog-stat-l">Días activos</div></div>
+    <div class="prog-stat"><div class="prog-stat-n">${streak}</div><div class="prog-stat-l">Racha actual</div></div>
+  </div>
+  ${resumeLesson?`<div class="prog-next" onclick="openLesson(${resumeLesson.id})"><div class="prog-next-l"><div class="prog-next-tag">${resumeLabel}</div><div class="prog-next-title">${resumeLesson.title}</div></div><button class="prog-next-btn">Ir →</button></div>`:''}
+  <div class="prog-activity-label">Actividad reciente</div>
+  <div class="prog-heatmap">${weeksHtml}</div>
+</div>`;
+}
+
+function refreshWatchedCards(){
+  const watched=getWatched();
+  lcards.forEach(c=>{
+    const id=parseInt(c.dataset.lesson);
+    if(watched.includes(id)){
+      c.classList.add('watched');
+      // Add ✓ badge if not already there
+      const ftr=c.querySelector('.lftr');
+      if(ftr&&!ftr.querySelector('.watched-badge')){
+        ftr.insertAdjacentHTML('beforeend','<span class="watched-badge">✓ Visto</span>');
+      }
+    }
+  });
+}
+
+// Init: record today's visit, render panel
+(function(){
+  const today=new Date().toISOString().slice(0,10);
+  if(!localStorage.getItem(AFL_FIRST_VIS)) localStorage.setItem(AFL_FIRST_VIS,today);
+  const act=getActivity();
+  if(act[today]===undefined){ act[today]=0; localStorage.setItem(AFL_ACTIVITY,JSON.stringify(act)); }
+  renderProgressPanel();
+  refreshWatchedCards();
+})();
+
 // ── Stagger animation ─────────────────────────────
 lcards.forEach((c,i)=>{ c.style.animationDelay=(i*48)+'ms'; });
 
@@ -878,6 +1020,8 @@ function openLesson(id, pushHistory=true){
   if(window.innerWidth<=768) closeSidebar();
   // update URL hash for sharable deep link
   if(pushHistory) history.pushState({lesson:id},'','#'+l.slug);
+  // Track as watched
+  markWatched(id);
 }
 
 function openOverview(s,i, pushHistory=true){
@@ -888,6 +1032,8 @@ function openOverview(s,i, pushHistory=true){
   if(i) bI.textContent=i;
   lcards.forEach(c=>c.classList.remove('ac'));
   if(pushHistory) history.pushState({overview:true},'',location.pathname+location.search);
+  renderProgressPanel();
+  refreshWatchedCards();
 }
 
 window.startFirstLesson=function(){ openLesson(1); };
