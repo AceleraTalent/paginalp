@@ -400,6 +400,12 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   .lead-title{font-size:18px}
 }
 
+/* ── GRID-3 (5-card layout: 3+2) ────────────────── */
+.grid-3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.grid-3{grid-template-columns:1fr}}
+.lcat.at{background:#f3eeff;color:#7c3aed}
+
 /* ── PROGRESS PANEL ─────────────────────────────── */
 .prog-panel{background:var(--card);border:1.5px solid var(--bdr);border-radius:16px;padding:18px 20px 16px;box-shadow:0 1px 6px rgba(0,0,0,.05)}
 .prog-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
@@ -495,8 +501,9 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
     </div>
     <ul class="nav-list">
       <li><a href="#" data-s="CLAUDE" data-i="Claude Cowork" data-lesson="1">Claude Cowork</a></li>
-      <li><a href="#" data-s="CLAUDE" data-i="Claude Code" data-lesson="2">Claude Code</a></li>
+      <li><a href="#" data-s="CLAUDE" data-i="Crea un Skill con Claude Desde Cero" data-lesson="2">Crea un Skill con Claude</a></li>
       <li><a href="#" data-s="CLAUDE" data-i="Skills, Connectors y Plugins" data-lesson="3">Skills, Connectors y Plugins</a></li>
+      <li><a href="#" data-s="IA TOOLS" data-i="Presentaciones increíbles con IA" data-lesson="12">Presentaciones con IA</a></li>
     </ul>
   </div>
 
@@ -619,28 +626,33 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
         <div class="scard"><div class="s-ico si4">🎁</div><div><div class="s-num">100%</div><div class="s-lbl">Gratis</div></div></div>
       </div>
 
-      <!-- ── Claude + NotebookLM ─────────────────── -->
-      <div class="mod-sep"><span class="mod-pill mp-c">Claude</span><div class="mod-line"></div></div>
-      <div class="cards-grid" id="grid1">
+      <!-- ── Claude + IA Tools ──────────────────────── -->
+      <div class="mod-sep"><span class="mod-pill mp-c">Claude & IA</span><div class="mod-line"></div></div>
+      <div class="cards-grid grid-3" id="grid1">
 
-        <div class="lcard" data-lesson="1">
-          <div class="lthumb"><img src="https://img.youtube.com/vi/wpYDisTBlE8/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/wpYDisTBlE8/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">01</span></div>
+        <div class="lcard" data-lesson="1" onclick="openLesson(1)">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/wpYDisTBlE8/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/wpYDisTBlE8/hqdefault.jpg'" alt="Claude Cowork" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">01</span></div>
           <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">Tutorial completo de Claude Cowork</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
         </div>
 
-        <div class="lcard soon" data-lesson="2">
-          <div class="lthumb"><div class="lthumb-ph"><div class="ph-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="#c9bfb8"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">02</span></div>
-          <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">¿Qué es Claude Code y cómo funciona?</p><div class="lftr"><div class="lstat"><span class="dot soon"></span>Próximamente</div><span class="larw">→</span></div></div>
+        <div class="lcard" data-lesson="2" onclick="openLesson(2)">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/5I0naOsMtAQ/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/5I0naOsMtAQ/hqdefault.jpg'" alt="Crea un Skill con Claude Desde Cero" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">02</span></div>
+          <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">Crea un Skill con Claude Desde Cero</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
         </div>
 
         <div class="lcard" data-lesson="3" onclick="openLesson(3)">
-          <div class="lthumb"><img src="https://img.youtube.com/vi/sn3zkOGdfsM/maxresdefault.jpg" alt="Skills, Connectors y Plugins" onerror="this.src='https://img.youtube.com/vi/sn3zkOGdfsM/hqdefault.jpg'"><div class="pov"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polygon points="5 3 19 12 5 21 5 3" fill="white"/></svg></div><span class="nbadge">03</span></div>
+          <div class="lthumb"><img src="https://img.youtube.com/vi/sn3zkOGdfsM/maxresdefault.jpg" alt="Skills, Connectors y Plugins" onerror="this.src='https://img.youtube.com/vi/sn3zkOGdfsM/hqdefault.jpg'" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">03</span></div>
           <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">Skills, Connectors y Plugins explicados</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
         </div>
 
         <div class="lcard" data-lesson="9" onclick="openLesson(9)">
-          <div class="lthumb"><img src="https://img.youtube.com/vi/wiGN309SE5U/maxresdefault.jpg" alt="NotebookLM" onerror="this.src='https://img.youtube.com/vi/wiGN309SE5U/hqdefault.jpg'"><div class="pov"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polygon points="5 3 19 12 5 21 5 3" fill="white"/></svg></div><span class="nbadge">09</span></div>
+          <div class="lthumb"><img src="https://img.youtube.com/vi/wiGN309SE5U/maxresdefault.jpg" alt="NotebookLM" onerror="this.src='https://img.youtube.com/vi/wiGN309SE5U/hqdefault.jpg'" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">09</span></div>
           <div class="lbody"><span class="lcat cn">NotebookLM</span><p class="ltitle">¿Qué es NotebookLM y cuándo usarlo?</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="12" onclick="openLesson(12)">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/aHSszeH4-Ro/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/aHSszeH4-Ro/hqdefault.jpg'" alt="Presentaciones con IA" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">12</span></div>
+          <div class="lbody"><span class="lcat at">IA Tools</span><p class="ltitle">Presentaciones increíbles con IA en 10 min</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
         </div>
 
       </div>
@@ -789,9 +801,10 @@ const LS=[
    title:'Tutorial completo de Claude Cowork',
    desc:'Aprende a usar Claude Cowork para delegar tareas complejas: organizar archivos, construir hojas de cálculo, redactar documentos y mucho más, todo sin código.',
    learns:['Qué es Claude Cowork','Cómo configurarlo paso a paso','Casos de uso para founders','Delegar tareas con IA','Workflows de productividad','Integración con tu flujo de trabajo']},
-  {id:2,slug:'claude-code',num:'02',s:'CLAUDE',i:'Claude Code',cat:'cc',catL:'Claude',yt:null,
-   title:'¿Qué es Claude Code y cómo funciona?',
-   desc:'Próximamente — Este video estará disponible muy pronto.',learns:[]},
+  {id:2,slug:'skill-claude-desde-cero',num:'02',s:'CLAUDE',i:'Crea un Skill con Claude Desde Cero',cat:'cc',catL:'Claude',yt:'5I0naOsMtAQ',
+   title:'Crea un Skill con Claude Desde Cero | Escribe Mejor Tu contenido',
+   desc:'Aprende a crear tu propio Skill en Claude desde cero para escribir mejor contenido. Tutorial paso a paso para founders que quieren multiplicar su productividad con IA.',
+   learns:['Qué es un Skill en Claude','Cómo crearlo desde cero','Aplicarlo para contenido','Mejorar tu escritura con IA','Personalizar el Skill a tu voz','Flujo práctico para founders']},
   {id:3,slug:'skills-connectors-plugins',num:'03',s:'CLAUDE',i:'Skills, Connectors y Plugins',cat:'cc',catL:'Claude',yt:'sn3zkOGdfsM',
    title:'Skills, Connectors y Plugins explicados',
    desc:'Descubre cómo extender las capacidades de Claude con Skills, Connectors y Plugins. Integra herramientas externas y automatiza flujos de trabajo avanzados.',
@@ -826,6 +839,10 @@ const LS=[
    learns:['Setup en minutos','Sin conocimientos previos','Chatbot funcional básico','Personalizar respuestas','Conectar con tu negocio','Escalar después']},
   {id:11,slug:'comunidad-ai-founders',num:'11',s:'COMUNIDAD',i:'Comunidad',cat:'co',catL:'Comunidad',yt:null,
    title:'Próximamente',desc:'Próximamente.',learns:[]},
+  {id:12,slug:'presentaciones-ia-chatgpt-lovable',num:'12',s:'IA TOOLS',i:'Presentaciones increíbles con IA',cat:'at',catL:'IA Tools',yt:'aHSszeH4-Ro',
+   title:'Cómo crear presentaciones increíbles con IA en menos de 10 minutos (ChatGPT + Lovable)',
+   desc:'Aprende a crear presentaciones profesionales impresionantes en menos de 10 minutos usando ChatGPT y Lovable. El flujo exacto para founders que no tienen tiempo que perder.',
+   learns:['Flujo ChatGPT + Lovable','Presentaciones en menos de 10 min','Diseño profesional sin diseñador','Exportar y compartir al instante','Adaptarlo a cualquier tema','Impresionar desde el primer slide']},
 ];
 
 const byId=id=>LS.find(l=>l.id===id);
