@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/aprende/styles.css">
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -222,50 +222,32 @@
   <div class="modal-overlay" id="waitlistModal">
     <div class="modal">
       <button class="modal__close" id="modalClose" aria-label="Cerrar">&times;</button>
-      <div id="waitlistForm">
-        <span class="modal__badge">Lista de espera</span>
-        <h3 class="modal__title">Reserva tu lugar</h3>
-        <p class="modal__subtitle">D&eacute;janos tu nombre y correo y te avisaremos con m&aacute;s informaci&oacute;n.</p>
-        <form class="modal__form" id="waitlistFormEl">
-          <div class="form-field">
-            <label for="waitlistName">Nombre</label>
-            <input type="text" id="waitlistName" name="name" placeholder="Tu nombre completo" required>
-          </div>
-          <div class="form-field">
-            <label for="waitlistEmail">Correo electr&oacute;nico</label>
-            <input type="email" id="waitlistEmail" name="email" placeholder="tu@correo.com" required>
-          </div>
-          <div class="form-field">
-            <label for="waitlistPhone">Tel&eacute;fono</label>
-            <div class="phone-input-wrap">
-              <button type="button" class="phone-country-btn" id="countryBtn">
-                <span id="countryFlag">🇨🇴</span>
-                <span id="countryCode">+57</span>
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="2,4 5,7 8,4"/></svg>
-              </button>
-              <input type="tel" id="waitlistPhone" name="phone" placeholder="300 123 4567" required>
-              <div class="phone-dropdown" id="countryDropdown">
-                <input type="text" class="phone-dropdown__search" id="countrySearch" placeholder="Buscar pa&iacute;s...">
-                <ul class="phone-dropdown__list" id="countryList"></ul>
-              </div>
-            </div>
-          </div>
-          <div class="modal__error" id="formError"></div>
-          <button type="submit" class="modal__submit" id="submitBtn">Unirme ahora</button>
-        </form>
-      </div>
-      <div class="modal__success" id="waitlistSuccess">
-        <div class="modal__success-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-        </div>
-        <h3 class="modal__success-title">&iexcl;Gracias por registrarte!</h3>
-        <p class="modal__success-text">Te avisaremos por correo con m&aacute;s informaci&oacute;n.</p>
+      <span class="modal__badge">Lista de espera</span>
+      <h3 class="modal__title">Reserva tu lugar</h3>
+      <p class="modal__subtitle">D&eacute;janos tus datos y te avisaremos con m&aacute;s informaci&oacute;n.</p>
+      <div class="modal__embed">
+        <iframe
+          src="https://api.funnelup.io/widget/form/uzysB8WzgtmtesqA6Ihh"
+          style="width:100%;height:100%;border:none;border-radius:0px"
+          id="inline-uzysB8WzgtmtesqA6Ihh"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Formulario Registro Landing"
+          data-height="400"
+          data-layout-iframe-id="inline-uzysB8WzgtmtesqA6Ihh"
+          data-form-id="uzysB8WzgtmtesqA6Ihh"
+          title="Formulario Registro Landing"
+        ></iframe>
       </div>
     </div>
   </div>
 
-  <script src="main.js"></script>
+  <script src="/aprende/main.js"></script>
+  <script src="https://api.funnelup.io/js/form_embed.js"></script>
 </body>
 </html>

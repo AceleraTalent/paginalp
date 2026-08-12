@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/aprende/styles.css">
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -42,10 +42,25 @@
       <h1 class="thankyou__title">&iexcl;Gracias por registrarte!</h1>
       <p class="thankyou__text">Te avisaremos por correo con m&aacute;s informaci&oacute;n. Te estamos redirigiendo a WhatsApp para que te unas al grupo&hellip;</p>
       <a href="https://chat.whatsapp.com/FJwqTceWj4gBKpYKBAWEWW" class="btn btn--primary btn--large" id="whatsappLink" target="_blank" rel="noopener">Unirme al grupo de WhatsApp</a>
-      <a href="index.html" class="thankyou__back">Volver al inicio</a>
+
+      <div class="thankyou__divider"></div>
+
+      <h2 class="thankyou__booking-title">O agenda una llamada con nuestro equipo</h2>
+      <div class="thankyou__embed">
+        <iframe
+          src="https://api.funnelup.io/widget/booking/XtCRvwWrG9s0ZLPKoCc2"
+          style="width:100%;height:100%;border:none"
+          scrolling="auto"
+          id="XtCRvwWrG9s0ZLPKoCc2_booking"
+          title="Agenda una llamada"
+        ></iframe>
+      </div>
+
+      <a href="/aprende/index.html" class="thankyou__back">Volver al inicio</a>
     </div>
   </section>
 
+  <script src="https://api.funnelup.io/js/form_embed.js"></script>
   <script>
     setTimeout(function () {
       window.open('https://chat.whatsapp.com/FJwqTceWj4gBKpYKBAWEWW', '_blank');
