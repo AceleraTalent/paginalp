@@ -231,8 +231,8 @@
     .faq details{border-bottom:1px solid var(--line);padding:20px 0}
     .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:var(--serif);font-weight:600;font-size:1.08rem;color:var(--ink)}
     .faq summary::-webkit-details-marker{display:none}
-    .faq summary::after{content:'+';color:var(--accent);font-size:1.6rem;font-weight:400;font-family:var(--sans);transition:transform .3s}
-    .faq details[open] summary::after{transform:rotate(45deg)}
+    .faq summary::after{content:'';width:9px;height:9px;border-right:1.5px solid var(--ink-3);border-bottom:1.5px solid var(--ink-3);transform:rotate(45deg);margin-top:-4px;transition:transform .3s;flex-shrink:0}
+    .faq details[open] summary::after{transform:rotate(225deg);margin-top:4px}
     .faq p{margin-top:12px;color:var(--ink-2);line-height:1.65}
 
     /* --- footer --- */
@@ -575,11 +575,11 @@
       <span class="kicker kicker--center">Antes de que preguntes</span>
       <h2 class="h2" style="text-align:center">Lo que la mayor&iacute;a quiere saber antes de entrar.</h2>
       <div class="faq">
-        <details><summary>&iquest;Cu&aacute;nto dura y c&oacute;mo es el formato?</summary><p>[Definir con Luciano: semanas, sesiones, 1:1 o grupo, online.] El orden de los m&oacute;dulos se adapta a tu caso: empiezas por lo que m&aacute;s te devuelve.</p></details>
-        <details><summary>No tengo tiempo. &iquest;Cu&aacute;nto me va a exigir?</summary><p>[Definir con Luciano: horas por semana.] El curso est&aacute; pensado para gente con agenda llena: cada m&oacute;dulo termina con algo construido que usas en tu trabajo, as&iacute; que el tiempo que inviertes te lo devuelve el sistema que sale.</p></details>
-        <details><summary>&iquest;Necesito saber programar?</summary><p>No. En el curso aprendes a construir con herramientas de AI que hacen el trabajo t&eacute;cnico. Lo que necesitas es criterio sobre tu propio trabajo, y eso ya lo tienes.</p></details>
-        <details><summary>&iquest;Qu&eacute; pasa despu&eacute;s de que dejo mis datos?</summary><p>Te llamamos para entender tu caso y ver si el curso es para ti. Si lo es, te contamos c&oacute;mo se armar&iacute;a para ti y c&oacute;mo entrar. Si no, te lo decimos y listo.</p></details>
-        <details><summary>Ya intent&eacute; con un curso de IA y lo dej&eacute;. &iquest;Esto es distinto?</summary><p>S&iacute;, y es la pregunta correcta. Casi siempre se deja porque lo que ense&ntilde;an no tiene que ver con lo tuyo. Ac&aacute; lo primero que construyes resuelve algo tuyo &mdash; y cuando ves que funciona, no hay que motivarte para seguir.</p></details>
+        <details><summary>&iquest;Necesito saber programar?</summary><p>No. Aprendes a construir con herramientas de IA que hacen el trabajo t&eacute;cnico. Lo que s&iacute; necesitas es querer aprender a construir de forma pr&aacute;ctica &mdash; no solo mirar.</p></details>
+        <details><summary>&iquest;Esto es para m&iacute; si hoy solo uso ChatGPT?</summary><p>S&iacute;. No hace falta llegar sabiendo de agentes, automatizaciones ni conceptos t&eacute;cnicos. Y si ya probaste herramientas m&aacute;s avanzadas, tambi&eacute;n encajas: el punto de partida se ajusta a tu nivel.</p></details>
+        <details><summary>&iquest;C&oacute;mo funciona al ser personalizado?</summary><p>No sigues un temario r&iacute;gido igual para todos. Primero entendemos tu caso &mdash; qu&eacute; haces, qu&eacute; te frena, qu&eacute; quieres lograr &mdash; y desde ah&iacute; se define el mejor punto de partida para ti.</p></details>
+        <details><summary>&iquest;Qu&eacute; pasa despu&eacute;s de que dejo mis datos?</summary><p>Agendas una conversaci&oacute;n con Luciano. Juntos revisan en qu&eacute; punto est&aacute;s y qu&eacute; tendr&iacute;a m&aacute;s sentido trabajar primero.</p></details>
+        <details><summary>Ya intent&eacute; con un curso de IA y lo dej&eacute;. &iquest;Esto es distinto?</summary><p>S&iacute;, y es la pregunta correcta. Casi siempre se deja porque lo que ense&ntilde;an no tiene que ver con lo tuyo. Ac&aacute; no partes de teor&iacute;a gen&eacute;rica: partes de tu caso real y de construir cosas que usas.</p></details>
       </div>
       <div style="text-align:center;margin-top:44px">
         <a href="#" class="btn btn--wide" data-open-waitlist>Quiero entrar al curso</a>
