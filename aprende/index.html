@@ -277,14 +277,14 @@
     }
 
     /* --- Sobre Luciano: mini post + video --- */
-    .about{display:grid;grid-template-columns:45fr 55fr;gap:clamp(36px,5vw,64px);align-items:start}
+    .about{display:grid;grid-template-columns:45fr 55fr;gap:clamp(36px,5vw,64px);align-items:center}
     .about__copy .h2{font-size:clamp(1.6rem,2.6vw,2.1rem);margin-bottom:26px}
     .post{display:flex;flex-direction:column;gap:14px;max-width:480px}
     .post p{font-size:1.02rem;line-height:1.6;color:var(--ink-2)}
     .post p strong{color:var(--ink);font-weight:600}
     .post__beat{color:var(--ink) !important;font-weight:600}
     .post__punch{font-family:var(--serif);font-weight:600;font-size:1.5rem;line-height:1.2;color:var(--accent) !important;margin-top:6px}
-    .about__video{padding-top:4px}
+    .about__video{width:92%;max-width:640px;margin:0 auto;align-self:center}
     .about__label{display:block;font-size:.66rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
     .yt{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#111;cursor:pointer;box-shadow:0 24px 60px -34px rgba(0,0,0,.45)}
     .yt img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.32,.72,0,1),filter .6s}
@@ -608,7 +608,7 @@
     document.querySelectorAll('.video-placeholder').forEach(function(ph){
       var id=ph.getAttribute('data-video-id');if(!id)return;
       ph.addEventListener('click',function(){
-        ph.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        ph.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
       });
     });
     var modal=document.getElementById('waitlistModal'),mc=document.getElementById('modalClose');
