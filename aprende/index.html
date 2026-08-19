@@ -242,6 +242,18 @@
     .foot__links{display:flex;gap:22px}
     .foot a:hover{color:var(--ink)}
 
+    /* --- modal --- */
+    .modal-overlay{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(25,25,24,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+    .modal-overlay.active{opacity:1;visibility:visible}
+    .modal{position:relative;width:100%;max-width:600px;max-height:94vh;overflow-y:auto;background:#fff;border-radius:18px;padding:36px 40px 28px;text-align:center;box-shadow:0 40px 90px -30px rgba(0,0,0,.5);transform:translateY(20px);transition:transform .5s cubic-bezier(.32,.72,0,1)}
+    .modal-overlay.active .modal{transform:none}
+    .modal__close{position:absolute;top:16px;right:16px;width:34px;height:34px;border:0;border-radius:50%;cursor:pointer;background:rgba(25,25,24,.06);color:var(--ink-2);font-size:1.25rem;line-height:1}
+    .modal__title{font-family:var(--serif);font-weight:600;font-size:1.5rem;margin-bottom:6px;color:var(--ink)}
+    .modal__sub{font-size:.92rem;color:#5B5752;line-height:1.5;margin-bottom:18px;max-width:420px;margin-left:auto;margin-right:auto}
+    .modal__embed{height:min(72vh,900px);overflow:hidden;text-align:left}
+    .modal__embed iframe{width:100%;height:100%;border:0;display:block}
+
+
     /* --- Antes / Después: 2 columnas, espejo --- */
     .vs{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px;align-items:stretch}
     .vs__card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:40px 38px 36px;display:flex;flex-direction:column}
@@ -332,7 +344,7 @@
       .steps,.checks--2col,.rewire__cols{grid-template-columns:1fr}
       .bar__txt{font-size:.85rem}
       .bar__txt b{display:none}
-
+      .modal{padding:32px 22px}
       .photo{aspect-ratio:4/4.4}
     }
   </style>
@@ -349,7 +361,7 @@
         <a href="#como-empezar">C&oacute;mo entrar</a>
         <a href="#preguntas">Preguntas</a>
       </div>
-      <a href="/aprende/encuesta.html" class="btn btn--sm">Quiero entrar</a>
+      <a href="#como-empezar" class="btn btn--sm" data-open-waitlist>Quiero entrar</a>
     </div>
   </nav>
 
@@ -360,7 +372,7 @@
         <span class="kicker">Curso de IA personalizado &middot; para profesionales, gerentes y l&iacute;deres de equipo</span>
         <h1 class="h1">Aprende a construir con IA y convi&eacute;rtete en <span class="em">la persona a la que ascienden</span>, no la que reemplazan.</h1>
         <p class="lede">Construye agentes que ejecutan tareas, automatiza procesos completos y crea herramientas con IA que generen impacto real en tu empresa.</p>
-        <a href="/aprende/encuesta.html" class="btn btn--wide">Quiero entrar al curso</a>
+        <a href="#como-empezar" class="btn btn--wide" data-open-waitlist>Quiero entrar al curso</a>
       </div>
       <!-- FOTO DE LUCIANO. Reemplazar este bloque por:
            <div class="photo"><img src="RUTA/foto-luciano.jpg" alt="Luciano Musella"></div> -->
@@ -391,6 +403,7 @@
       </div>
     </div>
   </section>
+
 
   -->
 
@@ -529,7 +542,7 @@
         <h2 class="h2">Antes de hablar de un curso, quiero entender qu&eacute; necesitas.</h2>
         <p class="lede">Dejas tus datos y agendas una conversaci&oacute;n con Luciano. La idea es entender c&oacute;mo est&aacute;s usando IA hoy, qu&eacute; quieres lograr y cu&aacute;l ser&iacute;a el mejor punto de partida para ti.</p>
       </div>
-      <div class="start__cta"><a href="/aprende/encuesta.html" class="btn btn--wide">Quiero agendar mi conversaci&oacute;n</a></div>
+      <div class="start__cta"><button type="button" class="btn btn--wide" data-open-waitlist>Quiero agendar mi conversaci&oacute;n</button></div>
       <ol class="start__steps">
         <li class="start__step">
           <span class="start__num">01</span>
@@ -595,7 +608,36 @@
   <div class="bar">
     <div class="bar__inner">
       <span class="bar__txt"><b>Curso de IA personalizado</b> &middot; cupos limitados por cohorte</span>
-      <a href="/aprende/encuesta.html" class="btn btn--sm">Quiero entrar</a>
+      <a href="#como-empezar" class="btn btn--sm" data-open-waitlist>Quiero entrar</a>
+    </div>
+  </div>
+
+  <!-- MODAL — el formulario es el widget de Adpulze. Las preguntas
+       las carga Adpulze; aparecen solas dentro de este iframe. -->
+  <div class="modal-overlay" id="waitlistModal">
+    <div class="modal">
+      <button class="modal__close" id="modalClose" aria-label="Cerrar">&times;</button>
+      <span class="kicker" style="margin-bottom:10px;text-align:center">Paso 1 de 2</span>
+      <h3 class="modal__title">Cu&eacute;ntanos tu caso</h3>
+      <p class="modal__sub">Seis preguntas cortas. Con tus respuestas vemos si el curso es para ti y c&oacute;mo armarlo.</p>
+      <div class="modal__embed">
+        <iframe
+          src="https://api.funnelup.io/widget/form/uzysB8WzgtmtesqA6Ihh"
+          id="inline-uzysB8WzgtmtesqA6Ihh"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Formulario Registro Landing"
+          data-height="900"
+          data-layout-iframe-id="inline-uzysB8WzgtmtesqA6Ihh"
+          data-form-id="uzysB8WzgtmtesqA6Ihh"
+          title="Formulario Registro Landing"
+        ></iframe>
+      </div>
     </div>
   </div>
 
@@ -606,7 +648,15 @@
         ph.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
       });
     });
+    var modal=document.getElementById('waitlistModal'),mc=document.getElementById('modalClose');
+    function openM(){modal.classList.add('active');document.body.style.overflow='hidden'}
+    function closeM(){modal.classList.remove('active');document.body.style.overflow=''}
+    document.querySelectorAll('[data-open-waitlist]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();openM()})});
+    mc.addEventListener('click',closeM);
+    modal.addEventListener('click',function(e){if(e.target===modal)closeM()});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('active'))closeM()});
   </script>
+  <script src="https://api.funnelup.io/js/form_embed.js"></script>
   <!-- Adpulze — rastreo organico (trafico no pago). NO QUITAR. -->
   <script src="https://api.adpulze.io/api/v1/scripts/organic.js?location_id=22"></script>
 </body>
