@@ -272,16 +272,21 @@
     }
 
     /* --- Para quién sí / para quién no --- */
-    .fit{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px;align-items:stretch}
-    .fit__col{background:#fff;border:1px solid var(--line);border-radius:20px;padding:38px 36px 36px}
-    .fit__title{font-family:var(--serif);font-weight:600;font-size:clamp(1.3rem,1.9vw,1.6rem);line-height:1.2;margin-bottom:26px}
-    .fit__list{display:flex;flex-direction:column;gap:18px}
-    /* cada item: icono en columna fija + UNA oracion continua que ocupa el resto */
-    .fit__list li{position:relative;padding-left:36px;font-size:1.02rem;line-height:1.55;color:var(--ink-2)}
-    .fit__list li::before{content:'';position:absolute;left:0;top:.1em;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;line-height:1}
-    .fit__col--yes .fit__list li::before{content:'¹3';background:var(--accent);color:#fff}
-    .fit__col--no .fit__list li::before{content:'¹5';background:rgba(25,25,24,.07);color:var(--ink-3)}
-    @media (max-width:900px){ .fit{grid-template-columns:1fr;max-width:640px;margin-left:auto;margin-right:auto;gap:18px} .fit__col{padding:30px 26px 28px} .fit__list{gap:14px} .fit__list li{font-size:.98rem} }
+    .fit__head{text-align:center;max-width:900px;margin-left:auto;margin-right:auto;font-size:clamp(1.7rem,3.2vw,2.5rem)}
+    .fit{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;align-items:stretch}
+    .fit__col{background:#fff;border:1px solid var(--line);border-radius:20px;padding:40px 38px 38px;display:flex;flex-direction:column}
+    .fit__title{font-family:var(--serif);font-weight:600;font-size:clamp(1.3rem,1.9vw,1.6rem);line-height:1.2;margin-bottom:28px}
+    .fit__list{display:flex;flex-direction:column;gap:24px;flex:1}
+    /* cada item: icono SVG en columna fija + una sola oracion continua */
+    .fit__list li{position:relative;padding-left:38px;font-size:1.02rem;line-height:1.6;color:var(--ink-2)}
+    .fit__list li strong{color:var(--ink);font-weight:600}
+    .fit__ico{position:absolute;left:0;top:.12em;width:22px;height:22px;border-radius:50%;padding:4px;box-sizing:border-box}
+    .fit__col--yes .fit__ico{background:var(--accent);color:#fff}
+    .fit__col--no .fit__ico{background:rgba(25,25,24,.07);color:var(--ink-3)}
+    /* la columna "no" tiene 4 items: se reparten en el mismo alto sin huecos grandes */
+    .fit__col--no .fit__list{gap:30px}
+    .fit__close{text-align:center;max-width:760px;margin:44px auto 0;font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,2vw,1.45rem);line-height:1.4;color:var(--ink)}
+    @media (max-width:900px){ .fit{grid-template-columns:1fr;max-width:640px;margin-left:auto;margin-right:auto;gap:18px;margin-top:36px} .fit__col{padding:30px 26px 28px} .fit__list,.fit__col--no .fit__list{gap:18px} .fit__list li{font-size:.98rem} .fit__close{margin-top:32px} }
 
     /* --- responsive --- */
     @media (max-width:960px){
@@ -428,27 +433,29 @@
   <section class="sec--sand" id="para-quien">
     <div class="wrap">
       <span class="kicker kicker--center">Antes de que sigas</span>
-      <h2 class="h2" style="text-align:center;max-width:860px;margin-left:auto;margin-right:auto">Esto es para ti si ya viste el potencial de la IA, pero todav&iacute;a no sabes llevarlo a algo real.</h2>
+      <h2 class="h2 fit__head">Puede que hoy solo uses ChatGPT. O que ya hayas probado mucho m&aacute;s. En ambos casos, hay un siguiente nivel.</h2>
       <div class="fit">
         <div class="fit__col fit__col--yes">
           <h3 class="fit__title">Es para ti si&hellip;</h3>
           <ul class="fit__list">
-            <li>Ya usas ChatGPT, pero sientes que sigues en lo b&aacute;sico.</li>
-            <li>Hay tareas en tu trabajo que te quitan horas cada semana.</li>
-            <li>Ves oportunidades claras, pero dependes de otros para ejecutarlas.</li>
-            <li>Quieres aprender a construir soluciones, no solo a usar herramientas.</li>
+            <li><svg class="fit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Usas <strong>ChatGPT</strong> para trabajar y sabes que podr&iacute;as sacarle much&iacute;simo m&aacute;s provecho a la IA.</span></li>
+            <li><svg class="fit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Ya probaste <strong>Claude, Cowork, agentes o automatizaciones</strong>, pero sientes que has aprendido cosas sueltas y todav&iacute;a te falta conectar los puntos.</span></li>
+            <li><svg class="fit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Escuchas t&eacute;rminos como <strong>LLM, agentes, MCP, APIs o RAG</strong> y quieres entender qu&eacute; significan realmente, cu&aacute;ndo sirven y c&oacute;mo se relacionan entre s&iacute;.</span></li>
+            <li><svg class="fit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tienes ideas o problemas en tu trabajo y quieres llegar al punto de saber <strong>qu&eacute; construir y c&oacute;mo empezar</strong>.</span></li>
+            <li><svg class="fit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Quieres dejar de depender de tutoriales para todo y empezar a desarrollar <strong>criterio propio para moverte con IA</strong>.</span></li>
           </ul>
         </div>
         <div class="fit__col fit__col--no">
           <h3 class="fit__title">No es para ti si&hellip;</h3>
           <ul class="fit__list">
-            <li>Solo buscas prompts y atajos r&aacute;pidos.</li>
-            <li>No tienes un problema real que quieras resolver con IA.</li>
-            <li>Prefieres que alguien lo construya por ti.</li>
-            <li>Hoy no planeas aplicar esto en tu trabajo.</li>
+            <li><svg class="fit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Solo buscas <strong>prompts para copiar y pegar</strong> y no te interesa ir mucho m&aacute;s all&aacute;.</span></li>
+            <li><svg class="fit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Quieres aprender una herramienta puntual, pero no entender <strong>qu&eacute; puedes hacer con IA ni cu&aacute;ndo usar cada cosa</strong>.</span></li>
+            <li><svg class="fit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Buscas que alguien te entregue la soluci&oacute;n terminada sin tener que <strong>probar, construir ni tomar decisiones</strong>.</span></li>
+            <li><svg class="fit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>No tienes intenci&oacute;n de llevar lo aprendido a <strong>situaciones reales de tu trabajo, tu equipo o tu empresa</strong>.</span></li>
           </ul>
         </div>
       </div>
+      <p class="fit__close">No necesitas llegar sabiendo de agentes, c&oacute;digo o automatizaciones. Pero s&iacute; tienes que querer ir m&aacute;s all&aacute; de usar un chat.</p>
     </div>
   </section>
 
