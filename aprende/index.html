@@ -272,19 +272,16 @@
     }
 
     /* --- Para quién sí / para quién no --- */
-    .fit{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px}
-    .fit__col{border-radius:18px;padding:34px 32px}
-    .fit__col--yes{background:#fff;border:1px solid var(--line)}
-    .fit__col--no{background:#fff;border:1px solid var(--line)}
-    .fit__title{font-family:var(--serif);font-weight:600;font-size:1.2rem;margin-bottom:16px}
-    .fit__list{display:flex;flex-direction:column;gap:16px}
-    .fit__list li{display:flex;gap:14px;align-items:flex-start;font-size:.98rem;line-height:1.6;color:var(--ink-2)}
-    .fit__list strong{color:var(--ink);font-weight:600}
-    .fit__list li::before{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;margin-top:1px}
-    .fit__col--yes .fit__list li::before{content:'\2713';background:var(--accent);color:#fff}
-    .fit__col--no .fit__list li::before{content:'\2715';background:rgba(25,25,24,.08);color:var(--ink-3)}
-
-    @media (max-width:900px){ .fit{grid-template-columns:1fr} }
+    .fit{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px;align-items:stretch}
+    .fit__col{background:#fff;border:1px solid var(--line);border-radius:20px;padding:38px 36px 36px}
+    .fit__title{font-family:var(--serif);font-weight:600;font-size:clamp(1.3rem,1.9vw,1.6rem);line-height:1.2;margin-bottom:26px}
+    .fit__list{display:flex;flex-direction:column;gap:18px}
+    /* cada item: icono en columna fija + UNA oracion continua que ocupa el resto */
+    .fit__list li{position:relative;padding-left:36px;font-size:1.02rem;line-height:1.55;color:var(--ink-2)}
+    .fit__list li::before{content:'';position:absolute;left:0;top:.1em;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;line-height:1}
+    .fit__col--yes .fit__list li::before{content:'¹3';background:var(--accent);color:#fff}
+    .fit__col--no .fit__list li::before{content:'¹5';background:rgba(25,25,24,.07);color:var(--ink-3)}
+    @media (max-width:900px){ .fit{grid-template-columns:1fr;max-width:640px;margin-left:auto;margin-right:auto;gap:18px} .fit__col{padding:30px 26px 28px} .fit__list{gap:14px} .fit__list li{font-size:.98rem} }
 
     /* --- responsive --- */
     @media (max-width:960px){
@@ -329,9 +326,7 @@
         <p class="lede">Construye agentes que ejecutan tareas, automatiza procesos completos y crea herramientas con IA que generen impacto real en tu empresa.</p>
         <a href="#" class="btn btn--wide" data-open-waitlist>Quiero entrar al curso</a>
       </div>
-      <!-- FOTO DE LUCIANO. Reemplazar este bloque por:
-           <div class="photo"><img src="RUTA/foto-luciano.jpg" alt="Luciano Musella"></div> -->
-      <div class="photo photo--ph"><div><b>Foto de Luciano</b>Retrato vertical, fondo limpio.<br>Aqu&iacute; va la imagen principal.</div></div>
+      <div class="photo"><img src="/aprende/img/luciano-hero.jpg" alt="Luciano Musella ense&ntilde;ando a un equipo a construir un agente de IA" width="1122" height="1402" fetchpriority="high"></div>
     </div>
   </header>
 
@@ -431,24 +426,24 @@
   <section class="sec--sand" id="para-quien">
     <div class="wrap">
       <span class="kicker kicker--center">Antes de que sigas</span>
-      <h2 class="h2" style="text-align:center;max-width:820px;margin-left:auto;margin-right:auto">Te vas a sentir muy identificado con esto si hoy te pasa esto en tu trabajo.</h2>
+      <h2 class="h2" style="text-align:center;max-width:860px;margin-left:auto;margin-right:auto">Esto es para ti si ya viste el potencial de la IA, pero todav&iacute;a no sabes llevarlo a algo real.</h2>
       <div class="fit">
         <div class="fit__col fit__col--yes">
-          <h3 class="fit__title">Te vas a sentir identificado si&hellip;</h3>
+          <h3 class="fit__title">Es para ti si&hellip;</h3>
           <ul class="fit__list">
-            <li>Ya usas ChatGPT o alguna herramienta de IA, pero sientes que <strong>te est&aacute;s quedando en lo b&aacute;sico</strong>.</li>
-            <li>Tienes tareas o procesos que <strong>te quitan horas cada semana</strong> y sabes que deber&iacute;an poder hacerse mejor.</li>
-            <li>Ves ideas claras para tu equipo o tu empresa, pero <strong>dependes de alguien m&aacute;s para convertirlas en algo real</strong>.</li>
-            <li>Quieres dejar de ser la persona que pide soluciones y convertirte en <strong>la persona que sabe construirlas</strong>.</li>
+            <li>Ya usas ChatGPT, pero sientes que sigues en lo b&aacute;sico.</li>
+            <li>Hay tareas en tu trabajo que te quitan horas cada semana.</li>
+            <li>Ves oportunidades claras, pero dependes de otros para ejecutarlas.</li>
+            <li>Quieres aprender a construir soluciones, no solo a usar herramientas.</li>
           </ul>
         </div>
         <div class="fit__col fit__col--no">
-          <h3 class="fit__title">Probablemente esto todav&iacute;a no es para ti si&hellip;</h3>
+          <h3 class="fit__title">No es para ti si&hellip;</h3>
           <ul class="fit__list">
-            <li>Lo que buscas es un curso para aprender <strong>prompts sueltos</strong> y poco m&aacute;s.</li>
-            <li>No tienes una tarea, proceso o problema real que quieras resolver con IA.</li>
-            <li>Quieres que alguien lo haga por ti, pero <strong>no te interesa aprender a construirlo</strong>.</li>
-            <li>Hoy no est&aacute;s buscando aplicar esto en tu trabajo, tu equipo o una operaci&oacute;n real.</li>
+            <li>Solo buscas prompts y atajos r&aacute;pidos.</li>
+            <li>No tienes un problema real que quieras resolver con IA.</li>
+            <li>Prefieres que alguien lo construya por ti.</li>
+            <li>Hoy no planeas aplicar esto en tu trabajo.</li>
           </ul>
         </div>
       </div>
