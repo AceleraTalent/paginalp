@@ -261,6 +261,16 @@
       .vs__body{margin-bottom:26px}
     }
 
+    /* --- Lo que vas a saber construir: grid 2x3 editorial --- */
+    .caps{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(40px,6vw,80px);max-width:980px;margin:44px auto 0;border-top:1px solid var(--line)}
+    .cap{padding:32px 0 34px;border-bottom:1px solid var(--line)}
+    .cap__title{font-family:var(--serif);font-weight:600;font-size:clamp(1.2rem,1.7vw,1.42rem);line-height:1.25;color:var(--ink);margin-bottom:10px}
+    .cap__desc{font-size:.98rem;line-height:1.6;color:var(--ink-2);max-width:420px}
+    @media (max-width:760px){
+      .caps{grid-template-columns:1fr;gap:0;max-width:560px}
+      .cap{padding:26px 0 28px}
+    }
+
     /* --- Temario --- */
     .mods{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
     .mod{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 26px 28px;display:flex;gap:18px;align-items:flex-start}
@@ -391,26 +401,36 @@
     </div>
   </section>
 
-  <!-- QUE APRENDES A CONSTRUIR — video + checks -->
+  <!-- LO QUE VAS A SABER CONSTRUIR — 6 capacidades, grid 2x3 -->
   <section class="sec--cream" id="incluye">
-    <div class="wrap inside">
-      <div class="mock video-placeholder" data-video-id="aHSszeH4-Ro">
-        <div style="height:100%">
-          <img src="https://img.youtube.com/vi/aHSszeH4-Ro/maxresdefault.jpg" alt="Demostraci&oacute;n de soluciones construidas con AI" loading="lazy">
-          <button class="mock__play" aria-label="Reproducir"></button>
+    <div class="wrap">
+      <span class="kicker kicker--center">Lo que vas a saber construir</span>
+      <h2 class="h2" style="text-align:center;max-width:820px;margin-left:auto;margin-right:auto">Deja de ver c&oacute;mo otros construyen con IA. Empieza a hacerlo t&uacute;.</h2>
+      <div class="caps">
+        <div class="cap">
+          <h3 class="cap__title">Agentes de IA</h3>
+          <p class="cap__desc">Agentes que investigan, analizan informaci&oacute;n y ejecutan tareas sin que tengas que guiarlos paso a paso.</p>
         </div>
-      </div>
-      <div>
-        <span class="kicker">Lo que sales sabiendo construir</span>
-        <h2 class="h2">Todo lo que tu empresa hoy hace a mano o paga por fuera.</h2>
-        <ul class="checks">
-          <li><span><b>Agentes de IA</b> que toman decisiones y ejecutan tareas mientras t&uacute; haces otra cosa.</span></li>
-          <li><span><b>CRMs</b> que registran, siguen y avisan solos &mdash; sin que nadie actualice una planilla.</span></li>
-          <li><span><b>ERPs</b> para operaciones, inventario y procesos internos.</span></li>
-          <li><span><b>P&aacute;ginas web</b> completas, listas para producci&oacute;n, sin agencia de por medio.</span></li>
-          <li><span><b>Aplicaciones</b> funcionales que resuelven un problema real de tu &aacute;rea.</span></li>
-          <li><span><b>Sistemas automatizados</b> que conectan tus herramientas en flujos que corren solos.</span></li>
-        </ul>
+        <div class="cap">
+          <h3 class="cap__title">Automatizaciones</h3>
+          <p class="cap__desc">Workflows que conectan varias herramientas y ejecutan procesos completos de principio a fin.</p>
+        </div>
+        <div class="cap">
+          <h3 class="cap__title">IA conectada a tus datos</h3>
+          <p class="cap__desc">Sistemas que pueden trabajar con documentos, bases de datos e informaci&oacute;n real de tu empresa.</p>
+        </div>
+        <div class="cap">
+          <h3 class="cap__title">Herramientas internas</h3>
+          <p class="cap__desc">CRMs, dashboards y soluciones creadas espec&iacute;ficamente para lo que tu equipo necesita.</p>
+        </div>
+        <div class="cap">
+          <h3 class="cap__title">Apps y prototipos</h3>
+          <p class="cap__desc">Pasar de una idea a una primera versi&oacute;n funcional que puedes probar, mostrar y seguir mejorando.</p>
+        </div>
+        <div class="cap">
+          <h3 class="cap__title">Webs listas para usar</h3>
+          <p class="cap__desc">Crear p&aacute;ginas y experiencias web funcionales sin depender de una agencia para cada cambio.</p>
+        </div>
       </div>
     </div>
   </section>
