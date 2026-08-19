@@ -276,6 +276,30 @@
       .cap__badge{width:50px;height:50px;margin-bottom:18px}
     }
 
+    /* --- Sobre Luciano: mini post + video --- */
+    .about{display:grid;grid-template-columns:45fr 55fr;gap:clamp(36px,5vw,64px);align-items:start}
+    .about__copy .h2{font-size:clamp(1.6rem,2.6vw,2.1rem);margin-bottom:26px}
+    .post{display:flex;flex-direction:column;gap:14px;max-width:480px}
+    .post p{font-size:1.02rem;line-height:1.6;color:var(--ink-2)}
+    .post p strong{color:var(--ink);font-weight:600}
+    .post__beat{color:var(--ink) !important;font-weight:600}
+    .post__punch{font-family:var(--serif);font-weight:600;font-size:1.5rem;line-height:1.2;color:var(--accent) !important;margin-top:6px}
+    .about__video{padding-top:4px}
+    .about__label{display:block;font-size:.66rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+    .yt{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#111;cursor:pointer;box-shadow:0 24px 60px -34px rgba(0,0,0,.45)}
+    .yt img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.32,.72,0,1),filter .6s}
+    .yt:hover img{transform:scale(1.03);filter:brightness(.85)}
+    .yt__play{position:absolute;inset:0;margin:auto;width:72px;height:72px;border:0;border-radius:50%;cursor:pointer;background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px -12px rgba(0,0,0,.55);transition:transform .45s cubic-bezier(.32,.72,0,1)}
+    .yt:hover .yt__play{transform:scale(1.08)}
+    .yt__play::after{content:'';border-left:17px solid var(--accent);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px}
+    .yt iframe{width:100%;height:100%;border:0;display:block}
+    .about__caption{margin-top:14px;font-size:.9rem;color:var(--ink-3)}
+    @media (max-width:900px){
+      .about{grid-template-columns:1fr;gap:32px}
+      .post{max-width:none}
+      .about__copy .h2{font-size:clamp(1.5rem,5vw,1.9rem)}
+    }
+
     /* --- Para quién sí / para quién no --- */
     .fit__head{text-align:center;max-width:640px;margin-left:auto;margin-right:auto;font-size:clamp(1.7rem,3.2vw,2.5rem)}
     .fit{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;align-items:stretch}
@@ -468,21 +492,30 @@
     </div>
   </section>
 
-  <!-- SOBRE LUCIANO — texto izq + foto der -->
-  <section class="sec--cream">
-    <div class="wrap split">
-      <div>
+  <!-- SOBRE LUCIANO — mini post + video real -->
+  <section class="sec--cream" id="luciano">
+    <div class="wrap about">
+      <div class="about__copy">
         <span class="kicker">S&eacute; exactamente d&oacute;nde est&aacute;s</span>
-        <h2 class="h2">Ya usas AI todos los d&iacute;as. Solo que no para construir lo que tu empresa necesita.</h2>
-        <div class="prose">
-          <p>Llevo m&aacute;s de 100 soluciones de inteligencia artificial implementadas para m&aacute;s de 40 clientes activos en ventas, marketing, operaciones y productividad. He visto c&oacute;mo se ve un proceso antes y despu&eacute;s de que alguien lo convierte en sistema.</p>
-          <p>Y he visto lo mismo una y otra vez: profesionales inteligentes, con buenos cargos, que usan la AI a diario, <strong>atascados en el mismo lugar</strong>. La usan como una herramienta m&aacute;s. No como algo que construyen. Y por eso siguen siendo reemplazables.</p>
-          <p>Por eso el curso no empieza por un temario. Empieza por tu caso: qu&eacute; te frena, qu&eacute; se puede construir para resolverlo, y en qu&eacute; orden. Cuando lo primero que construyes es tuyo, lo dem&aacute;s se aprende solo.</p>
+        <h2 class="h2">Ya usas IA todos los d&iacute;as. El problema es que todav&iacute;a no sabes hasta d&oacute;nde puedes llevarla.</h2>
+        <div class="post">
+          <p><strong>Llevo m&aacute;s de 100 soluciones de IA implementadas para m&aacute;s de 40 clientes.</strong></p>
+          <p class="post__beat">Y veo lo mismo una y otra vez.</p>
+          <p>Profesionales muy buenos, con buenos cargos, usando ChatGPT, Claude y nuevas herramientas todos los d&iacute;as.</p>
+          <p>Pero cuando aparece un problema real, no siempre saben si necesitan <strong>un agente, una automatizaci&oacute;n, una app o algo completamente distinto.</strong></p>
+          <p class="post__beat">Y ah&iacute; es donde casi todos se quedan atascados.</p>
+          <p>Por eso este curso no empieza por un temario.</p>
+          <p class="post__punch">Empieza por tu caso.</p>
         </div>
-        <div style="margin-top:28px"><a href="#" class="btn" data-open-waitlist>Quiero entrar al curso</a></div>
       </div>
-      <!-- Segunda foto de Luciano (mas informal, en su espacio de trabajo) -->
-      <div class="photo photo--ph"><div><b>Segunda foto</b>Luciano trabajando, m&aacute;s informal.</div></div>
+      <div class="about__video">
+        <span class="about__label">Mira un ejemplo real</span>
+        <div class="yt video-placeholder" data-video-id="aHSszeH4-Ro">
+          <img src="https://img.youtube.com/vi/aHSszeH4-Ro/maxresdefault.jpg" alt="C&oacute;mo crear presentaciones con IA en menos de 10 minutos &mdash; Luciano Musella" width="1280" height="720" loading="lazy">
+          <button class="yt__play" aria-label="Reproducir video"></button>
+        </div>
+        <p class="about__caption">As&iacute; se ve pasar de una idea a algo construido con IA.</p>
+      </div>
     </div>
   </section>
 
