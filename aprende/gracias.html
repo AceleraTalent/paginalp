@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Tu solicitud est&aacute; en confirmaci&oacute;n | Luciano Musella</title>
+  <title>&iexcl;Gracias por registrarte! | Luciano Musella</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -27,185 +27,44 @@
   src="https://www.facebook.com/tr?id=950144990819131&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
-  <!-- Adpulze — script de confirmacion. Relaciona el clic del anuncio con
-       este registro. Sin esto Meta no recibe la conversion. NO QUITAR. -->
+  <!-- Adpulze Confirm -->
   <script src="https://api.adpulze.io/api/v1/scripts/ghl-confirm.js?location_id=22"></script>
-
-  <style>
-    .pending { padding: 56px 0 var(--section-pad); background: var(--color-surface); min-height: 100vh; }
-    .pending__inner { max-width: 860px; margin: 0 auto; }
-
-    /* Barra de alerta */
-    .pending__alert {
-      border: 2px dashed var(--color-accent);
-      border-radius: 12px;
-      background: var(--color-accent-soft);
-      padding: 16px 24px;
-      text-align: center;
-      font-size: 1.02rem;
-      line-height: 1.5;
-      margin-bottom: 36px;
-    }
-    .pending__alert strong { color: var(--color-accent); font-weight: 700; text-decoration: underline; }
-
-    .pending__title {
-      font-family: var(--font-display);
-      font-size: clamp(1.7rem, 4.4vw, 2.6rem);
-      line-height: 1.2;
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-    /* Bloque de video */
-    .pending__video {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 16px;
-      overflow: hidden;
-      background: #101010;
-      margin-bottom: 40px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.18);
-    }
-    .pending__video iframe { width: 100%; height: 100%; border: 0; display: block; }
-
-    /* Instruccion fuerte */
-    .pending__phone {
-      background: var(--color-text-primary);
-      color: #fff;
-      border-radius: 16px;
-      padding: 32px;
-      text-align: center;
-      margin-bottom: 24px;
-    }
-    .pending__phone-kicker {
-      font-size: .78rem; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--color-accent); display: block; margin-bottom: 10px;
-    }
-    .pending__phone-title { font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 10px; }
-    .pending__phone-text { font-size: 1rem; line-height: 1.6; opacity: .82; max-width: 520px; margin: 0 auto; }
-
-    /* Pasos */
-    .pending__panel {
-      background: var(--color-bg);
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      padding: 32px;
-      margin-bottom: 24px;
-    }
-    .pending__panel-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 18px; }
-    .pending__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
-    .pending__list li {
-      display: flex; gap: 12px; align-items: flex-start;
-      font-size: .95rem; line-height: 1.6; color: var(--color-text-secondary);
-    }
-    .pending__bullet {
-      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
-      background: var(--color-accent-soft); color: var(--color-accent);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .72rem; font-weight: 700; margin-top: 1px;
-    }
-    .pending__list strong { color: var(--color-text-primary); font-weight: 600; }
-
-    .pending__cta { text-align: center; margin-top: 32px; }
-    .pending__note { font-size: .85rem; color: var(--color-text-tertiary); margin-top: 12px; }
-
-    @media (max-width: 560px) {
-      .pending__panel, .pending__phone { padding: 24px 20px; }
-      .pending__alert { padding: 14px 16px; font-size: .95rem; }
-    }
-  </style>
 </head>
 <body>
 
-  <section class="pending">
-    <div class="container pending__inner">
+  <section class="thankyou">
+    <div class="container thankyou__inner">
+      <div class="thankyou__icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h1 class="thankyou__title">&iexcl;Gracias por registrarte!</h1>
+      <p class="thankyou__text">Te avisaremos por correo con m&aacute;s informaci&oacute;n. Te estamos redirigiendo a WhatsApp para que te unas al grupo&hellip;</p>
+      <a href="https://chat.whatsapp.com/FJwqTceWj4gBKpYKBAWEWW" class="btn btn--primary btn--large" id="whatsappLink" target="_blank" rel="noopener">Unirme al grupo de WhatsApp</a>
 
-      <div class="pending__alert">
-        <strong>IMPORTANTE</strong>: tu solicitud de llamada est&aacute; en proceso de confirmaci&oacute;n.
+      <div class="thankyou__divider"></div>
+
+      <h2 class="thankyou__booking-title">O agenda una llamada con nuestro equipo</h2>
+      <div class="thankyou__embed">
+        <iframe
+          src="https://api.funnelup.io/widget/booking/XtCRvwWrG9s0ZLPKoCc2"
+          style="width:100%;height:100%;border:none"
+          scrolling="auto"
+          id="XtCRvwWrG9s0ZLPKoCc2_booking"
+          title="Agenda una llamada"
+        ></iframe>
       </div>
 
-      <h1 class="pending__title">Mira este video de 60 segundos para continuar</h1>
-
-      <!-- =========================================================
-           VIDEO DE 60 SEGUNDOS — COMENTADO HASTA QUE EXISTA.
-           No publicar un reproductor vacio.
-
-           Para activarlo: borrar la linea que abre el comentario y
-           la que lo cierra, y reemplazar VIDEO_ID por el id del
-           video de YouTube (la parte despues de "v=" en la URL).
-
-           QUE TIENE QUE DECIR EL VIDEO (60 seg, Luciano a camara):
-             0-10s  "Ya recibimos tu solicitud. Hoy te llamamos."
-             10-40s Mostrar en pantalla UN agente real que Luciano
-                    construyo para un cliente: que tarea hacia a mano,
-                    que hace ahora el agente. Corto, concreto.
-             40-52s "Con lo que nos contaste voy a preparar tu
-                    llamada. Cuando hablemos, va a ser sobre lo tuyo."
-             NOTA:  NO anunciar el agente/regalo. Es la sorpresa de
-                    la llamada; anunciarlo la vuelve transaccional.
-             52-60s "Ten el telefono a mano. Hablamos hoy."
-           ========================================================= -->
-      <!--
-      <div class="pending__video">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0"
-                title="Mira este video para continuar"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-      </div>
-      -->
-
-      <div class="pending__phone">
-        <span class="pending__phone-kicker">Lo m&aacute;s importante</span>
-        <h2 class="pending__phone-title">Ten el tel&eacute;fono a mano</h2>
-        <p class="pending__phone-text">Hoy te llamamos al n&uacute;mero que nos dejaste, para confirmar tu solicitud y entender bien la tarea que nos contaste. Con eso preparamos tu llamada.</p>
-      </div>
-
-      <div class="pending__panel">
-        <h2 class="pending__panel-title">Qu&eacute; sigue, en orden</h2>
-        <ul class="pending__list">
-          <li>
-            <span class="pending__bullet">1</span>
-            <span><strong>Te llamamos hoy.</strong> Una llamada corta para confirmar tu solicitud y entender bien la tarea que nos contaste.</span>
-          </li>
-          <li>
-            <span class="pending__bullet">2</span>
-            <span><strong>Agendamos tus 30 minutos.</strong> En el horario que te sirva. Y antes de hablar, Luciano revisa tu caso y prepara la conversaci&oacute;n para ti.</span>
-          </li>
-          <li>
-            <span class="pending__bullet">3</span>
-            <span><strong>Hablamos de tu caso.</strong> Sales sabiendo qu&eacute; construir primero y por qu&eacute;. Y lo que salga de ah&iacute; es tuyo, hagas el curso o no.</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="pending__panel">
-        <h2 class="pending__panel-title">Para aprovecharla al m&aacute;ximo</h2>
-        <ul class="pending__list">
-          <li>
-            <span class="pending__bullet">&bull;</span>
-            <span>Contesta aunque sea un n&uacute;mero que no conoces. <strong>Somos nosotros.</strong></span>
-          </li>
-          <li>
-            <span class="pending__bullet">&bull;</span>
-            <span>Piensa en <strong>la tarea concreta</strong> que m&aacute;s te gustar&iacute;a sacarte de encima. Cuanto m&aacute;s espec&iacute;fico, mejor preparamos la llamada.</span>
-          </li>
-          <li>
-            <span class="pending__bullet">&bull;</span>
-            <span>Si no logramos contactarte, tu cupo pasa a la siguiente persona. Cada llamada se prepara a mano, una por una.</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="pending__cta">
-        <a href="https://chat.whatsapp.com/FJwqTceWj4gBKpYKBAWEWW" class="btn btn--primary btn--large" id="whatsappLink" target="_blank" rel="noopener">Unirme al grupo de WhatsApp</a>
-        <p class="pending__note">Ah&iacute; compartimos los recursos mientras coordinamos tu llamada.</p>
-      </div>
-
+      <a href="/aprende/index.html" class="thankyou__back">Volver al inicio</a>
     </div>
   </section>
 
-  <!-- Adpulze — rastreo organico -->
-  <script src="https://api.adpulze.io/api/v1/scripts/organic.js?location_id=22"></script>
+  <script src="https://api.funnelup.io/js/form_embed.js"></script>
+  <script>
+    setTimeout(function () {
+      window.open('https://chat.whatsapp.com/FJwqTceWj4gBKpYKBAWEWW', '_blank');
+    }, 1500);
+  </script>
 </body>
 </html>
