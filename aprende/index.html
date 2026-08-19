@@ -239,30 +239,25 @@
     .modal__embed iframe{width:100%;height:100%;border:0;display:block}
 
 
-    /* --- Antes / Después: 2 columnas, mismo ritmo --- */
+    /* --- Antes / Después: 2 columnas, espejo --- */
     .vs{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px;align-items:stretch}
     .vs__card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:40px 38px 36px;display:flex;flex-direction:column}
     .vs__card--after{border-color:rgba(217,119,87,.45);box-shadow:0 24px 60px -36px rgba(217,119,87,.45)}
     .vs__eyebrow{font-size:.66rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;display:block;margin-bottom:16px}
     .vs__card--before .vs__eyebrow{color:var(--ink-3)}
     .vs__card--after .vs__eyebrow{color:var(--accent)}
-    .vs__title{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2vw,1.7rem);line-height:1.25;color:var(--ink);margin-bottom:28px}
+    .vs__title{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2vw,1.7rem);line-height:1.25;color:var(--ink);margin-bottom:28px;min-height:3.75em}
     .vs__title b{font-weight:700}
-    /* cuerpo: secuencia natural, sin empujar a los extremos */
+    /* dos ideas con el mismo espaciado en ambas; el espacio flexible va antes del cierre */
     .vs__body{display:flex;flex-direction:column;gap:22px;flex:1;margin-bottom:34px}
     .vs__body p{font-size:1.02rem;line-height:1.6;color:var(--ink-2)}
     .vs__body b{color:var(--ink);font-weight:600}
-    .vs__lead{font-weight:600;color:var(--ink) !important;margin-bottom:-6px}
-    .vs__list{display:flex;flex-direction:column;gap:16px}
-    .vs__list li{display:flex;gap:14px;align-items:flex-start;font-size:1.02rem;line-height:1.55;color:var(--ink-2)}
-    .vs__list li::before{content:'';flex-shrink:0;width:7px;height:7px;border-radius:50%;margin-top:10px;background:var(--accent)}
-    .vs__list b{color:var(--ink);font-weight:600}
-    /* cierre: alineado abajo en ambas, sin justify-content */
     .vs__out{margin-top:auto;padding-top:24px;border-top:1px solid var(--line);font-family:var(--serif);font-weight:600;font-size:1.22rem;line-height:1.35;color:var(--ink)}
     .vs__out em{font-style:italic;color:var(--accent)}
     @media (max-width:900px){
       .vs{grid-template-columns:1fr;max-width:640px;margin-left:auto;margin-right:auto;gap:18px}
       .vs__card{padding:30px 26px 28px}
+      .vs__title{min-height:0}
       .vs__body{margin-bottom:26px}
     }
 
@@ -386,14 +381,10 @@
           <span class="vs__eyebrow">Despu&eacute;s</span>
           <h3 class="vs__title">Te vuelves la persona que va <b>un paso adelante</b> de los dem&aacute;s.</h3>
           <div class="vs__body">
-            <p class="vs__lead">Porque ya:</p>
-            <ul class="vs__list">
-              <li><span>Creas <b>agentes y automatizaciones que ejecutan procesos completos</b>.</span></li>
-              <li><span>Conectas la IA con <b>los datos y herramientas reales de tu empresa</b>.</span></li>
-              <li><span>Puedes convertir <b>un problema del negocio en una soluci&oacute;n funcionando</b> y llevarla de la idea a ejecuci&oacute;n.</span></li>
-            </ul>
+            <p>Construyes <b>agentes y automatizaciones que ejecutan procesos completos</b>, no solo tareas sueltas.</p>
+            <p>Conectas la IA con <b>los datos y herramientas de tu empresa</b> y conviertes problemas reales en soluciones funcionando.</p>
           </div>
-          <p class="vs__out">Te conviertes en <em>el referente de IA</em> dentro de tu empresa.</p>
+          <p class="vs__out">Te conviertes en el referente porque sabes llevar una idea con IA hasta <em>algo que realmente funciona.</em></p>
         </article>
 
       </div>
