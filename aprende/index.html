@@ -227,14 +227,16 @@
     }
 
     /* --- faq --- */
-    .faq{max-width:820px;margin:36px auto 0;border-top:1px solid var(--line)}
-    .faq details{border-bottom:1px solid var(--line);padding:20px 0}
-    .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:var(--serif);font-weight:600;font-size:1.08rem;color:var(--ink)}
+    .faq{max-width:760px;margin:28px auto 0}
+    .faq details{padding:22px 0}
+    .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:var(--serif);font-weight:600;font-size:1.12rem;color:var(--ink)}
     .faq summary::-webkit-details-marker{display:none}
-    .faq summary::after{content:'';width:9px;height:9px;border-right:1.5px solid var(--ink-3);border-bottom:1.5px solid var(--ink-3);transform:rotate(45deg);margin-top:-4px;transition:transform .3s;flex-shrink:0}
-    .faq details[open] summary::after{transform:rotate(225deg);margin-top:4px}
-    .faq p{margin-top:12px;color:var(--ink-2);line-height:1.65}
-
+    .faq summary::after{content:'';width:8px;height:8px;border-right:1.5px solid var(--ink-3);border-bottom:1.5px solid var(--ink-3);transform:rotate(45deg);margin-top:-3px;transition:transform .3s;flex-shrink:0}
+    .faq details[open] summary::after{transform:rotate(225deg);margin-top:3px}
+    .faq p{margin-top:14px;color:var(--ink-2);line-height:1.65;font-size:.98rem;max-width:640px}
+    .faq p+p{margin-top:10px}
+    .faq__close{text-align:center;margin-top:clamp(56px,7vw,88px)}
+    .faq__close .h2{margin-bottom:26px}
     /* --- footer --- */
     footer{background:#fff;color:var(--ink-3);padding:40px 0 60px;font-size:.86rem;border-top:1px solid var(--line)}
     .foot{max-width:var(--wrap);margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
@@ -575,17 +577,31 @@
       <span class="kicker kicker--center">Antes de que preguntes</span>
       <h2 class="h2" style="text-align:center">Lo que la mayor&iacute;a quiere saber antes de entrar.</h2>
       <div class="faq">
-        <details><summary>&iquest;Necesito saber programar?</summary><p>No. Aprendes a construir con herramientas de IA que hacen el trabajo t&eacute;cnico. Lo que s&iacute; necesitas es querer aprender a construir de forma pr&aacute;ctica &mdash; no solo mirar.</p></details>
-        <details><summary>&iquest;Esto es para m&iacute; si hoy solo uso ChatGPT?</summary><p>S&iacute;. No hace falta llegar sabiendo de agentes, automatizaciones ni conceptos t&eacute;cnicos. Y si ya probaste herramientas m&aacute;s avanzadas, tambi&eacute;n encajas: el punto de partida se ajusta a tu nivel.</p></details>
-        <details><summary>&iquest;C&oacute;mo funciona al ser personalizado?</summary><p>No sigues un temario r&iacute;gido igual para todos. Primero entendemos tu caso &mdash; qu&eacute; haces, qu&eacute; te frena, qu&eacute; quieres lograr &mdash; y desde ah&iacute; se define el mejor punto de partida para ti.</p></details>
-        <details><summary>&iquest;Qu&eacute; pasa despu&eacute;s de que dejo mis datos?</summary><p>Agendas una conversaci&oacute;n con Luciano. Juntos revisan en qu&eacute; punto est&aacute;s y qu&eacute; tendr&iacute;a m&aacute;s sentido trabajar primero.</p></details>
-        <details><summary>Ya intent&eacute; con un curso de IA y lo dej&eacute;. &iquest;Esto es distinto?</summary><p>S&iacute;, y es la pregunta correcta. Casi siempre se deja porque lo que ense&ntilde;an no tiene que ver con lo tuyo. Ac&aacute; no partes de teor&iacute;a gen&eacute;rica: partes de tu caso real y de construir cosas que usas.</p></details>
+        <details><summary>&iquest;Necesito saber programar?</summary>
+          <p>No. Puedes llegar usando solamente ChatGPT. La idea es ense&ntilde;arte lo necesario para que puedas construir sin convertir esto en un curso de programaci&oacute;n.</p>
+          <p>Si ya sabes algo de c&oacute;digo o has probado herramientas m&aacute;s avanzadas, simplemente partimos desde m&aacute;s adelante.</p>
+        </details>
+        <details><summary>&iquest;Esto es para m&iacute; si hoy solo uso ChatGPT?</summary>
+          <p>S&iacute;. No necesitas llegar sabiendo qu&eacute; es un agente, MCP o RAG.</p>
+          <p>Tambi&eacute;n funciona si ya has probado Claude, Cowork o automatizaciones y sientes que sabes muchas cosas sueltas, pero todav&iacute;a te falta entender c&oacute;mo conectarlas.</p>
+        </details>
+        <details><summary>&iquest;C&oacute;mo funciona al ser personalizado?</summary>
+          <p>Primero hablamos de c&oacute;mo trabajas hoy y qu&eacute; quieres conseguir con IA.</p>
+          <p>Desde ah&iacute; definimos qu&eacute; tiene m&aacute;s sentido aprender y construir primero, en vez de obligarte a seguir el mismo orden que todos los dem&aacute;s.</p>
+        </details>
+        <details><summary>&iquest;Qu&eacute; pasa despu&eacute;s de que dejo mis datos?</summary>
+          <p>Agendas una conversaci&oacute;n con Luciano. Ah&iacute; revisan d&oacute;nde est&aacute;s hoy, qu&eacute; quieres aprender y qu&eacute; tendr&iacute;a sentido trabajar primero.</p>
+          <p>Si ambos ven que el programa encaja, desde ah&iacute; defines c&oacute;mo empezar.</p>
+        </details>
+        <details><summary>Ya intent&eacute; con un curso de IA y lo dej&eacute;. &iquest;Esto es distinto?</summary>
+          <p>S&iacute;. Y justamente por eso no quiero que empieces viendo horas de contenido que quiz&aacute; nunca uses.</p>
+          <p>Primero vemos qu&eacute; quieres aprender o resolver en tu trabajo y empezamos desde ah&iacute;. Lo que aprendes lo vas usando mientras lo construyes.</p>
+        </details>
       </div>
-      <div style="text-align:center;margin-top:44px">
+      <div class="faq__close">
+        <h2 class="h2">&iquest;Quieres ver por d&oacute;nde empezar&iacute;as t&uacute;?</h2>
         <button type="button" class="btn btn--wide" data-open-waitlist>Quiero agendar mi conversaci&oacute;n</button>
-        <div class="ticks-inline"><span>Personalizado a tu caso</span><span>Sin saber programar</span><span>Cupos limitados</span></div>
       </div>
-    </div>
   </section>
 
   <footer>
