@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Tu llamada est&aacute; agendada | Luciano Musella</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/aprende/styles.css">
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '950144990819131');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=950144990819131&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <!-- Adpulze — rastreo (mantiene viva la atribucion). NO lleva el script de
+       confirmacion: ese ya se dispara en gracias.html y duplicarlo contaria
+       dos veces la misma conversion. -->
+  <script src="https://api.adpulze.io/api/v1/scripts/ghl.js?location_id=22"></script>
+
+  <style>
+    .booked { padding: var(--section-pad) 0; background: var(--color-surface); min-height: 100vh; }
+    .booked__inner { max-width: var(--container-narrow); margin: 0 auto; }
+    .booked__head { text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .booked__icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--color-accent-soft); color: var(--color-accent);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .booked__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      margin-bottom: 12px;
+    }
+    .booked__lead {
+      font-size: 1.05rem; color: var(--color-text-secondary);
+      line-height: 1.6; max-width: 520px; margin-bottom: 40px;
+    }
+    .booked__panel {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .booked__panel-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 18px; }
+    .booked__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+    .booked__list li {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 0.95rem; line-height: 1.6; color: var(--color-text-secondary);
+    }
+    .booked__bullet {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+      background: var(--color-accent-soft); color: var(--color-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700; margin-top: 1px;
+    }
+    .booked__list strong { color: var(--color-text-primary); font-weight: 600; }
+    .booked__cta { text-align: center; margin-top: 32px; }
+    .booked__note { font-size: 0.85rem; color: var(--color-text-tertiary); margin-top: 12px; }
+    .booked__back {
+      display: block; text-align: center; margin-top: 28px;
+      font-size: 0.875rem; color: var(--color-text-secondary); text-decoration: underline;
+    }
+    @media (max-width: 560px) { .booked__panel { padding: 24px 20px; } }
+  </style>
+</head>
+<body>
+
+  <section class="booked">
+    <div class="container booked__inner">
+
+      <div class="booked__head">
+        <div class="booked__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <path d="M16 2v4M8 2v4M3 10h18"/>
+            <path d="M9 16l2 2 4-4"/>
+          </svg>
+        </div>
+        <h1 class="booked__title">Tu llamada est&aacute; agendada.</h1>
+        <p class="booked__lead">Te lleg&oacute; la invitaci&oacute;n a tu correo con el enlace de la videollamada. Gu&aacute;rdala ahora en tu calendario &mdash; es el paso que m&aacute;s ayuda a que no se te pase.</p>
+      </div>
+
+      <div class="booked__panel">
+        <h2 class="booked__panel-title">Qu&eacute; va a pasar en esos 30 minutos</h2>
+        <ul class="booked__list">
+          <li>
+            <span class="booked__bullet">1</span>
+            <span><strong>Entendemos tu punto de partida.</strong> Qu&eacute; haces hoy, con qu&eacute; herramientas y d&oacute;nde se te va el tiempo.</span>
+          </li>
+          <li>
+            <span class="booked__bullet">2</span>
+            <span><strong>Te mostramos qu&eacute; se puede construir en tu caso.</strong> Con ejemplos concretos, no gen&eacute;ricos.</span>
+          </li>
+          <li>
+            <span class="booked__bullet">3</span>
+            <span><strong>Te decimos con franqueza si esto es para ti.</strong> Si no lo es, te lo decimos en la llamada y no te hacemos perder m&aacute;s tiempo.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="booked__panel">
+        <h2 class="booked__panel-title">Para que la llamada valga la pena, ven con esto pensado</h2>
+        <ul class="booked__list">
+          <li>
+            <span class="booked__bullet">&bull;</span>
+            <span><strong>Una tarea concreta</strong> que hoy te consume tiempo todas las semanas.</span>
+          </li>
+          <li>
+            <span class="booked__bullet">&bull;</span>
+            <span><strong>Qu&eacute; te gustar&iacute;a poder construir</strong> si supieras c&oacute;mo.</span>
+          </li>
+          <li>
+            <span class="booked__bullet">&bull;</span>
+            <span><strong>Un lugar tranquilo y con buena se&ntilde;al.</strong> Son 30 minutos, aprovech&eacute;moslos.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="booked__cta">
+        <a href="https://chat.whatsapp.com/FJwqTceWj4gBKpYKBAWEWW" class="btn btn--primary btn--large" target="_blank" rel="noopener">Unirme al grupo de WhatsApp</a>
+        <p class="booked__note">Ah&iacute; compartimos recursos y resolvemos dudas entre llamada y llamada.</p>
+      </div>
+
+      <a href="/aprende/index.html" class="booked__back">Volver al inicio</a>
+
+    </div>
+  </section>
+
+  <!-- Adpulze — rastreo organico -->
+  <script src="https://api.adpulze.io/api/v1/scripts/organic.js?location_id=22"></script>
+</body>
+</html>
