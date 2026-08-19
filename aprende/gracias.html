@@ -9,6 +9,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/aprende/styles.css">
+  <style>
+    /* compactar: el calendario debe verse sin scroll */
+    .thankyou{padding:28px 0 48px;min-height:0}
+    .thankyou__icon{width:40px;height:40px;margin-bottom:10px}
+    .thankyou__icon svg{width:18px;height:18px}
+    .thankyou__title{font-size:clamp(1.3rem,2.6vw,1.7rem);margin-bottom:6px}
+    .thankyou__text{font-size:.92rem;margin-bottom:18px;max-width:520px}
+    .thankyou__embed{height:min(78vh,900px);max-width:680px}
+    .thankyou__divider{margin:22px 0}
+    .thankyou__booking-title{font-size:1.05rem;margin-bottom:12px}
+    .thankyou__back{margin-top:14px}
+    @media (max-width:560px){
+      .thankyou{padding:18px 0 36px}
+      .thankyou__embed{height:82vh}
+    }
+  </style>
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
