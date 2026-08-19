@@ -271,15 +271,6 @@
       .cap{padding:26px 0 28px}
     }
 
-    /* --- Temario --- */
-    .mods{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
-    .mod{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 26px 28px;display:flex;gap:18px;align-items:flex-start}
-    .mod__n{font-family:var(--serif);font-size:1.9rem;line-height:1;color:var(--accent);flex-shrink:0;width:38px}
-    .mod__title{font-family:var(--serif);font-weight:600;font-size:1.12rem;line-height:1.25;margin-bottom:6px}
-    .mod__desc{color:var(--ink-2);font-size:.92rem;line-height:1.6}
-    .mod__out{margin-top:10px;font-size:.84rem;color:var(--accent-deep);font-weight:600}
-    .mod__out::before{content:'\2192';margin-right:6px}
-
     /* --- Para quién sí / para quién no --- */
     .fit{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px}
     .fit__col{border-radius:18px;padding:30px}
@@ -292,7 +283,7 @@
     .fit__col--yes .fit__list li::before{content:'\2713';background:var(--accent);color:#fff}
     .fit__col--no .fit__list li::before{content:'\2715';background:rgba(25,25,24,.08);color:var(--ink-3)}
 
-    @media (max-width:900px){ .mods,.fit{grid-template-columns:1fr} }
+    @media (max-width:900px){ .fit{grid-template-columns:1fr} }
 
     /* --- responsive --- */
     @media (max-width:960px){
@@ -320,7 +311,7 @@
       <a href="#top" class="nav__logo">Luciano <i>Musella</i></a>
       <div class="nav__links">
         <a href="#caso">&iquest;Para qui&eacute;n?</a>
-        <a href="#temario">Qu&eacute; incluye</a>
+        <a href="#incluye">Qu&eacute; incluye</a>
         <a href="#entrar">C&oacute;mo entrar</a>
         <a href="#faq">Preguntas</a>
       </div>
@@ -435,30 +426,8 @@
     </div>
   </section>
 
-  <!-- TEMARIO — PLACEHOLDERS. Reemplazar con los modulos reales de Luciano.
-       Cada modulo: numero, titulo, que se hace, y que sales teniendo (el "→"). -->
-  <section class="sec--sand" id="temario">
-    <div class="wrap">
-      <span class="kicker kicker--center">Qu&eacute; incluye</span>
-      <h2 class="h2" style="text-align:center;max-width:820px;margin-left:auto;margin-right:auto">El curso, m&oacute;dulo por m&oacute;dulo.</h2>
-      <p class="lede" style="text-align:center;max-width:640px;margin:0 auto">El orden se adapta a tu caso: empiezas por lo que m&aacute;s te devuelve, no por el cap&iacute;tulo uno.</p>
-      <div class="mods">
-        <div class="mod"><span class="mod__n">1</span><div><h3 class="mod__title">[Nombre del m&oacute;dulo 1]</h3><p class="mod__desc">[Qu&eacute; se hace en este m&oacute;dulo, en una o dos l&iacute;neas.]</p><p class="mod__out">[Qu&eacute; sales teniendo construido]</p></div></div>
-        <div class="mod"><span class="mod__n">2</span><div><h3 class="mod__title">[Nombre del m&oacute;dulo 2]</h3><p class="mod__desc">[Qu&eacute; se hace.]</p><p class="mod__out">[Qu&eacute; sales teniendo]</p></div></div>
-        <div class="mod"><span class="mod__n">3</span><div><h3 class="mod__title">[Nombre del m&oacute;dulo 3]</h3><p class="mod__desc">[Qu&eacute; se hace.]</p><p class="mod__out">[Qu&eacute; sales teniendo]</p></div></div>
-        <div class="mod"><span class="mod__n">4</span><div><h3 class="mod__title">[Nombre del m&oacute;dulo 4]</h3><p class="mod__desc">[Qu&eacute; se hace.]</p><p class="mod__out">[Qu&eacute; sales teniendo]</p></div></div>
-        <div class="mod"><span class="mod__n">5</span><div><h3 class="mod__title">[Nombre del m&oacute;dulo 5]</h3><p class="mod__desc">[Qu&eacute; se hace.]</p><p class="mod__out">[Qu&eacute; sales teniendo]</p></div></div>
-        <div class="mod"><span class="mod__n">6</span><div><h3 class="mod__title">[Nombre del m&oacute;dulo 6]</h3><p class="mod__desc">[Qu&eacute; se hace.]</p><p class="mod__out">[Qu&eacute; sales teniendo]</p></div></div>
-      </div>
-      <div style="text-align:center;margin-top:40px">
-        <a href="#" class="btn btn--wide" data-open-waitlist>Quiero entrar al curso</a>
-        <div class="ticks-inline"><span>Personalizado a tu caso</span><span>Sin saber programar</span><span>Cupos limitados</span></div>
-      </div>
-    </div>
-  </section>
-
   <!-- PARA QUIEN SI / PARA QUIEN NO -->
-  <section class="sec--cream" id="para-quien">
+  <section class="sec--sand" id="para-quien">
     <div class="wrap">
       <span class="kicker kicker--center">Antes de que sigas</span>
       <h2 class="h2" style="text-align:center;max-width:820px;margin-left:auto;margin-right:auto">Esto no es para todo el mundo. Y preferimos dec&iacute;rtelo ahora.</h2>
@@ -486,7 +455,7 @@
   </section>
 
   <!-- SOBRE LUCIANO — texto izq + foto der -->
-  <section class="sec--sand">
+  <section class="sec--cream">
     <div class="wrap split">
       <div>
         <span class="kicker">S&eacute; exactamente d&oacute;nde est&aacute;s</span>
@@ -504,7 +473,7 @@
   </section>
 
   <!-- COMO SE ENTRA — la llamada es el paso, no el producto -->
-  <section class="sec--cream" id="entrar">
+  <section class="sec--sand" id="entrar">
     <div class="wrap">
       <div class="offer-box on-dark">
         <div>
@@ -526,7 +495,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="sec--sand" id="faq">
+  <section class="sec--cream" id="faq">
     <div class="wrap">
       <span class="kicker kicker--center">Antes de que preguntes</span>
       <h2 class="h2" style="text-align:center">Lo que la mayor&iacute;a quiere saber antes de entrar.</h2>
