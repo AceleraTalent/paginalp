@@ -10,10 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/aprende/styles.css">
   <style>
-    .thankyou{padding:56px 0 64px;min-height:60vh}
-    .thankyou__title{margin-bottom:10px}
-    .thankyou__text{margin-bottom:26px;max-width:560px}
-    .thankyou__back{margin-top:18px}
+    .thankyou{padding:48px 0 56px;min-height:0;text-align:center}
+    .thankyou__icon{width:56px;height:56px;margin:0 auto 16px}
+    .thankyou__icon svg{width:26px;height:26px}
+    .thankyou__title{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:10px}
+    .thankyou__text{font-size:1rem;margin:0 auto 26px;max-width:520px}
+    .thankyou__booking-title{font-size:1.1rem;margin-bottom:14px}
+    .thankyou__back{display:inline-block;margin-top:18px}
   </style>
   <!-- Meta Pixel Code -->
   <script>
@@ -39,11 +42,15 @@
   <section class="thankyou">
     <div class="container thankyou__inner">
       <div class="thankyou__icon">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <h1 class="thankyou__title">&iexcl;Llamada agendada!</h1>
-      <p class="thankyou__text">Te llegar&aacute; la confirmaci&oacute;n con el link de la reuni&oacute;n a tu correo. Ahora s&iacute;, &uacute;nete a la comunidad para ir avanzando desde ya.</p>
+      <p class="thankyou__text">Te llegar&aacute; la confirmaci&oacute;n con el link de la reuni&oacute;n a tu correo. Agr&eacute;gala a tu calendario para que no se te pase.</p>
+
+      <h2 class="thankyou__booking-title">Ahora s&iacute;, &uacute;nete a la comunidad</h2>
       <a href="https://chat.whatsapp.com/FJwqTceWj4gBKpYKBAWEWW" class="btn btn--primary" target="_blank" rel="noopener">Unirme al grupo de WhatsApp</a>
+
+      <br>
       <a href="/aprende/index.html" class="thankyou__back">Volver al inicio</a>
     </div>
   </section>
