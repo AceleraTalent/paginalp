@@ -75,6 +75,12 @@
   // El grupo de WhatsApp solo se muestra cuando el widget confirma la reserva.
   (function(){
     var shown=false;
+    // Modo prueba: /aprende/gracias.html?test=1 simula la reserva confirmada (no agenda nada)
+    if(/[?&]test=1/.test(location.search)){
+      window.addEventListener('DOMContentLoaded', function(){
+        document.getElementById('communityBlock').style.display='block';
+      });
+    }
     function reveal(){
       if(shown) return; shown=true;
       document.getElementById('communityBlock').style.display='block';
