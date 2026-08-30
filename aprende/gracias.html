@@ -60,15 +60,34 @@
         ></iframe>
       </div>
 
-      <div class="thankyou__divider"></div>
-
-      <h2 class="thankyou__booking-title">Mientras tanto, &uacute;nete a la comunidad</h2>
-      <a href="https://chat.whatsapp.com/FJwqTceWj4gBKpYKBAWEWW" class="btn btn--primary" id="whatsappLink" target="_blank" rel="noopener">Unirme al grupo de WhatsApp</a>
+      <div id="communityBlock" style="display:none">
+        <div class="thankyou__divider"></div>
+        <h2 class="thankyou__booking-title">&iexcl;Listo! Ahora s&iacute;, &uacute;nete a la comunidad</h2>
+        <a href="https://chat.whatsapp.com/FJwqTceWj4gBKpYKBAWEWW" class="btn btn--primary" id="whatsappLink" target="_blank" rel="noopener">Unirme al grupo de WhatsApp</a>
+      </div>
 
       <a href="/aprende/index.html" class="thankyou__back">Volver al inicio</a>
     </div>
   </section>
 
   <script src="https://api.funnelup.io/js/form_embed.js"></script>
+  <script>
+  // El grupo de WhatsApp solo se muestra cuando el widget confirma la reserva.
+  (function(){
+    var shown=false;
+    function reveal(){
+      if(shown) return; shown=true;
+      document.getElementById('communityBlock').style.display='block';
+    }
+    window.addEventListener('message', function(e){
+      if(typeof e.origin!=='string') return;
+      if(e.origin.indexOf('funnelup.io')===-1 && e.origin.indexOf('leadconnectorhq')===-1 && e.origin.indexOf('msgsndr')===-1) return;
+      var raw='';
+      try{ raw=(typeof e.data==='string')? e.data : JSON.stringify(e.data); }catch(_){ return; }
+      try{ console.log('[booking-widget msg]', raw.slice(0,300)); }catch(_){ }
+      if(/booked|booking[-_ ]?(confirm|success|complete)|appointment|confirmed|thank/i.test(raw)) reveal();
+    });
+  })();
+  </script>
 </body>
 </html>

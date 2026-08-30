@@ -1208,7 +1208,7 @@ setTimeout(()=>{ const f=document.getElementById('progFill'); if(f) f.style.widt
     <div class="lead-ok" id="leadOk">
       <div class="lead-ok-ico">🎉</div>
       <div class="lead-ok-title">¡Listo! Ya estás dentro</div>
-      <div class="lead-ok-sub">Te avisaremos con cada nuevo video y recurso. Disfruta el curso.</div>
+      <div class="lead-ok-sub">Te estamos llevando a agendar tu conversación con Luciano&hellip;</div>
     </div>
   </div>
 </div>
@@ -1293,8 +1293,7 @@ function isRealPhone(raw){
     okMsg.style.display = 'block';
     localStorage.setItem(LS_KEY,'1');
     localStorage.setItem(LS_USER, JSON.stringify({nombre, email, telefono}));
-    window.open('https://chat.whatsapp.com/FJwqTceWj4gBKpYKBAWEWW?mlu=0&s=sh&p=i','_blank');
-    setTimeout(()=>overlay.classList.remove('show'), 2800);
+    setTimeout(()=>{ window.location.href='/aprende/gracias.html'; }, 1600);
   });
 })();
 </script>
