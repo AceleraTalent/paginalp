@@ -47,10 +47,10 @@
 <h3>1) Abrir Claude y conectar Notion + Google Calendar</h3>
 <h4>1.1 Conecta Notion</h4>
 <ol><li>Ve a <strong>Settings / Ajustes</strong> (normalmente en tu perfil).</li><li>Busca la sección <strong>Integrations / Conexiones / Connected apps</strong>.</li><li>Selecciona <strong>Notion</strong>.</li><li>Haz clic en <strong>Connect</strong>.</li><li>Notion te pedirá permisos:</li><li>Elige el workspace correcto.</li><li>Autoriza el acceso.</li><li>Si te da a elegir páginas/bases de datos, selecciona la base de datos de tareas (la crearás en el paso 2 si aún no existe).</li></ol>
-<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<div class="fig-ph"><b>Imagen en preparación</b><span>Muy pronto verás aquí la captura de este paso</span></div>
 <h4>1.2 Conecta Google Calendar</h4>
 <ol><li>En la misma sección de integraciones, selecciona <strong>Google Calendar</strong>.</li><li>Haz clic en <strong>Connect</strong>.</li><li>Inicia sesión con tu Google.</li><li>Acepta permisos.</li><li>Confirma qué calendarios quieres habilitar (si aplica, selecciona el calendario donde realmente planeas tu día).</li></ol>
-<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<div class="fig-ph"><b>Imagen en preparación</b><span>Muy pronto verás aquí la captura de este paso</span></div>
 <div class="callout"><p><strong>Checklist rápido (Paso 1):</strong></p>
 <ul><li>Notion conectado</li><li>Google Calendar conectado</li><li>Ya puedes pasar al Paso 2</li><li>Y si no solo pidele a claude qeu te guie para hacerlo</li></ul></div>
 <hr>
@@ -61,20 +61,20 @@
 <p>Copia y pega este prompt en Notion AI (en una página en blanco) y dile que lo ejecute:</p>
 <p>Prompt (Notion AI)</p>
 <ul><li>Crea una base de datos tipo tabla llamada “Tareas”.</li><li>Columnas:</li><li>“Nombre de la tarea” (Title)</li><li>“Duración (min)” (Number)</li><li>“Fecha límite” (Date)</li><li>“Prioridad” (Select) con opciones: Alta, Media, Baja</li><li>“Status” (Status) con opciones: Por hacer, En progreso, Hecho</li><li>“Proyecto” (Select) (si existe una base de datos “Proyectos”, entonces usa Relation en vez de Select)</li><li>Agrega 3 tareas de ejemplo con datos realistas.</li></ul>
-<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<div class="fig-ph"><b>Imagen en preparación</b><span>Muy pronto verás aquí la captura de este paso</span></div>
 <div class="callout"><p><strong>Recomendación:</strong> usa Duración en minutos (15, 30, 1 hora, 2 horas). Es más fácil para bloquear el calendario.</p></div>
 <h4>2.2 Crear la base de datos manualmente (paso a paso)</h4>
 <ol><li>En Notion, crea una nueva página o usa tu espacio donde gestionas tareas.</li><li>Escribe <code>/database</code> y elige <strong>Table – Full page</strong> (o <strong>Table – Inline</strong> si la quieres dentro de una página).</li><li>Nombra la base: <strong>Tareas</strong>.</li><li>Crea/ajusta las columnas así:</li><li><strong>Nombre de la tarea</strong> → Title</li><li><strong>Duración (min)</strong> → Select (opciones: 2 horas, 1 hora, 30 mins, 15 mins)</li><li><strong>Fecha límite</strong> → Date</li><li><strong>Prioridad</strong> → Select (opciones sugeridas: Alta, Media, Baja)</li><li><strong>Status</strong> → Status (opciones sugeridas: Por hacer, En progreso, Hecho)</li><li><strong>Proyecto</strong> → Select (nombre de los diferentes proyectos)</li></ol>
-<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<div class="fig-ph"><b>Imagen en preparación</b><span>Muy pronto verás aquí la captura de este paso</span></div>
 <hr>
 <h3>3) Crear el Skill en Claude - Tienes 2 opciones</h3>
 <p>En este paso crearás el Skill y dejarás listo el contenido/instrucciones.</p>
 <h4>3.1 Opción 1 — Descargar el archivo e instalarlo</h4>
 <ol><li>Descarga este archivo -</li></ol>
-<div class="fig-ph"><b>Archivo adjunto</b><span>chief-of-staff.skill (4.6 KiB) · se migrará con los assets</span></div>
+<div class="fig-ph"><b>Archivo descargable</b><span>chief-of-staff.skill (4.6 KiB) · disponible pronto</span></div>
 <ol><li>Instala este skill</li></ol>
-<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
-<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<div class="fig-ph"><b>Imagen en preparación</b><span>Muy pronto verás aquí la captura de este paso</span></div>
+<div class="fig-ph"><b>Imagen en preparación</b><span>Muy pronto verás aquí la captura de este paso</span></div>
 <h4>3.2 - Copiar y pegar todo el prompt y volverlo archivo MD</h4>
 <h4>Prompt para pegar - Este COPY y PASTE</h4>
 <hr>
@@ -222,10 +222,10 @@ Que te vaya bien hoy. 💪</pre></div>
 <ul><li><strong>“Brief” &quot;buenos días&quot;, &quot;buenas tardes&quot;, &quot;debrief&quot;, &quot;qué tengo hoy&quot;, &quot;arrancamos&quot;, &quot;cómo está el día&quot;, &quot;planea mi día&quot;, &quot;good morning”</strong></li></ul>
 <h4>Cómo usarla</h4>
 <ol><li>Abre un chat en Claude.</li><li>Escribe: la palabra mágica</li><li>(Opcional) Aclara el enfoque del día: hoy quiero avanzar en el proyecto X”.</li></ol>
-<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<div class="fig-ph"><b>Imagen en preparación</b><span>Muy pronto verás aquí la captura de este paso</span></div>
 <hr>
-<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
-<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<div class="fig-ph"><b>Imagen en preparación</b><span>Muy pronto verás aquí la captura de este paso</span></div>
+<div class="fig-ph"><b>Imagen en preparación</b><span>Muy pronto verás aquí la captura de este paso</span></div>
 <h3>5) Flujo de uso (lo que hace el Skill)</h3>
 <p>Cada vez que lo actives con la palabra mágica, debe seguir este orden:</p>
 <h4>5.1 Reporte del día (Calendario)</h4>
@@ -243,24 +243,21 @@ Que te vaya bien hoy. 💪</pre></div>
 <h3>Copy listo para poner al final del Lead Magnet (CTA)</h3>
 <p>Si quieres, copia esto tal cual:</p>
 <ul><li>“Si quieres que esto quede automatizado al 100% para tu negocio (con plantillas, prompts y workflows), escríbeme ‘MAGIA’ y te digo cómo lo implementamos en tu Notion.”</li></ul>
-        <hr><p class="muted" style="font-size:14px">Recurso migrado desde Notion para esta preview. <a href="https://quiet-fiber-044.notion.site/088e4ca3df4d441983862e8a7dc41eb3" target="_blank" rel="noopener">Ver original ↗</a></p></article>
+        </article>
       <aside class="aside">
         <div class="aside__box"><h5>Aprende cómo funciona</h5><a class="tv" href="/tutoriales/crea-un-skill-con-claude-desde-cero-escribe-mejor-tu-conteni/" data-track="tutorial_click" data-track-props='{"video_id":"5I0naOsMtAQ","from":"resource"}'><div class="tv__th"><img src="https://img.youtube.com/vi/5I0naOsMtAQ/mqdefault.jpg" alt="" loading="lazy"></div><div><div class="tv__t">Crea un Skill con Claude Desde Cero | Escribe Mejor Tu contenido</div><div class="tv__m">12 min · YouTube</div></div></a></div>
         
-        <div class="aside__box"><h5>Recursos relacionados</h5><ul class="aside__list"><a href="/recursos/5-niveles-de-claude/" data-track="related_resource_click" data-track-props='{"from":"skill-debrief-claude","to":"5-niveles-de-claude"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Los 5 Niveles de Claude: De Chatbot a Agente que Trabaja Solo</span></a><a href="/recursos/claude-routines/" data-track="related_resource_click" data-track-props='{"from":"skill-debrief-claude","to":"claude-routines"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Claude Routines: Configura una vez, Claude trabaja solo mientras duermes</span></a><a href="/recursos/atajos-de-prompt-claude/" data-track="related_resource_click" data-track-props='{"from":"skill-debrief-claude","to":"atajos-de-prompt-claude"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Atajos de prompt para Claude</span></a></ul></div>
+        <div class="aside__box"><h5>Recursos relacionados</h5><ul class="aside__list"><a href="/recursos/find-skills-claude/" data-track="related_resource_click" data-track-props='{"from":"skill-debrief-claude","to":"find-skills-claude"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Find Skills: El skill que encuentra el skill correcto por ti</span></a><a href="/recursos/5-skills-gratuitos-claude/" data-track="related_resource_click" data-track-props='{"from":"skill-debrief-claude","to":"5-skills-gratuitos-claude"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>5 Skills Gratuitos que Convierten Claude en una Herramienta Completamente Distinta</span></a></ul></div>
         <div class="aside__box" style="background:var(--ink);color:#fff;border-color:transparent"><h5 style="color:var(--on-dark-3)">Siguiente paso</h5><p style="margin:0;font-family:var(--serif);font-size:20px;line-height:1.2">¿Quieres hacerlo guiado, en 5 días?</p><a class="btn btn--light btn--sm" href="/retos/claude-en-5-dias/" data-track="challenge_click" data-track-props='{"from": "skill-debrief-claude"}' ><span class="btn__t">Ver el reto</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
       </aside></div></section>
     <section class="sec sec--cream " data-bg="cream"><div class="wrap sec__head"><div><span class="eyebrow eyebrow--dot" data-reveal>Seguir construyendo</span><h2 class="h2" data-reveal style="--i:1;margin-top:14px">Recursos <em class="serif tint">relacionados</em></h2></div>
-  <div data-reveal style="--i:2;display:grid;gap:16px;justify-items:end"></div></div><div class="wrap grid-3"><a class="res res--sm" href="/recursos/5-niveles-de-claude/" data-reveal style="--i:0" data-track="resource_click" data-track-props='{"resource":"5-niveles-de-claude","from":"card"}'>
+  <div data-reveal style="--i:2;display:grid;gap:16px;justify-items:end"></div></div><div class="wrap grid-3"><a class="res res--sm" href="/recursos/find-skills-claude/" data-reveal style="--i:0" data-track="resource_click" data-track-props='{"resource":"find-skills-claude","from":"card"}'>
   <div class="card__meta"><span class="res__type">Guía paso a paso</span><span>· Claude</span></div>
-  <div class="card__title">Los 5 Niveles de Claude: De Chatbot a Agente que Trabaja Solo</div>
-  <div class="card__foot"><span>6 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/claude-routines/" data-reveal style="--i:1" data-track="resource_click" data-track-props='{"resource":"claude-routines","from":"card"}'>
-  <div class="card__meta"><span class="res__type">Plantilla</span><span>· Claude</span></div>
-  <div class="card__title">Claude Routines: Configura una vez, Claude trabaja solo mientras duermes</div>
-  <div class="card__foot"><span>6 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/atajos-de-prompt-claude/" data-reveal style="--i:2" data-track="resource_click" data-track-props='{"resource":"atajos-de-prompt-claude","from":"card"}'>
-  <div class="card__meta"><span class="res__type">Plantilla</span><span>· Claude</span></div>
-  <div class="card__title">Atajos de prompt para Claude</div>
-  <div class="card__foot"><span>10 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></div></section>
+  <div class="card__title">Find Skills: El skill que encuentra el skill correcto por ti</div>
+  <div class="card__foot"><span>6 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/5-skills-gratuitos-claude/" data-reveal style="--i:1" data-track="resource_click" data-track-props='{"resource":"5-skills-gratuitos-claude","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Lista curada</span><span>· Claude</span></div>
+  <div class="card__title">5 Skills Gratuitos que Convierten Claude en una Herramienta Completamente Distinta</div>
+  <div class="card__foot"><span>7 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></div></section>
 </main>
 <footer class="foot">
   <div class="wrap foot__in">
