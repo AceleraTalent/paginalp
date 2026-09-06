@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarkItDown: El Repo de Microsoft ** que evita Claude te cobre doble por tus PDF ** | Luciano Musella</title>
+<meta name="description" content="Evitar el doble consumo de tokens (imagen + texto por página) al subir PDFs a Claude convirtiéndolos antes a Markdown con MarkItDown.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="MarkItDown: El Repo de Microsoft ** que evita Claude te cobre doble por tus PDF **"><meta property="og:description" content="Evitar el doble consumo de tokens (imagen + texto por página) al subir PDFs a Claude convirtiéndolos antes a Markdown con MarkItDown."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+
+</head>
+<body data-page="resource" data-page-props='{"resource": "markitdown-pdfs-claude", "category": "claude", "type": "tutorial-escrito"}'>
+<a class="sr" href="#main">Ir al contenido</a>
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="/">Luciano<span>.</span>Musella</a>
+    <ul class="nav__links"><li><a href="/">Inicio</a></li><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul>
+    <div class="nav__cta">
+      <a class="btn btn--ghost btn--sm" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "nav"}' ><span class="btn__t">Agenda</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu"><nav class="wrap"><div class="menu__list"><a href="/">Inicio<small>01</small></a><a href="/tutoriales/">Tutoriales<small>02</small></a><a href="/recursos/">Recursos<small>03</small></a><a href="/retos/">Retos<small>04</small></a><a href="/programa/">Programa<small>05</small></a><a href="/agenda/">Agenda<small>06</small></a></div><div class="menu__foot"><a class="btn btn--light" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "menu"}' ><span class="btn__t">Agenda una conversación</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></nav></div>
+<main id="main">
+<div class="progress" aria-hidden="true"></div>
+    <section class="ahead sec--cream" data-bg="cream"><div class="wrap">
+      <div class="crumbs"><a href="/recursos/">Recursos</a><span>/</span><a href="/recursos/#claude">Claude</a></div>
+      <span class="res__type" data-reveal>Tutorial</span>
+      <h1 class="display display--l" data-reveal style="--i:1;margin-top:14px">MarkItDown: El Repo de Microsoft ** que evita Claude te cobre doble por tus PDF **</h1>
+      <p class="lead" data-reveal style="--i:2;margin-top:20px">Evitar el doble consumo de tokens (imagen + texto por página) al subir PDFs a Claude convirtiéndolos antes a Markdown con MarkItDown.</p>
+      <div class="ahead__meta" data-reveal style="--i:3"><span>4 min de lectura</span><span class="dot"></span><span>Claude a fondo</span><span class="dot"></span><span>MarkItDown (Microsoft)</span><span class="dot"></span><span>markitdown-mcp</span><span class="dot"></span><span>Claude</span><span class="dot"></span><span>Claude Desktop</span></div>
+      <div class="boxes"><div class="box"><h5>Qué obtienes</h5><ul><li>Explicación del costo oculto de los PDFs en Claude (1.500-3.000 tokens por página + imagen)</li><li>Instalación: pip install &#x27;markitdown[all]&#x27; y comando de conversión</li><li>Configuración del servidor MCP (pip install markitdown-mcp + JSON para claude_desktop_config.json)</li><li>Tabla de 4 pasos del flujo y lista de mejores prácticas</li><li>Requisitos previos y lista &#x27;Lo que aprenderás&#x27;</li></ul></div></div>
+    </div></section>
+    <section class="sec sec--paper sec--tight" data-bg="paper"><div class="wrap article">
+      <article class="prose" data-resource="markitdown-pdfs-claude"><p><strong>Cada PDF que subes a Claude se procesa y se cobra dos veces, </strong>y Microsoft lanzó la solución gratis. Se llama <strong>MarkItDown</strong>, tiene alrededor de <strong>173.000 estrellas en GitHub</strong> y convierte cualquier documento en Markdown limpio para que solo pagues por las palabras. En esta guía te explico por qué los PDFs están consumiendo silenciosamente tu presupuesto de tokens, cómo solucionarlo con una sola línea de código y cómo configurar el servidor MCP para que Claude Desktop convierta automáticamente cada archivo.</p>
+<div class="callout"><p>Repo:</p></div>
+<hr>
+<h3>Lo que aprenderás</h3>
+<ul><li>Por qué Claude cobra el procesamiento de tus PDFs de una forma que puede aumentar significativamente el consumo de tokens</li><li>Qué es MarkItDown y cómo soluciona este problema</li><li>Cómo instalarlo y utilizarlo con una sola línea de código</li><li>Cómo configurar el servidor MCP para que Claude Desktop convierta automáticamente tus archivos</li><li>Mejores prácticas y respuestas a las preguntas más comunes</li></ul>
+<hr>
+<h3>Requisitos previos</h3>
+<ul><li><input type=checkbox disabled> <strong>Python + pip</strong> instalados: puedes descargarlos desde <a href="http://python.org/" target="_blank" rel="noopener">python.org</a></li><li><input type=checkbox disabled> Un terminal que sepas abrir y utilizar (Terminal en Mac, iTerm o el terminal integrado de VS Code)</li><li><input type=checkbox disabled> <strong>Claude Desktop</strong> si quieres utilizar la configuración automática con MCP (opcional, pero recomendado)</li><li><input type=checkbox disabled> 5 minutos para completar la configuración</li></ul>
+<p>No necesitas conocimientos avanzados de programación. Si puedes copiar y pegar un comando, puedes hacerlo.</p>
+<hr>
+<h3>Estás pagando el doble por cada PDF</h3>
+<p>Cuando subes un PDF, Claude no se limita a leer el texto. Convierte cada página en una imagen y luego extrae el texto sobre ella, lo que significa que terminas pagando por ambas cosas.</p>
+<blockquote>💸 <strong>Los números:</strong> La propia documentación de Anthropic estima que solo el texto puede representar entre <strong>1.500 y 3.000 tokens por página</strong>, y la imagen de cada página se suma a ese consumo. Un contrato de 20 páginas puede consumir <strong>más de 60.000 tokens</strong> antes de que alguien le haga siquiera una pregunta.</blockquote>
+<p>Si tú (o tu equipo) procesan documentos de clientes en Claude durante todo el día, aquí es donde tu consumo de tokens puede desaparecer silenciosamente.</p>
+<hr>
+<h3>¿Qué es MarkItDown?</h3>
+<p>MarkItDown es una herramienta gratuita y de código abierto de Microsoft que convierte archivos en Markdown limpio y optimizado para trabajar con modelos de lenguaje (LLM).</p>
+<p>Es compatible con PDFs, documentos de Word, hojas de Excel, presentaciones de PowerPoint y mucho más. Solo tienes que indicarle un archivo y te lo devuelve como Markdown en texto plano. Los títulos y las tablas se mantienen durante la conversión, en lugar de convertirse en texto desordenado o difícil de interpretar.</p>
+<blockquote>💡 Una vez que tu documento está en Markdown, las imágenes de las páginas desaparecen por completo. Claude puede leer únicamente el texto, así que pagas por las palabras (<strong>no por una imagen de cada página añadida al contenido).</strong></blockquote>
+<table><thead><tr><th><strong>1. Tienes un documento</strong></th><th>Un PDF, documento de Word u hoja de Excel que normalmente subirías directamente a Claude</th></tr></thead><tbody><tr><td><strong>2. MarkItDown lo convierte</strong></td><td>Un solo comando lo transforma en Markdown limpio, manteniendo los títulos, tablas y estructura</td></tr><tr><td><strong>3. Claude recibe solo texto</strong></td><td>Sin imágenes de las páginas, sin consumo innecesario — solo las palabras</td></tr><tr><td><strong>4. Pagas una fracción</strong></td><td>Las mismas respuestas, el mismo documento, pero con muchos menos tokens</td></tr></tbody></table>
+<hr>
+<h3>Cómo instalarlo (online)</h3>
+<p><strong>Paso 1 — Instala el paquete:</strong></p>
+<div class="codeblock"><div class="codeblock__bar"><span>bash</span><button class="copy" type="button" data-i="1">Copiar</button></div><pre>pip install &#x27;markitdown[all]&#x27;</pre></div>
+<p><strong>Paso 2 — Convierte un archivo:</strong></p>
+<div class="codeblock"><div class="codeblock__bar"><span>bash</span><button class="copy" type="button" data-i="2">Copiar</button></div><pre>markitdown contract.pdf -o contract.md</pre></div>
+<p>Eso es todo. Sube el archivo <code>.md</code> resultante a Claude en lugar del PDF y eliminarás el consumo de tokens asociado a las imágenes de las páginas.</p>
+<blockquote>✅ Convierte un PDF de varias páginas y pega el Markdown en Claude. Compara el consumo de tokens con el que genera subir el PDF original. La diferencia en documentos largos puede ser enorme.</blockquote>
+<hr>
+<h3>Configurar el servidor MCP</h3>
+<p>Existe un servidor MCP oficial para MarkItDown, lo que permite que Claude Desktop convierta automáticamente cada archivo que subas.</p>
+<p><strong>Paso 1 — Instala el servidor MCP:</strong></p>
+<div class="codeblock"><div class="codeblock__bar"><span>bash</span><button class="copy" type="button" data-i="3">Copiar</button></div><pre>pip install markitdown-mcp</pre></div>
+<p><strong>Paso 2 — Añádelo a Claude Desktop:</strong></p>
+<p>Abre el archivo de configuración de Claude Desktop (<code>claude_desktop_config.json</code>) desde <strong>Settings → Developer → Edit Config</strong> y añade:</p>
+<div class="codeblock"><div class="codeblock__bar"><span>json</span><button class="copy" type="button" data-i="4">Copiar</button></div><pre>{
+  &quot;mcpServers&quot;: {
+    &quot;markitdown&quot;: {
+      &quot;command&quot;: &quot;markitdown-mcp&quot;
+    }
+  }
+}</pre></div>
+<p><strong>Paso 3 — Reinicia Claude Desktop.</strong></p>
+<p>Ahora Claude puede convertir cualquier archivo a Markdown por sí solo. Configúralo una vez y no tendrás que volver a preocuparte por ello.</p>
+<hr>
+<h3>Mejores prácticas</h3>
+<ul><li><strong>Convierte cualquier documento de más de unas pocas páginas.</strong> Cuanto más largo sea el documento, mayor será el ahorro. Los contratos, informes y briefs son donde más se nota el consumo adicional.</li><li><strong>Procesa los documentos de tus clientes en lote.</strong> Si trabajas con documentos durante todo el día, conviértelos primero con MarkItDown como un paso estándar de tu proceso.</li><li><strong>Guarda los archivos Markdown.</strong> Son más pequeños, fáciles de buscar y puedes reutilizarlos en futuras sesiones de Claude sin volver a pagar por los costos de conversión.</li><li><strong>Usa el servidor MCP si trabajas principalmente con Claude Desktop.</strong> Después de configurarlo una sola vez, no tendrás que hacer ningún esfuerzo adicional.</li></ul>
+        <hr><p class="muted" style="font-size:14px">Recurso migrado desde Notion para esta preview. <a href="https://quiet-fiber-044.notion.site/3cec40c66f09803d99a7fd1f23d7dd3d" target="_blank" rel="noopener">Ver original ↗</a></p></article>
+      <aside class="aside">
+        <div class="aside__box"><h5>Aprende cómo funciona</h5><a class="tv" href="/tutoriales/claude-skills-plugins-y-conectores-cul-es-la-diferencia/" data-track="tutorial_click" data-track-props='{"video_id":"sn3zkOGdfsM","from":"resource"}'><div class="tv__th"><img src="https://img.youtube.com/vi/sn3zkOGdfsM/mqdefault.jpg" alt="" loading="lazy"></div><div><div class="tv__t">Claude Skills, Plugins y Conectores: Cuál es la diferencia?</div><div class="tv__m">6 min · YouTube</div></div></a></div>
+        
+        <div class="aside__box"><h5>Recursos relacionados</h5><ul class="aside__list"><a href="/recursos/5-mcps-claude/" data-track="related_resource_click" data-track-props='{"from":"markitdown-pdfs-claude","to":"5-mcps-claude"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>5 MCPs</span></a><a href="/recursos/4-mcps-agente-real/" data-track="related_resource_click" data-track-props='{"from":"markitdown-pdfs-claude","to":"4-mcps-agente-real"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>4 MCPs que convierten a Claude en un agente real</span></a><a href="/recursos/5-niveles-de-claude/" data-track="related_resource_click" data-track-props='{"from":"markitdown-pdfs-claude","to":"5-niveles-de-claude"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Los 5 Niveles de Claude: De Chatbot a Agente que Trabaja Solo</span></a></ul></div>
+        <div class="aside__box" style="background:var(--ink);color:#fff;border-color:transparent"><h5 style="color:var(--on-dark-3)">Siguiente paso</h5><p style="margin:0;font-family:var(--serif);font-size:20px;line-height:1.2">¿Quieres hacerlo guiado, en 5 días?</p><a class="btn btn--light btn--sm" href="/retos/claude-en-5-dias/" data-track="challenge_click" data-track-props='{"from": "markitdown-pdfs-claude"}' ><span class="btn__t">Ver el reto</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+      </aside></div></section>
+    <section class="sec sec--cream " data-bg="cream"><div class="wrap sec__head"><div><span class="eyebrow eyebrow--dot" data-reveal>Seguir construyendo</span><h2 class="h2" data-reveal style="--i:1;margin-top:14px">Recursos <em class="serif tint">relacionados</em></h2></div>
+  <div data-reveal style="--i:2;display:grid;gap:16px;justify-items:end"></div></div><div class="wrap grid-3"><a class="res res--sm" href="/recursos/5-mcps-claude/" data-reveal style="--i:0" data-track="resource_click" data-track-props='{"resource":"5-mcps-claude","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Lista curada</span><span>· Claude</span></div>
+  <div class="card__title">5 MCPs</div>
+  <div class="card__foot"><span>2 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/4-mcps-agente-real/" data-reveal style="--i:1" data-track="resource_click" data-track-props='{"resource":"4-mcps-agente-real","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Lista curada</span><span>· Claude</span></div>
+  <div class="card__title">4 MCPs que convierten a Claude en un agente real</div>
+  <div class="card__foot"><span>6 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/5-niveles-de-claude/" data-reveal style="--i:2" data-track="resource_click" data-track-props='{"resource":"5-niveles-de-claude","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Guía paso a paso</span><span>· Claude</span></div>
+  <div class="card__title">Los 5 Niveles de Claude: De Chatbot a Agente que Trabaja Solo</div>
+  <div class="card__foot"><span>6 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></div></section>
+</main>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div><div class="foot__brand">Luciano Musella</div><p style="max-width:34ch;margin:12px 0 0">Aprende a construir con IA. Tutoriales, recursos y retos gratis; y un programa para llevarlo al trabajo.</p></div>
+    <div><h6>Explora</h6><ul><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul></div>
+    <div><h6>Canales</h6><ul><li><a href="https://www.youtube.com/@LucianoMusellaa" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://www.linkedin.com/in/luciano-parra-m" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="wrap foot__legal"><span>© 2026 Luciano Musella</span><span>Preview · web-v2 · no es la versión final</span></div>
+</footer>
+<div class="preview-badge">Preview web-v2</div>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

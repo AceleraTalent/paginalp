@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía paso a paso para crear un Skill - DEBRIEF en Claude (Notion + Google Calendar) | Luciano Musella</title>
+<meta name="description" content="Planificar el día automáticamente cruzando agenda de Google Calendar con tareas pendientes de Notion desde Claude.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Guía paso a paso para crear un Skill - DEBRIEF en Claude (Notion + Google Calendar)"><meta property="og:description" content="Planificar el día automáticamente cruzando agenda de Google Calendar con tareas pendientes de Notion desde Claude."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+
+</head>
+<body data-page="resource" data-page-props='{"resource": "skill-debrief-claude", "category": "claude", "type": "guia-paso-a-paso"}'>
+<a class="sr" href="#main">Ir al contenido</a>
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="/">Luciano<span>.</span>Musella</a>
+    <ul class="nav__links"><li><a href="/">Inicio</a></li><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul>
+    <div class="nav__cta">
+      <a class="btn btn--ghost btn--sm" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "nav"}' ><span class="btn__t">Agenda</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu"><nav class="wrap"><div class="menu__list"><a href="/">Inicio<small>01</small></a><a href="/tutoriales/">Tutoriales<small>02</small></a><a href="/recursos/">Recursos<small>03</small></a><a href="/retos/">Retos<small>04</small></a><a href="/programa/">Programa<small>05</small></a><a href="/agenda/">Agenda<small>06</small></a></div><div class="menu__foot"><a class="btn btn--light" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "menu"}' ><span class="btn__t">Agenda una conversación</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></nav></div>
+<main id="main">
+<div class="progress" aria-hidden="true"></div>
+    <section class="ahead sec--cream" data-bg="cream"><div class="wrap">
+      <div class="crumbs"><a href="/recursos/">Recursos</a><span>/</span><a href="/recursos/#claude">Claude</a></div>
+      <span class="res__type" data-reveal>Guía paso a paso</span>
+      <h1 class="display display--l" data-reveal style="--i:1;margin-top:14px">Guía paso a paso para crear un Skill - DEBRIEF en Claude (Notion + Google Calendar)</h1>
+      <p class="lead" data-reveal style="--i:2;margin-top:20px">Planificar el día automáticamente cruzando agenda de Google Calendar con tareas pendientes de Notion desde Claude.</p>
+      <div class="ahead__meta" data-reveal style="--i:3"><span>13 min de lectura</span><span class="dot"></span><span>Claude a fondo</span><span class="dot"></span><span>Claude</span><span class="dot"></span><span>Claude Skills</span><span class="dot"></span><span>Claude Connectors</span><span class="dot"></span><span>Notion</span></div>
+      <div class="boxes"><div class="box"><h5>Qué obtienes</h5><ul><li>archivo chief-of-staff.skill descargable (4.6 KiB)</li><li>skill completo (SKILL.md) para copiar y pegar</li><li>prompt para que Notion AI cree la base de datos de Tareas</li><li>5 secciones numeradas con 9 capturas de pantalla</li><li>copy de CTA listo para el lead magnet</li></ul></div></div>
+    </div></section>
+    <section class="sec sec--paper sec--tight" data-bg="paper"><div class="wrap article">
+      <article class="prose" data-resource="skill-debrief-claude"><div class="callout"><p><strong>Objetivo</strong></p>
+<p>Crear un Skill en Claude que conecte <strong>Notion + Google Calendar</strong> para:</p>
+<ul><li>1) darte el <strong>reporte del día</strong> (agenda)</li><li>2) mostrar tus <strong>bloques disponibles</strong></li><li>3) listar <strong>tareas pendientes</strong> desde Notion</li><li>4) proponerte un <strong>plan de trabajo</strong> (o que tú asignes tareas al calendario)</li></ul></div>
+<hr>
+<div class="callout"><p>Hola, soy Luciano, ayudo a empresas a convertirse en AI - Natives. Instalamos los sistemas, entrenamos al equipo, y al final AI no es algo que &quot;usan&quot;: es cómo operan todos los días. Lo comparto porque el mundo está cambiando más rápido de lo que la mayoría cree, y si podemos ser 10 veces más productivos con las herramientas correctas, sería un crimen no contárselo.</p></div>
+<h3>Lo que vas a necesitar</h3>
+<ul><li>Una cuenta de Claude (connectors)</li><li>Tu cuenta de Notion</li><li>Tu cuenta de Google Calendar</li><li>10 min para configurarlo todo</li></ul>
+<hr>
+<h3>1) Abrir Claude y conectar Notion + Google Calendar</h3>
+<h4>1.1 Conecta Notion</h4>
+<ol><li>Ve a <strong>Settings / Ajustes</strong> (normalmente en tu perfil).</li><li>Busca la sección <strong>Integrations / Conexiones / Connected apps</strong>.</li><li>Selecciona <strong>Notion</strong>.</li><li>Haz clic en <strong>Connect</strong>.</li><li>Notion te pedirá permisos:</li><li>Elige el workspace correcto.</li><li>Autoriza el acceso.</li><li>Si te da a elegir páginas/bases de datos, selecciona la base de datos de tareas (la crearás en el paso 2 si aún no existe).</li></ol>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<h4>1.2 Conecta Google Calendar</h4>
+<ol><li>En la misma sección de integraciones, selecciona <strong>Google Calendar</strong>.</li><li>Haz clic en <strong>Connect</strong>.</li><li>Inicia sesión con tu Google.</li><li>Acepta permisos.</li><li>Confirma qué calendarios quieres habilitar (si aplica, selecciona el calendario donde realmente planeas tu día).</li></ol>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<div class="callout"><p><strong>Checklist rápido (Paso 1):</strong></p>
+<ul><li>Notion conectado</li><li>Google Calendar conectado</li><li>Ya puedes pasar al Paso 2</li><li>Y si no solo pidele a claude qeu te guie para hacerlo</li></ul></div>
+<hr>
+<h3>2) Crear la base de datos en Notion (Tareas)</h3>
+<p>Vas a crear una tabla/base de datos con estas propiedades:</p>
+<ul><li><strong>Nombre de la tarea</strong> (Título)</li><li><strong>Duración</strong> (Número, idealmente en minutos)</li><li><strong>Fecha límite</strong> (Fecha)</li><li><strong>Prioridad</strong> (Select)</li><li><strong>Status</strong> (Status)</li><li><strong>Proyecto</strong> (Select o Relación si ya tienes una DB de Proyectos)</li></ul>
+<h4>2.1 Prompt para que Notion AI te cree la base de datos</h4>
+<p>Copia y pega este prompt en Notion AI (en una página en blanco) y dile que lo ejecute:</p>
+<p>Prompt (Notion AI)</p>
+<ul><li>Crea una base de datos tipo tabla llamada “Tareas”.</li><li>Columnas:</li><li>“Nombre de la tarea” (Title)</li><li>“Duración (min)” (Number)</li><li>“Fecha límite” (Date)</li><li>“Prioridad” (Select) con opciones: Alta, Media, Baja</li><li>“Status” (Status) con opciones: Por hacer, En progreso, Hecho</li><li>“Proyecto” (Select) (si existe una base de datos “Proyectos”, entonces usa Relation en vez de Select)</li><li>Agrega 3 tareas de ejemplo con datos realistas.</li></ul>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<div class="callout"><p><strong>Recomendación:</strong> usa Duración en minutos (15, 30, 1 hora, 2 horas). Es más fácil para bloquear el calendario.</p></div>
+<h4>2.2 Crear la base de datos manualmente (paso a paso)</h4>
+<ol><li>En Notion, crea una nueva página o usa tu espacio donde gestionas tareas.</li><li>Escribe <code>/database</code> y elige <strong>Table – Full page</strong> (o <strong>Table – Inline</strong> si la quieres dentro de una página).</li><li>Nombra la base: <strong>Tareas</strong>.</li><li>Crea/ajusta las columnas así:</li><li><strong>Nombre de la tarea</strong> → Title</li><li><strong>Duración (min)</strong> → Select (opciones: 2 horas, 1 hora, 30 mins, 15 mins)</li><li><strong>Fecha límite</strong> → Date</li><li><strong>Prioridad</strong> → Select (opciones sugeridas: Alta, Media, Baja)</li><li><strong>Status</strong> → Status (opciones sugeridas: Por hacer, En progreso, Hecho)</li><li><strong>Proyecto</strong> → Select (nombre de los diferentes proyectos)</li></ol>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<hr>
+<h3>3) Crear el Skill en Claude - Tienes 2 opciones</h3>
+<p>En este paso crearás el Skill y dejarás listo el contenido/instrucciones.</p>
+<h4>3.1 Opción 1 — Descargar el archivo e instalarlo</h4>
+<ol><li>Descarga este archivo -</li></ol>
+<div class="fig-ph"><b>Archivo adjunto</b><span>chief-of-staff.skill (4.6 KiB) · se migrará con los assets</span></div>
+<ol><li>Instala este skill</li></ol>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<h4>3.2 - Copiar y pegar todo el prompt y volverlo archivo MD</h4>
+<h4>Prompt para pegar - Este COPY y PASTE</h4>
+<hr>
+<h3>name: chief-of-staff</h3>
+<p>description: &gt; Morning debrief y gestión del día como Chief of Staff personal. SIEMPRE usa este skill cuando el usuario diga &quot;buenos días&quot;, &quot;buenas tardes&quot;, &quot;debrief&quot;, &quot;qué tengo hoy&quot;, &quot;arrancamos&quot;, &quot;cómo está el día&quot;, &quot;planea mi día&quot;, &quot;good morning&quot;, &quot;morning debrief&quot;, o cualquier variación de saludo matutino o solicitud de planificación diaria. También actívalo cuando el usuario pregunte &quot;qué pendientes tengo&quot;, &quot;qué hago ahora&quot;, &quot;ayúdame a organizar el día&quot;, &quot;qué tareas tengo&quot;, o &quot;cómo va mi semana&quot;. Este skill conecta Google Calendar y Notion para leer el día completo, identificar bloques libres, cruzar tareas pendientes con la energía disponible, y proponer un plan de acción concreto. Al confirmar con &quot;sí&quot;, &quot;yes&quot; o &quot;dale&quot;, ejecuta: crea eventos en calendario y actualiza estados en Notion automáticamente. compatibility: &quot;Requiere: Google Calendar (gcal_list_events, gcal_create_event, gcal_list_calendars), Notion (notion-query-database-view, notion-update-page, notion-search, notion-fetch)&quot;</p>
+<h2>Chief of Staff — Morning Debrief</h2>
+<h3>Paso 0 — Onboarding (solo la primera vez)</h3>
+<p>Antes de poder hacer el debrief, el skill necesita conocer el contexto del usuario. Detectar si ya existe configuración guardada en la conversación o en memoria.</p>
+<p><strong>Si NO hay configuración previa</strong>, hacer estas preguntas de forma conversacional (no como formulario, sino natural):</p>
+<ol><li>¿Cuál es tu nombre?</li><li>¿En qué zona horaria estás? (ciudad o zona IANA, ej: America/Bogota, America/New_York)</li><li>¿Cuál es tu email de Google Calendar principal?</li><li>¿Tienes una base de datos de tareas en Notion? Si sí, comparte el link o el nombre.</li><li>Si comparte link: usar <code>notion-fetch</code> para leer el schema y guardar el data_source_id</li><li>Si no tiene: ofrecerle crear una base básica (Tarea, Status, Prioridad, Fecha límite)</li><li>¿Cuáles son tus proyectos o áreas principales? (ej: &quot;Ventas, Operaciones, Contenido&quot;)</li></ol>
+<p>Guardar estas respuestas como <strong>configuración del usuario</strong> y usarlas en todos los debriefs futuros. No volver a preguntar a menos que el usuario diga &quot;actualiza mi configuración&quot; o &quot;cambia mi Notion&quot;.</p>
+<p><strong>Si YA hay configuración</strong>, saltar directo al Paso 1.</p>
+<hr>
+<h3>Configuración del usuario (se llena en onboarding)</h3>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="1">Copiar</button></div><pre>NOMBRE: [nombre del usuario]
+ZONA_HORARIA: [ej: America/Bogota]
+CALENDARIO_ID: [email o ID del calendario principal]
+NOTION_DATA_SOURCE_ID: [collection://... obtenido del fetch]
+NOTION_VIEW_URL: [URL de la vista principal de tareas, si existe]
+PROYECTOS: [lista de proyectos/áreas del usuario]</pre></div>
+<hr>
+<h3>Paso 1 — Recolectar datos (silencioso, sin narrar)</h3>
+<p>Ejecutar en paralelo sin comentar al usuario:</p>
+<ol><li><strong>Google Calendar:</strong></li><li>Listar calendarios disponibles con <code>gcal_list_calendars</code></li><li>Traer todos los eventos del día actual (00:00–23:59) en la zona horaria del usuario</li><li>Usar el <code>CALENDARIO_ID</code> guardado en configuración, o el calendario primary si no hay</li><li><strong>Notion Tareas:</strong></li><li>Si hay <code>NOTION_VIEW_URL</code>: consultar con <code>notion-query-database-view</code></li><li>Si no hay view pero sí <code>NOTION_DATA_SOURCE_ID</code>: usar <code>notion-search</code> con filtro Status ≠ Done</li><li>Traer TODAS las tareas pendientes (Status ≠ Done)</li></ol>
+<hr>
+<h3>Paso 2 — Analizar el día</h3>
+<h4>A. Mapa del día</h4>
+<ul><li>Lista cronológica de eventos: hora inicio/fin, duración, asistentes clave</li><li>Tipo de evento: reunión externa / interna / grabación / llamada / personal</li><li>Marcar si el usuario es organizador o invitado</li></ul>
+<h4>B. Bloques libres</h4>
+<ul><li>Calcular todos los gaps entre eventos &gt; 20 minutos</li><li>Incluir el bloque antes del primer evento y después del último</li><li>Clasificar por tamaño:</li><li>🟢 <strong>Bloque grande</strong> (90+ min) → ideal para Deep Work</li><li>🟡 <strong>Bloque mediano</strong> (30–89 min) → Reactivo o trabajo enfocado</li><li>🔴 <strong>Bloque pequeño</strong> (&lt;30 min) → Admin rápido</li><li><strong>Regla clave:</strong> cualquier bloque libre es aprovechable independientemente</li></ul>
+<p>del tipo de día. Si hay un hueco, úsalo. No limitar por cantidad de reuniones.</p>
+<h4>C. Tipo de día (contexto informativo, no restrictivo)</h4>
+<p>Solo para dar color al reporte:</p>
+<ul><li><strong>Día cargado</strong> (3+ eventos) → mencionarlo brevemente</li><li><strong>Día mixto</strong> (1–2 eventos) → buena combinación posible</li><li><strong>Día libre</strong> (0 eventos) → oportunidad para trabajo profundo</li></ul>
+<h4>D. Inventario completo de pendientes</h4>
+<p>Leer TODAS las tareas con Status ≠ Done y ordenarlas:</p>
+<ol><li>Por <strong>Prioridad</strong>: Alta → Media → Baja → Sin prioridad</li><li>Dentro de cada prioridad, por <strong>Fecha límite</strong>: más próxima primero, sin fecha al final</li><li>Para cada tarea mostrar: Nombre · Proyecto/Área · Tipo de energía (si existe) ·</li></ol>
+<p>Duración estimada (si existe) · Fecha límite (si tiene)</p>
+<h4>E. Cruce tareas vs bloques</h4>
+<p>Asignar cada tarea a su bloque óptimo:</p>
+<ul><li><strong>Duración</strong> de la tarea vs tamaño del bloque disponible</li><li><strong>Energía</strong> requerida: Deep Work en bloques grandes de mañana,</li></ul>
+<p>Reactivo/Admin en bloques pequeños o tarde</p>
+<ul><li><strong>Prioridad + Fecha límite</strong>: lo más urgente e importante va primero</li><li><strong>Proyecto/Área</strong>: agrupar tareas del mismo proyecto en el mismo bloque</li><li>Si hay más tareas que bloques: las de Alta prioridad y fecha límite</li></ul>
+<p>próxima van al plan; el resto al backlog del día</p>
+<hr>
+<h3>Paso 3 — Generar el reporte</h3>
+<p>Presentar en este formato, adaptando el idioma al del usuario:</p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="2">Copiar</button></div><pre>☀️ Buenos días, [NOMBRE]. Son las [HORA]. Aquí está tu día:
+
+---
+
+📅 TU DÍA — [DÍA, FECHA]
+[Tipo de día en una línea]
+
+[Si hay eventos:]
+• [HH:MM – HH:MM] [Nombre evento] · [duración] · [contexto: quién organiza, asistentes clave]
+
+[Si no hay eventos:]
+• Día libre — sin reuniones agendadas
+
+---
+
+⏱ BLOQUES DISPONIBLES
+
+• [HH:MM – HH:MM] → [duración] — [🟢 Deep Work / 🟡 Reactivo / 🔴 Admin]
+[listar TODOS los bloques &gt;20 min]
+
+---
+
+✅ TODOS TUS PENDIENTES ([N] tareas)
+
+🔴 Alta prioridad
+  • [Tarea] · [Proyecto] · [Energía si existe] · [Duración si existe] · [Fecha límite si tiene]
+
+🟡 Media prioridad
+  • [Tarea] · [Proyecto] · [Energía si existe] · [Duración si existe] · [Fecha límite si tiene]
+
+⚪ Baja / Sin prioridad
+  • [Tarea] · [Proyecto] · [Fecha límite si tiene]
+
+⚠️ [Si hay tareas sin Prioridad o sin Fecha límite asignada, mencionarlo aquí
+    y sugerir que las completen en Notion]
+
+---
+
+🗺 PLAN PROPUESTO PARA HOY
+
+[Aprovechar TODOS los bloques libres disponibles]
+
+[HH:MM – HH:MM] 🟢 → [Tarea 1] ([Proyecto]) + [Tarea 2 si cabe] ([Proyecto])
+[HH:MM – HH:MM] 🟡 → [Tarea 3] ([Proyecto])
+[HH:MM – HH:MM] 🔴 → [Tarea 4] ([Proyecto])
+
+[Si quedan tareas sin asignar:]
+📋 Backlog (no alcanzan hoy — retomar mañana):
+  • [Tarea] · [Proyecto] · [Prioridad]
+
+---
+
+💬 [Una línea táctica: insight del día, algo a tener en cuenta, recomendación concreta]
+
+¿Arrancamos con este plan? Con un &quot;sí&quot; lo bloqueo en el calendario y actualizo Notion.</pre></div>
+<hr>
+<h3>Paso 4 — Ejecutar al confirmar</h3>
+<p>Cuando el usuario responda &quot;sí&quot;, &quot;yes&quot;, &quot;dale&quot;, &quot;listo&quot;, &quot;confirma&quot;, &quot;go&quot;, &quot;ok&quot; o similar:</p>
+<h4>En Google Calendar:</h4>
+<p>Crear un evento por cada bloque asignado en el plan:</p>
+<ul><li><strong>Título:</strong> [Nombre de tarea] · [Proyecto]</li><li><strong>Hora:</strong> el bloque propuesto exacto</li><li><strong>Descripción:</strong> <code>Proyecto: X | Energía: Y | Duración estimada: Z</code></li><li><strong>Sin invitados</strong> (bloques de trabajo personal)</li><li><strong>Color según tipo de energía:</strong></li><li>Deep Work → colorId &quot;2&quot; (verde/Sage)</li><li>Reactivo → colorId &quot;5&quot; (amarillo/Banana)</li><li>Admin → colorId &quot;8&quot; (gris/Graphite)</li><li>Llamada → colorId &quot;7&quot; (azul/Peacock)</li><li>Sin tipo → colorId &quot;1&quot; (lavanda/default)</li><li><code>sendUpdates: &quot;none&quot;</code></li></ul>
+<h4>En Notion:</h4>
+<ul><li>Tareas asignadas al plan con Status &quot;Not started&quot; → cambiar a &quot;In progress&quot;</li><li>Tareas ya en &quot;In progress&quot; → dejar igual</li><li>Si la base de Notion no tiene campo Status → omitir este paso e informar al usuario</li></ul>
+<h4>Confirmar al usuario:</h4>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="3">Copiar</button></div><pre>✅ Listo. Bloqueé [N] eventos en tu calendario y marqué [N] tareas como
+   In Progress en Notion.
+
+Que te vaya bien hoy. 💪</pre></div>
+<hr>
+<h3>Reglas de comportamiento</h3>
+<ol><li><strong>Nunca narrar el proceso</strong> — no decir &quot;voy a consultar tu calendario&quot;,</li></ol>
+<p>simplemente hacerlo y mostrar el reporte</p>
+<ol><li><strong>Ser específico</strong> — nombres reales de tareas y proyectos, nunca genérico</li><li><strong>No inventar</strong> — usar solo datos reales de Calendar y Notion</li><li><strong>Aprovechar todos los huecos</strong> — no saltarse bloques libres por el tipo de día</li><li><strong>Adaptarse al idioma</strong> — si el usuario escribe en inglés, responder en inglés;</li></ol>
+<p>si escribe en español, en español</p>
+<ol><li><strong>Si el día ya empezó</strong> (hora &gt; 9am): proponer bloques a partir de la hora</li></ol>
+<p>actual, no desde las 8am</p>
+<ol><li><strong>Si no hay tareas pendientes:</strong> decirlo claro y sugerir que el usuario</li></ol>
+<p>agregue tareas a su Notion</p>
+<ol><li><strong>Si Notion no está configurado:</strong> hacer el debrief solo con el calendario</li></ol>
+<p>y mencionarlo al usuario</p>
+<ol><li><strong>Ante tareas sin duración o prioridad:</strong> asumir razonablemente,</li></ol>
+<p>marcar con ⚠️ y sugerir que las complete en Notion</p>
+<ol><li><strong>Tono:</strong> directo, cálido, como un chief of staff de confianza —</li></ol>
+<p>no un asistente corporativo frío</p>
+<hr>
+<h3>Evening Debrief (opcional)</h3>
+<p>Si el usuario dice &quot;cómo quedó el día&quot;, &quot;qué faltó&quot;, &quot;cierre del día&quot;, &quot;end of day&quot;, &quot;evening debrief&quot; o similar:</p>
+<ol><li>Leer tareas con Status &quot;In progress&quot; o &quot;Not started&quot; con fecha límite hoy</li><li>Leer eventos del día (pasados)</li><li>Presentar:</li><li>✅ Qué se completó (Status = Done de hoy)</li><li>🔄 Qué quedó en progreso</li><li>📋 Qué no se tocó</li><li>💡 Sugerencia de qué mover a mañana (priorizando Alta + fecha límite próxima)</li><li>Preguntar si actualiza fechas límite en Notion → ejecutar con confirmación</li></ol>
+<hr>
+<h3>Actualizar configuración</h3>
+<p>Si el usuario dice &quot;actualiza mi configuración&quot;, &quot;cambia mi Notion&quot;, &quot;quiero usar otro calendario&quot; o similar:</p>
+<ul><li>Volver al Paso 0 y hacer solo las preguntas relevantes al cambio solicitado</li><li>Actualizar los valores en configuración y confirmar los cambios</li></ul>
+<p>Le dices que te lo vuelva un archvio MD</p>
+<hr>
+<h3>4) Activarlo con la “palabra mágica”</h3>
+<p>Define una frase corta para activarlo</p>
+<h4>Palabra mágica sugerida</h4>
+<ul><li><strong>“Brief” &quot;buenos días&quot;, &quot;buenas tardes&quot;, &quot;debrief&quot;, &quot;qué tengo hoy&quot;, &quot;arrancamos&quot;, &quot;cómo está el día&quot;, &quot;planea mi día&quot;, &quot;good morning”</strong></li></ul>
+<h4>Cómo usarla</h4>
+<ol><li>Abre un chat en Claude.</li><li>Escribe: la palabra mágica</li><li>(Opcional) Aclara el enfoque del día: hoy quiero avanzar en el proyecto X”.</li></ol>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<hr>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<h3>5) Flujo de uso (lo que hace el Skill)</h3>
+<p>Cada vez que lo actives con la palabra mágica, debe seguir este orden:</p>
+<h4>5.1 Reporte del día (Calendario)</h4>
+<ul><li>Lista eventos de hoy (hora inicio/fin, título).</li><li>Señala reuniones clave y tiempos de enfoque disponibles.</li></ul>
+<h4>5.2 Bloques disponibles</h4>
+<ul><li>Identifica bloques libres (por ejemplo: 09:30–11:00, 14:00–15:30).</li><li>Indica duración de cada bloque.</li></ul>
+<h4>5.3 Lista de tareas pendientes (Notion)</h4>
+<ul><li>Filtra por Status ≠ Hecho.</li><li>Ordena por: Prioridad (Alta → Baja) y Fecha límite (más cercana primero).</li></ul>
+<h4>5.4 Propuesta de plan (agenda sugerida)</h4>
+<ul><li>Propone asignar tareas a bloques según duración.</li><li>Si un bloque no alcanza, sugiere dividir la tarea o moverla al siguiente bloque.</li></ul>
+<h4>5.5 Confirmación (tú decides)</h4>
+<ul><li>Opción A: “Sí, agenda esto tal cual.”</li><li>Opción B: “Cambia el orden / mueve esta tarea a la tarde.”</li><li>Opción C: “No agendes nada, solo dame el plan.”</li></ul>
+<div class="callout"><p><strong>Resultado ideal:</strong> Terminas con un calendario con bloques de trabajo claros y un plan realista para el día.</p></div>
+<hr>
+<h3>Copy listo para poner al final del Lead Magnet (CTA)</h3>
+<p>Si quieres, copia esto tal cual:</p>
+<ul><li>“Si quieres que esto quede automatizado al 100% para tu negocio (con plantillas, prompts y workflows), escríbeme ‘MAGIA’ y te digo cómo lo implementamos en tu Notion.”</li></ul>
+        <hr><p class="muted" style="font-size:14px">Recurso migrado desde Notion para esta preview. <a href="https://quiet-fiber-044.notion.site/088e4ca3df4d441983862e8a7dc41eb3" target="_blank" rel="noopener">Ver original ↗</a></p></article>
+      <aside class="aside">
+        <div class="aside__box"><h5>Aprende cómo funciona</h5><a class="tv" href="/tutoriales/crea-un-skill-con-claude-desde-cero-escribe-mejor-tu-conteni/" data-track="tutorial_click" data-track-props='{"video_id":"5I0naOsMtAQ","from":"resource"}'><div class="tv__th"><img src="https://img.youtube.com/vi/5I0naOsMtAQ/mqdefault.jpg" alt="" loading="lazy"></div><div><div class="tv__t">Crea un Skill con Claude Desde Cero | Escribe Mejor Tu contenido</div><div class="tv__m">12 min · YouTube</div></div></a></div>
+        
+        <div class="aside__box"><h5>Recursos relacionados</h5><ul class="aside__list"><a href="/recursos/5-niveles-de-claude/" data-track="related_resource_click" data-track-props='{"from":"skill-debrief-claude","to":"5-niveles-de-claude"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Los 5 Niveles de Claude: De Chatbot a Agente que Trabaja Solo</span></a><a href="/recursos/claude-routines/" data-track="related_resource_click" data-track-props='{"from":"skill-debrief-claude","to":"claude-routines"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Claude Routines: Configura una vez, Claude trabaja solo mientras duermes</span></a><a href="/recursos/atajos-de-prompt-claude/" data-track="related_resource_click" data-track-props='{"from":"skill-debrief-claude","to":"atajos-de-prompt-claude"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Atajos de prompt para Claude</span></a></ul></div>
+        <div class="aside__box" style="background:var(--ink);color:#fff;border-color:transparent"><h5 style="color:var(--on-dark-3)">Siguiente paso</h5><p style="margin:0;font-family:var(--serif);font-size:20px;line-height:1.2">¿Quieres hacerlo guiado, en 5 días?</p><a class="btn btn--light btn--sm" href="/retos/claude-en-5-dias/" data-track="challenge_click" data-track-props='{"from": "skill-debrief-claude"}' ><span class="btn__t">Ver el reto</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+      </aside></div></section>
+    <section class="sec sec--cream " data-bg="cream"><div class="wrap sec__head"><div><span class="eyebrow eyebrow--dot" data-reveal>Seguir construyendo</span><h2 class="h2" data-reveal style="--i:1;margin-top:14px">Recursos <em class="serif tint">relacionados</em></h2></div>
+  <div data-reveal style="--i:2;display:grid;gap:16px;justify-items:end"></div></div><div class="wrap grid-3"><a class="res res--sm" href="/recursos/5-niveles-de-claude/" data-reveal style="--i:0" data-track="resource_click" data-track-props='{"resource":"5-niveles-de-claude","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Guía paso a paso</span><span>· Claude</span></div>
+  <div class="card__title">Los 5 Niveles de Claude: De Chatbot a Agente que Trabaja Solo</div>
+  <div class="card__foot"><span>6 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/claude-routines/" data-reveal style="--i:1" data-track="resource_click" data-track-props='{"resource":"claude-routines","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Plantilla</span><span>· Claude</span></div>
+  <div class="card__title">Claude Routines: Configura una vez, Claude trabaja solo mientras duermes</div>
+  <div class="card__foot"><span>6 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/atajos-de-prompt-claude/" data-reveal style="--i:2" data-track="resource_click" data-track-props='{"resource":"atajos-de-prompt-claude","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Plantilla</span><span>· Claude</span></div>
+  <div class="card__title">Atajos de prompt para Claude</div>
+  <div class="card__foot"><span>10 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></div></section>
+</main>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div><div class="foot__brand">Luciano Musella</div><p style="max-width:34ch;margin:12px 0 0">Aprende a construir con IA. Tutoriales, recursos y retos gratis; y un programa para llevarlo al trabajo.</p></div>
+    <div><h6>Explora</h6><ul><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul></div>
+    <div><h6>Canales</h6><ul><li><a href="https://www.youtube.com/@LucianoMusellaa" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://www.linkedin.com/in/luciano-parra-m" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="wrap foot__legal"><span>© 2026 Luciano Musella</span><span>Preview · web-v2 · no es la versión final</span></div>
+</footer>
+<div class="preview-badge">Preview web-v2</div>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

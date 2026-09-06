@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía: Automatización Fathom → Make → Notion | Luciano Musella</title>
+<meta name="description" content="Que cada transcript de llamada grabada en Fathom llegue automáticamente como página a una base de datos de Notion.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Guía: Automatización Fathom → Make → Notion"><meta property="og:description" content="Que cada transcript de llamada grabada en Fathom llegue automáticamente como página a una base de datos de Notion."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+
+</head>
+<body data-page="resource" data-page-props='{"resource": "fathom-make-notion", "category": "agentes", "type": "guia-paso-a-paso"}'>
+<a class="sr" href="#main">Ir al contenido</a>
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="/">Luciano<span>.</span>Musella</a>
+    <ul class="nav__links"><li><a href="/">Inicio</a></li><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul>
+    <div class="nav__cta">
+      <a class="btn btn--ghost btn--sm" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "nav"}' ><span class="btn__t">Agenda</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu"><nav class="wrap"><div class="menu__list"><a href="/">Inicio<small>01</small></a><a href="/tutoriales/">Tutoriales<small>02</small></a><a href="/recursos/">Recursos<small>03</small></a><a href="/retos/">Retos<small>04</small></a><a href="/programa/">Programa<small>05</small></a><a href="/agenda/">Agenda<small>06</small></a></div><div class="menu__foot"><a class="btn btn--light" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "menu"}' ><span class="btn__t">Agenda una conversación</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></nav></div>
+<main id="main">
+<div class="progress" aria-hidden="true"></div>
+    <section class="ahead sec--cream" data-bg="cream"><div class="wrap">
+      <div class="crumbs"><a href="/recursos/">Recursos</a><span>/</span><a href="/recursos/#agentes">Agentes</a></div>
+      <span class="res__type" data-reveal>Guía paso a paso</span>
+      <h1 class="display display--l" data-reveal style="--i:1;margin-top:14px">Guía: Automatización Fathom → Make → Notion</h1>
+      <p class="lead" data-reveal style="--i:2;margin-top:20px">Que cada transcript de llamada grabada en Fathom llegue automáticamente como página a una base de datos de Notion.</p>
+      <div class="ahead__meta" data-reveal style="--i:3"><span>4 min de lectura</span><span class="dot"></span><span>Agentes y automatización</span><span class="dot"></span><span>Fathom</span><span class="dot"></span><span>Make</span><span class="dot"></span><span>Notion</span><span class="dot"></span><span>Zapier</span></div>
+      <div class="boxes"><div class="box"><h5>Qué obtienes</h5><ul><li>5 pasos numerados (Notion, Fathom, escenario Make, prueba, mejoras)</li><li>tabla con el esquema de la base de datos de llamadas (8 columnas)</li><li>bloque de mapeo de campos webhook → Notion</li><li>tabla de troubleshooting (4 problemas)</li><li>links a documentación de Make, Fathom y Notion API</li></ul></div></div>
+    </div></section>
+    <section class="sec sec--paper sec--tight" data-bg="paper"><div class="wrap article">
+      <article class="prose" data-resource="fathom-make-notion"><blockquote><strong>Objetivo:</strong> Cada vez que termines una llamada grabada en Fathom, el transcript aparece automáticamente como una nueva página en Notion.</blockquote>
+<hr>
+<h3>¿Qué necesitas antes de empezar?</h3>
+<ul><li>✅ Cuenta activa en <strong>Fathom</strong> (plan que permita API o Zapier/Make)</li><li>✅ Cuenta en <a href="http://Make.com" target="_blank" rel="noopener"><strong>Make.com</strong></a> (plan gratuito funciona para empezar)</li><li>✅ Workspace de <strong>Notion</strong> con integración activa</li><li>✅ Una base de datos en Notion donde guardar los transcripts</li></ul>
+<hr>
+<h3>PASO 1 — Preparar Notion</h3>
+<h4>1.1 Crear la base de datos de llamadas</h4>
+<p>En tu Notion, crea una nueva base de datos (tipo Table) con estas columnas:</p>
+<table><thead><tr><th>Columna</th><th>Tipo</th></tr></thead><tbody><tr><td>Nombre de la llamada</td><td>Title</td></tr><tr><td>Fecha</td><td>Date</td></tr><tr><td>Participantes</td><td>Rich Text</td></tr><tr><td>Duración</td><td>Rich Text</td></tr><tr><td>Transcript</td><td>Rich Text</td></tr><tr><td>Resumen</td><td>Rich Text</td></tr><tr><td>Action Items</td><td>Rich Text</td></tr><tr><td>Link a Fathom</td><td>URL</td></tr></tbody></table>
+<h4>1.2 Conectar Notion con Make</h4>
+<ol><li>Ve a <strong>Notion → Settings → Connections → Develop or manage integrations</strong></li><li>Crea una integración nueva → llámala <code>Make Automation</code></li><li>Copia el <strong>Internal Integration Token</strong> (lo vas a necesitar en Make)</li><li>Ve a tu base de datos en Notion → <code>...</code> → <strong>Add connections</strong> → selecciona tu integración <code>Make Automation</code></li></ol>
+<hr>
+<h3>PASO 2 — Preparar Fathom</h3>
+<h4>Opción A: Fathom vía Webhook (recomendado si tienes plan de pago)</h4>
+<ol><li>Ve a <strong>Fathom → Settings → Integrations → Webhooks</strong></li><li>Crea un nuevo webhook</li><li>Selecciona el evento: <code>call.completed</code> o <code>transcript.ready</code></li><li>La URL del webhook la obtienes en Make (la configuras en el Paso 3)</li></ol>
+<h4>Opción B: Fathom vía Zapier/Make nativo</h4>
+<ol><li>Fathom tiene integración directa con Make en algunos planes</li><li>En Make, busca el módulo <strong>Fathom</strong> en el catálogo</li><li>Si no aparece, usa la Opción A (webhook)</li></ol>
+<hr>
+<h3>PASO 3 — Construir el escenario en Make</h3>
+<h4>3.1 Crear escenario nuevo</h4>
+<ol><li>Entra a <a href="http://make.com" target="_blank" rel="noopener"><strong>make.com</strong></a> → <code>Create a new scenario</code></li><li>Haz clic en el <code>+</code> para agregar el primer módulo</li></ol>
+<h4>3.2 Configurar el trigger (disparador)</h4>
+<p><strong>Si usas Webhook de Fathom:</strong></p>
+<ul><li>Busca y agrega: <code>Webhooks → Custom Webhook</code></li><li>Make te genera una URL → <strong>copia esa URL</strong></li><li>Pégala en Fathom (Paso 2, Opción A)</li><li>Haz una llamada de prueba en Fathom para que Make detecte la estructura del JSON</li></ul>
+<p><strong>Si Fathom tiene módulo nativo:</strong></p>
+<ul><li>Busca <code>Fathom</code> → selecciona <code>Watch Calls</code> o similar</li><li>Autoriza tu cuenta de Fathom</li></ul>
+<h4>3.3 Agregar módulo de Notion</h4>
+<ol><li>Haz clic en <code>+</code> para agregar otro módulo después del trigger</li><li>Busca <strong>Notion</strong></li><li>Selecciona: <code>Create a Database Item</code></li><li>Conecta tu cuenta de Notion con el token del Paso 1.2</li><li>Selecciona tu base de datos de llamadas</li><li>Mapea los campos:</li></ol>
+<div class="codeblock"><div class="codeblock__bar"><span>texto</span><button class="copy" type="button" data-i="1">Copiar</button></div><pre>Nombre de la llamada  → {{title}} o {{call_name}} del webhook
+Fecha                 → {{created_at}} o {{date}}
+Participantes         → {{attendees}} o {{participants}}
+Transcript            → {{transcript}} o {{transcript_text}}
+Resumen               → {{summary}}
+Action Items          → {{action_items}}
+Link a Fathom         → {{recording_url}}</pre></div>
+<blockquote>⚠️ Los nombres exactos de las variables dependen del JSON que envía Fathom. Verifica los campos reales después de hacer una llamada de prueba.</blockquote>
+<h4>3.4 Guardar y activar el escenario</h4>
+<ol><li>Haz clic en <strong>Save</strong> (💾)</li><li>Activa el escenario con el toggle ON/OFF</li><li>Cambia el intervalo de revisión si usas polling (cada 15 min es suficiente)</li></ol>
+<hr>
+<h3>PASO 4 — Probar la automatización</h3>
+<ol><li>Haz una llamada de prueba en Fathom (puede ser contigo mismo, 1-2 minutos)</li><li>Espera a que Fathom genere el transcript (puede tardar unos minutos)</li><li>Verifica en Make → <strong>Run history</strong> que el escenario se ejecutó</li><li>Revisa tu base de datos en Notion → debe aparecer la nueva página con el transcript</li></ol>
+<hr>
+<h3>PASO 5 — Mejoras opcionales</h3>
+<h4>Agregar procesamiento con IA (Claude o GPT)</h4>
+<p>Entre el trigger de Fathom y el módulo de Notion, puedes agregar:</p>
+<ul><li><code>HTTP → Make a request</code> a la API de Anthropic o OpenAI</li><li>Envía el transcript como prompt</li><li>Pide que extraiga: resumen ejecutivo, action items, decisiones clave</li><li>Mapea la respuesta a los campos de Notion</li></ul>
+<h4>Agregar notificación</h4>
+<ul><li>Agrega un módulo de <strong>Gmail</strong> o <strong>Slack</strong> al final del escenario</li><li>Envía un mensaje cuando se guarde un nuevo transcript</li></ul>
+<hr>
+<h3>Troubleshooting común</h3>
+<table><thead><tr><th>Problema</th><th>Solución</th></tr></thead><tbody><tr><td>Make no recibe datos de Fathom</td><td>Verifica que el webhook URL esté bien pegado en Fathom</td></tr><tr><td>Error de permisos en Notion</td><td>Asegúrate de haber conectado la integración a esa base de datos específica</td></tr><tr><td>Los campos aparecen vacíos</td><td>Revisa el JSON del webhook en Make → Run history → ver datos reales</td></tr><tr><td>El transcript es muy largo</td><td>Notion tiene límite de 2000 chars por campo → divide en bloques</td></tr></tbody></table>
+<hr>
+<h3>Recursos útiles</h3>
+<ul><li><a href="https://www.make.com/en/help" target="_blank" rel="noopener">Documentación </a><a href="http://Make.com" target="_blank" rel="noopener">Make.com</a></li><li><a href="https://fathom.video/integrations" target="_blank" rel="noopener">Fathom Integrations</a></li><li><a href="https://developers.notion.com" target="_blank" rel="noopener">Notion API</a></li></ul>
+<hr>
+<p><em>Guía creada con Claude · Actualiza esta página con tus notas del proceso</em></p>
+        <hr><p class="muted" style="font-size:14px">Recurso migrado desde Notion para esta preview. <a href="https://quiet-fiber-044.notion.site/321c40c66f0981e48a5fdb2e47057d36" target="_blank" rel="noopener">Ver original ↗</a></p></article>
+      <aside class="aside">
+        <div class="aside__box"><h5>Aprende cómo funciona</h5><a class="tv" href="/tutoriales/automatic-la-operacin-de-una-empresa-de-50-empleados-con-ai-/" data-track="tutorial_click" data-track-props='{"video_id":"0BaH6tekits","from":"resource"}'><div class="tv__th"><img src="https://img.youtube.com/vi/0BaH6tekits/mqdefault.jpg" alt="" loading="lazy"></div><div><div class="tv__t">Automaticé la operación de una empresa de 50 empleados con AI y Notion</div><div class="tv__m">24 min · YouTube</div></div></a></div>
+        
+        <div class="aside__box"><h5>Recursos relacionados</h5><ul class="aside__list"><a href="/recursos/mi-stack-de-ai/" data-track="related_resource_click" data-track-props='{"from":"fathom-make-notion","to":"mi-stack-de-ai"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Mi Stack de AI, así es como mi empresa funciona</span></a><a href="/recursos/hermes/" data-track="related_resource_click" data-track-props='{"from":"fathom-make-notion","to":"hermes"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Hermes: El agente de IA que ejecuta, no solo responde</span></a><a href="/recursos/roadmap-claude-5-dias/" data-track="related_resource_click" data-track-props='{"from":"fathom-make-notion","to":"roadmap-claude-5-dias"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Guía Oficial para Principiantes en Claude: Roadmap de 5 Días</span></a></ul></div>
+        <div class="aside__box" style="background:var(--ink);color:#fff;border-color:transparent"><h5 style="color:var(--on-dark-3)">Siguiente paso</h5><p style="margin:0;font-family:var(--serif);font-size:20px;line-height:1.2">¿Quieres hacerlo guiado, en 5 días?</p><a class="btn btn--light btn--sm" href="/retos/claude-en-5-dias/" data-track="challenge_click" data-track-props='{"from": "fathom-make-notion"}' ><span class="btn__t">Ver el reto</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+      </aside></div></section>
+    <section class="sec sec--cream " data-bg="cream"><div class="wrap sec__head"><div><span class="eyebrow eyebrow--dot" data-reveal>Seguir construyendo</span><h2 class="h2" data-reveal style="--i:1;margin-top:14px">Recursos <em class="serif tint">relacionados</em></h2></div>
+  <div data-reveal style="--i:2;display:grid;gap:16px;justify-items:end"></div></div><div class="wrap grid-3"><a class="res res--sm" href="/recursos/mi-stack-de-ai/" data-reveal style="--i:0" data-track="resource_click" data-track-props='{"resource":"mi-stack-de-ai","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Análisis</span><span>· Negocio</span></div>
+  <div class="card__title">Mi Stack de AI, así es como mi empresa funciona</div>
+  <div class="card__foot"><span>6 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/hermes/" data-reveal style="--i:1" data-track="resource_click" data-track-props='{"resource":"hermes","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Análisis</span><span>· Agentes</span></div>
+  <div class="card__title">Hermes: El agente de IA que ejecuta, no solo responde</div>
+  <div class="card__foot"><span>4 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/roadmap-claude-5-dias/" data-reveal style="--i:2" data-track="resource_click" data-track-props='{"resource":"roadmap-claude-5-dias","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Guía paso a paso</span><span>· Empezar</span></div>
+  <div class="card__title">Guía Oficial para Principiantes en Claude: Roadmap de 5 Días</div>
+  <div class="card__foot"><span>8 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></div></section>
+</main>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div><div class="foot__brand">Luciano Musella</div><p style="max-width:34ch;margin:12px 0 0">Aprende a construir con IA. Tutoriales, recursos y retos gratis; y un programa para llevarlo al trabajo.</p></div>
+    <div><h6>Explora</h6><ul><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul></div>
+    <div><h6>Canales</h6><ul><li><a href="https://www.youtube.com/@LucianoMusellaa" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://www.linkedin.com/in/luciano-parra-m" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="wrap foot__legal"><span>© 2026 Luciano Musella</span><span>Preview · web-v2 · no es la versión final</span></div>
+</footer>
+<div class="preview-badge">Preview web-v2</div>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,540 @@
+{
+ "topics": {
+  "empezar": "Empezar",
+  "claude": "Claude",
+  "automatizaciones": "Automatizaciones",
+  "construcciones": "Construcciones reales",
+  "herramientas": "Herramientas",
+  "negocio": "Negocio y founders"
+ },
+ "videos": [
+  {
+   "id": "5I0naOsMtAQ",
+   "slug": "crea-un-skill-con-claude-desde-cero-escribe-mejor-tu-conteni",
+   "title": "Crea un Skill con Claude Desde Cero | Escribe Mejor Tu contenido",
+   "topic": "claude",
+   "topic_label": "Claude",
+   "duration": 734,
+   "duration_label": "12 min",
+   "views": 3700,
+   "thumb": "https://img.youtube.com/vi/5I0naOsMtAQ/maxresdefault.jpg",
+   "related_resources": [
+    "skill-debrief-claude",
+    "find-skills-claude",
+    "5-skills-gratuitos-claude",
+    "skills-marketing-claude"
+   ],
+   "featured": true
+  },
+  {
+   "id": "wpYDisTBlE8",
+   "slug": "tutorial-completo-de-claude-cowork-cmo-usar-claude-cowork-me",
+   "title": "Tutorial completo de Claude Cowork: cómo usar Claude Cowork mejor que el 99% de las personas",
+   "topic": "claude",
+   "topic_label": "Claude",
+   "duration": 382,
+   "duration_label": "6 min",
+   "views": 2100,
+   "thumb": "https://img.youtube.com/vi/wpYDisTBlE8/maxresdefault.jpg",
+   "related_resources": [
+    "second-brain-obsidian-claude",
+    "small-business-claude",
+    "atencion-cliente-claude",
+    "roadmap-claude-5-dias"
+   ],
+   "featured": true
+  },
+  {
+   "id": "sn3zkOGdfsM",
+   "slug": "claude-skills-plugins-y-conectores-cul-es-la-diferencia",
+   "title": "Claude Skills, Plugins y Conectores: Cuál es la diferencia?",
+   "topic": "claude",
+   "topic_label": "Claude",
+   "duration": 368,
+   "duration_label": "6 min",
+   "views": 1500,
+   "thumb": "https://img.youtube.com/vi/sn3zkOGdfsM/maxresdefault.jpg",
+   "related_resources": [
+    "5-mcps-claude",
+    "small-business-claude",
+    "atencion-cliente-claude",
+    "find-skills-claude"
+   ],
+   "featured": true
+  },
+  {
+   "id": "4o29hLQAWmw",
+   "slug": "tutorial-crea-un-chatbot-de-whatsapp-formato-fcil",
+   "title": "Tutorial Crea Un Chatbot De WhatsApp (formato fácil)",
+   "topic": "automatizaciones",
+   "topic_label": "Automatizaciones",
+   "duration": 555,
+   "duration_label": "9 min",
+   "views": 1400,
+   "thumb": "https://img.youtube.com/vi/4o29hLQAWmw/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "wiGN309SE5U",
+   "slug": "notebooklm-tutorial-completo-para-aprender-a-usarlo-desde-ce",
+   "title": "NotebookLM: Tutorial Completo para Aprender a Usarlo Desde Cero",
+   "topic": "herramientas",
+   "topic_label": "Herramientas",
+   "duration": 363,
+   "duration_label": "6 min",
+   "views": 1100,
+   "thumb": "https://img.youtube.com/vi/wiGN309SE5U/maxresdefault.jpg",
+   "related_resources": [
+    "notebooklm-presentaciones"
+   ],
+   "featured": false
+  },
+  {
+   "id": "y3NWAa5z6HU",
+   "slug": "tutorial-crear-un-bot-de-whatsapp-de-la-forma-ms-fcil-en-sol",
+   "title": "Tutorial - Crear un Bot de Whatsapp de la forma más fácil. En solo 10 minutos",
+   "topic": "automatizaciones",
+   "topic_label": "Automatizaciones",
+   "duration": 730,
+   "duration_label": "12 min",
+   "views": 456,
+   "thumb": "https://img.youtube.com/vi/y3NWAa5z6HU/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "aHSszeH4-Ro",
+   "slug": "cmo-crear-presentaciones-increbles-con-ia-en-menos-de-10-min",
+   "title": "Cómo crear presentaciones increíbles con IA en menos de 10 minutos (ChatGPT + Lovable)",
+   "topic": "herramientas",
+   "topic_label": "Herramientas",
+   "duration": 537,
+   "duration_label": "8 min",
+   "views": 388,
+   "thumb": "https://img.youtube.com/vi/aHSszeH4-Ro/maxresdefault.jpg",
+   "related_resources": [
+    "gpt-image-2",
+    "notebooklm-presentaciones"
+   ],
+   "featured": false
+  },
+  {
+   "id": "GTW_Z85lQJU",
+   "slug": "cmo-crear-una-automatizacin-para-analizar-los-reels-ms-viral",
+   "title": "Cómo Crear una Automatización para Analizar los Reels más Virales en Instagram en 5 pasos",
+   "topic": "automatizaciones",
+   "topic_label": "Automatizaciones",
+   "duration": 1102,
+   "duration_label": "18 min",
+   "views": 348,
+   "thumb": "https://img.youtube.com/vi/GTW_Z85lQJU/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "foO-yV6BOL8",
+   "slug": "construyendo-un-app-de-inteligencia-artificial-para-una-de-l",
+   "title": "Construyendo un app de Inteligencia Artificial para una de las empresas de donas más famosas",
+   "topic": "construcciones",
+   "topic_label": "Construcciones reales",
+   "duration": 859,
+   "duration_label": "14 min",
+   "views": 304,
+   "thumb": "https://img.youtube.com/vi/foO-yV6BOL8/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "2vt4rm1n-3o",
+   "slug": "la-automatizacin-que-enva-500-mensajes-ultra-personalizados-",
+   "title": "La Automatización Que Envía 500 Mensajes Ultra-Personalizados en LinkedIn Sin Escribir Ni Uno",
+   "topic": "automatizaciones",
+   "topic_label": "Automatizaciones",
+   "duration": 1201,
+   "duration_label": "20 min",
+   "views": 294,
+   "thumb": "https://img.youtube.com/vi/2vt4rm1n-3o/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "n7w3Y4X1QgE",
+   "slug": "constru-una-app-desde-cero-sin-saber-programar-usando-claude",
+   "title": "Construí una App desde Cero sin Saber Programar (Usando Claude Code)",
+   "topic": "claude",
+   "topic_label": "Claude",
+   "duration": 640,
+   "duration_label": "10 min",
+   "views": 231,
+   "thumb": "https://img.youtube.com/vi/n7w3Y4X1QgE/maxresdefault.jpg",
+   "related_resources": [
+    "agente-mercado",
+    "hermes",
+    "5-niveles-de-claude",
+    "jarvis-claude-code"
+   ],
+   "featured": true
+  },
+  {
+   "id": "gcZnVqTFkvc",
+   "slug": "as-fue-mi-workshop-en-el-techfest-el-evento-1-de-tecnologa-e",
+   "title": "Así fue mi workshop en el TechFest, el evento #1 de tecnología en Colombia",
+   "topic": "negocio",
+   "topic_label": "Negocio y founders",
+   "duration": 345,
+   "duration_label": "5 min",
+   "views": 207,
+   "thumb": "https://img.youtube.com/vi/gcZnVqTFkvc/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "gIJ18tpbOy8",
+   "slug": "crea-una-pgina-web-profesional-con-ia-sin-programar",
+   "title": "Crea una Página Web Profesional con IA (Sin programar)",
+   "topic": "construcciones",
+   "topic_label": "Construcciones reales",
+   "duration": 573,
+   "duration_label": "9 min",
+   "views": 188,
+   "thumb": "https://img.youtube.com/vi/gIJ18tpbOy8/maxresdefault.jpg",
+   "related_resources": [
+    "open-design",
+    "diseno-web-claude"
+   ],
+   "featured": false
+  },
+  {
+   "id": "gpPmmVT89gA",
+   "slug": "la-gua-definitiva-para-aprender-ai-en-2026",
+   "title": "La GUÍA definitiva para aprender AI en 2026",
+   "topic": "empezar",
+   "topic_label": "Empezar",
+   "duration": 788,
+   "duration_label": "13 min",
+   "views": 184,
+   "thumb": "https://img.youtube.com/vi/gpPmmVT89gA/maxresdefault.jpg",
+   "related_resources": [
+    "vacantes-linkedin-claude",
+    "certificaciones-ia",
+    "roadmap-claude-5-dias",
+    "chatgpt-privacidad"
+   ],
+   "featured": false
+  },
+  {
+   "id": "nNsWjShimJQ",
+   "slug": "5-errores-que-arruinan-tus-skills-de-ai",
+   "title": "5 errores que arruinan tus Skills de AI",
+   "topic": "claude",
+   "topic_label": "Claude",
+   "duration": 577,
+   "duration_label": "9 min",
+   "views": 175,
+   "thumb": "https://img.youtube.com/vi/nNsWjShimJQ/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "RtKlQeXZZ3k",
+   "slug": "los-mdicos-tambin-pueden-usar-ai-y-aqu-te-muestro-cmo",
+   "title": "Los médicos también pueden usar AI (y aquí te muestro cómo)",
+   "topic": "construcciones",
+   "topic_label": "Construcciones reales",
+   "duration": 698,
+   "duration_label": "11 min",
+   "views": 168,
+   "thumb": "https://img.youtube.com/vi/RtKlQeXZZ3k/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "5v9PTxXsxU0",
+   "slug": "intent-construir-una-solucin-de-ia-frente-a-30-personas",
+   "title": "Intenté construir una solución de IA frente a 30 personas",
+   "topic": "construcciones",
+   "topic_label": "Construcciones reales",
+   "duration": 645,
+   "duration_label": "10 min",
+   "views": 165,
+   "thumb": "https://img.youtube.com/vi/5v9PTxXsxU0/maxresdefault.jpg",
+   "related_resources": [
+    "agente-mercado"
+   ],
+   "featured": false
+  },
+  {
+   "id": "f9kDOIGPnKs",
+   "slug": "se-puede-confiar-en-chatgpt-para-temas-legales",
+   "title": "¿Se puede confiar en ChatGPT para temas legales?",
+   "topic": "negocio",
+   "topic_label": "Negocio y founders",
+   "duration": 1810,
+   "duration_label": "30 min",
+   "views": 151,
+   "thumb": "https://img.youtube.com/vi/f9kDOIGPnKs/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "eCS-sZbsOGs",
+   "slug": "construimos-una-mquina-de-contenido-con-ia-para-una-psicloga",
+   "title": "Construimos una máquina de contenido con IA para una psicóloga",
+   "topic": "construcciones",
+   "topic_label": "Construcciones reales",
+   "duration": 1719,
+   "duration_label": "28 min",
+   "views": 148,
+   "thumb": "https://img.youtube.com/vi/eCS-sZbsOGs/maxresdefault.jpg",
+   "related_resources": [
+    "houston-reuniones-contenido"
+   ],
+   "featured": false
+  },
+  {
+   "id": "AkMh7h4_xvc",
+   "slug": "ex-banquero-revela-lo-que-aprendi-despus-de-ser-rechazado-po",
+   "title": "Ex-banquero Revela Lo Que Aprendió Después De Ser Rechazado Por 250 Inversionistas | Daniel Camacho",
+   "topic": "negocio",
+   "topic_label": "Negocio y founders",
+   "duration": 1362,
+   "duration_label": "22 min",
+   "views": 136,
+   "thumb": "https://img.youtube.com/vi/AkMh7h4_xvc/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "l0daN5GrZLw",
+   "slug": "el-secreto-de-pasar-de-founder-a-ceo",
+   "title": "El secreto de pasar de Founder A CEO",
+   "topic": "negocio",
+   "topic_label": "Negocio y founders",
+   "duration": 2100,
+   "duration_label": "35 min",
+   "views": 104,
+   "thumb": "https://img.youtube.com/vi/l0daN5GrZLw/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "0BaH6tekits",
+   "slug": "automatic-la-operacin-de-una-empresa-de-50-empleados-con-ai-",
+   "title": "Automaticé la operación de una empresa de 50 empleados con AI y Notion",
+   "topic": "construcciones",
+   "topic_label": "Construcciones reales",
+   "duration": 1494,
+   "duration_label": "24 min",
+   "views": 100,
+   "thumb": "https://img.youtube.com/vi/0BaH6tekits/maxresdefault.jpg",
+   "related_resources": [
+    "mi-stack-de-ai",
+    "fathom-make-notion",
+    "houston-preparacion-comercial",
+    "houston-propuestas"
+   ],
+   "featured": true
+  },
+  {
+   "id": "RPdnNIefDL0",
+   "slug": "me-invitaron-a-uno-de-los-eventos-de-tech-ms-exclusivos-de-b",
+   "title": "Me invitaron a uno de los eventos de tech más exclusivos de Bogotá",
+   "topic": "negocio",
+   "topic_label": "Negocio y founders",
+   "duration": 737,
+   "duration_label": "12 min",
+   "views": 89,
+   "thumb": "https://img.youtube.com/vi/RPdnNIefDL0/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "ai6UJBVT4tg",
+   "slug": "lo-que-nadie-te-muestra-de-montar-una-empresa-de-ia",
+   "title": "Lo que nadie te muestra de montar una empresa de IA",
+   "topic": "negocio",
+   "topic_label": "Negocio y founders",
+   "duration": 1012,
+   "duration_label": "16 min",
+   "views": 86,
+   "thumb": "https://img.youtube.com/vi/ai6UJBVT4tg/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "2izAx-tJQIg",
+   "slug": "descubre-la-ecuacin-que-hace-que-tu-contenido-venda-ms",
+   "title": "Descubre la ecuación que hace que tu contenido venda más",
+   "topic": "negocio",
+   "topic_label": "Negocio y founders",
+   "duration": 1944,
+   "duration_label": "32 min",
+   "views": 85,
+   "thumb": "https://img.youtube.com/vi/2izAx-tJQIg/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "CESdQaGqRms",
+   "slug": "experto-revela-por-qu-las-agencias-ya-no-son-suficientes-iva",
+   "title": "Experto Revela Por Qué Las Agencias Ya No Son Suficientes | Ivan Escobar",
+   "topic": "negocio",
+   "topic_label": "Negocio y founders",
+   "duration": 1276,
+   "duration_label": "21 min",
+   "views": 74,
+   "thumb": "https://img.youtube.com/vi/CESdQaGqRms/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "bYC-MpWvDac",
+   "slug": "construyendo-mi-empresa-de-ia-hasta-llegar-al-milln-de-dlare",
+   "title": "Construyendo mi empresa de IA hasta llegar al millón de dólares",
+   "topic": "negocio",
+   "topic_label": "Negocio y founders",
+   "duration": 1187,
+   "duration_label": "19 min",
+   "views": 72,
+   "thumb": "https://img.youtube.com/vi/bYC-MpWvDac/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "T7vHp2fpbo8",
+   "slug": "se-puede-vender-ms-con-un-avatar-de-ai",
+   "title": "¿Se puede vender más con un avatar de AI?",
+   "topic": "herramientas",
+   "topic_label": "Herramientas",
+   "duration": 1419,
+   "duration_label": "23 min",
+   "views": 56,
+   "thumb": "https://img.youtube.com/vi/T7vHp2fpbo8/maxresdefault.jpg",
+   "related_resources": [
+    "higgsfield-claude-video"
+   ],
+   "featured": false
+  },
+  {
+   "id": "KuJzYu763yU",
+   "slug": "se-puede-confiar-en-la-ia-para-gestionar-clientes-inmobiliar",
+   "title": "¿Se puede confiar en la IA para gestionar clientes inmobiliarios?",
+   "topic": "construcciones",
+   "topic_label": "Construcciones reales",
+   "duration": 1611,
+   "duration_label": "26 min",
+   "views": 52,
+   "thumb": "https://img.youtube.com/vi/KuJzYu763yU/maxresdefault.jpg",
+   "related_resources": [
+    "houston-memoria-clientes"
+   ],
+   "featured": false
+  },
+  {
+   "id": "kJn-jDJL71s",
+   "slug": "cmo-encontrar-ideas-de-contenido-infinitas-en-automtico-con-",
+   "title": "Cómo Encontrar Ideas de Contenido Infinitas en Automático con Una Simle Automatización en N8N",
+   "topic": "automatizaciones",
+   "topic_label": "Automatizaciones",
+   "duration": 1039,
+   "duration_label": "17 min",
+   "views": 51,
+   "thumb": "https://img.youtube.com/vi/kJn-jDJL71s/maxresdefault.jpg",
+   "related_resources": [
+    "contenido-linkedin"
+   ],
+   "featured": false
+  },
+  {
+   "id": "y9RakPN56rI",
+   "slug": "construye-un-software-que-tu-firma-de-abogados-deje-de-pagar",
+   "title": "Construye un software que tu firma de abogados deje de pagar cada mes",
+   "topic": "construcciones",
+   "topic_label": "Construcciones reales",
+   "duration": 680,
+   "duration_label": "11 min",
+   "views": 50,
+   "thumb": "https://img.youtube.com/vi/y9RakPN56rI/maxresdefault.jpg",
+   "related_resources": [],
+   "featured": false
+  },
+  {
+   "id": "loczkTaZ05g",
+   "slug": "como-generar-ideas-infinitas-para-linkedin-automatizacin-con",
+   "title": "Cómo Generar Ideas Infinitas para LinkedIn - Automatización con Inteligencia Artificial en N8N",
+   "topic": "automatizaciones",
+   "topic_label": "Automatizaciones",
+   "duration": 723,
+   "duration_label": "12 min",
+   "views": 44,
+   "thumb": "https://img.youtube.com/vi/loczkTaZ05g/maxresdefault.jpg",
+   "related_resources": [
+    "contenido-linkedin"
+   ],
+   "featured": false
+  }
+ ],
+ "routes": [
+  {
+   "slug": "nuevo",
+   "title": "Soy nuevo en IA",
+   "desc": "Entiende qué existe, qué sirve y por dónde empezar sin ruido.",
+   "videos": [
+    "gpPmmVT89gA",
+    "wpYDisTBlE8",
+    "wiGN309SE5U"
+   ],
+   "resources": [
+    "roadmap-claude-5-dias",
+    "certificaciones-ia",
+    "atajos-de-prompt-claude"
+   ]
+  },
+  {
+   "slug": "claude",
+   "title": "Quiero aprender Claude",
+   "desc": "Skills, plugins y conectores: de usar Claude a hacerlo trabajar por ti.",
+   "videos": [
+    "sn3zkOGdfsM",
+    "5I0naOsMtAQ",
+    "nNsWjShimJQ"
+   ],
+   "resources": [
+    "5-niveles-de-claude",
+    "find-skills-claude",
+    "4-mcps-agente-real"
+   ]
+  },
+  {
+   "slug": "agentes",
+   "title": "Quiero construir agentes",
+   "desc": "Del primer agente que ejecuta una tarea real a un sistema que trabaja solo.",
+   "videos": [
+    "n7w3Y4X1QgE",
+    "0BaH6tekits",
+    "5v9PTxXsxU0"
+   ],
+   "resources": [
+    "hermes",
+    "claude-council",
+    "houston-agentes-negocio"
+   ]
+  },
+  {
+   "slug": "automatizar",
+   "title": "Quiero automatizar mi trabajo",
+   "desc": "Reuniones, mensajes, contenido: lo repetitivo, en automático.",
+   "videos": [
+    "y3NWAa5z6HU",
+    "GTW_Z85lQJU",
+    "2vt4rm1n-3o"
+   ],
+   "resources": [
+    "fathom-make-notion",
+    "claude-routines",
+    "atencion-cliente-claude"
+   ]
+  }
+ ]
+}

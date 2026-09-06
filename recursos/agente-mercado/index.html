@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo construí un agente que hace el mercado del Éxito por mí (y cómo tú puedes hacer lo mismo) | Luciano Musella</title>
+<meta name="description" content="Automatizar el mercado online: un agente conversacional calcula ingredientes y arma el carrito en exito.com solo.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Cómo construí un agente que hace el mercado del Éxito por mí (y cómo tú puedes hacer lo mismo)"><meta property="og:description" content="Automatizar el mercado online: un agente conversacional calcula ingredientes y arma el carrito en exito.com solo."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+
+</head>
+<body data-page="resource" data-page-props='{"resource": "agente-mercado", "category": "agentes", "type": "caso-construido"}'>
+<a class="sr" href="#main">Ir al contenido</a>
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="/">Luciano<span>.</span>Musella</a>
+    <ul class="nav__links"><li><a href="/">Inicio</a></li><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul>
+    <div class="nav__cta">
+      <a class="btn btn--ghost btn--sm" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "nav"}' ><span class="btn__t">Agenda</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu"><nav class="wrap"><div class="menu__list"><a href="/">Inicio<small>01</small></a><a href="/tutoriales/">Tutoriales<small>02</small></a><a href="/recursos/">Recursos<small>03</small></a><a href="/retos/">Retos<small>04</small></a><a href="/programa/">Programa<small>05</small></a><a href="/agenda/">Agenda<small>06</small></a></div><div class="menu__foot"><a class="btn btn--light" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "menu"}' ><span class="btn__t">Agenda una conversación</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></nav></div>
+<main id="main">
+<div class="progress" aria-hidden="true"></div>
+    <section class="ahead sec--cream" data-bg="cream"><div class="wrap">
+      <div class="crumbs"><a href="/recursos/">Recursos</a><span>/</span><a href="/recursos/#agentes">Agentes</a></div>
+      <span class="res__type" data-reveal>Caso construido</span>
+      <h1 class="display display--l" data-reveal style="--i:1;margin-top:14px">Cómo construí un agente que hace el mercado del Éxito por mí (y cómo tú puedes hacer lo mismo)</h1>
+      <p class="lead" data-reveal style="--i:2;margin-top:20px">Automatizar el mercado online: un agente conversacional calcula ingredientes y arma el carrito en exito.com solo.</p>
+      <div class="ahead__meta" data-reveal style="--i:3"><span>7 min de lectura</span><span class="dot"></span><span>Agentes y automatización</span><span class="dot"></span><span>Claude</span><span class="dot"></span><span>Claude Code</span><span class="dot"></span><span>VS Code</span><span class="dot"></span><span>Node.js</span></div>
+      <div class="boxes"><div class="box"><h5>Qué obtienes</h5><ul><li>prompt maestro largo para que Claude Code genere el proyecto completo</li><li>7 pasos con 5 capturas (instalación VS Code, Node, Playwright)</li><li>comandos de terminal para instalar y correr</li><li>ejemplo de conversación completa con el agente</li><li>reglas de manejo de popups y plan B para productos no encontrados</li></ul></div></div>
+    </div></section>
+    <section class="sec sec--paper sec--tight" data-bg="paper"><div class="wrap article">
+      <article class="prose" data-resource="agente-mercado"><div class="callout"><p>En una tarde puedes armar un agente que te pregunte qué vas a cocinar, calcule ingredientes, pida confirmación y después te deje el carrito listo en el Éxito.</p></div>
+<h3>Introducción</h3>
+<p>Hacer mercado online es aburrido</p>
+<p>La solución que te voy a enseñar) es un agente conversacional: tú le dices qué tienes antojo de cocinar, el agente te hace un par de preguntas, calcula ingredientes con cantidades exactas, te pide confirmación… y <em>solo cuando tú dices “sí”</em>, abre <a href="http://exito.com" target="_blank" rel="noopener">exito.com</a> con Playwright y te arma el carrito completo, solito.</p>
+<p>Esta guía es para gente <strong>no técnica</strong>. Si sabes copiar/pegar, abrir VS Code y seguir pasos, estás listo.</p>
+<hr>
+<h3>Lo que necesitas antes de empezar</h3>
+<p>Antes de arrancar, revisa que tengas esto:</p>
+<ul><li>VS Code instalado</li><li>Cuenta en Claude con plan <strong>Pro</strong> (mínimo)</li><li>Node.js instalado</li><li>Extensión de Claude para VS Code: <strong>Claude Code</strong></li></ul>
+<hr>
+<div class="callout"><p><strong>Tip:</strong> si algo te suena chino (Node, terminal, etc.), tranquilo: acá vas por pasos y copiando comandos.</p></div>
+<h3>Paso 1 — Instalar VS Code y Node.js</h3>
+<ul><li><strong>VS Code:</strong> descárgalo e instálalo desde: <a href="https://code.visualstudio.com" target="_blank" rel="noopener">https://code.visualstudio.com</a>  </li><li><strong>Node.js:</strong> descárgalo e instálalo desde: <a href="https://nodejs.org" target="_blank" rel="noopener">https://nodejs.org</a> (recomendado: versión LTS)</li></ul>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<hr>
+<h3>Paso 2 — Abrir Claude Pro y crear el proyecto</h3>
+<p>¿Por qué Pro? Porque para construir cosas así de rápido (y pedirle a Claude que te arme el proyecto completo, con archivos y comandos) lo ideal es usar <strong>Claude Code</strong> y un flujo donde el modelo tenga “herramientas” para trabajar como dev.</p>
+<p>Qué vas a hacer:</p>
+<ol><li>Entra a Claude y asegúrate de tener <strong>Pro</strong> activo.</li><li>En VS Code, instala/activa <strong>Claude Code</strong>.</li><li>Crea una carpeta nueva para tu proyecto, por ejemplo: <code>agente-exito</code>.</li><li>Abre esa carpeta en VS Code (File → Open Folder).</li></ol>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<ol><li>Ahí mismo vas a construir y correr el agente.</li></ol>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<hr>
+<h3>Paso 3 — El prompt exacto para construirlo (copia y pega tal cual)</h3>
+<p>Este es el corazón de la guía. Copia esto y pégalo en Claude (idealmente usando Claude Code dentro de VS Code) para que te genere el proyecto completo.</p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="1">Copiar</button></div><pre>Actúa como un dev senior paciente y un profe bacano. Vamos a construir un agente conversacional por terminal en Node.js que use Playwright para armar un carrito de mercado en exito.com.
+
+OBJETIVO
+Crear una app de consola que:
+1) El usuario escribe qué quiere cocinar (ej: &quot;quiero hacer pasta&quot;, &quot;tengo antojo de bandeja paisa&quot;, &quot;quiero sancocho&quot;).
+2) El agente propone 2–3 opciones de recetas concretas relacionadas para que el usuario elija (numeradas 1, 2, 3).
+3) Cuando el usuario elige, el agente pregunta: &quot;¿Para cuántas personas?&quot;
+4) El agente calcula una lista de ingredientes con cantidades exactas (en unidades claras: g, ml, unidades, tarros, etc.) ajustada al número de personas.
+5) El agente muestra la lista completa y pregunta si confirma o si quiere ajustar:
+   - Si quiere ajustar, permitir: cambiar cantidades, quitar ingrediente, agregar ingrediente.
+   - Repetir confirmación hasta que el usuario diga &quot;confirmo&quot;.
+6) SOLO cuando el usuario confirma, el agente abre Playwright (Chromium), entra a https://www.exito.com, y por cada ingrediente:
+   - Busca el ingrediente.
+   - Selecciona el producto más relevante.
+   - Lo agrega al carrito.
+   - Maneja popups/modales comunes (bienvenida, cookies, registro/login).
+   - Si toca hacer scroll o cargar más, hacerlo.
+7) Al terminar, el agente dice: &quot;Listo, tu carrito quedó armado. Ya puedes revisar y pagar.&quot;
+
+REQUISITOS DE IMPLEMENTACIÓN
+- Node.js (ESM o CommonJS, pero consistente).
+- Playwright.
+- Conversacional por terminal usando readline/promises.
+- Código organizado en archivos:
+  - src/index.js (o .ts si decides TypeScript)
+  - src/recipes.js (o recipes.ts) con 6–10 recetas base y sus ingredientes por 2 personas (para escalar).
+  - src/exito.js (o exito.ts) con las funciones de Playwright para abrir el sitio, buscar y agregar al carrito.
+  - src/utils.js con helpers (normalización de texto, delays, logging).
+- Manejo básico de errores:
+  - Si un ingrediente NO se encuentra en el sitio:
+    - Buscar con una variante (sin marcas, sin tildes, sin palabras extra).
+    - Si aún no aparece, escoger el producto más similar (por nombre) y MOSTRÁRSELO al usuario en consola (nombre + precio si se puede).
+    - Preguntar: &quot;¿Lo agrego? (s/n)&quot;.
+    - Solo agregar si el usuario aprueba.
+- No avanzar a Playwright hasta tener confirmación explícita del usuario.
+- El flujo debe ser claro, con mensajes en español latino y tono cercano.
+
+MANEJO DE POPUPS (IMPORTANTÍSIMO)
+En el código de Playwright incluye una función `dismissPopups(page)` que intente:
+- Aceptar o cerrar el modal de cookies (buscar botones tipo &quot;Aceptar&quot;, &quot;Entendido&quot;, &quot;Aceptar todas&quot;, &quot;Cerrar&quot;).
+- Cerrar popups de bienvenida (botón X).
+- Cerrar o minimizar banners flotantes.
+- Si aparece un modal de login/registro, cerrarlo (no vamos a loguearnos en este MVP).
+Debe ser tolerante a fallos (try/catch, timeouts cortos) y llamarse:
+- después de cargar el home
+- después de cada búsqueda
+- antes de intentar clickear &quot;Agregar&quot; (para no fallar por overlays)
+
+ENTREGABLES
+1) Estructura de carpetas final.
+2) package.json con scripts:
+   - &quot;start&quot;: &quot;node src/index.js&quot; (o equivalente)
+3) Instrucciones exactas para correrlo.
+4) Código completo de todos los archivos.
+
+IMPORTANTE
+- Usa selectores robustos (role, text, locators) y espera por navegación.
+- Comenta el código en lo mínimo necesario (no biblias), pero sí deja claro qué hace cada parte.
+- Si hay decisiones (por ejemplo, cómo identificar el botón de agregar), propon 2 opciones y elige una.
+
+Ahora genera el proyecto completo con los archivos y el código.</pre></div>
+<hr>
+<h3>Paso 4 — Instalar Playwright</h3>
+<p>En la terminal de VS Code (Terminal → New Terminal), corre esto:</p>
+<div class="codeblock"><div class="codeblock__bar"><span>bash</span><button class="copy" type="button" data-i="2">Copiar</button></div><pre>npm install playwright
+npx playwright install</pre></div>
+<p>Cómo correr el agente cuando ya esté listo:</p>
+<div class="codeblock"><div class="codeblock__bar"><span>bash</span><button class="copy" type="button" data-i="3">Copiar</button></div><pre>npm start</pre></div>
+<p>Si tu proyecto quedó con otro comando (por ejemplo <code>node src/index.js</code>), usa el que Claude te deje en el <code>package.json</code> (pero la idea es que sea <code>npm start</code>).</p>
+<hr>
+<h3>Paso 5 — Cómo hablarle al agente (ejemplos reales)</h3>
+<p>Arranca el programa, y habla como si le estuvieras escribiendo a un amigo que cocina y es ordenado.</p>
+<p>Ejemplos para iniciar:</p>
+<ul><li>“Quiero hacer pasta para hoy”</li><li>“Tengo antojo de bandeja paisa”</li><li>“Ayúdame a hacer un sancocho para 6 personas”</li></ul>
+<h4>Así se ve un flujo completo (ejemplo)</h4>
+<p><strong>Tú:</strong> Quiero hacer pasta para hoy</p>
+<p><strong>Agente:</strong> Listo. ¿Cuál de estas te provoca? 1) Pasta boloñesa clásica 2) Pasta cremosa con pollo 3) Pasta con atún y tomate</p>
+<p><strong>Tú:</strong> 1</p>
+<p><strong>Agente:</strong> ¿Para cuántas personas?</p>
+<p><strong>Tú:</strong> 4</p>
+<p><strong>Agente:</strong> De una. Para 4 personas, necesitas:</p>
+<ul><li>400 g pasta</li><li>500 g carne molida</li><li>1 tarro salsa de tomate</li><li>1 cebolla</li><li>2 dientes de ajo</li><li>1 cucharada aceite de oliva</li><li>Sal y pimienta</li></ul>
+<p>¿Confirmas esta lista o quieres ajustar algo? (confirmo / ajustar)</p>
+<p><strong>Tú:</strong> confirmo</p>
+<p><strong>Agente:</strong> Perfecto. Abriendo <a href="http://exito.com" target="_blank" rel="noopener">exito.com</a> y armando tu carrito…</p>
+<p><strong>Agente:</strong> (va agregando ingredientes…)</p>
+<p><strong>Agente:</strong> Listo, tu carrito quedó armado. Ya puedes revisar y pagar.</p>
+<hr>
+<h3>Paso 6 — Cómo el agente maneja los popups del Éxito</h3>
+<p>Esto es de las cosas que más rompe automatizaciones. La clave es que en el prompt (el de arriba) le dejaste una instrucción explícita a Claude:</p>
+<ul><li>Cerrar popups de bienvenida (el típico “X”)</li><li>Aceptar/cerrar el modal de cookies</li><li>Manejar modales de login/registro (cerrarlos)</li><li>Hacer scroll si no aparecen productos de una</li><li>Volver a llamar <code>dismissPopups(page)</code> <em>después de cada acción grande</em> (entrar, buscar, antes de click)</li></ul>
+<p>Traducción al mundo real: el agente no se queda “pegado” porque había una ventana tapando el botón.</p>
+<hr>
+<div class="fig-ph"><b>Imagen del recurso original</b><span>Captura pendiente de migrar desde Notion</span></div>
+<h3>Paso 7 — Qué hacer si un producto no aparece</h3>
+<p>Este es el “plan B” inteligente, y también lo dejas claro en el prompt.</p>
+<p>Regla práctica:</p>
+<ul><li>Si no existe el producto exacto, el agente busca algo <strong>parecido</strong>.</li><li>Te muestra la alternativa en consola.</li><li>Te pregunta: <strong>“¿Lo agrego? (s/n)”</strong></li><li>Solo lo mete al carrito si tú apruebas.</li></ul>
+<p>Eso evita que el agente te compre cualquier cosa rara sin permiso.</p>
+<hr>
+<h3>Cierre</h3>
+<p>Esto suena a magia, pero en serio: hoy cualquier persona lo puede armar en una tarde con buenas instrucciones y las herramientas correctas.</p>
+<p>Y el que aprende a hacer esto tiene una ventaja enorme:</p>
+<ul><li>para recuperar tiempo,</li><li>para montar automatizaciones en su negocio,</li><li>o incluso para vender este tipo de soluciones.</li></ul>
+<p><strong>CTA:</strong> si quieres que te mande esta guía en limpio (y con una checklist imprimible), escríbeme la palabra <strong>ÉXITO</strong>.</p>
+        <hr><p class="muted" style="font-size:14px">Recurso migrado desde Notion para esta preview. <a href="https://quiet-fiber-044.notion.site/351c40c66f09806eac59ccb95b063b9c" target="_blank" rel="noopener">Ver original ↗</a></p></article>
+      <aside class="aside">
+        <div class="aside__box"><h5>Aprende cómo funciona</h5><a class="tv" href="/tutoriales/constru-una-app-desde-cero-sin-saber-programar-usando-claude/" data-track="tutorial_click" data-track-props='{"video_id":"n7w3Y4X1QgE","from":"resource"}'><div class="tv__th"><img src="https://img.youtube.com/vi/n7w3Y4X1QgE/mqdefault.jpg" alt="" loading="lazy"></div><div><div class="tv__t">Construí una App desde Cero sin Saber Programar (Usando Claude Code)</div><div class="tv__m">10 min · YouTube</div></div></a><a class="tv" href="/tutoriales/intent-construir-una-solucin-de-ia-frente-a-30-personas/" data-track="tutorial_click" data-track-props='{"video_id":"5v9PTxXsxU0","from":"resource"}'><div class="tv__th"><img src="https://img.youtube.com/vi/5v9PTxXsxU0/mqdefault.jpg" alt="" loading="lazy"></div><div><div class="tv__t">Intenté construir una solución de IA frente a 30 personas</div><div class="tv__m">10 min · YouTube</div></div></a></div>
+        
+        <div class="aside__box"><h5>Recursos relacionados</h5><ul class="aside__list"><a href="/recursos/hermes/" data-track="related_resource_click" data-track-props='{"from":"agente-mercado","to":"hermes"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Hermes: El agente de IA que ejecuta, no solo responde</span></a><a href="/recursos/jarvis-claude-code/" data-track="related_resource_click" data-track-props='{"from":"agente-mercado","to":"jarvis-claude-code"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Cómo construir tu propio Jarvis con Claude Code y ElevenLabs</span></a><a href="/recursos/fathom-make-notion/" data-track="related_resource_click" data-track-props='{"from":"agente-mercado","to":"fathom-make-notion"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Guía: Automatización Fathom → Make → Notion</span></a></ul></div>
+        <div class="aside__box" style="background:var(--ink);color:#fff;border-color:transparent"><h5 style="color:var(--on-dark-3)">Siguiente paso</h5><p style="margin:0;font-family:var(--serif);font-size:20px;line-height:1.2">¿Quieres hacerlo guiado, en 5 días?</p><a class="btn btn--light btn--sm" href="/retos/claude-en-5-dias/" data-track="challenge_click" data-track-props='{"from": "agente-mercado"}' ><span class="btn__t">Ver el reto</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+      </aside></div></section>
+    <section class="sec sec--cream " data-bg="cream"><div class="wrap sec__head"><div><span class="eyebrow eyebrow--dot" data-reveal>Seguir construyendo</span><h2 class="h2" data-reveal style="--i:1;margin-top:14px">Recursos <em class="serif tint">relacionados</em></h2></div>
+  <div data-reveal style="--i:2;display:grid;gap:16px;justify-items:end"></div></div><div class="wrap grid-3"><a class="res res--sm" href="/recursos/hermes/" data-reveal style="--i:0" data-track="resource_click" data-track-props='{"resource":"hermes","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Análisis</span><span>· Agentes</span></div>
+  <div class="card__title">Hermes: El agente de IA que ejecuta, no solo responde</div>
+  <div class="card__foot"><span>4 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/jarvis-claude-code/" data-reveal style="--i:1" data-track="resource_click" data-track-props='{"resource":"jarvis-claude-code","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Caso construido</span><span>· Agentes</span></div>
+  <div class="card__title">Cómo construir tu propio Jarvis con Claude Code y ElevenLabs</div>
+  <div class="card__foot"><span>6 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/fathom-make-notion/" data-reveal style="--i:2" data-track="resource_click" data-track-props='{"resource":"fathom-make-notion","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Guía paso a paso</span><span>· Agentes</span></div>
+  <div class="card__title">Guía: Automatización Fathom → Make → Notion</div>
+  <div class="card__foot"><span>4 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></div></section>
+</main>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div><div class="foot__brand">Luciano Musella</div><p style="max-width:34ch;margin:12px 0 0">Aprende a construir con IA. Tutoriales, recursos y retos gratis; y un programa para llevarlo al trabajo.</p></div>
+    <div><h6>Explora</h6><ul><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul></div>
+    <div><h6>Canales</h6><ul><li><a href="https://www.youtube.com/@LucianoMusellaa" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://www.linkedin.com/in/luciano-parra-m" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="wrap foot__legal"><span>© 2026 Luciano Musella</span><span>Preview · web-v2 · no es la versión final</span></div>
+</footer>
+<div class="preview-badge">Preview web-v2</div>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

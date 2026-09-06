@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Founders LATAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sw:240px; --rw:268px;
+  --coral:#e07a54; --coral-d:#c9533f; --coral-t:#fff3ef; --coral-m:#fde4d8;
+  --amber:#c9a84c; --amber-t:#fef6e4;
+  --purple:#8b5cf6; --purple-t:#f3eeff;
+  --blue:#3b82f6; --blue-t:#eff6ff;
+  --green:#22c55e; --green-t:#f0fdf4;
+  --bg:#f7f8fc; --card:#fff; --sb:#fff;
+  --t1:#111827; --t2:#6b7280; --t3:#9ca3af;
+  --bdr:#f0f1f5;
+  --sh1:0 1px 3px rgba(0,0,0,.06),0 2px 8px rgba(0,0,0,.04);
+  --sh2:0 4px 20px rgba(0,0,0,.09),0 1px 4px rgba(0,0,0,.04);
+  --sh3:0 10px 40px rgba(0,0,0,.13),0 2px 10px rgba(0,0,0,.06);
+  --font:'Plus Jakarta Sans',sans-serif;
+}
+html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t1);overflow:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── LAYOUT ────────────────────────── */
+.layout{display:flex;height:100vh}
+
+/* ── SIDEBAR ──────────────────────── */
+.sidebar{
+  width:var(--sw);min-width:var(--sw);height:100vh;background:var(--sb);
+  box-shadow:2px 0 12px rgba(0,0,0,.06);
+  display:flex;flex-direction:column;
+  position:fixed;left:0;top:0;z-index:100;
+  transition:transform .28s cubic-bezier(.4,0,.2,1);
+}
+.sb-in{flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#f0f1f5 transparent;padding-bottom:28px}
+.sb-in::-webkit-scrollbar{width:3px}
+.sb-in::-webkit-scrollbar-thumb{background:#e5e7eb;border-radius:4px}
+
+.sb-brand{padding:18px 16px 14px;border-bottom:1px solid var(--bdr)}
+.brand-row{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.brand-ico{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--coral),var(--coral-d));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.brand-ico svg{display:block}
+.brand-name{font-size:13.5px;font-weight:800;color:var(--t1);line-height:1.15;letter-spacing:-.02em}
+.brand-sub{font-size:10px;color:var(--t3);margin-top:1px}
+.pill-free{display:inline-block;background:var(--coral-t);color:var(--coral);font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px}
+
+.nav-group{padding-top:10px}
+.nav-sec-row{display:flex;align-items:center;gap:7px;padding:8px 16px 3px;user-select:none}
+.nsico{width:15px;height:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--coral)}
+.nsico svg{display:block}
+.nav-glbl{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t1)}
+.nav-list{list-style:none}
+.nav-list a{display:block;padding:6px 16px 6px 32px;font-size:13px;font-weight:400;color:var(--t2);text-decoration:none;border-left:2.5px solid transparent;transition:color .14s,background .14s;cursor:pointer;line-height:1.45}
+.nav-list a:hover{color:var(--t1);background:#f9fafb}
+.nav-list a.active{color:var(--coral);background:var(--coral-t);font-weight:600;border-left-color:var(--coral)}
+
+/* ── MAIN WRAP ────────────────────── */
+.main-wrap{margin-left:var(--sw);flex:1;display:flex;height:100vh;overflow:hidden}
+.main-scroll{flex:1;overflow-y:scroll;height:100vh}
+.main-inner{padding:28px 28px 72px;max-width:1050px;margin:0 auto}
+
+/* ── RIGHT PANEL ──────────────────── */
+.right-panel{width:var(--rw);min-width:var(--rw);height:100vh;overflow-y:auto;padding:28px 18px 32px;display:flex;flex-direction:column;gap:14px;border-left:1px solid var(--bdr);background:var(--card);scrollbar-width:thin;scrollbar-color:#f0f1f5 transparent}
+.right-panel::-webkit-scrollbar{width:3px}
+.right-panel::-webkit-scrollbar-thumb{background:#e5e7eb;border-radius:4px}
+
+/* ── HAMBURGER ────────────────────── */
+.hamburger{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--coral);border:none;border-radius:9px;width:38px;height:38px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px;padding:8px}
+.hamburger span{display:block;width:16px;height:2px;background:#fff;border-radius:2px}
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99}
+
+/* ── BREADCRUMB ───────────────────── */
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--t3);margin-bottom:20px}
+.breadcrumb .sep{color:#d1d5db}
+.breadcrumb .cur{color:var(--t1)}
+
+/* ── HERO BANNER ──────────────────── */
+.hero{background:linear-gradient(135deg,#e07a54 0%,#d45a38 45%,#b83a24 100%);border-radius:18px;padding:26px 28px 26px 28px;display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50px;right:100px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.06)}
+.hero::after{content:'';position:absolute;bottom:-70px;right:10px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.04)}
+.hero-l{position:relative;z-index:1}
+.hero-greet{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.78);margin-bottom:6px}
+.hero-title{font-size:21px;font-weight:800;color:#fff;line-height:1.3;letter-spacing:-.02em;max-width:420px;margin-bottom:18px}
+.hero-btns{display:flex;gap:10px}
+.btn-w{background:#fff;color:var(--coral-d);font:700 12.5px var(--font);padding:9px 18px;border:none;border-radius:9px;cursor:pointer;transition:box-shadow .15s,transform .15s}
+.btn-w:hover{box-shadow:0 4px 14px rgba(0,0,0,.18);transform:translateY(-1px)}
+.btn-ghost{background:rgba(255,255,255,.15);color:#fff;font:600 12.5px var(--font);padding:9px 18px;border:1.5px solid rgba(255,255,255,.35);border-radius:9px;cursor:pointer;transition:background .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.22)}
+.hero-r{position:relative;z-index:1;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.hero-badge{background:rgba(255,255,255,.14);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:12px 18px;text-align:center;min-width:90px}
+.hb-num{font-size:28px;font-weight:800;color:#fff;line-height:1}
+.hb-lbl{font-size:10px;font-weight:600;color:rgba(255,255,255,.75);letter-spacing:.07em;text-transform:uppercase;margin-top:3px}
+
+/* ── STATS BAR ────────────────────── */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:26px}
+.scard{background:var(--card);border-radius:14px;box-shadow:var(--sh1);padding:18px 18px 16px;display:flex;flex-direction:column;gap:11px;transition:box-shadow .18s,transform .18s;cursor:default}
+.scard:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
+.s-ico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.si1{background:var(--coral-t)} .si2{background:var(--amber-t)} .si3{background:var(--blue-t)} .si4{background:var(--green-t)}
+.s-num{font-size:34px;font-weight:800;color:var(--t1);line-height:1;letter-spacing:-.03em}
+.s-lbl{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--t3);margin-top:3px}
+
+/* ── SECTION HEADER ───────────────── */
+.sec-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px}
+.sec-title{font-size:18px;font-weight:700}
+.sec-meta{font-size:12.5px;color:var(--t2)}
+
+/* ── MODULE SEPARATOR ─────────────── */
+.mod-sep{display:flex;align-items:center;gap:10px;padding:10px 0 14px}
+.mod-pill{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3.5px 10px;border-radius:20px;flex-shrink:0}
+.mp-c{background:var(--coral-t);color:var(--coral)}
+.mp-a{background:var(--amber-t);color:#956528}
+.mp-n{background:var(--purple-t);color:var(--purple)}
+.mp-co{background:var(--blue-t);color:var(--blue)}
+.mod-name{font-size:14px;font-weight:700;color:var(--t1);flex-shrink:0}
+.mod-line{flex:1;height:1px;background:var(--bdr)}
+.mod-cnt{font-size:12px;color:var(--t3);flex-shrink:0}
+
+/* ── CARDS GRID ───────────────────── */
+.cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:4px}
+
+/* ── LESSON CARD ──────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.lcard{background:var(--card);border-radius:16px;box-shadow:var(--sh1);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;opacity:0;animation:fadeUp .38s ease both;transition:box-shadow .2s ease,transform .2s ease}
+.lcard:hover{box-shadow:var(--sh3);transform:translateY(-4px)}
+.lcard.ac{box-shadow:0 0 0 2.5px var(--coral),var(--sh2)}
+.lcard.soon{cursor:default}
+.lcard.soon:hover{box-shadow:var(--sh1);transform:none}
+
+.lthumb{position:relative;aspect-ratio:16/9;background:#f2ede7;overflow:hidden}
+.lthumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.lcard:not(.soon):hover .lthumb img{transform:scale(1.06)}
+.lthumb-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f2ede7}
+.ph-btn{width:40px;height:40px;border-radius:50%;background:rgba(224,122,84,.1);border:2px solid rgba(224,122,84,.2);display:flex;align-items:center;justify-content:center;opacity:.6}
+.nbadge{position:absolute;top:8px;left:8px;z-index:2;background:rgba(0,0,0,.54);color:#fff;font-size:10px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:6px;backdrop-filter:blur(6px)}
+.pov{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);transition:background .2s}
+.lcard:not(.soon):hover .pov{background:rgba(0,0,0,.2)}
+.pov-btn{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.93);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.72);transition:opacity .2s,transform .2s;box-shadow:0 2px 14px rgba(0,0,0,.2)}
+.lcard:not(.soon):hover .pov-btn{opacity:1;transform:scale(1)}
+
+.lbody{padding:13px 13px 12px;flex:1;display:flex;flex-direction:column;gap:8px}
+.lcat{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:20px;width:fit-content}
+.lcat.cc{background:var(--coral-t);color:var(--coral)}
+.lcat.ca{background:var(--amber-t);color:#956528}
+.lcat.cn{background:var(--purple-t);color:var(--purple)}
+.lcat.co{background:var(--blue-t);color:var(--blue)}
+.ltitle{font-size:13.5px;font-weight:600;color:var(--t1);line-height:1.42;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ltitle.dim{color:#c3c3c3}
+.lftr{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.lstat{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:500;color:var(--t2)}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dot.ok{background:var(--green)} .dot.soon{background:#d1d5db}
+.larw{font-size:14px;color:#d1d5db;transition:color .15s,transform .15s}
+.lcard:not(.soon):hover .larw{color:var(--coral);transform:translateX(3px)}
+
+/* ── VIDEO VIEW ───────────────────── */
+.view-lesson{display:none}
+.view-lesson.on{display:block}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1.5px solid #e5e7eb;color:var(--t2);font:600 12.5px var(--font);padding:8px 15px;border-radius:9px;cursor:pointer;margin-bottom:20px;transition:border-color .15s,color .15s}
+.back-btn:hover{border-color:var(--coral);color:var(--coral)}
+
+.player-grid{display:grid;grid-template-columns:1fr 318px;gap:22px;align-items:start}
+.player-l{}
+.vbox{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:var(--sh3)}
+.vbox iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+
+.ptabs{display:flex;border-bottom:1.5px solid var(--bdr);margin-top:20px;margin-bottom:18px}
+.ptab{font-size:13px;font-weight:600;color:var(--t3);padding:9px 16px;cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1.5px;transition:color .14s,border-color .14s}
+.ptab:hover:not(.on){color:var(--t1)}
+.ptab.on{color:var(--coral);border-bottom-color:var(--coral)}
+.tpanel{display:none}
+.tpanel.on{display:block}
+.p-title{font-size:21px;font-weight:800;letter-spacing:-.02em;color:var(--t1);line-height:1.3;margin-bottom:8px}
+.p-meta-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.p-desc{font-size:13.5px;color:var(--t2);line-height:1.7}
+.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px 14px;margin-top:16px}
+.learn-item{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--t2);line-height:1.4}
+.lchk{width:18px;height:18px;border-radius:50%;background:var(--coral-t);color:var(--coral);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* Accordion */
+.player-r{}
+.pr-title{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--t3);margin-bottom:10px}
+.acc{margin-bottom:6px;border-radius:10px;border:1.5px solid var(--bdr);overflow:hidden}
+.acc-hdr{display:flex;align-items:center;gap:9px;padding:11px 14px;background:#fafbfc;cursor:pointer;user-select:none}
+.acc-n{font-size:10.5px;font-weight:700;color:var(--t3);flex-shrink:0}
+.acc-t{font-size:13px;font-weight:700;color:var(--t1);flex:1}
+.acc-c{font-size:10.5px;color:var(--t3);flex-shrink:0}
+.acc-arr{font-size:11px;color:var(--t3);transition:transform .2s;flex-shrink:0}
+.acc.open .acc-arr{transform:rotate(90deg)}
+.acc-body{display:none}
+.acc.open .acc-body{display:block}
+.aitem{display:flex;align-items:center;gap:9px;padding:8px 14px;border-top:1px solid #f3f4f6;cursor:pointer;transition:background .13s}
+.aitem:hover{background:#fafbfc}
+.aitem.playing{background:var(--coral-t)}
+.ai-icon{font-size:10px;color:var(--t3);flex-shrink:0}
+.aitem.playing .ai-icon{color:var(--coral)}
+.ai-title{font-size:12px;color:var(--t2);flex:1;line-height:1.4}
+.aitem.playing .ai-title{color:var(--coral);font-weight:600}
+.ai-status{font-size:10px;color:var(--t3);flex-shrink:0}
+
+/* ── RIGHT PANEL CARDS ────────────── */
+.rp-card{background:var(--card);border-radius:14px;box-shadow:var(--sh1);padding:18px 16px}
+.rp-card-t{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);margin-bottom:12px}
+.streak-row{display:flex;align-items:center;gap:12px}
+.streak-fire{font-size:30px}
+.streak-num{font-size:24px;font-weight:800;color:var(--t1);line-height:1}
+.streak-lbl{font-size:11px;color:var(--t2);margin-top:2px}
+.streak-msg{font-size:12px;color:var(--t2);margin-top:10px;line-height:1.55}
+.prog-wrap{margin-top:12px}
+.prog-row{display:flex;justify-content:space-between;font-size:11px;color:var(--t2);margin-bottom:5px}
+.prog-bar{height:7px;background:#f0f1f5;border-radius:4px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--coral),var(--amber));border-radius:4px;width:14%;transition:width .6s ease}
+.go-btn{width:100%;margin-top:13px;background:var(--coral);color:#fff;font:700 13px var(--font);padding:10px;border:none;border-radius:9px;cursor:pointer;transition:background .15s,box-shadow .15s}
+.go-btn:hover{background:var(--coral-d);box-shadow:0 4px 14px rgba(224,122,84,.35)}
+
+.rp-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rp-s{background:var(--bg);border-radius:10px;padding:13px;text-align:center}
+.rp-s-n{font-size:22px;font-weight:800;color:var(--t1);line-height:1}
+.rp-s-l{font-size:9.5px;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-top:3px}
+
+.next-card{background:linear-gradient(135deg,var(--coral-t),var(--amber-t));border-radius:14px;padding:16px}
+.next-lbl{font-size:9.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--coral);margin-bottom:5px}
+.next-title{font-size:13px;font-weight:700;color:var(--t1);line-height:1.42;margin-bottom:13px}
+.cont-btn{width:100%;background:var(--coral);color:#fff;font:700 12.5px var(--font);padding:9px;border:none;border-radius:8px;cursor:pointer;transition:background .15s}
+.cont-btn:hover{background:var(--coral-d)}
+
+/* ── LEAD MAGNET PILL ────────────── */
+.mp-lm{background:#ecfdf5;color:#059669}
+
+/* ── LEAD MAGNET CARDS ───────────── */
+.lm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lm-card{background:var(--card);border-radius:16px;box-shadow:var(--sh1);overflow:hidden;transition:box-shadow .22s,transform .22s;display:flex;flex-direction:column}
+.lm-card:hover{box-shadow:var(--sh3);transform:translateY(-3px)}
+.lm-card:hover .lm-img{transform:scale(1.04)}
+.lm-thumb{aspect-ratio:16/9;position:relative;overflow:hidden;flex-shrink:0}
+.lm-img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease;position:absolute;inset:0}
+.lm-card:hover .lm-img{transform:scale(1.06)}
+.lm-img-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.lm-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.45) 0%,transparent 55%);pointer-events:none}
+.lm-ph-svg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.85}
+.lm-ph-svg svg{width:54px;height:54px}
+.lm-ph-label{position:absolute;bottom:8px;left:12px;font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.lm-body{padding:14px 15px 15px;display:flex;flex-direction:column;flex:1}
+.lm-cat-pill{font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:7px;display:inline-block}
+.lm-cat-claude{color:var(--coral)} .lm-cat-linkedin{color:#0077b5} .lm-cat-auto{color:#956528} .lm-cat-contenido{color:var(--purple)} .lm-cat-video{color:#ef4444} .lm-cat-diseno{color:var(--green)} .lm-cat-notebook{color:var(--blue)} .lm-cat-ai{color:#7c3aed}
+.lm-title{font-size:13px;font-weight:700;color:var(--t1);line-height:1.4;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lm-desc{font-size:11.5px;color:var(--t2);line-height:1.5;margin-bottom:12px;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lm-btn{width:100%;background:var(--coral);color:#fff;font:600 12.5px var(--font);padding:9px;border:none;border-radius:9px;cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:center;gap:5px}
+.lm-btn:hover{background:var(--coral-d)}
+
+/* ── LEAD MAGNET MODAL ───────────── */
+.lm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.52);z-index:800;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.lm-overlay.show{opacity:1;pointer-events:auto}
+.lm-modal{background:#fff;border-radius:22px;padding:26px 24px 22px;width:100%;max-width:390px;box-shadow:var(--sh3);transform:scale(.95) translateY(10px);transition:transform .3s cubic-bezier(.34,1.56,.64,1);position:relative}
+.lm-overlay.show .lm-modal{transform:scale(1) translateY(0)}
+.lm-modal-x{position:absolute;top:12px;right:12px;background:#f3f4f6;border:none;width:28px;height:28px;border-radius:7px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--t2)}
+.lm-preview{display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:12px;padding:11px 13px;margin-bottom:18px}
+.lm-prev-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lm-prev-ico svg{width:22px;height:22px}
+.lm-prev-title{font-size:12.5px;font-weight:700;color:var(--t1);line-height:1.35}
+.lm-modal-h{font-size:18px;font-weight:800;color:var(--t1);letter-spacing:-.01em;margin-bottom:4px}
+.lm-modal-sub{font-size:13px;color:var(--t2);margin-bottom:18px;line-height:1.5}
+.lm-form-wrap .lead-field{margin-bottom:11px}
+.lm-submit{width:100%;background:var(--coral);color:#fff;font:700 14px var(--font);padding:12px;border:none;border-radius:11px;cursor:pointer;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s}
+.lm-submit:hover{background:var(--coral-d)}
+.lm-access{display:none;text-align:center;padding:10px 0 4px}
+.lm-access-title{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:10px}
+.lm-access-btn{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font:700 14px var(--font);padding:12px 24px;border-radius:11px;text-decoration:none;transition:background .15s}
+.lm-access-btn:hover{background:var(--coral-d)}
+
+.lm-seen-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:var(--green);background:#f0fdf4;border-radius:6px;padding:3px 8px;margin-bottom:7px}
+@media(max-width:1060px){.lm-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.lm-grid{grid-template-columns:1fr;gap:10px}}
+
+/* ── MOBILE HEADER ───────────────── */
+.mob-header{display:none;position:fixed;top:0;left:0;right:0;height:60px;background:var(--card);border-bottom:1px solid var(--bdr);z-index:150;padding:0 16px;align-items:center;justify-content:space-between;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.mob-brand-row{display:flex;align-items:center;gap:8px}
+.mob-brand-name{font-size:14.5px;font-weight:800;color:var(--t1);letter-spacing:-.02em}
+.mob-header-r{display:flex;align-items:center;gap:10px}
+.mob-ham{width:36px;height:36px;background:var(--coral);border:none;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;padding:9px;cursor:pointer;flex-shrink:0}
+.mob-ham span{display:block;width:15px;height:2px;background:#fff;border-radius:2px}
+
+/* ── SIDEBAR CLOSE BTN ───────────── */
+.sb-close{display:none;position:absolute;top:14px;right:14px;width:32px;height:32px;background:#f3f4f6;border:none;border-radius:8px;cursor:pointer;align-items:center;justify-content:center;color:var(--t2);font-size:18px;line-height:1;z-index:10}
+
+/* ── MOBILE FEATURED CARD ────────── */
+.mob-featured{display:none;background:var(--card);border-radius:16px;box-shadow:var(--sh2);overflow:hidden;margin-bottom:16px;cursor:pointer;transition:box-shadow .2s,transform .2s}
+.mob-featured:active{transform:scale(.99)}
+.mf-thumb{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}
+.mf-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.mf-play-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.22)}
+.mf-play-btn{width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 22px rgba(0,0,0,.28)}
+.mf-body{padding:14px 16px 16px}
+.mf-meta{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--coral);margin-bottom:6px}
+.mf-title{font-size:17px;font-weight:800;color:var(--t1);line-height:1.3;letter-spacing:-.02em;margin-bottom:5px}
+.mf-desc{font-size:12.5px;color:var(--t2);line-height:1.5;margin-bottom:14px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical}
+.mf-cta{width:100%;background:var(--coral);color:#fff;font:700 14px var(--font);padding:12px;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s}
+.mf-cta:active{background:var(--coral-d)}
+
+/* ── RESPONSIVE ───────────────────── */
+@media(max-width:1260px){.right-panel{display:none}}
+@media(max-width:1060px){.cards-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:820px){
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .hero{flex-direction:column;align-items:flex-start;gap:14px}
+  .hero-r{align-items:flex-start;flex-direction:row}
+  .player-grid{grid-template-columns:1fr}
+  .player-r{display:none}
+}
+@media(max-width:768px){
+  /* Mobile header on, old hamburger off */
+  .mob-header{display:flex}
+  .hamburger{display:none!important}
+  .sb-close{display:flex}
+  /* Sidebar as drawer */
+  .sidebar{position:fixed;transform:translateX(-100%);transition:transform .25s ease-out;width:285px;min-width:285px}
+  .sidebar.open{transform:translateX(0)}
+  .ov.open{display:block}
+  .main-wrap{margin-left:0}
+  .main-scroll{height:100vh}
+  .main-inner{padding:76px 14px 64px}
+  .breadcrumb{margin-top:0;margin-bottom:14px;font-size:10px}
+  /* Hero hidden, featured card shown */
+  .hero{display:none}
+  .mob-featured{display:block}
+  /* Compact stats 2×2 */
+  .stats-bar{grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:18px}
+  .scard{padding:12px 12px 10px;gap:7px;border-radius:12px}
+  .s-ico{width:28px;height:28px;border-radius:8px;font-size:14px}
+  .s-num{font-size:26px;letter-spacing:-.02em}
+  .s-lbl{font-size:9px}
+  /* Section header compact */
+  .sec-hdr{margin-bottom:10px}
+  .sec-title{font-size:15px}
+  .sec-meta{font-size:11px}
+  .mod-sep{padding:4px 0 10px}
+  .mod-name{font-size:13px}
+  .mod-cnt{font-size:11px}
+  /* Horizontal lesson cards — thumbnail left, info right */
+  .cards-grid{grid-template-columns:1fr;gap:9px}
+  .lcard{flex-direction:row;border-radius:12px;min-height:90px}
+  .lthumb{width:130px;min-width:130px;flex-shrink:0;aspect-ratio:unset;align-self:stretch}
+  .lthumb img{width:100%;height:100%;object-fit:cover}
+  .lthumb-ph{height:100%}
+  .nbadge{top:6px;left:6px;font-size:9px}
+  .pov{display:none}
+  .lbody{padding:10px 12px 10px;justify-content:center;gap:5px}
+  .lcat{font-size:9px;padding:2px 6px}
+  .ltitle{font-size:12.5px;font-weight:700;-webkit-line-clamp:2}
+  .lftr{margin-top:auto;padding-top:4px}
+  .lstat{font-size:10.5px}
+  /* Touch-friendly sidebar items */
+  .nav-list a{padding:11px 16px 11px 32px;font-size:13.5px;min-height:44px;display:flex;align-items:center}
+  .nav-sec-row{padding:10px 16px 4px}
+  /* Video player */
+  .p-title{font-size:17px}
+  .learn-grid{grid-template-columns:1fr}
+  .back-btn{margin-bottom:14px}
+}
+
+/* ── LEAD POPUP ───────────────────── */
+.lead-overlay{position:fixed;inset:0;background:rgba(0,0,0,.52);z-index:900;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .28s ease}
+.lead-overlay.show{opacity:1;pointer-events:auto}
+.lead-modal{background:#fff;border-radius:22px;padding:32px 28px 26px;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(0,0,0,.22),0 4px 16px rgba(0,0,0,.1);transform:scale(.94) translateY(8px);transition:transform .3s cubic-bezier(.34,1.56,.64,1);position:relative}
+.lead-overlay.show .lead-modal{transform:scale(1) translateY(0)}
+.lead-close{position:absolute;top:14px;right:14px;background:#f3f4f6;border:none;width:30px;height:30px;border-radius:8px;cursor:pointer;color:#6b7280;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.lead-close:hover{background:#e5e7eb}
+.lead-brand-row{display:flex;align-items:center;gap:8px;margin-bottom:16px}
+.lead-brand-ico{width:34px;height:34px;border-radius:10px;background:var(--coral);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lead-title{font-size:20px;font-weight:800;color:var(--t1);letter-spacing:-.02em;line-height:1.25;margin-bottom:7px}
+.lead-sub{font-size:13.5px;color:var(--t2);line-height:1.55;margin-bottom:22px}
+.lead-field{margin-bottom:13px}
+.lead-field label{display:block;font-size:11.5px;font-weight:600;color:var(--t1);margin-bottom:5px;letter-spacing:.01em}
+.lead-field input{width:100%;padding:11px 14px;border:1.5px solid #e5e7eb;border-radius:11px;font:14px var(--font);color:var(--t1);outline:none;transition:border-color .15s,box-shadow .15s;box-sizing:border-box;background:#fafafa}
+.lead-field input:focus{border-color:var(--coral);box-shadow:0 0 0 3px rgba(224,122,84,.14);background:#fff}
+.lead-field input::placeholder{color:#c0c4cc}
+.lead-field input.err{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.13)}
+.phone-row{display:flex;gap:8px}
+.phone-row input{flex:1;min-width:0}
+.phone-code{padding:11px 10px;border:1.5px solid #e5e7eb;border-radius:11px;font:13.5px var(--font);color:var(--t1);background:#fafafa;cursor:pointer;flex-shrink:0;width:108px;outline:none;transition:border-color .15s}
+.phone-code:focus{border-color:var(--coral);box-shadow:0 0 0 3px rgba(224,122,84,.14)}
+.field-err{font-size:11px;color:#ef4444;margin-top:4px;display:none;align-items:center;gap:4px}
+.field-err.show{display:flex}
+.lead-submit{width:100%;background:var(--coral);color:#fff;font:700 14.5px var(--font);padding:13px;border:none;border-radius:12px;cursor:pointer;margin-top:6px;transition:background .15s,transform .1s;display:flex;align-items:center;justify-content:center;gap:7px}
+.lead-submit:hover{background:var(--coral-d)}
+.lead-submit:active{transform:scale(.98)}
+.lead-skip{display:block;text-align:center;margin-top:13px;font-size:12.5px;color:var(--t3);cursor:pointer;text-decoration:none;transition:color .15s}
+.lead-skip:hover{color:var(--t2)}
+.lead-ok{text-align:center;padding:20px 0 8px;display:none}
+.lead-ok-ico{font-size:38px;margin-bottom:10px}
+.lead-ok-title{font-size:17px;font-weight:800;color:var(--t1);margin-bottom:6px}
+.lead-ok-sub{font-size:13px;color:var(--t2);line-height:1.5}
+@media(max-width:480px){
+  .lead-modal{padding:26px 20px 22px;border-radius:18px}
+  .lead-title{font-size:18px}
+}
+
+/* ── GRID-3 (5-card layout: 3+2) ────────────────── */
+.grid-3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.grid-3{grid-template-columns:1fr}}
+.lcat.at{background:#f3eeff;color:#7c3aed}
+
+/* ── PROGRESS PANEL ─────────────────────────────── */
+.prog-panel{background:var(--card);border:1.5px solid var(--bdr);border-radius:16px;padding:18px 20px 16px;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.prog-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.prog-title{font-size:13px;font-weight:700;color:var(--t1);letter-spacing:.3px;text-transform:uppercase}
+.prog-pct{font-size:13px;font-weight:700;color:var(--coral)}
+.prog-bar-wrap{height:6px;background:var(--bdr);border-radius:99px;margin-bottom:14px;overflow:hidden}
+.prog-bar-fill{height:100%;background:linear-gradient(90deg,var(--coral),#f0a07a);border-radius:99px;transition:width .6s ease}
+.prog-stats{display:flex;gap:0;margin-bottom:14px;border:1.5px solid var(--bdr);border-radius:12px;overflow:hidden}
+.prog-stat{flex:1;padding:10px 0;text-align:center;border-right:1.5px solid var(--bdr)}
+.prog-stat:last-child{border-right:none}
+.prog-stat-n{font-size:20px;font-weight:800;color:var(--t1);line-height:1.1}
+.prog-stat-tot{font-size:13px;font-weight:500;color:var(--t3)}
+.prog-stat-l{font-size:10.5px;color:var(--t2);margin-top:2px;font-weight:500}
+.prog-next{display:flex;align-items:center;justify-content:space-between;background:var(--coral-t);border:1.5px solid var(--coral-m);border-radius:12px;padding:11px 14px;margin-bottom:14px;cursor:pointer;transition:background .15s}
+.prog-next:hover{background:var(--coral-m)}
+.prog-next-tag{font-size:10.5px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px}
+.prog-next-title{font-size:13px;font-weight:600;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}
+.prog-next-btn{font-size:12px;font-weight:700;color:#fff;background:var(--coral);border:none;border-radius:8px;padding:6px 12px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.prog-activity-label{font-size:10.5px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.prog-heatmap{display:flex;gap:2px}
+.prog-week{display:flex;flex-direction:column;gap:2px}
+.prog-cell{width:9px;height:9px;border-radius:2px;background:var(--bdr)}
+.prog-cell.act-1{background:#fcd5c0}
+.prog-cell.act-2{background:#f0a07a}
+.prog-cell.act-3{background:var(--coral)}
+/* Watched badge on lesson cards */
+.lcard.watched .lftr .lstat::before{content:'✓ ';color:var(--green);font-weight:700}
+.lcard.watched{border-color:rgba(34,197,94,.25)!important}
+.watched-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;color:var(--green);background:var(--green-t);padding:2px 7px;border-radius:99px;margin-left:6px}
+@media(max-width:768px){
+  .prog-stats{gap:0}
+  .prog-stat-n{font-size:17px}
+  .prog-next-title{max-width:180px}
+  .prog-heatmap{display:none}
+  .prog-activity-label{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ MOBILE HEADER (hidden on desktop) ═══════════ -->
+<div class="mob-header" id="mobHeader">
+  <div class="mob-brand-row" onclick="openOverview('BIENVENIDA','¿Qué vas a aprender aquí?')" style="cursor:pointer">
+    <div class="brand-ico" style="width:32px;height:32px;min-width:32px;border-radius:9px;background:var(--coral);display:flex;align-items:center;justify-content:center">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2L20 8.5V15.5L12 22L4 15.5V8.5L12 2Z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.8" fill="#fff"/></svg>
+    </div>
+    <span class="mob-brand-name">AI Founders LATAM</span>
+  </div>
+  <div class="mob-header-r">
+    <span class="pill-free" style="font-size:9.5px;padding:3px 8px">100% gratis</span>
+    <button class="mob-ham" id="mobHamBtn">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<button class="hamburger" id="hamBtn" style="display:none"><span></span><span></span><span></span></button>
+<div class="ov" id="ov"></div>
+
+<div class="layout">
+
+<!-- ═══════════ SIDEBAR ═══════════ -->
+<aside class="sidebar" id="sidebar">
+<div class="sb-in">
+
+  <div class="sb-brand" style="position:relative">
+    <button class="sb-close" id="sbCloseBtn">&#x2715;</button>
+    <div class="brand-row" onclick="openOverview('BIENVENIDA','¿Qué vas a aprender aquí?')" style="cursor:pointer" title="Ir al inicio">
+      <div class="brand-ico">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 2L20 8.5V15.5L12 22L4 15.5V8.5L12 2Z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.8" fill="#fff"/></svg>
+      </div>
+      <div><div class="brand-name">AI Founders LATAM</div><div class="brand-sub">IA para founders y equipos de LATAM</div></div>
+    </div>
+    <span class="pill-free">100% gratis</span>
+  </div>
+
+  <!-- BIENVENIDA -->
+  <div class="nav-group">
+    <div class="nav-sec-row">
+      <span class="nsico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+      <span class="nav-glbl">Bienvenida</span>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#" class="active" data-s="BIENVENIDA" data-i="¿Qué vas a aprender aquí?" data-view="ov">¿Qué vas a aprender aquí?</a></li>
+    </ul>
+  </div>
+
+  <!-- CLAUDE -->
+  <div class="nav-group">
+    <div class="nav-sec-row">
+      <span class="nsico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2L20 8.5V15.5L12 22L4 15.5V8.5L12 2Z"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/></svg></span>
+      <span class="nav-glbl">Claude</span>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#" data-s="CLAUDE" data-i="Claude Cowork" data-lesson="1">Claude Cowork</a></li>
+      <li><a href="#" data-s="CLAUDE" data-i="Crea un Skill con Claude Desde Cero" data-lesson="2">Crea un Skill con Claude</a></li>
+      <li><a href="#" data-s="CLAUDE" data-i="Skills, Connectors y Plugins" data-lesson="3">Skills, Connectors y Plugins</a></li>
+      <li><a href="#" data-s="IA TOOLS" data-i="Presentaciones increíbles con IA" data-lesson="12">Presentaciones con IA</a></li>
+    </ul>
+  </div>
+
+  <!-- AUTOMATIZACIONES -->
+  <div class="nav-group">
+    <div class="nav-sec-row">
+      <span class="nsico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+      <span class="nav-glbl">Automatizaciones</span>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#" data-s="AUTOMATIZACIONES" data-i="Chatbot de WhatsApp con n8n" data-lesson="4">Chatbot de WhatsApp con n8n</a></li>
+      <li><a href="#" data-s="AUTOMATIZACIONES" data-i="Ideas de contenido infinitas de LinkedIn" data-lesson="5">Ideas de contenido infinitas de LinkedIn</a></li>
+      <li><a href="#" data-s="AUTOMATIZACIONES" data-i="Automatización de mensajes personalizados" data-lesson="6">Automatización de mensajes personalizados</a></li>
+      <li><a href="#" data-s="AUTOMATIZACIONES" data-i="Automatización para reels virales" data-lesson="7">Automatización para reels virales</a></li>
+      <li><a href="#" data-s="AUTOMATIZACIONES" data-i="LinkedIn ideas con AI" data-lesson="8">LinkedIn ideas con AI</a></li>
+      <li><a href="#" data-s="AUTOMATIZACIONES" data-i="WhatsApp chatbot (formato más fácil)" data-lesson="10">WhatsApp chatbot (formato más fácil)</a></li>
+    </ul>
+  </div>
+
+  <!-- NOTEBOOKLM -->
+  <div class="nav-group">
+    <div class="nav-sec-row">
+      <span class="nsico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2 4 4.5.65-3.25 3.17.77 4.48L12 12.1l-4.02 2.2.77-4.48L5.5 6.65 10 6z"/><line x1="4" y1="18" x2="20" y2="18"/></svg></span>
+      <span class="nav-glbl">NotebookLM</span>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#" data-s="NOTEBOOKLM" data-i="¿Qué es NotebookLM?" data-lesson="9">¿Qué es NotebookLM y cuándo usarlo?</a></li>
+    </ul>
+  </div>
+
+  <!-- COMUNIDAD -->
+  <div class="nav-group">
+    <div class="nav-sec-row">
+      <span class="nsico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span>
+      <span class="nav-glbl">Comunidad</span>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#" data-s="COMUNIDAD" data-i="Feed" data-view="ov">Feed</a></li>
+      <li><a href="#" data-s="COMUNIDAD" data-i="Say Hello" data-view="ov">Say Hello</a></li>
+      <li><a href="#" data-s="COMUNIDAD" data-i="Discussion Circle" data-view="ov">Discussion Circle</a></li>
+      <li><a href="#" data-s="COMUNIDAD" data-i="Events &amp; Schedule" data-view="ov">Events &amp; Schedule</a></li>
+      <li><a href="#" data-s="COMUNIDAD" data-i="Share Wins &amp; Progress" data-view="ov">Share Wins &amp; Progress</a></li>
+    </ul>
+  </div>
+
+  <!-- RECURSOS -->
+  <div class="nav-group">
+    <div class="nav-sec-row">
+      <span class="nsico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>
+      <span class="nav-glbl">Recursos</span>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#" data-s="RECURSOS" data-i="Recordings &amp; Videos" data-view="ov">Recordings &amp; Videos</a></li>
+      <li><a href="#" data-s="RECURSOS" data-i="AI Prompts &amp; Resources" data-view="ov">AI Prompts &amp; Resources</a></li>
+      <li><a href="#" data-s="RECURSOS" data-i="Setup Guides" data-view="ov">Setup Guides</a></li>
+      <li><a href="#" data-s="RECURSOS" data-i="Articles" data-view="ov">Articles</a></li>
+    </ul>
+  </div>
+
+</div>
+</aside>
+
+<!-- ═══════════ MAIN WRAP ═══════════ -->
+<div class="main-wrap" id="mainWrap">
+
+  <div class="main-scroll" id="mainScroll">
+  <div class="main-inner">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb"><span id="bS">BIENVENIDA</span><span class="sep">›</span><span class="cur" id="bI">¿Qué vas a aprender aquí?</span></div>
+
+    <!-- ══ VIEW: OVERVIEW ══ -->
+    <div id="vOv">
+
+      <!-- Mobile featured card (hidden on desktop via CSS) -->
+      <div class="mob-featured" onclick="startFirstLesson()">
+        <div class="mf-thumb">
+          <img src="https://img.youtube.com/vi/wpYDisTBlE8/maxresdefault.jpg" alt="Claude Cowork" onerror="this.src='https://img.youtube.com/vi/wpYDisTBlE8/hqdefault.jpg'">
+          <div class="mf-play-ov">
+            <div class="mf-play-btn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><polygon points="6,4 20,12 6,20" fill="#e07a54"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="mf-body">
+          <div class="mf-meta">Módulo 1 · Claude</div>
+          <div class="mf-title">Tutorial completo de Claude Cowork</div>
+          <div class="mf-desc">Aprende a usar Claude Cowork para delegar tareas complejas y multiplicar tu productividad</div>
+          <button class="mf-cta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><polygon points="6,4 20,12 6,20" fill="currentColor"/></svg>
+            Ver ahora
+          </button>
+        </div>
+      </div>
+
+      <!-- Progress Panel (shown for returning users who watched ≥1 video) -->
+      <div id="progressPanel" style="display:none;margin-bottom:16px"></div>
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-l">
+          <p class="hero-greet">¡Bienvenido de nuevo! 👋</p>
+          <h1 class="hero-title">Domina las herramientas de IA que usan los mejores founders de LATAM</h1>
+          <div class="hero-btns">
+            <button class="btn-w" onclick="startFirstLesson()">▶ Comenzar ahora</button>
+            <button class="btn-ghost">Ver módulos</button>
+          </div>
+        </div>
+        <div class="hero-r">
+          <div class="hero-badge"><div class="hb-num">7</div><div class="hb-lbl">Videos</div></div>
+          <div class="hero-badge"><div class="hb-num">100%</div><div class="hb-lbl">Gratis</div></div>
+        </div>
+      </div>
+
+
+      <!-- ── Claude + IA Tools ──────────────────────── -->
+      <div class="mod-sep"><span class="mod-pill mp-c">Claude & IA</span><div class="mod-line"></div></div>
+      <div class="cards-grid grid-3" id="grid1">
+
+        <div class="lcard" data-lesson="1" onclick="openLesson(1)">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/wpYDisTBlE8/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/wpYDisTBlE8/hqdefault.jpg'" alt="Claude Cowork" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">01</span></div>
+          <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">Tutorial completo de Claude Cowork</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="2" onclick="openLesson(2)">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/5I0naOsMtAQ/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/5I0naOsMtAQ/hqdefault.jpg'" alt="Crea un Skill con Claude Desde Cero" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">02</span></div>
+          <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">Crea un Skill con Claude Desde Cero</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="3" onclick="openLesson(3)">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/sn3zkOGdfsM/maxresdefault.jpg" alt="Skills, Connectors y Plugins" onerror="this.src='https://img.youtube.com/vi/sn3zkOGdfsM/hqdefault.jpg'" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">03</span></div>
+          <div class="lbody"><span class="lcat cc">Claude</span><p class="ltitle">Skills, Connectors y Plugins explicados</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="9" onclick="openLesson(9)">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/wiGN309SE5U/maxresdefault.jpg" alt="NotebookLM" onerror="this.src='https://img.youtube.com/vi/wiGN309SE5U/hqdefault.jpg'" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">09</span></div>
+          <div class="lbody"><span class="lcat cn">NotebookLM</span><p class="ltitle">¿Qué es NotebookLM y cuándo usarlo?</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="12" onclick="openLesson(12)">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/aHSszeH4-Ro/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/aHSszeH4-Ro/hqdefault.jpg'" alt="Presentaciones con IA" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">12</span></div>
+          <div class="lbody"><span class="lcat at">IA Tools</span><p class="ltitle">Presentaciones increíbles con IA en 10 min</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+      </div>
+
+      <!-- ── Lead Magnets ──────────────────────────── -->
+      <div class="mod-sep" style="margin-top:18px"><span class="mod-pill mp-lm">Lead Magnets</span><div class="mod-line"></div><span class="mod-cnt">24 recursos gratis</span></div>
+      <div class="lm-grid" id="lmGrid"></div>
+
+      <!-- ── Automatizaciones ────────────────────── -->
+      <div class="mod-sep" style="margin-top:18px"><span class="mod-pill mp-a">Automatizaciones</span><div class="mod-line"></div></div>
+      <div class="cards-grid" id="grid2">
+
+        <div class="lcard" data-lesson="4">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/y3NWAa5z6HU/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/y3NWAa5z6HU/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">04</span></div>
+          <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">Chatbot de WhatsApp con n8n</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="5">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/kJn-jDJL71s/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/kJn-jDJL71s/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">05</span></div>
+          <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">Ideas de contenido infinitas de LinkedIn</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="6">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/2vt4rm1n-3o/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/2vt4rm1n-3o/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">06</span></div>
+          <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">Automatización de mensajes personalizados</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="7">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/GTW_Z85lQJU/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/GTW_Z85lQJU/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">07</span></div>
+          <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">Automatización para reels virales</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="8">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/loczkTaZ05g/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/loczkTaZ05g/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">08</span></div>
+          <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">LinkedIn ideas con AI</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard" data-lesson="10">
+          <div class="lthumb"><img src="https://img.youtube.com/vi/4o29hLQAWmw/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/4o29hLQAWmw/hqdefault.jpg'" alt="" loading="lazy"><div class="pov"><div class="pov-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="#e07a54"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">10</span></div>
+          <div class="lbody"><span class="lcat ca">Automatizaciones</span><p class="ltitle">WhatsApp chatbot (formato más fácil)</p><div class="lftr"><div class="lstat"><span class="dot ok"></span>Video</div><span class="larw">→</span></div></div>
+        </div>
+
+        <div class="lcard soon" data-lesson="11">
+          <div class="lthumb"><div class="lthumb-ph"><div class="ph-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="#c9bfb8"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><span class="nbadge">11</span></div>
+          <div class="lbody"><span class="lcat co">Comunidad</span><p class="ltitle">Próximamente</p><div class="lftr"><div class="lstat"><span class="dot soon"></span>Próximamente</div><span class="larw">→</span></div></div>
+        </div>
+
+      </div>
+
+    </div><!-- /vOv -->
+
+    <!-- ══ VIEW: LESSON PLAYER ══ -->
+    <div class="view-lesson" id="vLesson">
+      <button class="back-btn" id="backBtn">← Volver al curso</button>
+      <div class="player-grid">
+        <div class="player-l">
+          <div class="vbox"><iframe id="vFrame" src="" title="Lección" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="ptabs">
+            <div class="ptab on" data-tab="0">Overview</div>
+            <div class="ptab" data-tab="1">Contenido</div>
+            <div class="ptab" data-tab="2">Autor</div>
+          </div>
+          <!-- Tab 0: Overview -->
+          <div class="tpanel on" id="tp0">
+            <div class="p-meta-row"><span class="lcat" id="vCat">Claude</span><span style="font-size:11px;color:var(--t3)" id="vNum">Lección 01</span></div>
+            <h2 class="p-title" id="vTitle">Tutorial completo de Claude Cowork</h2>
+            <p class="p-desc" id="vDesc"></p>
+            <div class="learn-grid" id="learnGrid"></div>
+          </div>
+          <!-- Tab 1: Contenido -->
+          <div class="tpanel" id="tp1"><div id="accFull"></div></div>
+          <!-- Tab 2: Autor -->
+          <div class="tpanel" id="tp2">
+            <div style="display:flex;gap:16px;align-items:flex-start;margin-top:8px">
+              <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--coral-d));display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;color:#fff;font-weight:800">L</div>
+              <div>
+                <div style="font-size:15px;font-weight:700;color:var(--t1);margin-bottom:4px">Luciano Musella</div>
+                <div style="font-size:12.5px;color:var(--t2);line-height:1.65">Founder y experto en automatizaciones con IA para LATAM. Creador de AI Founders LATAM, la plataforma 100% gratuita para founders y equipos que quieren dominar las herramientas de inteligencia artificial.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: course content accordion -->
+        <div class="player-r">
+          <p class="pr-title">Contenido del curso</p>
+          <div id="accSide"></div>
+        </div>
+      </div>
+    </div><!-- /vLesson -->
+
+  </div>
+  </div><!-- /main-scroll -->
+
+  <!-- ══ RIGHT PANEL ══ -->
+  <aside class="right-panel">
+
+    <div class="rp-card">
+      <div class="rp-card-t">Tu progreso</div>
+      <div class="streak-row">
+        <div class="streak-fire">🔥</div>
+        <div><div class="streak-num">1</div><div class="streak-lbl">día de racha</div></div>
+      </div>
+      <p class="streak-msg">¡Empieza hoy y construye el hábito! Un módulo al día es todo lo que necesitas.</p>
+      <div class="prog-wrap">
+        <div class="prog-row"><span>Progreso general</span><span>1 / 7</span></div>
+        <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+      </div>
+      <button class="go-btn" onclick="startFirstLesson()">▶ Empezar primera lección</button>
+    </div>
+
+    <div class="rp-stats">
+      <div class="rp-s"><div class="rp-s-n">11</div><div class="rp-s-l">Lecciones</div></div>
+      <div class="rp-s"><div class="rp-s-n">7</div><div class="rp-s-l">Videos</div></div>
+      <div class="rp-s"><div class="rp-s-n">4</div><div class="rp-s-l">Módulos</div></div>
+      <div class="rp-s"><div class="rp-s-n">100%</div><div class="rp-s-l">Gratis</div></div>
+    </div>
+
+    <div class="next-card">
+      <div class="next-lbl">Próxima lección</div>
+      <div class="next-title">Tutorial completo de Claude Cowork</div>
+      <button class="cont-btn" onclick="startFirstLesson()">Continuar →</button>
+    </div>
+
+    <div class="rp-card">
+      <div class="rp-card-t">Módulos</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px"><span style="font-weight:600;color:var(--t1)">Claude</span><span style="font-size:11px;color:var(--t3)">3 lecciones</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px"><span style="font-weight:600;color:var(--t1)">Automatizaciones</span><span style="font-size:11px;color:var(--t3)">6 lecciones</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px"><span style="font-weight:600;color:var(--t1)">NotebookLM</span><span style="font-size:11px;color:var(--t3)">1 lección</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px"><span style="font-weight:600;color:var(--t1)">Comunidad</span><span style="font-size:11px;color:var(--t3)">1 lección</span></div>
+      </div>
+    </div>
+
+  </aside>
+
+</div><!-- /main-wrap -->
+</div><!-- /layout -->
+
+<script>
+(function(){
+
+// ── Data ─────────────────────────────────────────
+const LS=[
+  {id:1,slug:'claude-cowork',num:'01',s:'CLAUDE',i:'Claude Cowork',cat:'cc',catL:'Claude',yt:'wpYDisTBlE8',
+   title:'Tutorial completo de Claude Cowork',
+   desc:'Aprende a usar Claude Cowork para delegar tareas complejas: organizar archivos, construir hojas de cálculo, redactar documentos y mucho más, todo sin código.',
+   learns:['Qué es Claude Cowork','Cómo configurarlo paso a paso','Casos de uso para founders','Delegar tareas con IA','Workflows de productividad','Integración con tu flujo de trabajo']},
+  {id:2,slug:'skill-claude-desde-cero',num:'02',s:'CLAUDE',i:'Crea un Skill con Claude Desde Cero',cat:'cc',catL:'Claude',yt:'5I0naOsMtAQ',
+   title:'Crea un Skill con Claude Desde Cero | Escribe Mejor Tu contenido',
+   desc:'Aprende a crear tu propio Skill en Claude desde cero para escribir mejor contenido. Tutorial paso a paso para founders que quieren multiplicar su productividad con IA.',
+   learns:['Qué es un Skill en Claude','Cómo crearlo desde cero','Aplicarlo para contenido','Mejorar tu escritura con IA','Personalizar el Skill a tu voz','Flujo práctico para founders']},
+  {id:3,slug:'skills-connectors-plugins',num:'03',s:'CLAUDE',i:'Skills, Connectors y Plugins',cat:'cc',catL:'Claude',yt:'sn3zkOGdfsM',
+   title:'Skills, Connectors y Plugins explicados',
+   desc:'Descubre cómo extender las capacidades de Claude con Skills, Connectors y Plugins. Integra herramientas externas y automatiza flujos de trabajo avanzados.',
+   learns:['Qué son los Skills y cómo crearlos','Conectar Claude con apps externas via Connectors','Plugins más útiles para founders','Casos de uso reales en equipos LATAM']},
+  {id:4,slug:'chatbot-whatsapp-n8n',num:'04',s:'AUTOMATIZACIONES',i:'Chatbot de WhatsApp con n8n',cat:'ca',catL:'Automatizaciones',yt:'y3NWAa5z6HU',
+   title:'Chatbot de WhatsApp con n8n',
+   desc:'Crea un bot de WhatsApp totalmente funcional en solo 10 minutos usando n8n. Responde mensajes automáticamente, integra con GPT y escala sin límite.',
+   learns:['Conectar WhatsApp con n8n','Configurar respuestas automáticas','Integrar con IA','Escalar el chatbot','Sin código necesario','Deploy en minutos']},
+  {id:5,slug:'ideas-contenido-linkedin',num:'05',s:'AUTOMATIZACIONES',i:'Ideas de contenido de LinkedIn',cat:'ca',catL:'Automatizaciones',yt:'kJn-jDJL71s',
+   title:'Ideas de contenido infinitas de LinkedIn',
+   desc:'Automatización con N8N que genera ideas de contenido para LinkedIn de forma automática y continua, usando inteligencia artificial.',
+   learns:['Generar ideas con IA','Automatizar con N8N','Escalar contenido','Posts que generan engagement','Reducir tiempo 90%','Flujo completamente automático']},
+  {id:6,slug:'mensajes-personalizados-whatsapp',num:'06',s:'AUTOMATIZACIONES',i:'Mensajes personalizados',cat:'ca',catL:'Automatizaciones',yt:'2vt4rm1n-3o',
+   title:'Automatización de mensajes personalizados',
+   desc:'Envía 500 mensajes ultra-personalizados en LinkedIn sin escribir ni uno solo. Usa IA para personalizar cada mensaje y multiplicar tu alcance.',
+   learns:['Personalización masiva con IA','Automatizar outreach','500 mensajes sin escribir','Aumentar tasa de respuesta','LinkedIn automation ético','Escalar tu red profesional']},
+  {id:7,slug:'automatizacion-reels-virales',num:'07',s:'AUTOMATIZACIONES',i:'Automatización para reels virales',cat:'ca',catL:'Automatizaciones',yt:'GTW_Z85lQJU',
+   title:'Automatización para reels virales',
+   desc:'Automatiza el análisis de los reels más virales en Instagram y usa esa data para crear tu propio contenido que pegue, en solo 5 pasos.',
+   learns:['Analizar reels virales','Extraer patterns ganadores','Automatizar análisis','Crear contenido data-driven','5 pasos simples','Resultados medibles']},
+  {id:8,slug:'linkedin-ideas-con-ai',num:'08',s:'AUTOMATIZACIONES',i:'LinkedIn ideas con AI',cat:'ca',catL:'Automatizaciones',yt:'loczkTaZ05g',
+   title:'LinkedIn ideas con AI',
+   desc:'Genera ideas infinitas para LinkedIn con Inteligencia Artificial y N8N. Un flujo completamente automático que nunca se queda sin ideas.',
+   learns:['Workflow en N8N','Usar IA para generar ideas','Ideas contextualmente relevantes','Programar posts automáticos','Consistencia de contenido','Resultados en LinkedIn']},
+  {id:9,slug:'que-es-notebooklm',num:'09',s:'NOTEBOOKLM',i:'¿Qué es NotebookLM?',cat:'cn',catL:'NotebookLM',yt:'wiGN309SE5U',
+   title:'¿Qué es NotebookLM y cuándo usarlo?',
+   desc:'Aprende a usar NotebookLM de Google para analizar documentos, extraer insights y crear podcasts de audio a partir de tus fuentes. La herramienta de investigación más poderosa para founders.',
+   learns:['Qué es NotebookLM y por qué lo usan top founders','Cargar y analizar documentos, PDFs y webs','Generar resúmenes y preguntas clave automáticamente','Crear podcasts de audio con tus propios documentos']},
+  {id:10,slug:'whatsapp-chatbot-facil',num:'10',s:'AUTOMATIZACIONES',i:'WhatsApp chatbot (formato más fácil)',cat:'ca',catL:'Automatizaciones',yt:'4o29hLQAWmw',
+   title:'WhatsApp chatbot (formato más fácil)',
+   desc:'Tutorial paso a paso para crear un chatbot de WhatsApp de la forma más sencilla y rápida posible. Ideal para comenzar sin experiencia previa.',
+   learns:['Setup en minutos','Sin conocimientos previos','Chatbot funcional básico','Personalizar respuestas','Conectar con tu negocio','Escalar después']},
+  {id:11,slug:'comunidad-ai-founders',num:'11',s:'COMUNIDAD',i:'Comunidad',cat:'co',catL:'Comunidad',yt:null,
+   title:'Próximamente',desc:'Próximamente.',learns:[]},
+  {id:12,slug:'presentaciones-ia-chatgpt-lovable',num:'12',s:'IA TOOLS',i:'Presentaciones increíbles con IA',cat:'at',catL:'IA Tools',yt:'aHSszeH4-Ro',
+   title:'Cómo crear presentaciones increíbles con IA en menos de 10 minutos (ChatGPT + Lovable)',
+   desc:'Aprende a crear presentaciones profesionales impresionantes en menos de 10 minutos usando ChatGPT y Lovable. El flujo exacto para founders que no tienen tiempo que perder.',
+   learns:['Flujo ChatGPT + Lovable','Presentaciones en menos de 10 min','Diseño profesional sin diseñador','Exportar y compartir al instante','Adaptarlo a cualquier tema','Impresionar desde el primer slide']},
+];
+
+const byId=id=>LS.find(l=>l.id===id);
+const MODS=[
+  {name:'Claude & IA', pill:'mp-c', lessons:[3,12,1,2,9]},
+  {name:'Automatizaciones',pill:'mp-a',lessons:[4,5,6,7,8,10]},
+  {name:'Comunidad',pill:'mp-co',lessons:[11]},
+];
+
+// ── DOM refs ──────────────────────────────────────
+const navLinks=document.querySelectorAll('.nav-list a');
+const lcards=document.querySelectorAll('.lcard');
+const vOv=document.getElementById('vOv');
+const vLesson=document.getElementById('vLesson');
+const vFrame=document.getElementById('vFrame');
+const vTitle=document.getElementById('vTitle');
+const vCat=document.getElementById('vCat');
+const vNum=document.getElementById('vNum');
+const vDesc=document.getElementById('vDesc');
+const learnGrid=document.getElementById('learnGrid');
+const accSide=document.getElementById('accSide');
+const accFull=document.getElementById('accFull');
+const backBtn=document.getElementById('backBtn');
+const bS=document.getElementById('bS');
+const bI=document.getElementById('bI');
+const mainScroll=document.getElementById('mainScroll');
+
+// ── Progress tracking ─────────────────────────────
+const AFL_WATCHED   = 'afl_watched';
+const AFL_ACTIVITY  = 'afl_activity';
+const AFL_FIRST_VIS = 'afl_first_visit';
+const TOTAL_VIDEOS  = LS.filter(l=>l.yt).length;
+
+function getWatched(){ try{ return JSON.parse(localStorage.getItem(AFL_WATCHED)||'[]'); }catch(e){ return []; } }
+function getActivity(){ try{ return JSON.parse(localStorage.getItem(AFL_ACTIVITY)||'{}'); }catch(e){ return {}; } }
+
+function markWatched(id){
+  const w=getWatched();
+  if(!w.includes(id)){
+    w.push(id);
+    localStorage.setItem(AFL_WATCHED,JSON.stringify(w));
+  }
+  const today=new Date().toISOString().slice(0,10);
+  const act=getActivity();
+  act[today]=(act[today]||0)+1;
+  localStorage.setItem(AFL_ACTIVITY,JSON.stringify(act));
+  renderProgressPanel();
+  refreshWatchedCards();
+}
+
+function calcStreak(){
+  const act=getActivity();
+  const today=new Date();
+  let streak=0;
+  for(let i=0;i<365;i++){
+    const d=new Date(today); d.setDate(d.getDate()-i);
+    const k=d.toISOString().slice(0,10);
+    if(act[k]!==undefined) streak++;
+    else if(i>0) break;
+  }
+  return streak;
+}
+
+function renderProgressPanel(){
+  const panel=document.getElementById('progressPanel');
+  if(!panel) return;
+  const watched=getWatched();
+  if(watched.length===0){ panel.style.display='none'; return; }
+  const pct=Math.round((watched.length/TOTAL_VIDEOS)*100);
+  const activeDays=Object.keys(getActivity()).length;
+  const streak=calcStreak();
+  const nextLesson=LS.find(l=>l.yt&&!watched.includes(l.id));
+  const lastId=watched[watched.length-1];
+  const resumeLesson=nextLesson||LS.find(l=>l.id===lastId);
+  const resumeLabel=nextLesson?'▶ Continúa con':'🔄 Última vista';
+  // Heatmap — last 10 weeks
+  const DAYS=70; const today2=new Date();
+  let heatCells=[];
+  for(let i=DAYS-1;i>=0;i--){
+    const d2=new Date(today2); d2.setDate(d2.getDate()-i);
+    const k=d2.toISOString().slice(0,10);
+    heatCells.push({k,c:getActivity()[k]||0});
+  }
+  let weeksHtml='';
+  for(let w=0;w<10;w++){
+    const slice=heatCells.slice(w*7,(w+1)*7);
+    weeksHtml+=`<div class="prog-week">${slice.map(d=>`<div class="prog-cell${d.c>0?' act-'+Math.min(d.c,3):''}" title="${d.k}"></div>`).join('')}</div>`;
+  }
+  panel.style.display='';
+  panel.innerHTML=`
+<div class="prog-panel">
+  <div class="prog-header"><span class="prog-title">Tu progreso</span><span class="prog-pct">${pct}% completado</span></div>
+  <div class="prog-bar-wrap"><div class="prog-bar-fill" style="width:${pct}%"></div></div>
+  <div class="prog-stats">
+    <div class="prog-stat"><div class="prog-stat-n">${watched.length}<span class="prog-stat-tot">/${TOTAL_VIDEOS}</span></div><div class="prog-stat-l">Lecciones vistas</div></div>
+    <div class="prog-stat"><div class="prog-stat-n">${activeDays}</div><div class="prog-stat-l">Días activos</div></div>
+    <div class="prog-stat"><div class="prog-stat-n">${streak}</div><div class="prog-stat-l">Racha actual</div></div>
+  </div>
+  ${resumeLesson?`<div class="prog-next" onclick="openLesson(${resumeLesson.id})"><div class="prog-next-l"><div class="prog-next-tag">${resumeLabel}</div><div class="prog-next-title">${resumeLesson.title}</div></div><button class="prog-next-btn">Ir →</button></div>`:''}
+  <div class="prog-activity-label">Actividad reciente</div>
+  <div class="prog-heatmap">${weeksHtml}</div>
+</div>`;
+}
+
+function refreshWatchedCards(){
+  const watched=getWatched();
+  lcards.forEach(c=>{
+    const id=parseInt(c.dataset.lesson);
+    if(watched.includes(id)){
+      c.classList.add('watched');
+      // Add ✓ badge if not already there
+      const ftr=c.querySelector('.lftr');
+      if(ftr&&!ftr.querySelector('.watched-badge')){
+        ftr.insertAdjacentHTML('beforeend','<span class="watched-badge">✓ Visto</span>');
+      }
+    }
+  });
+}
+
+// Init: record today's visit, render panel
+(function(){
+  const today=new Date().toISOString().slice(0,10);
+  if(!localStorage.getItem(AFL_FIRST_VIS)) localStorage.setItem(AFL_FIRST_VIS,today);
+  const act=getActivity();
+  if(act[today]===undefined){ act[today]=0; localStorage.setItem(AFL_ACTIVITY,JSON.stringify(act)); }
+  renderProgressPanel();
+  refreshWatchedCards();
+})();
+
+// ── Stagger animation ─────────────────────────────
+lcards.forEach((c,i)=>{ c.style.animationDelay=(i*48)+'ms'; });
+
+// ── Build accordion helper ────────────────────────
+function buildAcc(container,activeLessonId){
+  container.innerHTML='';
+  MODS.forEach((mod,mi)=>{
+    const a=document.createElement('div');
+    a.className='acc'+(mi===0?' open':'');
+    const lessons=mod.lessons.map(id=>byId(id)).filter(Boolean);
+    a.innerHTML=`
+      <div class="acc-hdr">
+        <span class="acc-n">0${mi+1}</span>
+        <span class="acc-t">${mod.name}</span>
+        <span class="acc-c">${lessons.length} lecciones</span>
+        <span class="acc-arr">›</span>
+      </div>
+      <div class="acc-body">
+        ${lessons.map(l=>`
+          <div class="aitem${l.id===activeLessonId?' playing':''}" data-lid="${l.id}">
+            <span class="ai-icon">${l.yt?'▶':'○'}</span>
+            <span class="ai-title">${l.title}</span>
+            <span class="ai-status">${l.yt?'Video':'Pronto'}</span>
+          </div>`).join('')}
+      </div>`;
+    a.querySelector('.acc-hdr').addEventListener('click',()=>a.classList.toggle('open'));
+    a.querySelectorAll('.aitem').forEach(item=>{
+      item.addEventListener('click',()=>{
+        const lid=parseInt(item.dataset.lid);
+        const l=byId(lid);
+        if(l&&l.yt) openLesson(lid);
+      });
+    });
+    container.appendChild(a);
+  });
+}
+
+// ── Open lesson ───────────────────────────────────
+function openLesson(id, pushHistory=true){
+  const l=byId(id);
+  if(!l) return;
+  bS.textContent=l.s;
+  bI.textContent=l.i;
+  vTitle.textContent=l.title;
+  vNum.textContent='Lección '+l.num;
+  vCat.className='lcat '+l.cat;
+  vCat.textContent=l.catL;
+  vDesc.textContent=l.desc;
+  learnGrid.innerHTML=l.learns.map(x=>`<div class="learn-item"><span class="lchk">✓</span><span>${x}</span></div>`).join('');
+  vFrame.src=l.yt?`https://www.youtube.com/embed/${l.yt}?autoplay=1&rel=0&modestbranding=1`:'';
+  buildAcc(accSide,id);
+  buildAcc(accFull,id);
+  vOv.style.display='none';
+  vLesson.classList.add('on');
+  // reset tabs
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.tpanel').forEach(p=>p.classList.remove('on'));
+  document.querySelector('.ptab[data-tab="0"]').classList.add('on');
+  document.getElementById('tp0').classList.add('on');
+  // highlight nav
+  navLinks.forEach(a=>a.classList.toggle('active',parseInt(a.dataset.lesson)===id));
+  lcards.forEach(c=>c.classList.toggle('ac',parseInt(c.dataset.lesson)===id));
+  mainScroll.scrollTo({top:0,behavior:'smooth'});
+  if(window.innerWidth<=768) closeSidebar();
+  // update URL hash for sharable deep link
+  if(pushHistory) history.pushState({lesson:id},'','#'+l.slug);
+  // Track as watched
+  markWatched(id);
+}
+
+function openOverview(s,i, pushHistory=true){
+  vFrame.src='';
+  vLesson.classList.remove('on');
+  vOv.style.display='';
+  if(s) bS.textContent=s;
+  if(i) bI.textContent=i;
+  lcards.forEach(c=>c.classList.remove('ac'));
+  if(pushHistory) history.pushState({overview:true},'',location.pathname+location.search);
+  renderProgressPanel();
+  refreshWatchedCards();
+}
+
+window.startFirstLesson=function(){ openLesson(1); };
+
+// ── Tabs ─────────────────────────────────────────
+document.querySelectorAll('.ptab').forEach(tab=>{
+  tab.addEventListener('click',function(){
+    const idx=this.dataset.tab;
+    document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('on'));
+    document.querySelectorAll('.tpanel').forEach(p=>p.classList.remove('on'));
+    this.classList.add('on');
+    document.getElementById('tp'+idx).classList.add('on');
+  });
+});
+
+// ── Back button ───────────────────────────────────
+backBtn.addEventListener('click',()=>openOverview('BIENVENIDA','¿Qué vas a aprender aquí?'));
+
+// ── Nav clicks ────────────────────────────────────
+navLinks.forEach(link=>{
+  link.addEventListener('click',function(e){
+    e.preventDefault();
+    const lid=parseInt(this.dataset.lesson);
+    const isOv=this.dataset.view==='ov';
+    navLinks.forEach(a=>a.classList.remove('active'));
+    this.classList.add('active');
+    if(!isNaN(lid)){
+      const l=byId(lid);
+      if(l&&l.yt) openLesson(lid);
+      else openOverview(this.dataset.s,this.dataset.i);
+    } else {
+      openOverview(this.dataset.s,this.dataset.i);
+    }
+  });
+});
+
+// ── Card clicks ───────────────────────────────────
+lcards.forEach(card=>{
+  card.addEventListener('click',function(){
+    if(this.classList.contains('soon')) return;
+    const l=byId(parseInt(this.dataset.lesson));
+    if(l&&l.yt) openLesson(l.id);
+  });
+});
+
+// ── Hamburger ─────────────────────────────────────
+const hamBtn=document.getElementById('hamBtn');
+const sidebar=document.getElementById('sidebar');
+const ov=document.getElementById('ov');
+function openSidebar(){sidebar.classList.add('open');ov.classList.add('open');document.body.style.overflow='hidden'}
+function closeSidebar(){sidebar.classList.remove('open');ov.classList.remove('open');document.body.style.overflow=''}
+const toggleSidebar=()=>sidebar.classList.contains('open')?closeSidebar():openSidebar();
+hamBtn.addEventListener('click',toggleSidebar);
+const mobHamBtn=document.getElementById('mobHamBtn');
+if(mobHamBtn) mobHamBtn.addEventListener('click',toggleSidebar);
+const sbCloseBtn=document.getElementById('sbCloseBtn');
+if(sbCloseBtn) sbCloseBtn.addEventListener('click',closeSidebar);
+ov.addEventListener('click',closeSidebar);
+window.addEventListener('resize',()=>{if(window.innerWidth>=820)closeSidebar()});
+
+// ── Deep link: load from URL hash on page open ────
+(function(){
+  const hash = location.hash.slice(1); // strip #
+  if(hash){
+    // Support legacy #lesson-N format
+    const legacy = hash.match(/^lesson-(\d+)$/);
+    if(legacy){ const l=byId(parseInt(legacy[1])); if(l&&l.yt){ openLesson(l.id,false); return; } }
+    // Slug-based lesson: #claude-cowork, #notebooklm, etc.
+    const bySlug = LS.find(l=>l.slug===hash);
+    if(bySlug&&bySlug.yt){ openLesson(bySlug.id,false); return; }
+    // Slug-based lead magnet: #recurso-[slug]
+    if(hash.startsWith('recurso-')){
+      const lmSlug = hash.slice(8);
+      const lm = LM_DATA.find(l=>l.slug===lmSlug);
+      if(lm){ setTimeout(()=>openLMModal(lm.id),400); return; }
+    }
+  }
+  history.replaceState({overview:true},'',location.href);
+})();
+
+// ── Browser back / forward ────────────────────────
+window.addEventListener('popstate', e=>{
+  if(e.state&&e.state.lesson){
+    openLesson(e.state.lesson, false);
+  } else if(e.state&&e.state.lm){
+    const lm=LM_DATA.find(l=>l.id===e.state.lm);
+    if(lm) openLMModal(lm.id);
+  } else {
+    openOverview('BIENVENIDA','¿Qué vas a aprender aquí?', false);
+  }
+});
+
+// ── Animate progress bar ──────────────────────────
+setTimeout(()=>{ const f=document.getElementById('progFill'); if(f) f.style.width='14%'; },400);
+
+})();
+</script>
+
+<!-- ═══════════ LEAD CAPTURE POPUP ═══════════ -->
+<div class="lead-overlay" id="leadOverlay">
+  <div class="lead-modal" id="leadModal">
+    <button class="lead-close" id="leadClose">&#x2715;</button>
+
+    <!-- Form state -->
+    <div id="leadForm">
+      <div class="lead-brand-row">
+        <div class="lead-brand-ico">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L20 8.5V15.5L12 22L4 15.5V8.5L12 2Z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.8" fill="#fff"/></svg>
+        </div>
+        <span style="font-size:12px;font-weight:700;color:var(--t2);letter-spacing:.02em">AI FOUNDERS LATAM</span>
+      </div>
+      <div class="lead-title">Accede gratis al curso completo</div>
+      <div class="lead-sub">Déjanos tus datos y te notificamos cuando subamos nuevos videos y recursos exclusivos.</div>
+
+      <div class="lead-field">
+        <label for="lNombre">Nombre</label>
+        <input type="text" id="lNombre" placeholder="Tu nombre completo" autocomplete="name">
+      </div>
+      <div class="lead-field">
+        <label for="lEmail">Email</label>
+        <input type="email" id="lEmail" placeholder="tucorreo@ejemplo.com" autocomplete="email">
+      </div>
+      <div class="lead-field">
+        <label>Número de teléfono</label>
+        <div class="phone-row">
+          <select class="phone-code" id="lCode">
+            <option value="+57" selected>🇨🇴 +57</option>
+            <option value="+52">🇲🇽 +52</option>
+            <option value="+54">🇦🇷 +54</option>
+            <option value="+56">🇨🇱 +56</option>
+            <option value="+51">🇵🇪 +51</option>
+            <option value="+58">🇻🇪 +58</option>
+            <option value="+593">🇪🇨 +593</option>
+            <option value="+591">🇧🇴 +591</option>
+            <option value="+595">🇵🇾 +595</option>
+            <option value="+598">🇺🇾 +598</option>
+            <option value="+503">🇸🇻 +503</option>
+            <option value="+502">🇬🇹 +502</option>
+            <option value="+504">🇭🇳 +504</option>
+            <option value="+506">🇨🇷 +506</option>
+            <option value="+507">🇵🇦 +507</option>
+            <option value="+1">🇺🇸 +1</option>
+            <option value="+34">🇪🇸 +34</option>
+          </select>
+          <input type="tel" id="lTel" placeholder="300 000 0000" autocomplete="tel">
+        </div>
+        <div class="field-err" id="telErr">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#ef4444" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="12" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="#ef4444"/></svg>
+          Ingresa un número de celular válido
+        </div>
+      </div>
+
+      <button class="lead-submit" id="leadSubmit">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>
+        Quiero acceder gratis
+      </button>
+      <a class="lead-skip" id="leadSkip">Saltar por ahora</a>
+    </div>
+
+    <!-- Success state -->
+    <div class="lead-ok" id="leadOk">
+      <div class="lead-ok-ico">🎉</div>
+      <div class="lead-ok-title">¡Listo! Ya estás dentro</div>
+      <div class="lead-ok-sub">Te estamos llevando a agendar tu conversación con Luciano&hellip;</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function stripCountryCode(raw, code){
+  const digits = raw.replace(/\D/g,'');
+  const codeDigits = code.replace(/\D/g,'');
+  // Strip leading zeros (00xx international format) then check for country code
+  const noLeadZeros = digits.replace(/^0+/,'');
+  if(noLeadZeros.startsWith(codeDigits)) return noLeadZeros.slice(codeDigits.length);
+  return digits;
+}
+function isRealPhone(raw){
+  const d = raw.replace(/\D/g,'');
+  if(!d || d.length < 7 || d.length > 15) return false;
+  if(/^(\d)\1+$/.test(d)) return false;
+  const fakes=['1234567890','0987654321','1234567','0000000','9999999','1111111','1231231234'];
+  if(fakes.some(f=>d.startsWith(f)||d===f)) return false;
+  return true;
+}
+
+(function(){
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNEtZuSl_emmSz7hhtYI5w5-9NK3c2IevQv-xvJpJWZmznqtYquydAzTZ0cFDBW2wgvg/exec';
+  const LS_KEY  = 'afl_lead_done';
+  const LS_USER = 'afl_user';
+
+  // Already registered via any form → never show popup again
+  if(localStorage.getItem(LS_KEY) || localStorage.getItem(LS_USER)) return;
+
+  const overlay = document.getElementById('leadOverlay');
+  const form    = document.getElementById('leadForm');
+  const okMsg   = document.getElementById('leadOk');
+
+  function showPopup(){ overlay.classList.add('show'); }
+  function hidePopup(){ overlay.classList.remove('show'); localStorage.setItem(LS_KEY,'1'); }
+
+  setTimeout(showPopup, 1800);
+
+  document.getElementById('leadClose').addEventListener('click', hidePopup);
+  document.getElementById('leadSkip').addEventListener('click', hidePopup);
+  overlay.addEventListener('click', e=>{ if(e.target===overlay) hidePopup(); });
+
+  document.getElementById('leadSubmit').addEventListener('click', async function(){
+    const nombre   = document.getElementById('lNombre').value.trim();
+    const email    = document.getElementById('lEmail').value.trim();
+    const code     = document.getElementById('lCode').value;
+    const telRaw   = document.getElementById('lTel').value.trim();
+    const telInput = document.getElementById('lTel');
+    const telErr   = document.getElementById('telErr');
+
+    // Phone validation
+    if(telRaw && !isRealPhone(telRaw)){
+      telInput.classList.add('err');
+      telErr.classList.add('show');
+      telInput.focus();
+      return;
+    }
+    telInput.classList.remove('err');
+    telErr.classList.remove('show');
+
+    if(!nombre && !email && !telRaw){
+      document.getElementById('lNombre').focus(); return;
+    }
+
+    const localNum = stripCountryCode(telRaw, code);
+    const telefono = telRaw ? code + ' ' + localNum : '';
+
+    this.textContent = 'Enviando...';
+    this.disabled = true;
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ nombre, email, telefono, fuente:'Página Web' })
+      });
+    } catch(e){ /* no-cors fetch always resolves */ }
+
+    form.style.display = 'none';
+    okMsg.style.display = 'block';
+    localStorage.setItem(LS_KEY,'1');
+    localStorage.setItem(LS_USER, JSON.stringify({nombre, email, telefono}));
+    setTimeout(()=>{ window.location.href='/aprende/gracias.html'; }, 1600);
+  });
+})();
+</script>
+
+<!-- ═══════════ LEAD MAGNET MODAL ═══════════ -->
+<div class="lm-overlay" id="lmOverlay">
+  <div class="lm-modal">
+    <button class="lm-modal-x" id="lmClose">&#x2715;</button>
+    <div class="lm-preview">
+      <div class="lm-prev-ico" id="lmPrevIco"></div>
+      <div class="lm-prev-title" id="lmPrevTitle"></div>
+    </div>
+    <div class="lm-modal-h">Accede gratis al recurso</div>
+    <div class="lm-modal-sub">Déjanos tu nombre y celular para desbloquearlo.</div>
+    <div class="lm-form-wrap" id="lmFormWrap">
+      <div class="lead-field">
+        <label for="lmNombre">Nombre</label>
+        <input type="text" id="lmNombre" placeholder="Tu nombre" autocomplete="name">
+      </div>
+      <div class="lead-field">
+        <label>Número de celular</label>
+        <div class="phone-row">
+          <select class="phone-code" id="lmCode">
+            <option value="+57" selected>🇨🇴 +57</option>
+            <option value="+52">🇲🇽 +52</option>
+            <option value="+54">🇦🇷 +54</option>
+            <option value="+56">🇨🇱 +56</option>
+            <option value="+51">🇵🇪 +51</option>
+            <option value="+58">🇻🇪 +58</option>
+            <option value="+593">🇪🇨 +593</option>
+            <option value="+502">🇬🇹 +502</option>
+            <option value="+503">🇸🇻 +503</option>
+            <option value="+504">🇭🇳 +504</option>
+            <option value="+505">🇳🇮 +505</option>
+            <option value="+506">🇨🇷 +506</option>
+            <option value="+507">🇵🇦 +507</option>
+            <option value="+591">🇧🇴 +591</option>
+            <option value="+595">🇵🇾 +595</option>
+            <option value="+598">🇺🇾 +598</option>
+            <option value="+1">🇺🇸 +1</option>
+            <option value="+34">🇪🇸 +34</option>
+          </select>
+          <input type="tel" id="lmTel" placeholder="300 000 0000" autocomplete="tel">
+        </div>
+        <div class="field-err" id="lmTelErr">⚠ Ingresa un número de celular válido</div>
+      </div>
+      <button class="lm-submit" id="lmSubmit">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Desbloquear acceso
+      </button>
+    </div>
+    <div class="lm-access" id="lmAccess">
+      <div class="lm-access-title">🎉 ¡Listo! Aquí tienes el recurso:</div>
+      <a href="#" target="_blank" rel="noopener" id="lmAccessLink" class="lm-access-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><polyline points="15 3 21 3 21 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><line x1="10" y1="14" x2="21" y2="3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        Abrir en Notion ↗
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── LEAD MAGNETS DATA ────────────────────────────── */
+const LM_DATA = [
+  {id:1, slug:'guia-skill-debrief-claude',             titulo:"Guía: Skill DEBRIEF en Claude",desc:"Conecta Claude con Google Calendar y Notion para automatizar tus debriefs de reunión paso a paso.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Guia-paso-a-paso-Skill-DEBRIEF-088e4ca3df4d441983862e8a7dc41eb3",
+   photo:"https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:2, slug:'gpt-image-2-nuevo-modelo-openai',        titulo:"GPT Image 2.0: El nuevo modelo de OpenAI",desc:"Análisis del modelo de imágenes de OpenAI y cómo aprovecharlo en tu negocio desde hoy.",cat:"ai",catL:"IA",link:"https://quiet-fiber-044.notion.site/GPT-Image-2-0-350c40c66f09809c9fd8f25cfee4379f",
+   photo:"https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:3, slug:'agente-ia-hace-mercado-exito',           titulo:"Cómo construí un agente que hace el mercado",desc:"Paso a paso de cómo automaticé mis compras del Éxito con un agente de IA que cualquiera puede replicar.",cat:"auto",catL:"Agentes",link:"https://quiet-fiber-044.notion.site/Como-construi-un-agente-351c40c66f09806eac59ccb95b063b9c",
+   photo:"https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:4, slug:'guia-contenido-linkedin-paso-a-paso',    titulo:"Guía: Contenido en LinkedIn paso a paso",desc:"Sistema probado para crear contenido consistente en LinkedIn que genera leads y visibilidad real.",cat:"linkedin",catL:"LinkedIn",link:"https://quiet-fiber-044.notion.site/Guia-contenido-LinkedIn-352c40c66f098089a4b1e238b52bf3b2",
+   photo:"https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:5, slug:'content-system-planea-crea-publica',     titulo:"Content System",desc:"El sistema que uso para planear, crear y publicar contenido sin gastar horas cada semana.",cat:"contenido",catL:"Contenido",link:"https://quiet-fiber-044.notion.site/Content-System-352c40c66f09801ca6c7ceaa2c039f55",
+   photo:"https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:6, slug:'mi-stack-de-ai-como-funciona-mi-empresa',titulo:"Mi Stack de AI: cómo funciona mi empresa",desc:"Las herramientas exactas de IA que uso en mi empresa para operar 10x más rápido.",cat:"ai",catL:"IA",link:"https://quiet-fiber-044.notion.site/Mi-Stack-de-AI-35ec40c66f09809988e4d384e8281d89",
+   photo:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:7, slug:'marketing-higgsfield-claude-videos-ia',  titulo:"La revolución del marketing: Higgsfield + Claude",desc:"Crea videos de marketing profesionales en minutos combinando Higgsfield y Claude.",cat:"video",catL:"Video",link:"https://quiet-fiber-044.notion.site/Higgsfield-Claude-362c40c66f0980909625ca17decde760",
+   photo:"https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:8, slug:'fitness-coach-personal-con-claude',      titulo:"Fitness Coach con Claude",desc:"Cómo construir un coach de fitness personal usando Claude — entrena con IA personalizada.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Fitness-Coach-Claude-363c40c66f0980be9317c625e6710b0a",
+   photo:"https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:9, slug:'automatizacion-fathom-make-notion',      titulo:"Automatización Fathom → Make → Notion",desc:"Guía para automatizar tus notas de reunión: de Fathom a Make a Notion sin tocar nada.",cat:"auto",catL:"Automatización",link:"https://quiet-fiber-044.notion.site/Automatizacion-Fathom-Make-Notion-321c40c66f0981e48a5fdb2e47057d36",
+   photo:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:10,slug:'5-mcps-esenciales-para-claude',          titulo:"5 MCPs que debes instalar hoy",desc:"Los 5 Model Context Protocols más útiles y cómo instalarlos en Claude en minutos.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/5-MCPs-367c40c66f0980c5a00ccbd47eb70dbe",
+   photo:"https://images.unsplash.com/photo-1555421689-491a97ff2040?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:11,slug:'ai-luxury-tecnologia-marcas-de-lujo',    titulo:"AI LUXURY: Tecnología en las marcas de lujo",desc:"Cómo las marcas de lujo están adoptando IA para diferenciarse y escalar su experiencia.",cat:"ai",catL:"IA",link:"https://quiet-fiber-044.notion.site/AI-LUXURY-Tech-36ac40c66f09801ab327cc3394270a34",
+   photo:"https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:12,slug:'obsidian-claude-segundo-cerebro',        titulo:"Obsidian + Claude: La Guía Esencial",desc:"Convierte Obsidian en tu segundo cerebro potenciado con Claude para pensar y crear mejor.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Obsidian-Claude-374c40c66f09817b8c6df87fa2c82f48",
+   photo:"https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:13,slug:'claude-higgsfield-crea-video-con-ia',    titulo:"Claude + Higgsfield: Crea video con IA",desc:"Tutorial para crear videos con IA directamente desde Claude usando el conector de Higgsfield.",cat:"video",catL:"Video",link:"https://quiet-fiber-044.notion.site/Claude-Higgsfield-Video-374c40c66f09810cbfadf306508a4135",
+   photo:"https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:14,slug:'nexus-sistema-operacion-con-ia',         titulo:"Nexus",desc:"El sistema Nexus para centralizar toda tu operación con IA en un solo lugar.",cat:"ai",catL:"IA",link:"https://quiet-fiber-044.notion.site/Nexus-387c40c66f0980b5b294d89d4d754ddd",
+   photo:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:15,slug:'linkedin-estrategia-founders-latam',     titulo:"LinkedIn: Estrategia para founders",desc:"Estrategia de LinkedIn para founders que quieren visibilidad y leads sin postear todos los días.",cat:"linkedin",catL:"LinkedIn",link:"https://quiet-fiber-044.notion.site/LinkedIn-359c40c66f098071a660d4adb8724fc8",
+   photo:"https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:16,slug:'linkedin-plantillas-oportunidades-negocio',titulo:"LinkedIn: Plantillas que generan oportunidades",desc:"Plantillas y fórmulas de LinkedIn probadas para generar conversaciones y oportunidades de negocio.",cat:"linkedin",catL:"LinkedIn",link:"https://quiet-fiber-044.notion.site/LinkedIn-353c40c66f098009829ac20f911dd63a",
+   photo:"https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:17,slug:'open-design-70-estilos-marcas-top',      titulo:"Open Design: 70+ estilos de marcas top",desc:"70+ estilos de las mejores marcas del mundo para diseñar con cualquier IA generativa.",cat:"diseno",catL:"Diseño",link:"https://quiet-fiber-044.notion.site/Open-Design-375c40c66f0981e88933e8c34713e220",
+   photo:"https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:18,slug:'small-business-claude-gestiona-negocio', titulo:"Small Business: Claude gestiona tu negocio",desc:"El plugin de Claude que gestiona ventas, atención al cliente y tareas de tu negocio en uno.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Small-Business-Claude-375c40c66f098148a75afcaeb497ee59",
+   photo:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:19,slug:'claude-council-5-agentes-evaluan-idea',  titulo:"Claude Council: 5 agentes evalúan tu idea",desc:"5 agentes de Claude evalúan tu idea de negocio desde distintos ángulos en segundos.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Claude-Council-37bc40c66f0981be835fd5b764e02fad",
+   photo:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:20,slug:'linkedin-claude-encuentra-vacantes',     titulo:"LinkedIn + Claude: Encuentra vacantes en 10s",desc:"Sistema para encontrar las mejores vacantes de empleo en menos de 10 segundos con Claude.",cat:"linkedin",catL:"LinkedIn",link:"https://quiet-fiber-044.notion.site/LinkedIn-Claude-Vacantes-381c40c66f098155af9cec2838cd815c",
+   photo:"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:21,slug:'hermes-agente-ia-que-ejecuta',           titulo:"Hermes: El agente que ejecuta, no solo responde",desc:"Cómo construí Hermes, el agente de IA que no conversa sino que toma acción por ti.",cat:"auto",catL:"Agentes",link:"https://quiet-fiber-044.notion.site/Hermes-38ac40c66f0981c0a2befd95dee2f632",
+   photo:"https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:22,slug:'atencion-cliente-claude-sin-gmail',      titulo:"Atención al Cliente con Claude sin tocar Gmail",desc:"Sistema para responder clientes automáticamente con Claude integrado a Gmail.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Atencion-Cliente-Claude-38ac40c66f098185bc63cf82f559f96e",
+   photo:"https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:23,slug:'notebooklm-presentaciones-que-cierran',  titulo:"NotebookLM: Presentaciones que cierran",desc:"Convierte cualquier documento en una presentación profesional que convence y cierra con NotebookLM.",cat:"notebook",catL:"NotebookLM",link:"https://quiet-fiber-044.notion.site/NotebookLM-Presentaciones-38ac40c66f0981f6a76edd845aee1f1b",
+   photo:"https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=340&fit=crop&auto=format&q=80"},
+  {id:24,slug:'find-skills-claude-skill-correcto',      titulo:"Find Skills: El skill que encuentra el skill correcto",desc:"El skill de Claude que analiza tu problema y te recomienda el skill exacto que necesitas.",cat:"claude",catL:"Claude",link:"https://quiet-fiber-044.notion.site/Find-Skills-38cc40c66f0981eabe24d34cdccb84fa",
+   photo:"https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=340&fit=crop&auto=format&q=80"}
+];
+
+/* ── PLACEHOLDERS POR CATEGORÍA ──── */
+const LM_THEMES = {
+  claude:   {bg:'linear-gradient(135deg,#e07a54,#b83a24)', svg:'<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 6L51 19.5V40.5L30 54L9 40.5V19.5L30 6Z" stroke="rgba(255,255,255,.45)" stroke-width="2"/><circle cx="30" cy="30" r="9" fill="rgba(255,255,255,.25)"/><circle cx="30" cy="30" r="4" fill="rgba(255,255,255,.9)"/></svg>'},
+  linkedin: {bg:'linear-gradient(135deg,#0077b5,#004d80)', svg:'<svg viewBox="0 0 60 60" fill="none"><rect x="9" y="26" width="9" height="22" rx="1" fill="rgba(255,255,255,.7)"/><circle cx="13.5" cy="16" r="5.5" fill="rgba(255,255,255,.7)"/><path d="M26 48V34c0-5 3-9 8-9s8 4 8 9v14h9V34c0-11-7-17-17-17-4 0-7 1-8 3v-3h-9v31h9z" fill="rgba(255,255,255,.7)"/></svg>'},
+  auto:     {bg:'linear-gradient(135deg,#c9a84c,#8a6020)', svg:'<svg viewBox="0 0 60 60" fill="none"><polygon points="30,6 50,27 40,27 40,54 20,54 20,27 10,27" fill="rgba(255,255,255,.7)"/></svg>'},
+  contenido:{bg:'linear-gradient(135deg,#8b5cf6,#5b21b6)', svg:'<svg viewBox="0 0 60 60" fill="none"><rect x="10" y="13" width="40" height="5" rx="2.5" fill="rgba(255,255,255,.65)"/><rect x="10" y="25" width="32" height="5" rx="2.5" fill="rgba(255,255,255,.5)"/><rect x="10" y="37" width="36" height="5" rx="2.5" fill="rgba(255,255,255,.4)"/><rect x="10" y="49" width="22" height="5" rx="2.5" fill="rgba(255,255,255,.3)"/></svg>'},
+  video:    {bg:'linear-gradient(135deg,#ef4444,#991b1b)', svg:'<svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="22" stroke="rgba(255,255,255,.4)" stroke-width="2.5"/><polygon points="25,20 45,30 25,40" fill="rgba(255,255,255,.85)"/></svg>'},
+  diseno:   {bg:'linear-gradient(135deg,#10b981,#065f46)', svg:'<svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="20" stroke="rgba(255,255,255,.4)" stroke-width="2"/><circle cx="20" cy="24" r="7" fill="rgba(255,255,255,.55)"/><circle cx="40" cy="24" r="7" fill="rgba(255,255,255,.45)"/><circle cx="30" cy="40" r="7" fill="rgba(255,255,255,.65)"/></svg>'},
+  notebook: {bg:'linear-gradient(135deg,#3b82f6,#1e3a8a)', svg:'<svg viewBox="0 0 60 60" fill="none"><rect x="14" y="8" width="34" height="44" rx="3" stroke="rgba(255,255,255,.5)" stroke-width="2"/><rect x="8" y="8" width="6" height="44" rx="2" fill="rgba(255,255,255,.3)"/><line x1="22" y1="20" x2="40" y2="20" stroke="rgba(255,255,255,.6)" stroke-width="2"/><line x1="22" y1="29" x2="40" y2="29" stroke="rgba(255,255,255,.5)" stroke-width="2"/><line x1="22" y1="38" x2="34" y2="38" stroke="rgba(255,255,255,.4)" stroke-width="2"/></svg>'},
+  ai:       {bg:'linear-gradient(135deg,#7c3aed,#3730a3)', svg:'<svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="14" stroke="rgba(255,255,255,.5)" stroke-width="2.5"/><circle cx="30" cy="30" r="5" fill="rgba(255,255,255,.85)"/><line x1="30" y1="8" x2="30" y2="17" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"/><line x1="30" y1="43" x2="30" y2="52" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="30" x2="17" y2="30" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"/><line x1="43" y1="30" x2="52" y2="30" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round"/></svg>'}
+};
+
+/* ── RENDER CARDS ─────────────────── */
+(function renderLM(){
+  const grid = document.getElementById('lmGrid');
+  if(!grid) return;
+  grid.innerHTML = LM_DATA.map(lm=>{
+    const th = LM_THEMES[lm.cat] || LM_THEMES.ai;
+    return `<div class="lm-card" data-lm="${lm.id}">
+      <div class="lm-thumb">
+        <img class="lm-img" src="${lm.photo}" alt="${lm.titulo}" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="lm-img-ph" style="background:${th.bg};display:none">
+          <div class="lm-ph-svg">${th.svg}</div>
+        </div>
+        <div class="lm-photo-overlay"></div>
+        <span class="lm-ph-label">${lm.catL}</span>
+      </div>
+      <div class="lm-body">
+        <span class="lm-cat-pill lm-cat-${lm.cat}">${lm.catL}</span>
+        <p class="lm-title">${lm.titulo}</p>
+        <p class="lm-desc">${lm.desc}</p>
+        <button class="lm-btn" onclick="openLMModal(${lm.id})">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2.2"/></svg>
+          Ver Contenido
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+})();
+
+/* ── LEAD MAGNET MODAL LOGIC ─────── */
+// TEMPORAL (contención, 2026-09-04): mismo Apps Script que el popup del curso.
+// La captura definitiva de recursos pasará por FunnelUp (ver docs de arquitectura).
+const LM_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwNEtZuSl_emmSz7hhtYI5w5-9NK3c2IevQv-xvJpJWZmznqtYquydAzTZ0cFDBW2wgvg/exec';
+const LM_LS_USER  = 'afl_user';
+const LM_LS_SEEN  = 'afl_lm_seen'; // JSON array of accessed IDs
+let _currentLM = null;
+
+function lmGetUser(){ try{ return JSON.parse(localStorage.getItem(LM_LS_USER)||'null'); }catch(e){ return null; } }
+function lmGetSeen(){ try{ return JSON.parse(localStorage.getItem(LM_LS_SEEN)||'[]'); }catch(e){ return []; } }
+function lmMarkSeen(id){ const s=lmGetSeen(); if(!s.includes(id)){ s.push(id); localStorage.setItem(LM_LS_SEEN,JSON.stringify(s)); } }
+function lmSaveUser(u){ localStorage.setItem(LM_LS_USER,JSON.stringify(u)); }
+
+function lmRevealLink(){
+  document.getElementById('lmFormWrap').style.display = 'none';
+  document.getElementById('lmAccessLink').href = _currentLM.link;
+  document.getElementById('lmAccess').style.display = 'block';
+  lmMarkSeen(_currentLM.id);
+  lmRefreshCards();
+}
+
+function lmRefreshCards(){
+  const seen = lmGetSeen();
+  document.querySelectorAll('.lm-card[data-lm]').forEach(card=>{
+    const id = parseInt(card.dataset.lm);
+    const btn = card.querySelector('.lm-btn');
+    if(seen.includes(id)){
+      card.querySelector('.lm-thumb').setAttribute('data-seen','1');
+      if(btn && !card.querySelector('.lm-seen-badge')){
+        const badge = document.createElement('div');
+        badge.className = 'lm-seen-badge';
+        badge.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Ya accediste';
+        card.querySelector('.lm-body').insertBefore(badge, btn);
+        btn.textContent = 'Ver de nuevo';
+        btn.style.background = 'var(--green)';
+      }
+    }
+  });
+}
+
+window.openLMModal = function(id){
+  _currentLM = LM_DATA.find(l=>l.id===id);
+  if(!_currentLM) return;
+  const th = LM_THEMES[_currentLM.cat] || LM_THEMES.ai;
+  const savedUser = lmGetUser();
+  const alreadySeen = lmGetSeen().includes(id);
+
+  // fill preview
+  document.getElementById('lmPrevIco').innerHTML = `<div style="width:40px;height:40px;border-radius:10px;background:${th.bg};display:flex;align-items:center;justify-content:center">${th.svg.replace('width="54"','width="22"').replace('height="54"','height="22"')}</div>`;
+  document.getElementById('lmPrevTitle').textContent = _currentLM.titulo;
+
+  if(alreadySeen || savedUser){
+    // Known user — skip form, go straight to content
+    const name = savedUser?.nombre ? savedUser.nombre.split(' ')[0] : null;
+    const greeting = name ? `Hola de nuevo, ${name} 👋` : 'Ya eres parte de la comunidad 👋';
+    document.getElementById('lmFormWrap').style.display = 'none';
+    document.getElementById('lmAccess').style.display = 'block';
+    document.getElementById('lmAccessLink').href = _currentLM.link;
+    // Show greeting in the subtitle area
+    document.querySelector('.lm-modal-sub').textContent = greeting;
+    lmMarkSeen(id);
+    lmRefreshCards();
+  } else {
+    // New user — show form
+    document.getElementById('lmFormWrap').style.display = '';
+    document.getElementById('lmAccess').style.display = 'none';
+    document.getElementById('lmNombre').value = '';
+    document.getElementById('lmTel').value = '';
+    document.getElementById('lmTelErr').style.display = 'none';
+    document.getElementById('lmSubmit').textContent = 'Desbloquear acceso';
+    document.getElementById('lmSubmit').disabled = false;
+    document.querySelector('.lm-modal-sub').textContent = 'Déjanos tu nombre y celular para desbloquearlo.';
+  }
+  history.pushState({lm:_currentLM.id},'','#recurso-'+_currentLM.slug);
+  document.getElementById('lmOverlay').classList.add('show');
+};
+
+function closeLMModal(){
+  document.getElementById('lmOverlay').classList.remove('show');
+  history.pushState({overview:true},'',location.pathname+location.search);
+}
+document.getElementById('lmClose').addEventListener('click', closeLMModal);
+document.getElementById('lmOverlay').addEventListener('click',e=>{ if(e.target===document.getElementById('lmOverlay')) closeLMModal(); });
+
+document.getElementById('lmSubmit').addEventListener('click', async function(){
+  if(!_currentLM) return;
+  const nombre  = document.getElementById('lmNombre').value.trim();
+  const code    = document.getElementById('lmCode').value;
+  const rawTel  = document.getElementById('lmTel').value.trim();
+  const telErr  = document.getElementById('lmTelErr');
+
+  if(!nombre){ document.getElementById('lmNombre').focus(); return; }
+  if(!isRealPhone(rawTel)){
+    telErr.style.display = 'block';
+    document.getElementById('lmTel').focus();
+    return;
+  }
+  telErr.style.display = 'none';
+
+  const telefono = code + stripCountryCode(rawTel, code);
+
+  this.textContent = 'Enviando...';
+  this.disabled = true;
+
+  lmSaveUser({nombre, telefono});
+
+  try {
+    await fetch(LM_SHEET_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        nombre, email:'', telefono,
+        fuente: 'Lead Magnet - ' + _currentLM.titulo
+      })
+    });
+  } catch(e){}
+
+  lmRevealLink();
+});
+
+// Mark already-seen cards on page load
+lmRefreshCards();
+</script>
+</body>
+</html>

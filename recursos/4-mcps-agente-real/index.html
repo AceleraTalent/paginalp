@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4 MCPs que convierten a Claude en un agente real | Luciano Musella</title>
+<meta name="description" content="Claude solo responde preguntas; sin MCPs no puede buscar en internet, controlar el navegador, rastrear sitios ni generar video.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="4 MCPs que convierten a Claude en un agente real"><meta property="og:description" content="Claude solo responde preguntas; sin MCPs no puede buscar en internet, controlar el navegador, rastrear sitios ni generar video."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+
+</head>
+<body data-page="resource" data-page-props='{"resource": "4-mcps-agente-real", "category": "claude", "type": "lista-curada"}'>
+<a class="sr" href="#main">Ir al contenido</a>
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="/">Luciano<span>.</span>Musella</a>
+    <ul class="nav__links"><li><a href="/">Inicio</a></li><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul>
+    <div class="nav__cta">
+      <a class="btn btn--ghost btn--sm" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "nav"}' ><span class="btn__t">Agenda</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu"><nav class="wrap"><div class="menu__list"><a href="/">Inicio<small>01</small></a><a href="/tutoriales/">Tutoriales<small>02</small></a><a href="/recursos/">Recursos<small>03</small></a><a href="/retos/">Retos<small>04</small></a><a href="/programa/">Programa<small>05</small></a><a href="/agenda/">Agenda<small>06</small></a></div><div class="menu__foot"><a class="btn btn--light" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "menu"}' ><span class="btn__t">Agenda una conversación</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></nav></div>
+<main id="main">
+<div class="progress" aria-hidden="true"></div>
+    <section class="ahead sec--cream" data-bg="cream"><div class="wrap">
+      <div class="crumbs"><a href="/recursos/">Recursos</a><span>/</span><a href="/recursos/#claude">Claude</a></div>
+      <span class="res__type" data-reveal>Lista curada</span>
+      <h1 class="display display--l" data-reveal style="--i:1;margin-top:14px">4 MCPs que convierten a Claude en un agente real</h1>
+      <p class="lead" data-reveal style="--i:2;margin-top:20px">Claude solo responde preguntas; sin MCPs no puede buscar en internet, controlar el navegador, rastrear sitios ni generar video.</p>
+      <div class="ahead__meta" data-reveal style="--i:3"><span>6 min de lectura</span><span class="dot"></span><span>Claude a fondo</span><span class="dot"></span><span>Claude</span><span class="dot"></span><span>Perplexity MCP</span><span class="dot"></span><span>Playwright MCP</span><span class="dot"></span><span>Firecrawl MCP</span></div>
+      <div class="boxes"><div class="box"><h5>Ideal para</h5><ul><li>Usuarios de Claude que quieren ir más allá del chat</li><li>Equipos que investigan competidores, mercados o clientes</li><li>Marketers que producen contenido visual con IA</li><li>Founders que quieren automatizar tareas en el navegador</li></ul></div><div class="box"><h5>Qué obtienes</h5><ul><li>Qué es un MCP y por qué cambia todo</li><li>Los 4 MCPs esenciales con casos de uso reales</li><li>Cómo instalar cada uno en Claude</li><li>Prompts listos para copiar</li><li>Limitación principal a tener en cuenta</li></ul></div></div>
+    </div></section>
+    <section class="sec sec--paper sec--tight" data-bg="paper"><div class="wrap article">
+      <article class="prose" data-resource="4-mcps-agente-real"><blockquote><em>La mayoría de personas usa Claude para preguntas y respuestas. Con estos 4 MCPs, Claude navega internet en vivo, controla un navegador como un humano, rastrea sitios web completos y genera campañas visuales — todo sin salir de tu conversación.</em></blockquote>
+<div class="callout"><p><strong>Ideal para</strong></p>
+<ul><li>Usuarios de Claude que quieren ir más allá del chat</li><li>Equipos que investigan competidores, mercados o clientes</li><li>Marketers que producen contenido visual con IA</li><li>Founders que quieren automatizar tareas en el navegador</li></ul></div>
+<div class="callout"><p><strong>Incluye</strong></p>
+<ul><li>Qué es un MCP y por qué cambia todo</li><li>Los 4 MCPs esenciales con casos de uso reales</li><li>Cómo instalar cada uno en Claude</li><li>Prompts listos para copiar</li><li>Limitación principal a tener en cuenta</li></ul></div>
+<hr>
+<h3>Qué es un MCP (y por qué importa)</h3>
+<p>MCP (Model Context Protocol) es el estándar que le permite a Claude conectarse con herramientas externas y ejecutar acciones reales fuera de la conversación. No es un plugin — es una conexión directa que le da capacidades nuevas a Claude que no tiene por defecto.</p>
+<p>Sin MCPs: Claude sabe mucho pero no puede hacer nada en el mundo real.</p>
+<p>Con MCPs: Claude navega, investiga, controla aplicaciones y genera contenido sin que tú intervengas.</p>
+<div class="callout"><p><strong>Cómo instalar cualquier MCP en Claude:</strong> ve a <strong>Claude → Settings → Integrations</strong> (o Connectors) → agrega el servidor MCP correspondiente con su URL. Cada MCP de esta guía incluye el link directo.</p></div>
+<hr>
+<h3>MCP 1 — Perplexity</h3>
+<p><strong>Lo que hace:</strong> le da a Claude acceso a internet en vivo dentro de tu conversación.</p>
+<p>Sin este MCP, Claude tiene un corte de conocimiento — no sabe qué pasó hoy, esta semana, o el mes pasado. Con Perplexity conectado, Claude puede responder preguntas con información real y actualizada al momento, sin que tú salgas de la conversación a buscar nada.</p>
+<hr>
+<p><strong>Casos de uso reales:</strong></p>
+<ul><li>Investigar noticias recientes de una industria o empresa</li><li>Verificar datos actualizados antes de tomar una decisión</li><li>Comparar precios, tasas o estadísticas que cambian frecuentemente</li><li>Seguir tendencias de mercado en tiempo real</li></ul>
+<hr>
+<p><strong>Prompts para usar con Perplexity MCP:</strong></p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="1">Copiar</button></div><pre>Busca las últimas noticias sobre [empresa o industria]
+de los últimos 7 días y dime qué está pasando.</pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="2">Copiar</button></div><pre>¿Cuál es la tasa de cambio actual de [moneda]?
+¿Cómo ha cambiado en los últimos 30 días?</pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="3">Copiar</button></div><pre>Investiga los tres competidores principales de [empresa]
+y dime qué han lanzado o anunciado en el último mes.</pre></div>
+<p><strong>🔗 Link de instalación:</strong> <a href="https://docs.perplexity.ai/guides/mcp-server" target="_blank" rel="noopener">Perplexity MCP</a></p>
+<hr>
+<h3>MCP 2 — Playwright</h3>
+<p><strong>Lo que hace:</strong> le da a Claude control total de un navegador web.</p>
+<p>Claude puede navegar páginas, hacer clics, llenar formularios, subir archivos y ejecutar cualquier acción que tú harías manualmente en el navegador. La diferencia con un chatbot normal es total: Claude deja de decirte cómo hacer algo y empieza a hacerlo por ti.</p>
+<hr>
+<p><strong>Casos de uso reales:</strong></p>
+<ul><li>Llenar formularios repetitivos en plataformas que no tienen API</li><li>Navegar y extraer información de sitios que bloquean scrapers simples</li><li>Automatizar flujos de trabajo en herramientas web sin integración nativa</li><li>Tomar screenshots de páginas para documentación o análisis</li></ul>
+<hr>
+<p><strong>Prompts para usar con Playwright MCP:</strong></p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="4">Copiar</button></div><pre>Entra a [URL], busca [información específica] y tráemela
+organizada en una tabla.</pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="5">Copiar</button></div><pre>Navega a [URL], completa el formulario de contacto con
+esta información: [datos] y confírmame cuando esté enviado.</pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="6">Copiar</button></div><pre>Entra a mi cuenta de [plataforma], descarga el reporte
+de [período] y guardalo en mi carpeta de descargas.</pre></div>
+<p><strong>🔗 Link de instalación:</strong> <a href="https://github.com/microsoft/playwright-mcp" target="_blank" rel="noopener">Playwright MCP</a></p>
+<hr>
+<h3>MCP 3 — Firecrawl</h3>
+<p><strong>Lo que hace:</strong> rastrea sitios web completos y carga todo el contenido directo en tu conversación con Claude.</p>
+<p>La diferencia con Perplexity es el nivel de profundidad: Perplexity te da resultados de búsqueda actualizados. Firecrawl entra a un sitio específico, recorre todas sus páginas y trae el contenido completo para que Claude lo analice. Es el compañero de research que siempre quisiste — lee todo, organiza todo, y te da lo que necesitas.</p>
+<hr>
+<p><strong>Casos de uso reales:</strong></p>
+<ul><li>Investigar un competidor completo: página de precios, casos de éxito, blog, propuesta de valor</li><li>Analizar el sitio web de un prospecto antes de una reunión comercial</li><li>Extraer toda la documentación técnica de una herramienta para entenderla rápido</li><li>Monitorear cambios en páginas clave de tu industria</li></ul>
+<hr>
+<p><strong>Prompts para usar con Firecrawl MCP:</strong></p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="7">Copiar</button></div><pre>Rastrea el sitio completo de [URL] y dame:
+- Su propuesta de valor principal
+- A quién le venden
+- Sus precios si están publicados
+- Sus diferenciadores vs el mercado</pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="8">Copiar</button></div><pre>Antes de mi reunión con [empresa], rastrea [URL de su sitio]
+y prepárame un resumen ejecutivo de lo que hacen,
+qué problemas resuelven y quiénes son sus clientes.</pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="9">Copiar</button></div><pre>Rastrea la documentación de [URL] y explícame
+cómo funciona [funcionalidad específica] en lenguaje simple.</pre></div>
+<p><strong>🔗 Link de instalación:</strong> <a href="https://docs.firecrawl.dev/mcp" target="_blank" rel="noopener">Firecrawl MCP</a></p>
+<hr>
+<h3>MCP 4 — Higgsfield</h3>
+<p><strong>Lo que hace:</strong> genera campañas publicitarias completas, videos, UGC ads e influencers digitales directamente desde Claude.</p>
+<p>Higgsfield es una plataforma de generación de video con IA — con modelos como Seedance 2.0, Kling 3.0 y Marketing Studio. Con el MCP conectado, Claude puede operar Higgsfield directamente: subes una imagen de producto, describes la campaña, y Claude genera el video sin que salgas del flujo de trabajo. Esto no existe en ninguna otra herramienta de IA conversacional.</p>
+<hr>
+<p><strong>Casos de uso reales:</strong></p>
+<ul><li>Generar un video ad para Meta desde una foto de producto</li><li>Crear múltiples variaciones de un mismo ad para testear cuál performa mejor</li><li>Producir contenido UGC con avatares sin contratar creadores</li><li>Animar imágenes estáticas de producto para Instagram o TikTok</li></ul>
+<hr>
+<p><strong>Prompts para usar con Higgsfield MCP:</strong></p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="10">Copiar</button></div><pre>Usa el MCP de Higgsfield con Marketing Studio Video.
+Tengo esta imagen de producto: [sube la foto].
+Genera un video ad de 6 segundos en formato 9:16 para Meta Stories.
+Preset: Product Review. Iluminación cálida, movimiento suave.</pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="11">Copiar</button></div><pre>Usa Higgsfield con Seedance 2.0.
+Necesito 3 variaciones del mismo video con fondos distintos:
+blanco, oscuro y urbano exterior. Formato 9:16, 6 segundos cada uno.
+Imagen: [sube imagen]. Dame los IDs de cada generación.</pre></div>
+<p><strong>🔗 Link de instalación:</strong> <a href="https://mcp.higgsfield.ai/mcp" target="_blank" rel="noopener">Higgsfield MCP</a></p>
+<hr>
+<h3>Cómo instalarlos todos en Claude</h3>
+<p>El proceso es el mismo para los 4:</p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="12">Copiar</button></div><pre>1. Abre Claude
+2. Ve a Settings → Integrations (o Connectors)
+3. Haz clic en &quot;Add Connector&quot; o &quot;Add MCP Server&quot;
+4. Pega la URL del MCP correspondiente
+5. Autoriza los permisos que pida
+6. Listo — Claude ya tiene esa capacidad disponible</pre></div>
+<div class="callout"><p><strong>Nota:</strong> algunos MCPs como Playwright requieren instalación local en tu computador (Node.js). Los demás se conectan directamente desde Claude sin instalar nada adicional. Revisa la documentación de cada uno antes de empezar.</p></div>
+<hr>
+<h3>Limitación principal (para no frustrarte)</h3>
+<div class="callout"><p>Cada MCP consume recursos distintos. Playwright requiere que tu computador esté encendido y el navegador disponible. Firecrawl y Perplexity tienen límites de uso según el plan que tengas. Higgsfield consume créditos de tu cuenta de Higgsfield — no de Claude. Antes de usar cada uno intensivamente, revisa los límites de uso de tu plan en cada plataforma.</p></div>
+<p><strong>Tip práctico:</strong> instala primero Perplexity — es el más inmediato y el que más cambia la experiencia diaria con Claude desde el primer día. Después agrega los demás uno por uno según tu caso de uso.</p>
+<hr>
+<div class="callout"><p><strong>Una pregunta antes de cerrar:</strong></p>
+<p>¿Cuántas veces esta semana saliste de Claude a buscar información, navegar una página o generar algo en otra herramienta — y después tuviste que copiar y pegar el resultado de vuelta?</p>
+<p>Esos pasos intermedios son exactamente lo que eliminan estos 4 MCPs.</p></div>
+        <hr><p class="muted" style="font-size:14px">Recurso migrado desde Notion para esta preview. <a href="https://quiet-fiber-044.notion.site/397c40c66f09814b97e4ca173616ad94" target="_blank" rel="noopener">Ver original ↗</a></p></article>
+      <aside class="aside">
+        <div class="aside__box"><h5>Aprende cómo funciona</h5><a class="tv" href="/tutoriales/claude-skills-plugins-y-conectores-cul-es-la-diferencia/" data-track="tutorial_click" data-track-props='{"video_id":"sn3zkOGdfsM","from":"resource"}'><div class="tv__th"><img src="https://img.youtube.com/vi/sn3zkOGdfsM/mqdefault.jpg" alt="" loading="lazy"></div><div><div class="tv__t">Claude Skills, Plugins y Conectores: Cuál es la diferencia?</div><div class="tv__m">6 min · YouTube</div></div></a></div>
+        
+        <div class="aside__box"><h5>Recursos relacionados</h5><ul class="aside__list"><a href="/recursos/5-mcps-claude/" data-track="related_resource_click" data-track-props='{"from":"4-mcps-agente-real","to":"5-mcps-claude"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>5 MCPs</span></a><a href="/recursos/higgsfield-claude-video/" data-track="related_resource_click" data-track-props='{"from":"4-mcps-agente-real","to":"higgsfield-claude-video"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Claude + Higgsfield: Crea video con AI directamente desde Claude</span></a><a href="/recursos/markitdown-pdfs-claude/" data-track="related_resource_click" data-track-props='{"from":"4-mcps-agente-real","to":"markitdown-pdfs-claude"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>MarkItDown: El Repo de Microsoft ** que evita Claude te cobre doble por tus PDF **</span></a></ul></div>
+        <div class="aside__box" style="background:var(--ink);color:#fff;border-color:transparent"><h5 style="color:var(--on-dark-3)">Siguiente paso</h5><p style="margin:0;font-family:var(--serif);font-size:20px;line-height:1.2">¿Quieres hacerlo guiado, en 5 días?</p><a class="btn btn--light btn--sm" href="/retos/claude-en-5-dias/" data-track="challenge_click" data-track-props='{"from": "4-mcps-agente-real"}' ><span class="btn__t">Ver el reto</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+      </aside></div></section>
+    <section class="sec sec--cream " data-bg="cream"><div class="wrap sec__head"><div><span class="eyebrow eyebrow--dot" data-reveal>Seguir construyendo</span><h2 class="h2" data-reveal style="--i:1;margin-top:14px">Recursos <em class="serif tint">relacionados</em></h2></div>
+  <div data-reveal style="--i:2;display:grid;gap:16px;justify-items:end"></div></div><div class="wrap grid-3"><a class="res res--sm" href="/recursos/5-mcps-claude/" data-reveal style="--i:0" data-track="resource_click" data-track-props='{"resource":"5-mcps-claude","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Lista curada</span><span>· Claude</span></div>
+  <div class="card__title">5 MCPs</div>
+  <div class="card__foot"><span>2 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/higgsfield-claude-video/" data-reveal style="--i:1" data-track="resource_click" data-track-props='{"resource":"higgsfield-claude-video","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Prompts</span><span>· Creativo</span></div>
+  <div class="card__title">Claude + Higgsfield: Crea video con AI directamente desde Claude</div>
+  <div class="card__foot"><span>5 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/markitdown-pdfs-claude/" data-reveal style="--i:2" data-track="resource_click" data-track-props='{"resource":"markitdown-pdfs-claude","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Tutorial</span><span>· Claude</span></div>
+  <div class="card__title">MarkItDown: El Repo de Microsoft ** que evita Claude te cobre doble por tus PDF **</div>
+  <div class="card__foot"><span>4 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></div></section>
+</main>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div><div class="foot__brand">Luciano Musella</div><p style="max-width:34ch;margin:12px 0 0">Aprende a construir con IA. Tutoriales, recursos y retos gratis; y un programa para llevarlo al trabajo.</p></div>
+    <div><h6>Explora</h6><ul><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul></div>
+    <div><h6>Canales</h6><ul><li><a href="https://www.youtube.com/@LucianoMusellaa" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://www.linkedin.com/in/luciano-parra-m" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="wrap foot__legal"><span>© 2026 Luciano Musella</span><span>Preview · web-v2 · no es la versión final</span></div>
+</footer>
+<div class="preview-badge">Preview web-v2</div>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

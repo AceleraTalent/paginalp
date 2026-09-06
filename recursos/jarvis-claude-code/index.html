@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo construir tu propio Jarvis con Claude Code y ElevenLabs | Luciano Musella</title>
+<meta name="description" content="Tener un asistente de IA propio, con voz e interfaz, entrenado en la forma de pensar del usuario, sin saber programar.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Cómo construir tu propio Jarvis con Claude Code y ElevenLabs"><meta property="og:description" content="Tener un asistente de IA propio, con voz e interfaz, entrenado en la forma de pensar del usuario, sin saber programar."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+
+</head>
+<body data-page="resource" data-page-props='{"resource": "jarvis-claude-code", "category": "agentes", "type": "caso-construido"}'>
+<a class="sr" href="#main">Ir al contenido</a>
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="/">Luciano<span>.</span>Musella</a>
+    <ul class="nav__links"><li><a href="/">Inicio</a></li><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul>
+    <div class="nav__cta">
+      <a class="btn btn--ghost btn--sm" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "nav"}' ><span class="btn__t">Agenda</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu"><nav class="wrap"><div class="menu__list"><a href="/">Inicio<small>01</small></a><a href="/tutoriales/">Tutoriales<small>02</small></a><a href="/recursos/">Recursos<small>03</small></a><a href="/retos/">Retos<small>04</small></a><a href="/programa/">Programa<small>05</small></a><a href="/agenda/">Agenda<small>06</small></a></div><div class="menu__foot"><a class="btn btn--light" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "menu"}' ><span class="btn__t">Agenda una conversación</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></nav></div>
+<main id="main">
+<div class="progress" aria-hidden="true"></div>
+    <section class="ahead sec--cream" data-bg="cream"><div class="wrap">
+      <div class="crumbs"><a href="/recursos/">Recursos</a><span>/</span><a href="/recursos/#agentes">Agentes</a></div>
+      <span class="res__type" data-reveal>Caso construido</span>
+      <h1 class="display display--l" data-reveal style="--i:1;margin-top:14px">Cómo construir tu propio Jarvis con Claude Code y ElevenLabs</h1>
+      <p class="lead" data-reveal style="--i:2;margin-top:20px">Tener un asistente de IA propio, con voz e interfaz, entrenado en la forma de pensar del usuario, sin saber programar.</p>
+      <div class="ahead__meta" data-reveal style="--i:3"><span>6 min de lectura</span><span class="dot"></span><span>Agentes y automatización</span><span class="dot"></span><span>Claude Code</span><span class="dot"></span><span>ElevenLabs</span><span class="dot"></span><span>Anthropic Console (API key)</span><span class="dot"></span><span>Playwright MCP</span></div>
+      <div class="boxes"><div class="box"><h5>Ideal para</h5><ul><li>Usuarios de Claude Code que quieren un proyecto concreto</li><li>Founders que quieren un asistente entrenado en su negocio</li><li>Cualquiera que haya soñado con tener un Jarvis propio</li><li>Personas que ya usan Claude o ChatGPT y quieren algo más personalizado</li></ul></div><div class="box"><h5>Qué obtienes</h5><ul><li>Lo que necesitas antes de empezar</li><li>Los 3 pasos para construirlo</li><li>El prompt exacto para darle a Claude Code</li><li>Cómo subirle tu forma de pensar</li><li>Cómo habilitarle control del computador</li><li>Limitación principal a tener en cuenta</li></ul></div></div>
+    </div></section>
+    <section class="sec sec--paper sec--tight" data-bg="paper"><div class="wrap article">
+      <article class="prose" data-resource="jarvis-claude-code"><blockquote><em>Con Claude Code, una interfaz visual, la voz de ElevenLabs y tus API keys, puedes construir tu propio asistente de IA personalizado — con tu nombre, tu voz preferida, y entrenado en tu forma de pensar. En menos de una hora.</em></blockquote>
+<div class="callout"><p><strong>Ideal para</strong></p>
+<ul><li>Usuarios de Claude Code que quieren un proyecto concreto</li><li>Founders que quieren un asistente entrenado en su negocio</li><li>Cualquiera que haya soñado con tener un Jarvis propio</li><li>Personas que ya usan Claude o ChatGPT y quieren algo más personalizado</li></ul></div>
+<div class="callout"><p><strong>Incluye</strong></p>
+<ul><li>Lo que necesitas antes de empezar</li><li>Los 3 pasos para construirlo</li><li>El prompt exacto para darle a Claude Code</li><li>Cómo subirle tu forma de pensar</li><li>Cómo habilitarle control del computador</li><li>Limitación principal a tener en cuenta</li></ul></div>
+<hr>
+<h3>1) Lo que necesitas antes de empezar</h3>
+<p>Son cuatro cosas. Todas accesibles, dos de ellas gratuitas.</p>
+<hr>
+<p><strong>Claude Code</strong> — la app de escritorio de Anthropic. Descarga gratuita en <a href="https://claude.ai/code" target="_blank" rel="noopener">claude.ai/code</a>. Necesitas un plan pago para usarlo.</p>
+<hr>
+<p><strong>Una interfaz visual</strong> — la cara de tu Jarvis. Busca en Google, Pinterest o Dribbble una interfaz de asistente que te guste — algo oscuro, futurista, minimalista. Guarda la imagen. Esa va a ser la referencia visual que le pases a Claude Code.</p>
+<hr>
+<p><strong>Cuenta en ElevenLabs</strong> — para la voz. Entra a <a href="https://elevenlabs.io" target="_blank" rel="noopener">elevenlabs.io</a>, crea una cuenta gratuita, elige la voz que quieres que tenga tu asistente y copia el <strong>Voice ID</strong>. Después ve a tu perfil y copia tu <strong>API key</strong>.</p>
+<hr>
+<p><strong>API key de Claude</strong> — para que Jarvis pueda pensar. Entra a <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a>, crea una API key y cópiala. Esta es la que conecta tu Jarvis directamente con el modelo de Claude.</p>
+<div class="callout"><p><strong>Nota de costos:</strong> ElevenLabs tiene plan gratuito con límite mensual de caracteres. La API de Claude tiene costo por token — para uso personal moderado, es mínimo. Estima menos de $5 USD al mes para empezar.</p></div>
+<hr>
+<h3>2) Los 3 pasos para construirlo</h3>
+<hr>
+<p><strong>Paso 1: Consigue la interfaz</strong></p>
+<p>Busca una imagen de interfaz de asistente que represente el estilo visual que quieres. Referencias útiles: busca en Google “Jarvis UI interface”, “AI assistant dashboard dark” o “HUD interface concept”. Guarda la imagen en tu computador.</p>
+<hr>
+<p><strong>Paso 2: Configura ElevenLabs</strong></p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="1">Copiar</button></div><pre>1. Entra a elevenlabs.io
+2. Crea cuenta gratuita
+3. Ve a &quot;Voice Library&quot; y escucha las voces disponibles
+4. Elige la que quieres para tu asistente
+5. Haz clic en la voz → copia el Voice ID
+6. Ve a tu perfil → API Keys → copia tu API key</pre></div>
+<hr>
+<p><strong>Paso 3: Dáselo todo a Claude Code</strong></p>
+<p>Abre Claude Code, adjunta la imagen de la interfaz y pega este prompt adaptándolo con tus datos reales:</p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="2">Copiar</button></div><pre>Quiero que construyas mi asistente personal de IA.
+
+Nombre del asistente: [nombre que quieras: Alfred, Jarvis, Nova, etc.]
+
+Referencia visual: [adjunta la imagen de la interfaz que elegiste]
+Constrúye la interfaz inspirada en esta imagen — modo oscuro,
+estética futurista, limpia.
+
+Voz:
+ElevenLabs Voice ID: [pega el ID]
+ElevenLabs API Key: [pega tu API key]
+
+Inteligencia:
+Claude API Key: [pega tu API key de Anthropic]
+Modelo: claude-sonnet-4-6
+
+Personalidad del asistente:
+[describe cómo quieres que hable: formal como Alfred,
+eficiente como Jarvis, cercano como un colega, etc.]
+
+Capacidades iniciales que debe tener:
+- Responder preguntas y ayudar con tareas de texto
+- Leer mi calendario y agenda
+- Recordar contexto entre conversaciones
+
+Constrúyelo completo: frontend con la interfaz visual,
+conexiones a las APIs, y que la voz funcione al hablarle.
+Muéstrame el progreso mientras construyes.</pre></div>
+<div class="callout"><p><strong>Qué esperar:</strong> Claude Code va a escribir el código, instalar las dependencias y armar el proyecto completo. El proceso toma entre 30 minutos y una hora dependiendo de la complejidad de la interfaz. Tú solo revisas el resultado y pides ajustes.</p></div>
+<hr>
+<h3>3) Cómo subirle tu forma de pensar</h3>
+<p>Esta es la parte que convierte un asistente genérico en uno que realmente te conoce.</p>
+<p>Si ya usas Claude o ChatGPT frecuentemente, tienes meses o años de conversaciones que reflejan cómo piensas, qué decides, cómo priorizas. Ese contexto se puede subir a Jarvis para que sus respuestas sean específicas para ti — no genéricas.</p>
+<hr>
+<p><strong>Prompt para crear tu perfil de pensamiento:</strong></p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="3">Copiar</button></div><pre>Voy a describirte cómo pienso y trabajo para que lo uses
+como contexto permanente:
+
+Mi negocio: [qué haces, a quién le vendes]
+Mis prioridades actuales: [qué estás tratando de lograr]
+Cómo tomo decisiones: [criterios que usas]
+Qué me importa más en el trabajo: [valores y principios]
+Mis fortalezas: [lo que haces mejor]
+Mis puntos ciegos: [dónde necesitas más ayuda]
+Tono que prefiero: [directo, reflexivo, retador, etc.]
+
+Usa esto para personalizar todas tus respuestas.
+No me des consejos genéricos — dáme análisis basados
+en este contexto específico.</pre></div>
+<hr>
+<p><strong>Cómo cargarlo en Jarvis:</strong></p>
+<p>Una vez que tengas el texto de tu perfil, agrégalo al archivo de instrucciones del sistema de Jarvis — Claude Code puede hacer esto directamente:</p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="4">Copiar</button></div><pre>Agrega este contexto al system prompt de Jarvis
+para que lo tenga disponible en todas las conversaciones:
+[pega tu perfil]</pre></div>
+<hr>
+<h3>4) Cómo habilitarle control del computador</h3>
+<p>Este es el nivel más avanzado. Con las herramientas correctas, Jarvis puede controlar tu computador — abrir aplicaciones, navegar el navegador, mover archivos — exactamente como lo harías tú.</p>
+<hr>
+<p><strong>Opción 1: Playwright MCP</strong></p>
+<p>Le da control del navegador. Jarvis puede navegar páginas, hacer clics, llenar formularios.</p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="5">Copiar</button></div><pre>Agrega el MCP de Playwright a Jarvis para que pueda
+controlar el navegador. Cuando le pida navegar a [URL]
+o hacer una acción en el navegador, debe ejecutarla directamente.</pre></div>
+<hr>
+<p><strong>Opción 2: Computer Use de Anthropic</strong></p>
+<p>Le da control total del escritorio — no solo el navegador. Puede ver la pantalla, mover el cursor y ejecutar cualquier acción.</p>
+<div class="codeblock"><div class="codeblock__bar"><span>plain text</span><button class="copy" type="button" data-i="6">Copiar</button></div><pre>Activa Computer Use en Jarvis. Cuando le dé una tarea
+que requiera interactuar con el escritorio, debe tomar
+el control y ejecutarla, mostrándome lo que hace.</pre></div>
+<div class="callout"><p><strong>Regla de seguridad:</strong> nunca le des control del computador sin revisar primero qué va a hacer. Siempre pídele que te muestre el plan antes de ejecutar — especialmente para acciones que no se pueden deshacer como borrar archivos, enviar correos o hacer pagos.</p></div>
+<hr>
+<h3>5) Limitación principal (para no frustrarte)</h3>
+<div class="callout"><p>Jarvis es tan bueno como el contexto que tiene. Sin el perfil de pensamiento cargado, va a responder como cualquier instancia genérica de Claude — inteligente pero no personalizado. El tiempo de construcción varía: interfaces simples toman 30 minutos, interfaces complejas con animaciones y múltiples pantallas pueden tomar 2-3 horas de iteración con Claude Code.</p></div>
+<p><strong>Tip práctico:</strong> empieza con una interfaz simple — fondo oscuro, texto blanco, botón de micrófono. Primero verifica que la voz funciona y que Claude responde correctamente. Después itera en el diseño visual. El orden importa: funcionalidad primero, estética después.</p>
+<hr>
+<div class="callout"><p><strong>Una pregunta antes de cerrar:</strong></p>
+<p>Si tuvieras un asistente que te conoce, sabe cómo piensas, puede hablar contigo con tu voz favorita y controlar tu computador — ¿cuál sería la primera tarea que le darías?</p>
+<p>Esa es exactamente la primera instrucción para darle a Jarvis cuando lo tengas listo.</p></div>
+        <hr><p class="muted" style="font-size:14px">Recurso migrado desde Notion para esta preview. <a href="https://quiet-fiber-044.notion.site/39ec40c66f09811a9548facaee32c322" target="_blank" rel="noopener">Ver original ↗</a></p></article>
+      <aside class="aside">
+        <div class="aside__box"><h5>Aprende cómo funciona</h5><a class="tv" href="/tutoriales/constru-una-app-desde-cero-sin-saber-programar-usando-claude/" data-track="tutorial_click" data-track-props='{"video_id":"n7w3Y4X1QgE","from":"resource"}'><div class="tv__th"><img src="https://img.youtube.com/vi/n7w3Y4X1QgE/mqdefault.jpg" alt="" loading="lazy"></div><div><div class="tv__t">Construí una App desde Cero sin Saber Programar (Usando Claude Code)</div><div class="tv__m">10 min · YouTube</div></div></a></div>
+        
+        <div class="aside__box"><h5>Recursos relacionados</h5><ul class="aside__list"><a href="/recursos/agente-mercado/" data-track="related_resource_click" data-track-props='{"from":"jarvis-claude-code","to":"agente-mercado"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Cómo construí un agente que hace el mercado del Éxito por mí (y cómo tú puedes hacer lo mismo)</span></a><a href="/recursos/hermes/" data-track="related_resource_click" data-track-props='{"from":"jarvis-claude-code","to":"hermes"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Hermes: El agente de IA que ejecuta, no solo responde</span></a><a href="/recursos/fathom-make-notion/" data-track="related_resource_click" data-track-props='{"from":"jarvis-claude-code","to":"fathom-make-notion"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Guía: Automatización Fathom → Make → Notion</span></a></ul></div>
+        <div class="aside__box" style="background:var(--ink);color:#fff;border-color:transparent"><h5 style="color:var(--on-dark-3)">Siguiente paso</h5><p style="margin:0;font-family:var(--serif);font-size:20px;line-height:1.2">¿Quieres hacerlo guiado, en 5 días?</p><a class="btn btn--light btn--sm" href="/retos/claude-en-5-dias/" data-track="challenge_click" data-track-props='{"from": "jarvis-claude-code"}' ><span class="btn__t">Ver el reto</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+      </aside></div></section>
+    <section class="sec sec--cream " data-bg="cream"><div class="wrap sec__head"><div><span class="eyebrow eyebrow--dot" data-reveal>Seguir construyendo</span><h2 class="h2" data-reveal style="--i:1;margin-top:14px">Recursos <em class="serif tint">relacionados</em></h2></div>
+  <div data-reveal style="--i:2;display:grid;gap:16px;justify-items:end"></div></div><div class="wrap grid-3"><a class="res res--sm" href="/recursos/agente-mercado/" data-reveal style="--i:0" data-track="resource_click" data-track-props='{"resource":"agente-mercado","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Caso construido</span><span>· Agentes</span></div>
+  <div class="card__title">Cómo construí un agente que hace el mercado del Éxito por mí (y cómo tú puedes hacer lo mismo)</div>
+  <div class="card__foot"><span>7 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/hermes/" data-reveal style="--i:1" data-track="resource_click" data-track-props='{"resource":"hermes","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Análisis</span><span>· Agentes</span></div>
+  <div class="card__title">Hermes: El agente de IA que ejecuta, no solo responde</div>
+  <div class="card__foot"><span>4 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/fathom-make-notion/" data-reveal style="--i:2" data-track="resource_click" data-track-props='{"resource":"fathom-make-notion","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Guía paso a paso</span><span>· Agentes</span></div>
+  <div class="card__title">Guía: Automatización Fathom → Make → Notion</div>
+  <div class="card__foot"><span>4 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></div></section>
+</main>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div><div class="foot__brand">Luciano Musella</div><p style="max-width:34ch;margin:12px 0 0">Aprende a construir con IA. Tutoriales, recursos y retos gratis; y un programa para llevarlo al trabajo.</p></div>
+    <div><h6>Explora</h6><ul><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul></div>
+    <div><h6>Canales</h6><ul><li><a href="https://www.youtube.com/@LucianoMusellaa" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://www.linkedin.com/in/luciano-parra-m" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="wrap foot__legal"><span>© 2026 Luciano Musella</span><span>Preview · web-v2 · no es la versión final</span></div>
+</footer>
+<div class="preview-badge">Preview web-v2</div>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

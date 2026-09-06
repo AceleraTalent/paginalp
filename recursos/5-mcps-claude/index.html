@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5 MCPs | Luciano Musella</title>
+<meta name="description" content="Qué 5 conectores MCP le dan a Claude capacidad de buscar, navegar, leer docs, planificar y ejecutar.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="5 MCPs"><meta property="og:description" content="Qué 5 conectores MCP le dan a Claude capacidad de buscar, navegar, leer docs, planificar y ejecutar."><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+
+</head>
+<body data-page="resource" data-page-props='{"resource": "5-mcps-claude", "category": "claude", "type": "lista-curada"}'>
+<a class="sr" href="#main">Ir al contenido</a>
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="/">Luciano<span>.</span>Musella</a>
+    <ul class="nav__links"><li><a href="/">Inicio</a></li><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul>
+    <div class="nav__cta">
+      <a class="btn btn--ghost btn--sm" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "nav"}' ><span class="btn__t">Agenda</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="menu"><nav class="wrap"><div class="menu__list"><a href="/">Inicio<small>01</small></a><a href="/tutoriales/">Tutoriales<small>02</small></a><a href="/recursos/">Recursos<small>03</small></a><a href="/retos/">Retos<small>04</small></a><a href="/programa/">Programa<small>05</small></a><a href="/agenda/">Agenda<small>06</small></a></div><div class="menu__foot"><a class="btn btn--light" href="/agenda/" data-track="agenda_click" data-track-props='{"from": "menu"}' ><span class="btn__t">Agenda una conversación</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></nav></div>
+<main id="main">
+<div class="progress" aria-hidden="true"></div>
+    <section class="ahead sec--cream" data-bg="cream"><div class="wrap">
+      <div class="crumbs"><a href="/recursos/">Recursos</a><span>/</span><a href="/recursos/#claude">Claude</a></div>
+      <span class="res__type" data-reveal>Lista curada</span>
+      <h1 class="display display--l" data-reveal style="--i:1;margin-top:14px">5 MCPs</h1>
+      <p class="lead" data-reveal style="--i:2;margin-top:20px">Qué 5 conectores MCP le dan a Claude capacidad de buscar, navegar, leer docs, planificar y ejecutar.</p>
+      <div class="ahead__meta" data-reveal style="--i:3"><span>2 min de lectura</span><span class="dot"></span><span>Claude a fondo</span><span class="dot"></span><span>Claude</span><span class="dot"></span><span>Tavily</span><span class="dot"></span><span>Playwright</span><span class="dot"></span><span>Context7</span></div>
+      <div class="boxes"><div class="box"><h5>Qué obtienes</h5><ul><li>5 MCPs explicados (qué hace, problema que resuelve, ideal para): Tavily, Playwright, Context7, Task Master, Markdownify</li><li>links a web/docs/repo de cada uno</li><li>stack recomendado combinando los 5</li></ul></div></div>
+    </div></section>
+    <section class="sec sec--paper sec--tight" data-bg="paper"><div class="wrap article">
+      <article class="prose" data-resource="5-mcps-claude"><div class="callout"><p><strong>5 MCPs que vuelven a Claude un Agente de verdad</strong></p>
+<p>Convierte tu IA en un sistema que <strong>busca</strong>, <strong>navega</strong>, <strong>lee</strong>, <strong>planifica</strong> y <strong>ejecuta</strong> sin caos.</p></div>
+<h3>¿Qué es un MCP?</h3>
+<p>Un <strong>MCP (Model Context Protocol)</strong> es un “conector” que le da a Claude herramientas externas (web, navegador, docs, archivos, flujos) para que deje de depender solo del texto del chat y pueda <strong>hacer trabajo real</strong>.</p>
+<hr>
+<h3>Los 5 MCPs (y el problema que resuelven)</h3>
+<h4>1) Tavily — búsqueda para agentes de IA</h4>
+<p><strong>Qué hace:</strong> Motor de búsqueda hecho para agentes. Devuelve resultados en <strong>datos limpios y estructurados</strong> listos para LLMs.</p>
+<p><strong>El problema que resuelve:</strong> “Claude no puede leer ese sitio / no tengo acceso a esa página”. Con Tavily, el agente <strong>encuentra y resume</strong> lo que necesita de forma más confiable.</p>
+<p><strong>Ideal para:</strong> research rápido, comparativas, validar información, encontrar fuentes.</p>
+<p><strong>Links:</strong> <a href="https://tavily.com/" target="_blank" rel="noopener">Website</a> · <a href="https://docs.tavily.com/" target="_blank" rel="noopener">Docs</a></p>
+<hr>
+<h4>2) Playwright — Claude controla tu navegador</h4>
+<p><strong>Qué hace:</strong> Le permite a Claude <strong>usar el navegador</strong> como si fuera una persona: clics, formularios, navegación, pasos repetitivos.</p>
+<p><strong>El problema que resuelve:</strong> El “modo agente” deja de ser teoría y se vuelve ejecución: <em>“llena este formulario por mí”</em> → lo hace.</p>
+<p><strong>Ideal para:</strong> automatizar tareas repetitivas, flujos de soporte, scraping ligero, operaciones.</p>
+<p><strong>Links:</strong> <a href="https://playwright.dev/" target="_blank" rel="noopener">Website/Docs</a> · <a href="https://github.com/microsoft/playwright" target="_blank" rel="noopener">Repo</a></p>
+<hr>
+<h4>3) Context7 — documentación real y actualizada</h4>
+<p><strong>Qué hace:</strong> Le da a Claude <strong>documentación actualizada</strong> de lo que estés usando (miles de librerías).</p>
+<p><strong>El problema que resuelve:</strong> Se acabó Claude:</p>
+<ul><li>inventando APIs que no existen</li><li>sugiriendo métodos deprecados</li><li>usando ejemplos viejos</li></ul>
+<p><strong>Ideal para:</strong> desarrollo, integraciones, coding con precisión, evitar bugs por docs desactualizadas.</p>
+<p><strong>Links:</strong> <a href="https://context7.com/" target="_blank" rel="noopener">Website</a> · <a href="https://github.com/upstash/context7" target="_blank" rel="noopener">Repo</a></p>
+<blockquote>Nota para el reel: <em>Usar solo el minuto 3. Quitar el sonido, dejar solo el video y acelerarlo.</em></blockquote>
+<hr>
+<h4>4) Task Manager AI — de requerimientos a tareas con dependencias</h4>
+<p><strong>Qué hace:</strong> Le das un PRD / requerimientos y genera un plan de tareas <strong>estructurado</strong>, con <strong>dependencias</strong>.</p>
+<p><strong>El problema que resuelve:</strong> Una sesión de código caótica se vuelve un <strong>pipeline</strong>: Claude ejecuta paso a paso, en orden, sin perderse.</p>
+<p><strong>Ideal para:</strong> builds grandes, features complejas, refactors, lanzamientos.</p>
+<p><strong>Links:</strong> <a href="https://tryhamster.com/product/taskmaster" target="_blank" rel="noopener">Website</a> · <a href="https://github.com/eyaltoledano/claude-task-master" target="_blank" rel="noopener">Repo</a></p>
+<hr>
+<h4>5) Markdownify — cualquier documento → markdown “legible” por Claude</h4>
+<p><strong>Qué hace:</strong> Convierte <strong>PDFs, imágenes y audio</strong> en markdown limpio que Claude puede entender sin fricción.</p>
+<p><strong>El problema que resuelve:</strong> Se acabó:</p>
+<ul><li>“Claude no entiende esta imagen”</li><li>“no puedo leer este PDF”</li><li>copiar/pegar manualmente</li></ul>
+<p><strong>Ideal para:</strong> análisis de documentos, procesos internos, inputs de clientes, transcripción + estructuración.</p>
+<p><strong>Links:</strong> <a href="https://github.com/zcaceres/markdownify-mcp" target="_blank" rel="noopener">Repo</a> · <a href="https://www.npmjs.com/package/mcp-markdownify-server" target="_blank" rel="noopener">NPM</a></p>
+<hr>
+<h3>La combinación ganadora (stack recomendado)</h3>
+<ul><li><strong>Tavily</strong> para encontrar información</li><li><strong>Markdownify</strong> para convertirla a formato legible</li><li><strong>Context7</strong> para precisión técnica</li><li><strong>Task Manager AI</strong> para convertir objetivos en plan ejecutable</li><li><strong>Playwright</strong> para ejecutar en el mundo real (web)</li></ul>
+<hr>
+        <hr><p class="muted" style="font-size:14px">Recurso migrado desde Notion para esta preview. <a href="https://quiet-fiber-044.notion.site/367c40c66f0980c5a00ccbd47eb70dbe" target="_blank" rel="noopener">Ver original ↗</a></p></article>
+      <aside class="aside">
+        <div class="aside__box"><h5>Aprende cómo funciona</h5><a class="tv" href="/tutoriales/claude-skills-plugins-y-conectores-cul-es-la-diferencia/" data-track="tutorial_click" data-track-props='{"video_id":"sn3zkOGdfsM","from":"resource"}'><div class="tv__th"><img src="https://img.youtube.com/vi/sn3zkOGdfsM/mqdefault.jpg" alt="" loading="lazy"></div><div><div class="tv__t">Claude Skills, Plugins y Conectores: Cuál es la diferencia?</div><div class="tv__m">6 min · YouTube</div></div></a></div>
+        
+        <div class="aside__box"><h5>Recursos relacionados</h5><ul class="aside__list"><a href="/recursos/4-mcps-agente-real/" data-track="related_resource_click" data-track-props='{"from":"5-mcps-claude","to":"4-mcps-agente-real"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>4 MCPs que convierten a Claude en un agente real</span></a><a href="/recursos/markitdown-pdfs-claude/" data-track="related_resource_click" data-track-props='{"from":"5-mcps-claude","to":"markitdown-pdfs-claude"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>MarkItDown: El Repo de Microsoft ** que evita Claude te cobre doble por tus PDF **</span></a><a href="/recursos/skill-debrief-claude/" data-track="related_resource_click" data-track-props='{"from":"5-mcps-claude","to":"skill-debrief-claude"}'><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span>Guía paso a paso para crear un Skill - DEBRIEF en Claude (Notion + Google Calendar)</span></a></ul></div>
+        <div class="aside__box" style="background:var(--ink);color:#fff;border-color:transparent"><h5 style="color:var(--on-dark-3)">Siguiente paso</h5><p style="margin:0;font-family:var(--serif);font-size:20px;line-height:1.2">¿Quieres hacerlo guiado, en 5 días?</p><a class="btn btn--light btn--sm" href="/retos/claude-en-5-dias/" data-track="challenge_click" data-track-props='{"from": "5-mcps-claude"}' ><span class="btn__t">Ver el reto</span><span class="btn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+      </aside></div></section>
+    <section class="sec sec--cream " data-bg="cream"><div class="wrap sec__head"><div><span class="eyebrow eyebrow--dot" data-reveal>Seguir construyendo</span><h2 class="h2" data-reveal style="--i:1;margin-top:14px">Recursos <em class="serif tint">relacionados</em></h2></div>
+  <div data-reveal style="--i:2;display:grid;gap:16px;justify-items:end"></div></div><div class="wrap grid-3"><a class="res res--sm" href="/recursos/4-mcps-agente-real/" data-reveal style="--i:0" data-track="resource_click" data-track-props='{"resource":"4-mcps-agente-real","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Lista curada</span><span>· Claude</span></div>
+  <div class="card__title">4 MCPs que convierten a Claude en un agente real</div>
+  <div class="card__foot"><span>6 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/markitdown-pdfs-claude/" data-reveal style="--i:1" data-track="resource_click" data-track-props='{"resource":"markitdown-pdfs-claude","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Tutorial</span><span>· Claude</span></div>
+  <div class="card__title">MarkItDown: El Repo de Microsoft ** que evita Claude te cobre doble por tus PDF **</div>
+  <div class="card__foot"><span>4 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="res res--sm" href="/recursos/skill-debrief-claude/" data-reveal style="--i:2" data-track="resource_click" data-track-props='{"resource":"skill-debrief-claude","from":"card"}'>
+  <div class="card__meta"><span class="res__type">Guía paso a paso</span><span>· Claude</span></div>
+  <div class="card__title">Guía paso a paso para crear un Skill - DEBRIEF en Claude (Notion + Google Calendar)</div>
+  <div class="card__foot"><span>13 min · con tutorial</span><span class="card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></div></section>
+</main>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div><div class="foot__brand">Luciano Musella</div><p style="max-width:34ch;margin:12px 0 0">Aprende a construir con IA. Tutoriales, recursos y retos gratis; y un programa para llevarlo al trabajo.</p></div>
+    <div><h6>Explora</h6><ul><li><a href="/tutoriales/">Tutoriales</a></li><li><a href="/recursos/">Recursos</a></li><li><a href="/retos/">Retos</a></li><li><a href="/programa/">Programa</a></li><li><a href="/agenda/">Agenda</a></li></ul></div>
+    <div><h6>Canales</h6><ul><li><a href="https://www.youtube.com/@LucianoMusellaa" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://www.linkedin.com/in/luciano-parra-m" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+  </div>
+  <div class="wrap foot__legal"><span>© 2026 Luciano Musella</span><span>Preview · web-v2 · no es la versión final</span></div>
+</footer>
+<div class="preview-badge">Preview web-v2</div>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>
