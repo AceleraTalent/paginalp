@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>&iexcl;Llamada agendada! | Luciano Musella</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/aprende/styles.css">
+  <style>
+    .thankyou{padding:48px 0 56px;min-height:0;text-align:center}
+    .thankyou__icon{width:56px;height:56px;margin:0 auto 16px}
+    .thankyou__icon svg{width:26px;height:26px}
+    .thankyou__title{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:10px}
+    .thankyou__text{font-size:1rem;margin:0 auto 26px;max-width:520px}
+    .thankyou__booking-title{font-size:1.1rem;margin-bottom:14px}
+    .thankyou__back{display:inline-block;margin-top:18px}
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '950144990819131');
+  fbq('track', 'PageView');
+  (function(){
+    var q = new URLSearchParams(location.search);
+    var id = q.get('invitee_uuid') || q.get('previewId') || '';
+    // Mismo evento Schedule que el control; eventID estable para deduplicar con CAPI si algun dia se envia server-side
+    if (id) { fbq('track', 'Schedule', { content_name: 'aprende-iclosed' }, { eventID: 'schedule-' + id }); }
+    else { fbq('track', 'Schedule', { content_name: 'aprende-iclosed' }); }
+    window.dataLayer = window.dataLayer || [];
+    var utm = {}; ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){ if (q.get(k)) utm[k] = q.get(k); });
+    window.dataLayer.push({ event: 'schedule', experiment: 'aprende-iclosed', variant: 'B', invitee_uuid: id, event_type_uuid: q.get('event_type_uuid') || '', utm: utm });
+  })();
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=950144990819131&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body data-experiment="aprende-iclosed" data-variant="B">
+
+  <section class="thankyou">
+    <div class="container thankyou__inner">
+      <div class="thankyou__icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h1 class="thankyou__title">&iexcl;Llamada agendada!</h1>
+      <p class="thankyou__text">Te llegar&aacute; la confirmaci&oacute;n con el link de la reuni&oacute;n a tu correo. Agr&eacute;gala a tu calendario para que no se te pase.</p>
+
+      <!-- iClosed widget begin -->
+      <div class="call-details-widget" data-url="https://app.iclosed.io/embed" style="width: 100%; max-width: 560px; margin: 0 auto 26px; height: 340px"></div>
+      <script type="text/javascript" src="https://app.iclosed.io/assets/widget.js" async></script>
+      <!-- iClosed widget end -->
+
+      <h2 class="thankyou__booking-title">Ahora s&iacute;, &uacute;nete a la comunidad</h2>
+      <a href="https://chat.whatsapp.com/FJwqTceWj4gBKpYKBAWEWW" class="btn btn--primary" target="_blank" rel="noopener">Unirme al grupo de WhatsApp</a>
+
+      <br>
+      <a href="/aprende-iclosed/index.html" class="thankyou__back">Volver al inicio</a>
+    </div>
+  </section>
+
+</body>
+</html>
