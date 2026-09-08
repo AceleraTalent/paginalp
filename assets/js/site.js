@@ -104,6 +104,13 @@
     menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { menu.classList.remove('is-open'); burger.classList.remove('is-open'); d.body.style.overflow = ''; }); });
     d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('is-open')) burger.click(); });
   }
+  /* deep-link (Home -> /tutoriales/#ruta-x): aterrizar en el ancla de forma determinista, sin depender del scroll suave */
+  if (location.hash && location.hash.length > 1 && !rgrid) {
+    try {
+      var tgt = d.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (tgt) w.addEventListener('load', function () { setTimeout(function () { tgt.scrollIntoView({ behavior: 'instant', block: 'start' }); }, 60); });
+    } catch (e) {}
+  }
   /* item activo */
   var path = location.pathname;
   d.querySelectorAll('.nav__links a').forEach(function (a) {
