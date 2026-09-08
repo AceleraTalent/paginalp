@@ -36,6 +36,46 @@
     track(el.getAttribute('data-track'), props);
   });
 
+  /* ---------- recursos: filtro + búsqueda (cliente, sin dependencias) ---------- */
+  var rgrid = d.getElementById('rgrid');
+  if (rgrid) {
+    var cards = Array.prototype.slice.call(rgrid.querySelectorAll('.ci'));
+    var chips = Array.prototype.slice.call(d.querySelectorAll('#rfilters .chip'));
+    var input = d.getElementById('rsearch'), clearBtn = d.querySelector('.search__x'), empty = d.getElementById('rempty');
+    var state = { c: '', q: '' }, tmr = null;
+    function norm(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+    function apply(fromUser) {
+      var q = norm(state.q).trim(), words = q ? q.split(/\s+/) : [], shown = 0;
+      cards.forEach(function (el) {
+        var okC = !state.c || (state.c === 'houston' ? el.dataset.coll === 'houston' : el.dataset.cat === state.c);
+        var hay = norm(el.dataset.hay);
+        var okQ = words.every(function (wd) { return hay.indexOf(wd) >= 0; });
+        var show = okC && okQ; el.classList.toggle('is-hidden', !show); if (show) shown++;
+      });
+      if (empty) empty.hidden = shown > 0;
+      chips.forEach(function (b) { b.classList.toggle('is-active', (b.dataset.filter || '') === state.c); });
+      if (clearBtn) clearBtn.hidden = !state.q;
+      try {
+        var u = new URL(location.href); state.c ? u.searchParams.set('c', state.c) : u.searchParams.delete('c'); state.q ? u.searchParams.set('q', state.q) : u.searchParams.delete('q'); u.hash = '';
+        history.replaceState(null, '', u.pathname + (u.search || '') );
+      } catch (e) {}
+      if (fromUser) track('resource_filter', { category: state.c || 'all', query: state.q || '', results: shown });
+    }
+    chips.forEach(function (b) { b.addEventListener('click', function () { state.c = b.dataset.filter || ''; apply(true); }); });
+    if (input) {
+      input.addEventListener('input', function () { state.q = input.value; clearTimeout(tmr); tmr = setTimeout(function () { apply(true); }, 160); });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Escape') { input.value = ''; state.q = ''; apply(true); } });
+    }
+    if (clearBtn) clearBtn.addEventListener('click', function () { input.value = ''; state.q = ''; apply(true); input.focus(); });
+    try {
+      var qp = new URLSearchParams(location.search), h = (location.hash || '').replace('#', '');
+      state.c = qp.get('c') || (h && (h === 'houston' || d.querySelector('#rfilters .chip[data-filter="' + h + '"]')) ? h : '');
+      state.q = qp.get('q') || ''; if (input && state.q) input.value = state.q;
+    } catch (e) {}
+    apply(false);
+    if (!mobile && input && !location.hash && !state.q) { /* el buscador queda listo, sin robar el foco en móvil */ }
+  }
+
   /* ---------- nav ---------- */
   var nav = d.querySelector('.nav'), hero = d.querySelector('.hero'), burger = d.querySelector('.burger'), menu = d.querySelector('.menu');
   var lastY = 0;

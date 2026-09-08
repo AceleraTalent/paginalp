@@ -316,26 +316,41 @@ def page_video(v):
     {section(head('Sigue aprendiendo', 'Más de <em class="serif tint">' + e(v["topic_label"]) + '</em>') + f'<div class="wrap grid-3">{"".join(video_card(x, i) for i, x in enumerate(more))}</div>', 'paper') if more else ''}'''
     return layout(v["title"], body, 'tutorial', v["title"], {'video_id': v["id"], 'topic': v["topic"]})
 
+def cat_card(r, i=0):
+    # Tarjeta compacta de catálogo: tipo · título · resumen (2 líneas) · lectura. Sin decoración.
+    cat = CATS[r["category"]]
+    tools = ' '.join(r["tools"][:6])
+    coll = ' Serie Houston' if r["collection"] == 'houston' else ''
+    hay = e((r["title"] + ' ' + r["summary"] + ' ' + r["type_label"] + ' ' + cat["name"] + ' ' + cat["tag"] + ' ' + tools + coll).lower())
+    props = html.escape(json.dumps({"resource": r["slug"], "from": "catalog"}), quote=True)
+    feat = '<span class="cat__flag">Para empezar</span>' if r["featured"] else ''
+    return (f'<a class="ci" href="/recursos/{r["slug"]}/" data-cat="{r["category"]}" data-coll="{r["collection"] or ""}" data-type="{e(r["type"])}" data-hay="{hay}" '
+            f'data-track="resource_click" data-track-props="{props}" style="--i:{i}">'
+            f'<div class="ci__top"><span class="res__type">{e(r["type_label"])}</span>{feat}</div>'
+            f'<div class="ci__t">{e(r["title"])}</div>'
+            f'<div class="ci__d">{e(r["summary"])}</div>'
+            f'<div class="ci__f"><span>{e(cat["name"])}{" · Serie Houston" if r["collection"] == "houston" else ""}</span><span>{r["read_min"]} min{" · con tutorial" if r["related_tutorials"] else ""}</span></div></a>')
+
 def page_recursos():
-    houston = [r for r in RES if r["collection"] == 'houston']
-    feat = [r for r in RES if r["featured"]]
-    cats_html = ''
-    for k, c in CATS.items():
-        rs = [r for r in RES if r["category"] == k and r["collection"] is None]
-        if not rs: continue
-        cards = ''.join(res_card(r, 'md' if i == 0 else 'sm', i) for i, r in enumerate(rs))
-        cats_html += f'<div class="cat-head" id="{k}"><div><h3 class="h3">{e(c["tag"])}</h3><p class="muted" style="margin:6px 0 0">{e(c["desc"])}</p></div><span class="muted">{len(rs)} recurso{"s" if len(rs) != 1 else ""}</span></div><div class="grid-3">{cards}</div>'
-    _s1 = section(f'''<div class="wrap coll" id="houston"><div data-reveal><span class="eyebrow eyebrow--dot" style="color:var(--on-dark-2)">Serie · {len(houston)} recursos</span><h2 class="h2" style="margin-top:14px">Houston: agentes para tu negocio, <em class="serif tint">sin programar</em></h2></div>
-      <p class="lead" data-reveal style="--i:1;color:var(--on-dark-2)">Una colección de agentes listos para copiar: cada uno resuelve una tarea concreta de un equipo comercial u operativo. Empieza por el hub y sigue por el que te duela más.</p></div>
-      <div class="wrap coll__list" data-reveal>{"".join(coll_item(r, i) for i, r in enumerate(houston))}</div>''', 'ink')
-    body = f'''<section class="hero hero--short" data-bg="ink"><div class="hero__media"><div class="hero__poster"></div></div><div class="hero__in"><div><span class="eyebrow" style="color:var(--on-dark-2)">Recursos</span>
-      <h1 class="display display--l" style="margin-top:14px"><span class="hero__line"><span>Piezas para usar hoy</span></span><span class="hero__line"><span><em class="serif tint">Abiertas, completas, sin registro</em></span></span></h1>
-      <p class="hero__sub">Guías, prompts, configuraciones y sistemas que Luciano usa de verdad. Cada recurso enlaza al tutorial donde se explica.</p>
-      <div class="hero__actions pill-nav">{''.join(f'<a class="chip" href="#{k}" style="color:#fff;border-color:rgba(255,255,255,.3)">{e(c["name"])}</a>' for k, c in CATS.items())}<a class="chip" href="#houston" style="color:#fff;border-color:rgba(255,255,255,.3)">Serie Houston</a></div></div></div></section>
-    {section(head('Destacados', 'Por dónde <em class="serif tint">empezar</em>') + f'<div class="wrap rgrid">{res_card(feat[0], "xl", 0)}{res_card(feat[1], "md", 1)}{res_card(feat[2], "md", 2)}{res_card(feat[3], "sm", 3)}{res_card(feat[4], "sm", 4)}{res_card(feat[5], "sm", 5)}</div>', 'cream')}
-    {section(f'<div class="wrap">{cats_html}</div>', 'paper')}
-    {_s1}'''
-    return layout('Recursos', body, 'resources', 'Biblioteca de recursos prácticos, abiertos y sin registro.')
+    # Orden del catálogo: destacados primero (son la puerta de entrada), luego por categoría en el orden de la taxonomía.
+    order = {k: i for i, k in enumerate(CATS.keys())}
+    rs = sorted(RES, key=lambda r: (0 if r["featured"] else 1, order[r["category"]], r["title"].lower()))
+    cards = ''.join(cat_card(r, i) for i, r in enumerate(rs))
+    counts = {k: sum(1 for r in RES if r["category"] == k) for k in CATS}
+    n_h = sum(1 for r in RES if r["collection"] == 'houston')
+    chips = f'<button class="chip is-active" data-filter="" type="button">Todos <small>{len(RES)}</small></button>'
+    chips += ''.join(f'<button class="chip" data-filter="{k}" type="button">{e(c["name"])} <small>{counts[k]}</small></button>' for k, c in CATS.items())
+    chips += f'<button class="chip" data-filter="houston" type="button">Serie Houston <small>{n_h}</small></button>'
+    body = f'''<section class="cat sec--cream" data-bg="cream"><div class="wrap">
+      <div class="cat__head">
+        <div><h1 class="cat__h1">Recursos</h1><p class="cat__sub">{len(RES)} recursos abiertos, sin registro: guías, prompts, configuraciones y sistemas. Cada uno se abre aquí mismo.</p></div>
+        <form class="search" role="search" onsubmit="return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="rsearch" placeholder="Buscar: agentes, prompts, LinkedIn, Claude Code…" aria-label="Buscar recursos" autocomplete="off"><button type="button" class="search__x" aria-label="Limpiar" hidden>&times;</button></form>
+      </div>
+      <div class="filters" id="rfilters" role="group" aria-label="Filtrar por categoría">{chips}</div>
+      <div class="cat__grid" id="rgrid">{cards}</div>
+      <p class="cat__empty" id="rempty" hidden>No hay recursos con ese texto. Prueba con otra palabra o quita el filtro.</p>
+    </div></section>'''
+    return layout('Recursos', body, 'resources', f'{len(RES)} recursos prácticos, abiertos y sin registro: guías, prompts, configuraciones y sistemas.')
 
 def page_resource(r):
     md = io.open(os.path.join(DATA, 'recursos', r["slug"] + '.md'), encoding='utf-8').read()
@@ -357,7 +372,7 @@ def page_resource(r):
         boxes = f'<div class="boxes"><div class="box"><h5>Qué obtienes</h5><ul>{"".join(f"<li>{e(x)}</li>" for x in r["what_you_get"])}</ul></div></div>'
     body = f'''<div class="progress" aria-hidden="true"></div>
     <section class="ahead sec--cream" data-bg="cream"><div class="wrap">
-      <div class="crumbs"><a href="/recursos/">Recursos</a><span>/</span><a href="/recursos/#{r["category"]}">{e(cat["name"])}</a>{f'<span>/</span><a href="/recursos/#houston">Serie Houston</a>' if r["collection"] else ''}</div>
+      <div class="crumbs"><a href="/recursos/">Recursos</a><span>/</span><a href="/recursos/?c={r["category"]}">{e(cat["name"])}</a>{f'<span>/</span><a href="/recursos/?c=houston">Serie Houston</a>' if r["collection"] else ''}</div>
       <span class="res__type" data-reveal>{e(r["type_label"])}</span>
       <h1 class="display display--l" data-reveal style="--i:1;margin-top:14px">{e(r["title"])}</h1>
       <p class="lead" data-reveal style="--i:2;margin-top:20px">{e(r["summary"])}</p>
@@ -373,7 +388,12 @@ def page_resource(r):
         {f'<div class="aside__box"><h5>Recursos relacionados</h5><ul class="aside__list">{rel_html}</ul></div>' if rels else ''}
         <div class="aside__box" style="background:var(--ink);color:#fff;border-color:transparent"><h5 style="color:var(--on-dark-3)">Siguiente paso</h5><p style="margin:0;font-family:var(--serif);font-size:20px;line-height:1.2">¿Quieres hacerlo guiado, en 5 días?</p>{btn('Ver el reto', '/retos/claude-en-5-dias/', 'btn--light btn--sm', ARROW, 'challenge_click', {'from': r["slug"]})}</div>
       </aside></div></section>
-    {section(head('Seguir construyendo', 'Recursos <em class="serif tint">relacionados</em>') + f'<div class="wrap grid-3">{"".join(res_card(x, "sm", i) for i, x in enumerate(rels))}</div>', 'cream') if rels else ''}'''
+    {section(head('Seguir construyendo', 'Recursos <em class="serif tint">relacionados</em>', '', link_arrow('Ver todos los recursos', '/recursos/')) + f'<div class="wrap cat__grid cat__grid--3">{"".join(cat_card(x, i) for i, x in enumerate(rels))}</div>', 'cream') if rels else ''}
+    <section class="sec sec--tight sec--ink" data-bg="ink"><div class="wrap next">
+      <div><span class="eyebrow" style="color:var(--on-dark-3)">Siguiente paso</span><h2 class="h3" style="color:#fff;margin-top:12px">¿Quieres hacerlo guiado, <em class="serif tint">en 5 días</em>?</h2>
+      <p style="color:var(--on-dark-2);max-width:52ch;margin:12px 0 0">El reto "Claude en 5 días" toma recursos como este y los convierte en una práctica diaria de 20 minutos. Gratis, a tu ritmo.</p></div>
+      <div class="next__cta">{btn('Ver el reto', '/retos/claude-en-5-dias/', 'btn--light', ARROW, 'challenge_click', {'from': r["slug"] + ':end'})}<a class="next__alt" href="/programa/" data-track="program_click" data-track-props='{{"from":"{r["slug"]}:end"}}'>Y si quieres llevarlo al trabajo, mira el programa {ARROW}</a></div>
+    </div></section>'''
     return layout(r["title"], body, 'resource', r["summary"], {'resource': r["slug"], 'category': r["category"], 'type': r["type"]})
 
 def page_retos():
