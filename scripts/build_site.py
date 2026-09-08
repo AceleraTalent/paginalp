@@ -323,13 +323,13 @@ def cat_card(r, i=0):
     coll = ' Serie Houston' if r["collection"] == 'houston' else ''
     hay = e((r["title"] + ' ' + r["summary"] + ' ' + r["type_label"] + ' ' + cat["name"] + ' ' + cat["tag"] + ' ' + tools + coll).lower())
     props = html.escape(json.dumps({"resource": r["slug"], "from": "catalog"}), quote=True)
-    feat = '<span class="cat__flag">Para empezar</span>' if r["featured"] else ''
-    return (f'<a class="ci" href="/recursos/{r["slug"]}/" data-cat="{r["category"]}" data-coll="{r["collection"] or ""}" data-type="{e(r["type"])}" data-hay="{hay}" '
+    feat = ' ci--feat' if r["featured"] else ''
+    return (f'<a class="ci{feat}" href="/recursos/{r["slug"]}/" data-cat="{r["category"]}" data-coll="{r["collection"] or ""}" data-type="{e(r["type"])}" data-hay="{hay}" '
             f'data-track="resource_click" data-track-props="{props}" style="--i:{i}">'
-            f'<div class="ci__top"><span class="res__type">{e(r["type_label"])}</span>{feat}</div>'
+            f'<div class="ci__top"><span class="res__type">{e(r["type_label"])}</span></div>'
             f'<div class="ci__t">{e(r["title"])}</div>'
             f'<div class="ci__d">{e(r["summary"])}</div>'
-            f'<div class="ci__f"><span>{e(cat["name"])}{" · Serie Houston" if r["collection"] == "houston" else ""}</span><span>{r["read_min"]} min{" · con tutorial" if r["related_tutorials"] else ""}</span></div></a>')
+            f'<div class="ci__f"><span>{"Empieza aquí · " if r["featured"] else ""}{e(cat["name"])}{" · Serie Houston" if r["collection"] == "houston" else ""}</span><span>{r["read_min"]} min{" · con tutorial" if r["related_tutorials"] else ""}</span></div></a>')
 
 def page_recursos():
     # Orden del catálogo: destacados primero (son la puerta de entrada), luego por categoría en el orden de la taxonomía.
@@ -344,7 +344,7 @@ def page_recursos():
     body = f'''<section class="cat sec--cream" data-bg="cream"><div class="wrap">
       <div class="cat__head">
         <div><h1 class="cat__h1">Recursos</h1><p class="cat__sub">{len(RES)} recursos abiertos, sin registro: guías, prompts, configuraciones y sistemas. Cada uno se abre aquí mismo.</p></div>
-        <form class="search" role="search" onsubmit="return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="rsearch" placeholder="Buscar: agentes, prompts, LinkedIn, Claude Code…" aria-label="Buscar recursos" autocomplete="off"><button type="button" class="search__x" aria-label="Limpiar" hidden>&times;</button></form>
+        <form class="search" role="search" onsubmit="return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="rsearch" placeholder="Buscar un recurso…" aria-label="Buscar recursos" autocomplete="off"><button type="button" class="search__x" aria-label="Limpiar" hidden>&times;</button></form>
       </div>
       <div class="filters" id="rfilters" role="group" aria-label="Filtrar por categoría">{chips}</div>
       <div class="cat__grid" id="rgrid">{cards}</div>
