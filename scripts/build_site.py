@@ -283,7 +283,7 @@ def page_home():
       <span class="eyebrow eyebrow--dot">Para profesionales, gerentes y líderes</span>
       <h1 class="hm-h1">Construye con IA. <em class="serif tint">Aprende haciendo.</em></h1>
       <p class="hm-hero__sub">Videos, guías y retos para usar la IA de verdad en tu trabajo. Abiertos y sin registro.</p>
-      <div class="actions">{btn('Ver tutoriales', '/tutoriales/', '', ARROW, 'tutorial_click', {'from': 'hero'})}{btn('Explorar recursos', '/recursos/', 'btn--ghost', ARROW, 'resource_click', {'from': 'hero'})}</div>
+      <div class="actions">{btn('Ver tutoriales', '/tutoriales/#temas', '', ARROW, 'tutorial_click', {'from': 'hero'})}{btn('Explorar recursos', '/recursos/#catalogo', 'btn--ghost', ARROW, 'resource_click', {'from': 'hero'})}{link_arrow('Agendar llamada', '/agenda/', 'agenda_click')}</div>
       <p class="hm-hero__meta">{len(VIDS)} tutoriales · {len(RES)} recursos · 1 reto guiado</p>
     </div>
     <div class="hm-hero__video">
@@ -295,10 +295,10 @@ def page_home():
     pills = ''
     for r in ROUTES:
         rp = html.escape(json.dumps({"route": r["slug"], "from": "home"}), quote=True)
-        pills += f'<a class="hm-pill" href="/tutoriales/?r={r["slug"]}" data-track="related_content_click" data-track-props="{rp}"><b>{e(ROUTE_LABELS.get(r["slug"], r["title"]))}</b><span>{len(r["videos"])} videos · {len(r["resources"])} recursos</span>{ARROW}</a>'
+        pills += f'<a class="hm-pill" href="/tutoriales/#ruta-{r["slug"]}" data-track="related_content_click" data-track-props="{rp}"><b>{e(ROUTE_LABELS.get(r["slug"], r["title"]))}</b><span>{len(r["videos"])} videos · {len(r["resources"])} recursos</span>{ARROW}</a>'
     start = f'<section class="sec sec--paper sec--tight" data-bg="paper" id="empezar"><div class="wrap hm-routes" data-reveal><h2 class="hm-title">¿Qué quieres aprender?</h2><div class="hm-pills">{pills}</div></div></section>'
-    tut = section(hm_head('Tutoriales', 'Aprende viendo <em class="serif tint">cómo se construye</em>', '/tutoriales/', 'Ver todos los tutoriales') + f'<div class="wrap hm-vgrid">{"".join(hm_video(v, i) for i, v in enumerate(grid_v))}</div>', 'cream')
-    res = section(hm_head('Recursos', 'Guías, prompts y configuraciones <em class="serif tint">para usar hoy</em>', '/recursos/', 'Ver todos los recursos') + f'<div class="wrap hm-rgrid">{"".join(hm_res_card(by_slug[s], i) for i, s in enumerate(HOME_RES))}</div>', 'sand')
+    tut = section(hm_head('Tutoriales', 'Aprende viendo <em class="serif tint">cómo se construye</em>', '/tutoriales/#temas', 'Ver todos los tutoriales') + f'<div class="wrap hm-vgrid">{"".join(hm_video(v, i) for i, v in enumerate(grid_v))}</div>', 'cream')
+    res = section(hm_head('Recursos', 'Guías, prompts y configuraciones <em class="serif tint">para usar hoy</em>', '/recursos/#catalogo', 'Ver todos los recursos') + f'<div class="wrap hm-rgrid">{"".join(hm_res_card(by_slug[s], i) for i, s in enumerate(HOME_RES))}</div>', 'sand')
     days = ''.join(f'<div class="day"><span class="day__n">Día {d["n"]}</span><div><div class="day__t">{e(d["title"])}</div><div class="day__d">{e(d["text"])}</div></div></div>' for d in ch["days"])
     reto = section(f'''<div class="wrap hm-reto">
       <div data-reveal><span class="hm-label" style="color:var(--on-dark-3)">Reto gratuito · 5 días · 20 min al día</span>
@@ -329,29 +329,22 @@ def page_home():
       <div>{btn('Agendar una conversación', '/agenda/', 'btn--accent', ARROW, 'agenda_click', {'from': 'home_footer'})}</div></div>''', 'ink', 'sec--tight')
     return layout('Aprende a construir con IA', hero + start + tut + res + reto + showcase + program + luciano + agenda, 'home', 'Tutoriales, recursos y retos gratis para construir con IA. Y un programa para profesionales que quieren ir más lejos.')
 
-ROUTE_TOPIC = {'nuevo': 'empezar', 'claude': 'claude', 'agentes': 'construcciones', 'automatizar': 'automatizaciones'}
-
 def page_tutoriales():
-    # Catálogo directo (un click desde Home = videos visibles): título corto + chips de ruta + grid. Sin hero ni bloque de rutas.
-    route_of = {}
-    for r in ROUTES:
-        for v in r["videos"]: route_of.setdefault(v, []).append(r["slug"])
-    for k, t in ROUTE_TOPIC.items():
-        for v in VIDS:
-            if v["topic"] == t: route_of.setdefault(v["id"], []); route_of[v["id"]].append(k) if k not in route_of[v["id"]] else None
-    order = {v: i for i, v in enumerate([x for r in ROUTES for x in r["videos"]])}
-    vs = sorted(VIDS, key=lambda v: (0 if v["featured"] else 1, -v["views"]))
-    cards = ''.join(f'<div class="tc" data-routes="{" ".join(route_of.get(v["id"], []))}" data-topic="{v["topic"]}">{video_card(v, i)}</div>' for i, v in enumerate(vs))
-    counts = {r["slug"]: sum(1 for v in VIDS if r["slug"] in route_of.get(v["id"], [])) for r in ROUTES}
-    chips = f'<button class="chip is-active" data-filter="" type="button">Todos <small>{len(VIDS)}</small></button>'
-    chips += ''.join(f'<button class="chip" data-filter="{r["slug"]}" type="button">{e(ROUTE_LABELS.get(r["slug"], r["title"]))} <small>{counts[r["slug"]]}</small></button>' for r in ROUTES)
-    body = f'''<section class="cat sec--cream" data-bg="cream"><div class="wrap">
-      <div class="cat__head"><div><h1 class="cat__h1">Tutoriales</h1><p class="cat__sub">{len(VIDS)} videos del canal, para ver aquí mismo. Elige un tema o empieza por el primero.</p></div></div>
-      <div class="filters" id="tfilters" role="group" aria-label="Filtrar por tema">{chips}</div>
-      <div class="cat__grid cat__grid--3" id="tgrid">{cards}</div>
-      <p class="cat__empty" id="tempty" hidden>No hay videos en este tema todavía.</p>
-    </div></section>'''
-    return layout('Tutoriales', body, 'tutorials', f'{len(VIDS)} tutoriales en video, organizados por tema.')
+    ruta_cards = ''.join(f'''<div class="route" data-reveal style="--i:{i}" id="ruta-{r["slug"]}"><span class="route__n">0{i + 1}</span><div><div class="route__t">{e(r["title"])}</div><p class="route__d">{e(r["desc"])}</p>
+      <div class="vlist" style="margin-top:12px">{''.join(vitem(by_vid[v]) for v in r["videos"])}</div>
+      <div class="route__items" style="margin-top:14px">{''.join(f'<a class="chip chip--tone" href="/recursos/{s}/">◆ {e(by_slug[s]["title"][:40])}</a>' for s in r["resources"])}</div></div></div>''' for i, r in enumerate(ROUTES))
+    topics_html = ''
+    for k, name in TOPICS.items():
+        vs = [v for v in VIDS if v["topic"] == k]
+        if not vs: continue
+        topics_html += f'<div class="cat-head" id="{k}"><h3 class="h3">{e(name)}</h3><span class="muted">{len(vs)} video{"s" if len(vs) != 1 else ""}</span></div><div class="row"><div class="row__scroll">{"".join(video_card(v, i) for i, v in enumerate(vs))}</div></div>'
+    body = f'''<section class="hero hero--short" data-bg="ink"><div class="hero__media"><div class="hero__poster"></div></div><div class="hero__in"><div><span class="eyebrow" style="color:var(--on-dark-2)">Tutoriales</span>
+      <h1 class="display display--l" style="margin-top:14px"><span class="hero__line"><span>Ver cómo se construye</span></span><span class="hero__line"><span><em class="serif tint">paso a paso</em></span></span></h1>
+      <p class="hero__sub">{len(VIDS)} videos del canal de YouTube, organizados por tema y por ruta. Cada tutorial enlaza a los recursos que usa.</p>
+      <div class="hero__actions pill-nav">{''.join(f'<a class="chip" href="#{k}" style="color:#fff;border-color:rgba(255,255,255,.3)">{e(n)}</a>' for k, n in TOPICS.items())}</div></div></div></section>
+    {section(head('Rutas de aprendizaje', 'Un orden pensado, <em class="serif tint">no un feed</em>', 'Tres videos y tres recursos por ruta. Empieza por la que se parezca a tu momento.') + f'<div class="wrap routes">{ruta_cards}</div>', 'cream')}
+    {section(head('Por tema', 'Todos los tutoriales', 'Desliza cada fila. Los más vistos primero.') + f'<div class="wrap">{topics_html}</div>', 'paper', id_='temas')}'''
+    return layout('Tutoriales', body, 'tutorials', 'Videos organizados por tema y ruta de aprendizaje.')
 
 def page_video(v):
     rel = [by_slug[s] for s in v["related_resources"] if s in by_slug]
@@ -382,25 +375,43 @@ def cat_card(r, i=0):
             f'<div class="ci__d">{e(r["summary"])}</div>'
             f'<div class="ci__f"><span>{"Empieza aquí · " if r["featured"] else ""}{e(cat["name"])}{" · Serie Houston" if r["collection"] == "houston" else ""}</span><span>{r["read_min"]} min{" · con tutorial" if r["related_tutorials"] else ""}</span></div></a>')
 
+def cat_card_v(r, i=0):
+    # Card de catálogo con visual (Sandcastles: mismo tamaño, misma estructura). Conserva data-* del filtro/búsqueda.
+    cat = CATS[r["category"]]
+    tools = ' '.join(r["tools"][:6])
+    coll = ' Serie Houston' if r["collection"] == 'houston' else ''
+    hay = e((r["title"] + ' ' + r["summary"] + ' ' + r["type_label"] + ' ' + cat["name"] + ' ' + cat["tag"] + ' ' + tools + coll).lower())
+    props = html.escape(json.dumps({"resource": r["slug"], "from": "catalog"}), quote=True)
+    return (f'<a class="hm-r ci{" ci--feat" if r["featured"] else ""}" href="/recursos/{r["slug"]}/" data-cat="{r["category"]}" data-coll="{r["collection"] or ""}" data-type="{e(r["type"])}" data-hay="{hay}" '
+            f'data-track="resource_click" data-track-props="{props}" style="--i:{i}">'
+            f'{res_visual(r)}'
+            f'<div class="hm-r__b"><span class="res__type">{e(r["type_label"])}</span><div class="hm-r__t">{e(r["title"])}</div>'
+            f'<div class="hm-r__f"><span>{"Empieza aquí · " if r["featured"] else ""}{e(cat["name"])}{" · Serie Houston" if r["collection"] == "houston" else ""}</span><span>{r["read_min"]} min{" · con tutorial" if r["related_tutorials"] else ""}</span></div></div></a>')
+
 def page_recursos():
-    # Orden del catálogo: destacados primero (son la puerta de entrada), luego por categoría en el orden de la taxonomía.
+    # Cabecera compacta → catálogo (todos, destacados primero) → sección Serie Houston recuperada de la versión anterior (21d3543).
     order = {k: i for i, k in enumerate(CATS.keys())}
     rs = sorted(RES, key=lambda r: (0 if r["featured"] else 1, order[r["category"]], r["title"].lower()))
-    cards = ''.join(cat_card(r, i) for i, r in enumerate(rs))
+    cards = ''.join(cat_card_v(r, i) for i, r in enumerate(rs))
     counts = {k: sum(1 for r in RES if r["category"] == k) for k in CATS}
-    n_h = sum(1 for r in RES if r["collection"] == 'houston')
+    houston = [r for r in RES if r["collection"] == 'houston']
+    n_h = len(houston)
     chips = f'<button class="chip is-active" data-filter="" type="button">Todos <small>{len(RES)}</small></button>'
     chips += ''.join(f'<button class="chip" data-filter="{k}" type="button">{e(c["name"])} <small>{counts[k]}</small></button>' for k, c in CATS.items())
     chips += f'<button class="chip" data-filter="houston" type="button">Serie Houston <small>{n_h}</small></button>'
+    _houston = section(f'''<div class="wrap coll" id="serie-houston"><div data-reveal><span class="eyebrow eyebrow--dot" style="color:var(--on-dark-2)">Serie · {n_h} recursos</span><h2 class="h2" style="margin-top:14px">Houston: agentes para tu negocio, <em class="serif tint">sin programar</em></h2></div>
+      <p class="lead" data-reveal style="--i:1;color:var(--on-dark-2)">Una colección de agentes listos para copiar: cada uno resuelve una tarea concreta de un equipo comercial u operativo. Empieza por el hub y sigue por el que te duela más.</p></div>
+      <div class="wrap coll__list" data-reveal>{"".join(coll_item(r, i) for i, r in enumerate(houston))}</div>''', 'ink')
     body = f'''<section class="cat sec--cream" data-bg="cream"><div class="wrap">
-      <div class="cat__head">
-        <div><h1 class="cat__h1">Recursos</h1><p class="cat__sub">{len(RES)} recursos abiertos, sin registro: guías, prompts, configuraciones y sistemas. Cada uno se abre aquí mismo.</p></div>
+      <div class="cat__head cat__head--compact">
+        <div><h1 class="cat__h1 cat__h1--sm">Recursos</h1><p class="cat__sub">{len(RES)} recursos abiertos, sin registro: guías, prompts, configuraciones y sistemas. Cada uno se abre aquí mismo.</p></div>
         <form class="search" role="search" onsubmit="return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="rsearch" placeholder="Buscar un recurso…" aria-label="Buscar recursos" autocomplete="off"><button type="button" class="search__x" aria-label="Limpiar" hidden>&times;</button></form>
       </div>
-      <div class="filters" id="rfilters" role="group" aria-label="Filtrar por categoría">{chips}</div>
-      <div class="cat__grid" id="rgrid">{cards}</div>
+      <div id="catalogo" class="anchor"></div><div class="filters" id="rfilters" role="group" aria-label="Filtrar por categoría">{chips}</div>
+      <div class="cat__grid cat__grid--v" id="rgrid">{cards}</div>
       <p class="cat__empty" id="rempty" hidden>No hay recursos con ese texto. Prueba con otra palabra o quita el filtro.</p>
-    </div></section>'''
+    </div></section>
+    {_houston}'''
     return layout('Recursos', body, 'resources', f'{len(RES)} recursos prácticos, abiertos y sin registro: guías, prompts, configuraciones y sistemas.')
 
 def page_resource(r):

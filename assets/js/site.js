@@ -76,28 +76,6 @@
     if (!mobile && input && !location.hash && !state.q) { /* el buscador queda listo, sin robar el foco en móvil */ }
   }
 
-  /* ---------- tutoriales: filtro por ruta (cliente), estado en ?r= ---------- */
-  var tgrid = d.getElementById('tgrid');
-  if (tgrid) {
-    var tcards = Array.prototype.slice.call(tgrid.querySelectorAll('.tc'));
-    var tchips = Array.prototype.slice.call(d.querySelectorAll('#tfilters .chip'));
-    var tempty = d.getElementById('tempty'), tstate = '';
-    function tapply(fromUser) {
-      var shown = 0;
-      tcards.forEach(function (el) {
-        var ok = !tstate || (' ' + (el.dataset.routes || '') + ' ').indexOf(' ' + tstate + ' ') >= 0;
-        el.classList.toggle('is-hidden', !ok); if (ok) { shown++; var c = el.querySelector('[data-reveal]'); if (c) c.classList.add('is-in'); }
-      });
-      if (tempty) tempty.hidden = shown > 0;
-      tchips.forEach(function (b) { b.classList.toggle('is-active', (b.dataset.filter || '') === tstate); });
-      try { var u = new URL(location.href); tstate ? u.searchParams.set('r', tstate) : u.searchParams.delete('r'); history.replaceState(null, '', u.pathname + (u.search || '')); } catch (e) {}
-      if (fromUser) track('tutorial_filter', { route: tstate || 'all', results: shown });
-    }
-    tchips.forEach(function (b) { b.addEventListener('click', function () { tstate = b.dataset.filter || ''; tapply(true); }); });
-    try { var tq = new URLSearchParams(location.search).get('r') || ''; tstate = d.querySelector('#tfilters .chip[data-filter="' + tq + '"]') ? tq : ''; } catch (e) {}
-    tapply(false);
-  }
-
   /* ---------- nav ---------- */
   var nav = d.querySelector('.nav'), hero = d.querySelector('.hero'), burger = d.querySelector('.burger'), menu = d.querySelector('.menu');
   var lastY = 0;
