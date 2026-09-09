@@ -76,6 +76,16 @@
     if (!mobile && input && !location.hash && !state.q) { /* el buscador queda listo, sin robar el foco en móvil */ }
   }
 
+  /* ---------- tutorial: mostrar la serie que coincide con ?ruta= (si el video está en varias) ---------- */
+  var sers = d.querySelectorAll('.ser');
+  if (sers.length > 1) {
+    try {
+      var rq = new URLSearchParams(location.search).get('ruta');
+      var hit = rq && d.querySelector('.ser[data-serie="' + rq + '"]');
+      if (hit) { sers.forEach(function (s) { s.hidden = s !== hit; }); }
+    } catch (e) {}
+  }
+
   /* ---------- nav ---------- */
   var nav = d.querySelector('.nav'), hero = d.querySelector('.hero'), burger = d.querySelector('.burger'), menu = d.querySelector('.menu');
   var lastY = 0;

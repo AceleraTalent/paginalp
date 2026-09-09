@@ -616,3 +616,76 @@ body[data-page="home"] .sec--tight{padding:clamp(44px,5.5vw,72px) 0}
 @media (max-width:560px){.hm-who{grid-template-columns:1fr}.hm-who__img{max-width:220px}}
 /* deep-link desde Home a las rutas de /tutoriales: que el ancla no quede bajo la barra fija */
 .route[id],.cat-head[id]{scroll-margin-top:calc(var(--nav-h) + 20px)}
+
+/* ---------- /tutoriales: entrada compacta + rutas como playlists (08-sep) ---------- */
+.tut-head{padding:calc(var(--nav-h) + clamp(20px,3vw,36px)) 0 18px}
+.tut-head__row{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-top:10px}
+.tut-h1{font-family:var(--serif);font-weight:500;letter-spacing:-.015em;line-height:1.05;font-size:clamp(32px,3.6vw,46px);margin:0}
+.tut-sub{margin:8px 0 0;color:var(--fg-2);font-size:15.5px;max-width:52ch;line-height:1.5}
+.tut-chips{justify-content:flex-end;max-width:560px}
+.tut-sec{display:flex;align-items:baseline;gap:14px;margin:26px 0 14px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.tut-h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.2vw,28px);letter-spacing:-.01em;line-height:1.15;margin:0}
+.tut-h2 .muted{font-family:var(--sans);font-size:14px;font-weight:400;margin-left:8px}
+.pl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pl{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:16px 16px 14px;scroll-margin-top:calc(var(--nav-h) + 16px)}
+.pl__head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px}
+.pl__k{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:6px}
+.pl__title{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.15;margin:0}
+.pl__d{margin:6px 0 0;font-size:13px;color:var(--fg-2);line-height:1.45}
+.pl__head .btn{flex:none;margin-top:2px}
+.pl__list{display:grid;margin-top:8px}
+.pl__i{display:grid;grid-template-columns:24px 76px 1fr;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--rule);transition:background-color var(--t-fast) var(--ease)}
+.pl__i:hover .pl__t{color:var(--accent-deep)}
+.pl__n{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
+.pl__th{display:block;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--sand)}
+.pl__th img{width:100%;height:100%;object-fit:cover}
+.pl__b{display:grid;gap:2px;min-width:0}
+.pl__t{font-weight:600;font-size:13.5px;line-height:1.3;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pl__m{font-size:11px;color:var(--fg-3);letter-spacing:.08em;text-transform:uppercase}
+.pl__res{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:12px}
+.pl__res .chip{font-size:10.5px;padding:4px 9px}
+.cat-head--tight{margin:36px 0 16px}
+@media (max-width:1100px){.pl-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.tut-head__row{grid-template-columns:1fr}.tut-chips{justify-content:flex-start;max-width:none}}
+@media (max-width:640px){.pl-grid{grid-template-columns:1fr}}
+/* página de tutorial: video primero, serie, recursos, siguiente paso */
+body[data-page="tutorial"] .nav:not(.is-scrolled){color:#fff}
+body[data-page="tutorial"] .nav:not(.is-scrolled) .btn--ghost{--btn-fg:#fff;border-color:rgba(255,255,255,.28)}
+.tv-head{padding:calc(var(--nav-h) + 16px) 0 30px}
+.tv-player{position:relative;aspect-ratio:16/9;border-radius:var(--r-lg);overflow:hidden;background:#000;box-shadow:0 30px 60px -40px rgba(0,0,0,.8)}
+.tv-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tv-h1{font-family:var(--serif);font-weight:500;letter-spacing:-.012em;line-height:1.12;font-size:clamp(22px,2.4vw,32px);color:#fff;margin:20px 0 0;max-width:30ch}
+.ser+.ser{margin-top:22px}
+.ser__head{margin-bottom:14px}
+.ser__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.ser__next{display:grid;grid-template-columns:200px 1fr auto;gap:16px;align-items:center;padding:14px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);transition:transform var(--t-mid) var(--ease),box-shadow var(--t-mid) var(--ease)}
+.ser__next:hover{transform:translateY(-2px);box-shadow:0 24px 50px -36px rgba(25,25,24,.45)}
+.ser__next:hover .card__arrow{background:var(--accent);color:#fff}
+.ser__next--done{grid-template-columns:1fr;background:var(--sand)}
+.ser__th{position:relative;display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:var(--sand)}
+.ser__th img{width:100%;height:100%;object-fit:cover}
+.ser__th .play__b{width:44px;height:44px}
+.ser__th .play__b svg{width:14px;height:14px}
+.ser__b{display:grid;gap:4px;min-width:0}
+.ser__k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.ser__title{font-family:var(--serif);font-size:20px;line-height:1.2;font-weight:500}
+.ser__m{font-size:12px;color:var(--fg-3)}
+.ser__m a{display:inline-flex;align-items:center;gap:6px;color:var(--fg);font-weight:600}
+.ser__m a svg{width:14px;height:14px}
+.ser__list{display:grid}
+.ser__i{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--rule);font-size:14px}
+.ser__i:last-child{border-bottom:1px solid var(--rule)}
+.ser__i:hover .ser__t{color:var(--accent-deep)}
+.ser__i.is-now .ser__t{font-weight:600}
+.ser__i.is-now .ser__m{color:var(--accent-deep);font-weight:600}
+.ser__t{font-weight:500;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media (max-width:860px){.ser__grid{grid-template-columns:1fr}.ser__next{grid-template-columns:140px 1fr auto}}
+@media (max-width:520px){.ser__next{grid-template-columns:1fr}.ser__next .card__arrow{display:none}}
+.pl__foot{margin-top:12px}
+.pl__foot .link-arrow{font-size:14px}
+.pl__res{padding-top:10px}
+#empezar.sec--tight{padding-bottom:40px}
+.tut-topics.sec--tight{padding-top:36px}
+.tut-topics .tut-sec{margin-top:0}
+.tv-head .wrap{max-width:1040px}
+.tv-head .tut-sec{margin-top:0}

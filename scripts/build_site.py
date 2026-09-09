@@ -329,35 +329,86 @@ def page_home():
       <div>{btn('Agendar una conversación', '/agenda/', 'btn--accent', ARROW, 'agenda_click', {'from': 'home_footer'})}</div></div>''', 'ink', 'sec--tight')
     return layout('Aprende a construir con IA', hero + start + tut + res + reto + showcase + program + luciano + agenda, 'home', 'Tutoriales, recursos y retos gratis para construir con IA. Y un programa para profesionales que quieren ir más lejos.')
 
+ROUTE_SHORT = {'nuevo': 'Empieza aquí', 'claude': 'Claude', 'agentes': 'Construir agentes', 'automatizar': 'Automatizar mi trabajo'}
+
+def vid_href(v, ruta=None):
+    return f'/tutoriales/{v["slug"]}/' + (f'?ruta={ruta}' if ruta else '')
+
+def series_for(v):
+    """Series a las que pertenece el video: primero las rutas curadas (en su orden), si no, su tema (por vistas)."""
+    out = []
+    for r in ROUTES:
+        if v["id"] in r["videos"]:
+            out.append({"kind": "ruta", "slug": r["slug"], "title": ROUTE_SHORT.get(r["slug"], r["title"]), "videos": [by_vid[x] for x in r["videos"]]})
+    if not out:
+        vs = [x for x in VIDS if x["topic"] == v["topic"]]
+        out.append({"kind": "tema", "slug": v["topic"], "title": TOPICS[v["topic"]], "videos": vs})
+    return out
+
 def page_tutoriales():
-    ruta_cards = ''.join(f'''<div class="route" data-reveal style="--i:{i}" id="ruta-{r["slug"]}"><span class="route__n">0{i + 1}</span><div><div class="route__t">{e(r["title"])}</div><p class="route__d">{e(r["desc"])}</p>
-      <div class="vlist" style="margin-top:12px">{''.join(vitem(by_vid[v]) for v in r["videos"])}</div>
-      <div class="route__items" style="margin-top:14px">{''.join(f'<a class="chip chip--tone" href="/recursos/{s}/">◆ {e(by_slug[s]["title"][:40])}</a>' for s in r["resources"])}</div></div></div>''' for i, r in enumerate(ROUTES))
+    # Entrada compacta → "Por dónde empezar" como rutas/playlists numeradas → secciones por tema (filas laterales, como estaban).
+    chips = ''.join(f'<a class="chip" href="#{k}">{e(n)}</a>' for k, n in TOPICS.items())
+    def route_card(r, i):
+        items = ''.join(f'''<a class="pl__i" href="{vid_href(by_vid[x], r["slug"])}" data-track="tutorial_click" data-track-props='{{"video_id":"{x}","from":"ruta_{r["slug"]}"}}'>
+          <span class="pl__n">0{n + 1}</span><span class="pl__th"><img src="https://img.youtube.com/vi/{x}/mqdefault.jpg" alt="" loading="lazy"></span>
+          <span class="pl__b"><span class="pl__t">{e(by_vid[x]["title"])}</span><span class="pl__m">{by_vid[x]["duration_label"]}</span></span></a>''' for n, x in enumerate(r["videos"]))
+        res = ''.join(f'<a class="chip chip--tone" href="/recursos/{s}/">◆ {e(by_slug[s]["title"][:34])}…</a>' for s in r["resources"])
+        first = by_vid[r["videos"][0]]
+        return f'''<div class="pl" id="ruta-{r["slug"]}" data-reveal style="--i:{i}">
+      <div class="pl__head"><div><span class="pl__k">Ruta 0{i + 1} · {len(r["videos"])} videos en orden</span><h3 class="pl__title">{e(r["title"])}</h3><p class="pl__d">{e(r["desc"])}</p></div></div>
+      <div class="pl__list">{items}</div>
+      <div class="pl__foot">{link_arrow('Empezar por el 01', vid_href(first, r["slug"]), 'tutorial_click')}</div>
+      <div class="pl__res">{res}</div></div>'''
+    routes_html = ''.join(route_card(r, i) for i, r in enumerate(ROUTES))
     topics_html = ''
     for k, name in TOPICS.items():
         vs = [v for v in VIDS if v["topic"] == k]
         if not vs: continue
-        topics_html += f'<div class="cat-head" id="{k}"><h3 class="h3">{e(name)}</h3><span class="muted">{len(vs)} video{"s" if len(vs) != 1 else ""}</span></div><div class="row"><div class="row__scroll">{"".join(video_card(v, i) for i, v in enumerate(vs))}</div></div>'
-    body = f'''<section class="hero hero--short" data-bg="ink"><div class="hero__media"><div class="hero__poster"></div></div><div class="hero__in"><div><span class="eyebrow" style="color:var(--on-dark-2)">Tutoriales</span>
-      <h1 class="display display--l" style="margin-top:14px"><span class="hero__line"><span>Ver cómo se construye</span></span><span class="hero__line"><span><em class="serif tint">paso a paso</em></span></span></h1>
-      <p class="hero__sub">{len(VIDS)} videos del canal de YouTube, organizados por tema y por ruta. Cada tutorial enlaza a los recursos que usa.</p>
-      <div class="hero__actions pill-nav">{''.join(f'<a class="chip" href="#{k}" style="color:#fff;border-color:rgba(255,255,255,.3)">{e(n)}</a>' for k, n in TOPICS.items())}</div></div></div></section>
-    {section(head('Rutas de aprendizaje', 'Un orden pensado, <em class="serif tint">no un feed</em>', 'Tres videos y tres recursos por ruta. Empieza por la que se parezca a tu momento.') + f'<div class="wrap routes">{ruta_cards}</div>', 'cream')}
-    {section(head('Por tema', 'Todos los tutoriales', 'Desliza cada fila. Los más vistos primero.') + f'<div class="wrap">{topics_html}</div>', 'paper')}'''
-    return layout('Tutoriales', body, 'tutorials', 'Videos organizados por tema y ruta de aprendizaje.')
+        topics_html += f'<div class="cat-head cat-head--tight" id="{k}"><h3 class="h3">{e(name)}</h3><span class="muted">{len(vs)} video{"s" if len(vs) != 1 else ""}</span></div><div class="row"><div class="row__scroll">{"".join(video_card(v, i) for i, v in enumerate(vs))}</div></div>'
+    body = f'''<section class="tut-head sec--cream" data-bg="cream"><div class="wrap">
+      <span class="eyebrow eyebrow--dot">Tutoriales</span>
+      <div class="tut-head__row"><div><h1 class="tut-h1">Aprende <em class="serif tint">construyendo</em></h1><p class="tut-sub">{len(VIDS)} tutoriales prácticos de IA aplicados a trabajo real. Elige un tema o sigue una ruta en orden.</p></div>
+      <div class="pill-nav tut-chips">{chips}</div></div>
+    </div></section>
+    <section class="sec sec--tight sec--cream" data-bg="cream" id="empezar" style="padding-top:0"><div class="wrap">
+      <div class="tut-sec"><h2 class="tut-h2">¿Por dónde empiezo? <span class="muted">Cuatro rutas en orden: ves el primero y sabes cuál sigue.</span></h2></div>
+      <div class="pl-grid">{routes_html}</div></div></section>
+    <section class="sec sec--tight sec--paper tut-topics" data-bg="paper"><div class="wrap"><div class="tut-sec"><h2 class="tut-h2">Por tema <span class="muted">Desliza cada fila. Los más vistos primero.</span></h2></div>{topics_html}</div></section>'''
+    return layout('Tutoriales', body, 'tutorials', f'{len(VIDS)} tutoriales en video, organizados por tema y por ruta.')
 
 def page_video(v):
     rel = [by_slug[s] for s in v["related_resources"] if s in by_slug]
-    more = [x for x in VIDS if x["topic"] == v["topic"] and x["id"] != v["id"]][:3]
     rel_html = ''.join(f'''<a class="res res--sm" href="/recursos/{r["slug"]}/" data-reveal style="--i:{i}" data-track="resource_click" data-track-props='{{"resource":"{r["slug"]}","from":"tutorial"}}'><div class="card__meta"><span class="res__type">{e(r["type_label"])}</span></div><div class="card__title">{e(r["title"])}</div><div class="card__desc">{e(r["summary"][:120])}…</div><div class="card__foot"><span>{r["read_min"]} min</span><span class="card__arrow">{ARROW}</span></div></a>''' for i, r in enumerate(rel))
-    body = f'''<section class="sec sec--ink" data-bg="ink" style="padding-top:calc(var(--nav-h) + 40px)"><div class="wrap">
-      <div class="crumbs" style="color:var(--on-dark-3)"><a href="/tutoriales/">Tutoriales</a><span>/</span><a href="/tutoriales/#{v["topic"]}">{e(v["topic_label"])}</a></div>
-      <h1 class="display display--l" data-reveal style="max-width:22ch">{e(v["title"])}</h1>
-      <div class="ahead__meta" style="color:var(--on-dark-3)"><span>{v["duration_label"]}</span><span class="dot"></span><span>{e(v["topic_label"])}</span><span class="dot"></span><a href="https://www.youtube.com/watch?v={v["id"]}" target="_blank" rel="noopener" style="color:var(--on-dark-2)">Ver en YouTube ↗</a></div>
-      <div class="shell mt-3" data-reveal style="--i:1"><div class="shell__in"><div class="card__media" data-yt="{v["id"]}" data-title="{e(v["title"])}" data-video-view="{v["id"]}" style="cursor:pointer;aspect-ratio:16/9"><img src="{v["thumb"]}" alt="" onerror="this.src='https://img.youtube.com/vi/{v["id"]}/hqdefault.jpg'"><div class="play"><span class="play__b" style="width:84px;height:84px">{PLAY}</span></div><span class="dur">{v["duration_label"]}</span></div></div></div>
+    # Bloques "Siguiente en esta serie": uno por serie a la que pertenece el video; el JS muestra el que coincide con ?ruta=
+    series_html = ''
+    for n, s in enumerate(series_for(v)):
+        vs = s["videos"]; idx = next(i for i, x in enumerate(vs) if x["id"] == v["id"])
+        ruta = s["slug"] if s["kind"] == 'ruta' else None
+        nxt = vs[idx + 1] if idx + 1 < len(vs) else None
+        pos = f'{idx + 1} de {len(vs)}'
+        lst = ''.join(f'''<a class="ser__i{" is-now" if x["id"] == v["id"] else ""}" href="{vid_href(x, ruta)}"><span class="pl__n">0{i + 1}</span><span class="ser__t">{e(x["title"])}</span><span class="ser__m">{"Estás aquí" if x["id"] == v["id"] else x["duration_label"]}</span></a>''' for i, x in enumerate(vs[:6]))
+        if nxt:
+            big = f'''<a class="ser__next" href="{vid_href(nxt, ruta)}" data-track="tutorial_click" data-track-props='{{"video_id":"{nxt["id"]}","from":"next_in_series"}}'>
+          <span class="ser__th"><img src="https://img.youtube.com/vi/{nxt["id"]}/mqdefault.jpg" alt="" loading="lazy"><span class="play"><span class="play__b">{PLAY}</span></span></span>
+          <span class="ser__b"><span class="ser__k">Siguiente · {idx + 2} de {len(vs)}</span><span class="ser__title">{e(nxt["title"])}</span><span class="ser__m">{nxt["duration_label"]} · {e(nxt["topic_label"])}</span></span><span class="card__arrow">{ARROW}</span></a>'''
+        else:
+            big = f'''<div class="ser__next ser__next--done"><span class="ser__b"><span class="ser__k">Terminaste esta serie</span><span class="ser__title">Ya viste los {len(vs)} videos de “{e(s["title"])}”.</span><span class="ser__m"><a href="/tutoriales/#empezar">Elegir otra ruta {ARROW}</a></span></span></div>'''
+        series_html += f'''<div class="ser" data-serie="{s["slug"]}" data-kind="{s["kind"]}"{"" if n == 0 else " hidden"}>
+        <div class="ser__head"><span class="eyebrow eyebrow--dot">{"Ruta" if s["kind"] == "ruta" else "Tema"} · {e(s["title"])} · {pos}</span></div>
+        <div class="ser__grid">{big}<div class="ser__list">{lst}</div></div></div>'''
+    body = f'''<section class="tv-head sec--ink" data-bg="ink"><div class="wrap">
+      <div class="crumbs" style="color:var(--on-dark-3);margin-bottom:12px"><a href="/tutoriales/">Tutoriales</a><span>/</span><a href="/tutoriales/#{v["topic"]}">{e(v["topic_label"])}</a></div>
+      <div class="tv-player" data-video-view="{v["id"]}"><iframe src="https://www.youtube-nocookie.com/embed/{v["id"]}?autoplay=1&rel=0&modestbranding=1" title="{e(v["title"])}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="eager"></iframe></div>
+      <h1 class="tv-h1">{e(v["title"])}</h1>
+      <div class="ahead__meta" style="color:var(--on-dark-3);margin-top:10px"><span>{v["duration_label"]}</span><span class="dot"></span><span>{e(v["topic_label"])}</span><span class="dot"></span><a href="https://www.youtube.com/watch?v={v["id"]}" target="_blank" rel="noopener" style="color:var(--on-dark-2)">Abrir en YouTube ↗</a></div>
     </div></section>
-    {section(head('Ponlo en práctica', 'Recursos para <em class="serif tint">hacerlo tú</em>', 'Lo que necesitas para aplicar lo que viste: prompts, guías y configuraciones, abiertos.') + (f'<div class="wrap grid-3">{rel_html}</div>' if rel else '<div class="wrap"><p class="lead">Este tutorial todavía no tiene recursos asociados. <a href="/recursos/">Explora la biblioteca →</a></p></div>'), 'cream')}
-    {section(head('Sigue aprendiendo', 'Más de <em class="serif tint">' + e(v["topic_label"]) + '</em>') + f'<div class="wrap grid-3">{"".join(video_card(x, i) for i, x in enumerate(more))}</div>', 'paper') if more else ''}'''
+    <section class="sec sec--tight sec--cream" data-bg="cream"><div class="wrap">{series_html}</div></section>
+    {section(f'<div class="wrap"><div class="tut-sec"><h2 class="tut-h2">Ponlo en práctica <span class="muted">Recursos que usa este tutorial: prompts, guías y configuraciones, abiertos.</span></h2></div><div class="grid-3">{rel_html}</div></div>', 'paper', 'sec--tight') if rel else ''}
+    <section class="sec sec--tight sec--ink" data-bg="ink"><div class="wrap next">
+      <div><span class="eyebrow" style="color:var(--on-dark-3)">Siguiente paso</span><h2 class="h3" style="color:#fff;margin-top:12px">¿Quieres aplicar esto a un <em class="serif tint">problema real de tu trabajo</em>?</h2>
+      <p style="color:var(--on-dark-2);max-width:52ch;margin:12px 0 0">Si quieres llevar estas ideas a tus procesos, agentes o automatizaciones, revisamos tu caso en una llamada corta. Sin compromiso.</p></div>
+      <div class="next__cta">{btn('Agendar una llamada', '/agenda/', 'btn--light', ARROW, 'agenda_click', {'from': 'tutorial:' + v["id"]})}</div>
+    </div></section>'''
     return layout(v["title"], body, 'tutorial', v["title"], {'video_id': v["id"], 'topic': v["topic"]})
 
 def cat_card(r, i=0):
