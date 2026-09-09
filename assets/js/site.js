@@ -188,9 +188,6 @@
       track('video_started', { video_id: id, title: f.title });
     });
   });
-  d.querySelectorAll('[data-play-for]').forEach(function (b) {
-    b.addEventListener('click', function (e) { e.preventDefault(); var p = d.getElementById(b.getAttribute('data-play-for')); if (p) { p.click(); } });
-  });
   d.querySelectorAll('[data-video-view]').forEach(function (el) {
     var seen = false;
     new IntersectionObserver(function (en) { if (!seen && en[0].isIntersecting && en[0].intersectionRatio >= 0.5) { seen = true; track('video_view', { video_id: el.getAttribute('data-video-view') }); } }, { threshold: 0.5 }).observe(el);
