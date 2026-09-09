@@ -226,56 +226,14 @@ def coll_item(r, i):
             f'<span class="card__arrow">{ARROW}</span></a>')
 
 # ---------------------------------------------------------------- páginas
-def hm_head(label, title, href=None, link='Ver todos'):
-    cta = f'<a class="link-arrow" href="{href}">{e(link)} {ARROW}</a>' if href else ''
-    return f'<div class="wrap hm-head" data-reveal><div><span class="hm-label">{e(label)}</span><h2 class="hm-title">{title}</h2></div>{cta}</div>'
-
-HERO_YT = 'wpYDisTBlE8'   # Tutorial completo de Claude Cowork · 6 min · el más visto entre los cortos
-HOME_RES = ['roadmap-claude-5-dias', 'skill-debrief-claude', 'hermes']   # Empezar · Claude · Agentes (los tres son "Empieza aquí")
-ROUTE_LABELS = {'nuevo': 'Empezar en IA', 'claude': 'Claude', 'agentes': 'Construir agentes', 'automatizar': 'Automatizar mi trabajo'}
-
-def res_visual(r):
-    """Visual de la card: captura real si existe assets/img/recursos/<slug>.jpg; si no, composición editorial (sin fotos inventadas)."""
-    p = os.path.join(ROOT, 'assets', 'img', 'recursos', r["slug"] + '.jpg')
-    if os.path.exists(p):
-        return f'<div class="hm-r__v hm-r__v--shot"><img src="/assets/img/recursos/{r["slug"]}.jpg" alt="" loading="lazy"></div>'
-    if r["slug"] == 'roadmap-claude-5-dias':
-        days = ''.join(f'<span><b>Día {i + 1}</b>{t}</span>' for i, t in enumerate(['Chat', 'Proyectos', 'Cowork', 'MCP', 'Rutina']))
-        return f'<div class="hm-r__v hm-r__v--days">{days}</div>'
-    if r["category"] == 'agentes':
-        return ('<div class="hm-r__v hm-r__v--flow"><svg viewBox="0 0 400 250" fill="none" aria-hidden="true">'
-                '<g stroke="#8F8A84" stroke-width="1.2" stroke-dasharray="3 4"><path d="M92 125h70M238 125h70"/></g>'
-                '<rect x="20" y="95" width="72" height="60" rx="10" fill="#F7F5F2" stroke="#191918" stroke-opacity=".18"/>'
-                '<rect x="162" y="80" width="76" height="90" rx="14" fill="#191918"/>'
-                '<rect x="308" y="95" width="72" height="60" rx="10" fill="#F7F5F2" stroke="#191918" stroke-opacity=".18"/>'
-                '<circle cx="200" cy="125" r="14" fill="#D97757"/>'
-                '<text x="56" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#5B5752" letter-spacing="1">PIDES</text>'
-                '<text x="344" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#5B5752" letter-spacing="1">HECHO</text>'
-                '<text x="200" y="205" text-anchor="middle" font-family="Playfair Display,serif" font-style="italic" font-size="20" fill="#191918">el agente ejecuta</text>'
-                '</svg></div>')
-    tools = ' · '.join(r["tools"][:3])
-    return f'<div class="hm-r__v hm-r__v--type"><span class="hm-r__big">{e(r["type_label"])}</span><span class="hm-r__tools">{e(tools)}</span></div>'
-
-def hm_res_card(r, i):
-    cat = CATS[r["category"]]["name"]
-    props = html.escape(json.dumps({"resource": r["slug"], "from": "home"}), quote=True)
-    return (f'<a class="hm-r" href="/recursos/{r["slug"]}/" data-reveal style="--i:{i}" data-track="resource_click" data-track-props="{props}">'
-            f'{res_visual(r)}'
-            f'<div class="hm-r__b"><span class="res__type">{e(r["type_label"])}</span><div class="hm-r__t">{e(r["title"])}</div>'
-            f'<div class="hm-r__f"><span>{e(cat)}</span><span>{r["read_min"]} min{" · con tutorial" if r["related_tutorials"] else ""}</span></div></div></a>')
-
-def hm_video(v, i):
-    props = html.escape(json.dumps({"video_id": v["id"], "from": "home_grid"}), quote=True)
-    return (f'<article class="hm-v" data-reveal style="--i:{i}">'
-            f'<div class="hm-v__th" data-yt="{v["id"]}" data-title="{e(v["title"])}" role="button" tabindex="0" aria-label="Reproducir: {e(v["title"])}"><img src="https://img.youtube.com/vi/{v["id"]}/mqdefault.jpg" alt="" loading="lazy"><div class="play"><span class="play__b">{PLAY}</span></div><span class="dur">{v["duration_label"]}</span></div>'
-            f'<a class="hm-v__t" href="/tutoriales/{v["slug"]}/" data-track="tutorial_click" data-track-props="{props}">{e(v["title"])}</a>'
-            f'<div class="hm-v__m">{e(v["topic_label"])}</div></article>')
+HERO_YT = 'wpYDisTBlE8'   # Tutorial completo de Claude Cowork · 6 min
 
 def page_home():
-    hero_v = by_vid[HERO_YT]
-    pool = [v for v in VIDS if v["id"] != HERO_YT]
-    grid_v = ([v for v in pool if v["featured"]] + [v for v in sorted(pool, key=lambda x: -x["views"]) if not v["featured"]])[:8]
+    feat = [v for v in VIDS if v["featured"]]
+    main_v = by_vid["wpYDisTBlE8"]; sec_v = [v for v in feat if v["id"] != main_v["id"]][:4]
+    featured_res = [by_slug[s] for s in ['skill-debrief-claude', '5-niveles-de-claude', 'roadmap-claude-5-dias', 'hermes', 'atajos-de-prompt-claude', 'notebooklm-presentaciones']]
     ch = CHAL[0]
+    hero_v = by_vid[HERO_YT]
     hp = html.escape(json.dumps({"video_id": hero_v["id"], "from": "hero_video"}), quote=True)
     hero = f'''<section class="hm-hero" id="hero-home" data-bg="cream">
   <div class="wrap hm-hero__in">
@@ -283,7 +241,7 @@ def page_home():
       <span class="eyebrow eyebrow--dot">Para profesionales, gerentes y líderes</span>
       <h1 class="hm-h1">Construye con IA. <em class="serif tint">Aprende haciendo.</em></h1>
       <p class="hm-hero__sub">Videos, guías y retos para usar la IA de verdad en tu trabajo. Abiertos y sin registro.</p>
-      <div class="actions">{btn('Ver tutoriales', '/tutoriales/#temas', '', ARROW, 'tutorial_click', {'from': 'hero'})}{btn('Explorar recursos', '/recursos/#catalogo', 'btn--ghost', ARROW, 'resource_click', {'from': 'hero'})}{link_arrow('Agendar llamada', '/agenda/', 'agenda_click')}</div>
+      <div class="actions">{btn('Ver tutoriales', '/tutoriales/', '', ARROW, 'tutorial_click', {'from': 'hero'})}{btn('Agendar llamada', '/agenda/', 'btn--ghost', ARROW, 'agenda_click', {'from': 'hero'})}</div>
       <p class="hm-hero__meta">{len(VIDS)} tutoriales · {len(RES)} recursos · 1 reto guiado</p>
     </div>
     <div class="hm-hero__video">
@@ -292,41 +250,46 @@ def page_home():
     </div>
   </div>
 </section>'''
-    pills = ''
-    for r in ROUTES:
-        rp = html.escape(json.dumps({"route": r["slug"], "from": "home"}), quote=True)
-        pills += f'<a class="hm-pill" href="/tutoriales/#ruta-{r["slug"]}" data-track="related_content_click" data-track-props="{rp}"><b>{e(ROUTE_LABELS.get(r["slug"], r["title"]))}</b><span>{len(r["videos"])} videos · {len(r["resources"])} recursos</span>{ARROW}</a>'
-    start = f'<section class="sec sec--paper sec--tight" data-bg="paper" id="empezar"><div class="wrap hm-routes" data-reveal><h2 class="hm-title">¿Qué quieres aprender?</h2><div class="hm-pills">{pills}</div></div></section>'
-    tut = section(hm_head('Tutoriales', 'Aprende viendo <em class="serif tint">cómo se construye</em>', '/tutoriales/#temas', 'Ver todos los tutoriales') + f'<div class="wrap hm-vgrid">{"".join(hm_video(v, i) for i, v in enumerate(grid_v))}</div>', 'cream')
-    res = section(hm_head('Recursos', 'Guías, prompts y configuraciones <em class="serif tint">para usar hoy</em>', '/recursos/#catalogo', 'Ver todos los recursos') + f'<div class="wrap hm-rgrid">{"".join(hm_res_card(by_slug[s], i) for i, s in enumerate(HOME_RES))}</div>', 'sand')
+    routes = ''.join(f'''<a class="route" href="/tutoriales/#ruta-{r["slug"]}" data-reveal style="--i:{i}" data-track="related_content_click" data-track-props='{{"route":"{r["slug"]}"}}'>
+      <span class="route__n">0{i + 1}</span>
+      <div><div class="route__t">{e(r["title"])}</div><p class="route__d">{e(r["desc"])}</p>
+        <div class="route__items">{''.join(f'<span>▶ {e(by_vid[v]["title"][:38])}…</span>' for v in r["videos"][:2])}{''.join(f'<span>◆ {e(by_slug[s]["title"][:34])}…</span>' for s in r["resources"][:1])}</div></div>
+      <span class="card__arrow">{ARROW}</span></a>''' for i, r in enumerate(ROUTES))
+    start = section(head('¿Por dónde empiezo?', 'Cuatro rutas. Elige la tuya <em class="serif tint">y empieza hoy</em>', 'Cada ruta combina tres tutoriales y recursos para ponerlos en práctica. Sin registro.') + f'<div class="wrap routes">{routes}</div>', 'cream', id_='empezar')
+    tut = section(head('Tutoriales', 'Ver cómo se construye, <em class="serif tint">paso a paso</em>', f'{len(VIDS)} videos del canal, organizados por tema. Cada uno enlaza a los recursos que usa.', link_arrow('Todos los tutoriales', '/tutoriales/')) + f'''<div class="wrap vgrid">
+      <a class="vfeature" href="/tutoriales/{main_v["slug"]}/" data-reveal data-track="tutorial_click" data-track-props='{{"video_id":"{main_v["id"]}","from":"home_feature"}}'>
+        <img src="{main_v["thumb"]}" alt="" loading="lazy"><div class="play"><span class="play__b">{PLAY}</span></div>
+        <div class="vfeature__body"><div class="card__meta" style="color:rgba(255,255,255,.6)"><span>{e(main_v["topic_label"])}</span><span>· {main_v["duration_label"]}</span><span>· el más visto</span></div><div class="card__title">{e(main_v["title"])}</div>
+        <div class="card__desc" style="color:rgba(255,255,255,.75)">{len(main_v["related_resources"])} recursos para ponerlo en práctica</div></div></a>
+      <div class="vlist" data-reveal style="--i:1">{''.join(vitem(v) for v in sec_v)}<div style="padding:10px 8px">{link_arrow('Explorar por tema', '/tutoriales/')}</div></div></div>''', 'paper')
+    res = section(head('Recursos para construir', 'No son videos. <em class="serif tint">Son piezas para usar hoy</em>', 'Guías, prompts, configuraciones y sistemas. Abiertos, completos, sin dejar el email.', link_arrow('Toda la biblioteca', '/recursos/')) + f'''<div class="wrap rgrid">{res_card(featured_res[0], 'xl', 0)}{res_card(featured_res[1], 'md', 1)}{res_card(featured_res[2], 'md', 2)}{res_card(featured_res[3], 'sm', 3)}{res_card(featured_res[4], 'sm', 4)}{res_card(featured_res[5], 'sm', 5)}</div>
+      <div class="wrap mt-3 pill-nav" data-reveal>{''.join(f'<a class="chip" href="/recursos/#{k}">{e(c["name"])}</a>' for k, c in CATS.items())}</div>''', 'sand')
     days = ''.join(f'<div class="day"><span class="day__n">Día {d["n"]}</span><div><div class="day__t">{e(d["title"])}</div><div class="day__d">{e(d["text"])}</div></div></div>' for d in ch["days"])
-    reto = section(f'''<div class="wrap hm-reto">
-      <div data-reveal><span class="hm-label" style="color:var(--on-dark-3)">Reto gratuito · 5 días · 20 min al día</span>
-        <h2 class="hm-title" style="color:#fff">{e(ch["title"])}: <em class="serif tint">construye algo cada día</em></h2>
-        <p class="hm-p" style="color:var(--on-dark-2)">{e(ch["result"])}</p>
+    reto = section(f'''<div class="wrap challenge">
+      <div data-reveal><span class="eyebrow eyebrow--dot" style="color:var(--on-dark-2)">Retos · ahora hazlo tú</span>
+        <h2 class="h2" style="margin-top:14px">La IA no se aprende viendo. <em class="serif tint">Se aprende construyendo</em></h2>
+        <p class="lead" style="color:var(--on-dark-2);margin-top:18px">{e(ch["summary"])} Al terminar: {e(ch["result"])}</p>
+        <div class="facts"><div class="fact"><b>{e(ch["duration"].split('·')[0].strip())}</b><span>Duración</span></div><div class="fact"><b>20 min</b><span>al día</span></div><div class="fact"><b>{e(ch["level"].split(' a ')[0])}</b><span>Nivel</span></div></div>
         <div class="actions">{btn('Reservar mi lugar', f'/retos/{ch["slug"]}/#registro', 'btn--light', ARROW, 'challenge_click', {'challenge': ch["slug"], 'from': 'home'})}{link_arrow('Cómo funciona', f'/retos/{ch["slug"]}/')}</div></div>
-      <div class="days days--compact" data-reveal style="--i:1">{days}</div></div>''', 'ink', 'sec--tight')
-    show = ''
-    for i, s in enumerate(SHOW):
-        if s["kind"] == 'video':
-            sp = html.escape(json.dumps({"video_id": s["ref"], "from": "showcase"}), quote=True)
-            show += f'<a class="hm-s" href="/tutoriales/{by_vid[s["ref"]]["slug"]}/" data-reveal style="--i:{i}" data-track="tutorial_click" data-track-props="{sp}"><img src="{by_vid[s["ref"]]["thumb"]}" alt="" loading="lazy"><div class="hm-s__b"><span>{e(s["tag"])}</span><div class="hm-s__t">{e(s["title"])}</div></div></a>'
-        else:
-            sp = html.escape(json.dumps({"resource": s["ref"], "from": "showcase"}), quote=True)
-            show += f'<a class="hm-s hm-s--res" href="/recursos/{s["ref"]}/" data-reveal style="--i:{i}" data-track="resource_click" data-track-props="{sp}"><div class="hm-s__b"><span>{e(s["tag"])} · recurso</span><div class="hm-s__t">{e(s["title"])}</div></div></a>'
-    showcase = section(hm_head('Construido de verdad', 'Cosas reales <em class="serif tint">hechas con IA</em>') + f'<div class="wrap hm-show">{show}</div>', 'paper')
-    program = section(f'''<div class="wrap hm-prog">
-      <div data-reveal><span class="hm-label">Programa</span><h2 class="hm-title">De aprender IA <em class="serif tint">a construir con ella</em></h2>
-        <p class="hm-p">Un programa práctico para profesionales, gerentes y founders. Tomas un problema real de tu trabajo y sales con agentes, automatizaciones y herramientas funcionando, no con horas de contenido visto.</p>
-        <div class="actions">{btn('Conocer el programa', '/programa/', '', ARROW, 'program_click', {'from': 'home'})}{link_arrow('Agendar una conversación', '/agenda/', 'agenda_click')}</div></div>
-      <ul class="list list--check" data-reveal style="--i:1"><li>Agentes que ejecutan tareas reales: correo, agenda, seguimiento, reportes</li><li>Automatizaciones de tus procesos repetitivos, conectadas a tus herramientas</li><li>Skills y configuraciones de Claude hechas para tu rol y tu empresa</li><li>Criterio propio para decidir qué automatizar y qué no</li></ul></div>''', 'cream')
-    luciano = section(f'''<div class="wrap hm-who">
-      <div class="hm-who__img" data-reveal><img src="/aprende/img/luciano-hero.jpg" alt="Luciano Musella"><span class="portrait__tag">Foto provisional</span></div>
-      <div data-reveal style="--i:1"><span class="hm-label">Quién enseña</span><h2 class="hm-title">Luciano Musella construye con IA todos los días. <em class="serif tint">Y lo enseña.</em></h2>
-        <p class="hm-p">Ayuda a empresas y profesionales a convertirse en AI-natives: instala los sistemas, entrena al equipo y, al final, la IA no es algo que "usan", es cómo operan.</p></div></div>''', 'sand', 'sec--tight')
-    agenda = section(f'''<div class="wrap hm-cta" data-reveal><div><h2 class="hm-title" style="color:#fff">Antes de hablar de un curso, <em class="serif tint">entender qué necesitas</em></h2>
-      <p class="hm-p" style="color:var(--on-dark-2)">Una conversación corta para ver si el programa encaja contigo. Sin presión.</p></div>
-      <div>{btn('Agendar una conversación', '/agenda/', 'btn--accent', ARROW, 'agenda_click', {'from': 'home_footer'})}</div></div>''', 'ink', 'sec--tight')
+      <div class="days" data-reveal style="--i:1">{days}</div></div>''', 'ink')
+    show = ''.join((f'''<a class="show__i" href="/tutoriales/{by_vid[s["ref"]]["slug"]}/" data-reveal style="--i:{i}" data-track="tutorial_click" data-track-props='{{"video_id":"{s["ref"]}","from":"showcase"}}'><img src="{by_vid[s["ref"]]["thumb"]}" alt="" loading="lazy"><div class="show__b"><div class="card__meta"><span>{e(s["tag"])}</span><span>· video</span></div><div class="card__title">{e(s["title"])}</div></div></a>''' if s["kind"] == 'video' else
+                    f'''<a class="show__i show__i--res" href="/recursos/{s["ref"]}/" data-reveal style="--i:{i}" data-track="resource_click" data-track-props='{{"resource":"{s["ref"]}","from":"showcase"}}'><div class="show__b"><div class="card__meta" style="color:rgba(255,255,255,.7)"><span>{e(s["tag"])}</span><span>· recurso</span></div><div class="card__title">{e(s["title"])}</div></div></a>''') for i, s in enumerate(SHOW))
+    showcase = section(head('Cosas reales que puedes construir', 'Esto no es teoría. <em class="serif tint">Se construyó de verdad</em>', 'Cada pieza sale de un video o un recurso donde Luciano lo construye delante de ti.') + f'<div class="wrap show">{show}</div>', 'paper')
+    program = section(f'''<div class="wrap split split--wide">
+      <div data-reveal><span class="eyebrow eyebrow--dot">Programa</span><h2 class="h2" style="margin-top:14px">¿Quieres acelerar esto <em class="serif tint">con Luciano?</em></h2>
+        <p class="lead" style="margin-top:18px">Un programa práctico para profesionales, gerentes y founders: sales construyendo tus propios agentes y soluciones, no viendo horas de contenido.</p>
+        <div class="actions mt-3">{btn('Conocer el programa', '/programa/', '', ARROW, 'program_click', {'from': 'home'})}{link_arrow('Hablar con Luciano', '/agenda/', 'agenda_click')}</div></div>
+      <ul class="list list--check" data-reveal style="--i:1"><li>Qué vas a construir desde la primera semana</li><li>Para quién es (y para quién no)</li><li>Metodología: aprender resolviendo un problema real de tu trabajo</li><li>Qué incluye, cómo se acompaña y cómo se empieza</li></ul></div>''', 'cream')
+    luciano = section(f'''<div class="wrap split">
+      <div class="portrait" data-reveal><img src="/aprende/img/luciano-hero.jpg" alt="Luciano Musella"><span class="portrait__tag">Foto provisional</span></div>
+      <div data-reveal style="--i:1"><span class="eyebrow eyebrow--dot">Luciano</span><h2 class="h2" style="margin-top:14px">Construye con IA todos los días. <em class="serif tint">Y lo enseña</em></h2>
+        <p class="lead" style="margin-top:18px">Ayuda a empresas y profesionales a convertirse en AI-natives: instala los sistemas, entrena al equipo y, al final, la IA no es algo que "usan", es cómo operan.</p>
+        <div class="stats"><div class="stat"><b>{len(VIDS)}</b><span>tutoriales publicados</span></div><div class="stat"><b>55</b><span>recursos creados</span></div><div class="stat"><b><span class="ph">dato pendiente</span></b><span>personas formadas</span></div></div>
+        <p class="muted mt-2" style="font-size:14px">Las cifras de estudiantes, empresas y resultados se mostrarán solo cuando Luciano las confirme.</p></div></div>''', 'sand')
+    agenda = section(f'''<div class="wrap" style="max-width:900px;text-align:center"><span class="eyebrow eyebrow--dot" style="color:var(--on-dark-2);justify-content:center" data-reveal>Agenda</span>
+      <h2 class="display display--l" style="color:#fff;margin:18px auto 22px;max-width:16ch" data-reveal>Antes de hablar de un curso, quiero entender <em class="serif tint">qué necesitas</em></h2>
+      <p class="lead" style="color:var(--on-dark-2);margin:0 auto 32px" data-reveal>Una conversación corta para ver si el programa encaja contigo. Sin presión.</p>
+      <div class="actions" style="justify-content:center" data-reveal>{btn('Agendar una conversación', '/agenda/', 'btn--accent', ARROW, 'agenda_click', {'from': 'home_footer'})}</div></div>''', 'ink')
     return layout('Aprende a construir con IA', hero + start + tut + res + reto + showcase + program + luciano + agenda, 'home', 'Tutoriales, recursos y retos gratis para construir con IA. Y un programa para profesionales que quieren ir más lejos.')
 
 def page_tutoriales():
@@ -343,7 +306,7 @@ def page_tutoriales():
       <p class="hero__sub">{len(VIDS)} videos del canal de YouTube, organizados por tema y por ruta. Cada tutorial enlaza a los recursos que usa.</p>
       <div class="hero__actions pill-nav">{''.join(f'<a class="chip" href="#{k}" style="color:#fff;border-color:rgba(255,255,255,.3)">{e(n)}</a>' for k, n in TOPICS.items())}</div></div></div></section>
     {section(head('Rutas de aprendizaje', 'Un orden pensado, <em class="serif tint">no un feed</em>', 'Tres videos y tres recursos por ruta. Empieza por la que se parezca a tu momento.') + f'<div class="wrap routes">{ruta_cards}</div>', 'cream')}
-    {section(head('Por tema', 'Todos los tutoriales', 'Desliza cada fila. Los más vistos primero.') + f'<div class="wrap">{topics_html}</div>', 'paper', id_='temas')}'''
+    {section(head('Por tema', 'Todos los tutoriales', 'Desliza cada fila. Los más vistos primero.') + f'<div class="wrap">{topics_html}</div>', 'paper')}'''
     return layout('Tutoriales', body, 'tutorials', 'Videos organizados por tema y ruta de aprendizaje.')
 
 def page_video(v):
@@ -375,43 +338,25 @@ def cat_card(r, i=0):
             f'<div class="ci__d">{e(r["summary"])}</div>'
             f'<div class="ci__f"><span>{"Empieza aquí · " if r["featured"] else ""}{e(cat["name"])}{" · Serie Houston" if r["collection"] == "houston" else ""}</span><span>{r["read_min"]} min{" · con tutorial" if r["related_tutorials"] else ""}</span></div></a>')
 
-def cat_card_v(r, i=0):
-    # Card de catálogo con visual (Sandcastles: mismo tamaño, misma estructura). Conserva data-* del filtro/búsqueda.
-    cat = CATS[r["category"]]
-    tools = ' '.join(r["tools"][:6])
-    coll = ' Serie Houston' if r["collection"] == 'houston' else ''
-    hay = e((r["title"] + ' ' + r["summary"] + ' ' + r["type_label"] + ' ' + cat["name"] + ' ' + cat["tag"] + ' ' + tools + coll).lower())
-    props = html.escape(json.dumps({"resource": r["slug"], "from": "catalog"}), quote=True)
-    return (f'<a class="hm-r ci{" ci--feat" if r["featured"] else ""}" href="/recursos/{r["slug"]}/" data-cat="{r["category"]}" data-coll="{r["collection"] or ""}" data-type="{e(r["type"])}" data-hay="{hay}" '
-            f'data-track="resource_click" data-track-props="{props}" style="--i:{i}">'
-            f'{res_visual(r)}'
-            f'<div class="hm-r__b"><span class="res__type">{e(r["type_label"])}</span><div class="hm-r__t">{e(r["title"])}</div>'
-            f'<div class="hm-r__f"><span>{"Empieza aquí · " if r["featured"] else ""}{e(cat["name"])}{" · Serie Houston" if r["collection"] == "houston" else ""}</span><span>{r["read_min"]} min{" · con tutorial" if r["related_tutorials"] else ""}</span></div></div></a>')
-
 def page_recursos():
-    # Cabecera compacta → catálogo (todos, destacados primero) → sección Serie Houston recuperada de la versión anterior (21d3543).
+    # Orden del catálogo: destacados primero (son la puerta de entrada), luego por categoría en el orden de la taxonomía.
     order = {k: i for i, k in enumerate(CATS.keys())}
     rs = sorted(RES, key=lambda r: (0 if r["featured"] else 1, order[r["category"]], r["title"].lower()))
-    cards = ''.join(cat_card_v(r, i) for i, r in enumerate(rs))
+    cards = ''.join(cat_card(r, i) for i, r in enumerate(rs))
     counts = {k: sum(1 for r in RES if r["category"] == k) for k in CATS}
-    houston = [r for r in RES if r["collection"] == 'houston']
-    n_h = len(houston)
+    n_h = sum(1 for r in RES if r["collection"] == 'houston')
     chips = f'<button class="chip is-active" data-filter="" type="button">Todos <small>{len(RES)}</small></button>'
     chips += ''.join(f'<button class="chip" data-filter="{k}" type="button">{e(c["name"])} <small>{counts[k]}</small></button>' for k, c in CATS.items())
     chips += f'<button class="chip" data-filter="houston" type="button">Serie Houston <small>{n_h}</small></button>'
-    _houston = section(f'''<div class="wrap coll" id="serie-houston"><div data-reveal><span class="eyebrow eyebrow--dot" style="color:var(--on-dark-2)">Serie · {n_h} recursos</span><h2 class="h2" style="margin-top:14px">Houston: agentes para tu negocio, <em class="serif tint">sin programar</em></h2></div>
-      <p class="lead" data-reveal style="--i:1;color:var(--on-dark-2)">Una colección de agentes listos para copiar: cada uno resuelve una tarea concreta de un equipo comercial u operativo. Empieza por el hub y sigue por el que te duela más.</p></div>
-      <div class="wrap coll__list" data-reveal>{"".join(coll_item(r, i) for i, r in enumerate(houston))}</div>''', 'ink')
     body = f'''<section class="cat sec--cream" data-bg="cream"><div class="wrap">
-      <div class="cat__head cat__head--compact">
-        <div><h1 class="cat__h1 cat__h1--sm">Recursos</h1><p class="cat__sub">{len(RES)} recursos abiertos, sin registro: guías, prompts, configuraciones y sistemas. Cada uno se abre aquí mismo.</p></div>
+      <div class="cat__head">
+        <div><h1 class="cat__h1">Recursos</h1><p class="cat__sub">{len(RES)} recursos abiertos, sin registro: guías, prompts, configuraciones y sistemas. Cada uno se abre aquí mismo.</p></div>
         <form class="search" role="search" onsubmit="return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="rsearch" placeholder="Buscar un recurso…" aria-label="Buscar recursos" autocomplete="off"><button type="button" class="search__x" aria-label="Limpiar" hidden>&times;</button></form>
       </div>
-      <div id="catalogo" class="anchor"></div><div class="filters" id="rfilters" role="group" aria-label="Filtrar por categoría">{chips}</div>
-      <div class="cat__grid cat__grid--v" id="rgrid">{cards}</div>
+      <div class="filters" id="rfilters" role="group" aria-label="Filtrar por categoría">{chips}</div>
+      <div class="cat__grid" id="rgrid">{cards}</div>
       <p class="cat__empty" id="rempty" hidden>No hay recursos con ese texto. Prueba con otra palabra o quita el filtro.</p>
-    </div></section>
-    {_houston}'''
+    </div></section>'''
     return layout('Recursos', body, 'resources', f'{len(RES)} recursos prácticos, abiertos y sin registro: guías, prompts, configuraciones y sistemas.')
 
 def page_resource(r):
