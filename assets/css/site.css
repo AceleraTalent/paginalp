@@ -628,3 +628,9 @@ body[data-page="home"] .sec--tight{padding:clamp(44px,5.5vw,72px) 0}
 .hm-r.ci--feat{box-shadow:none}
 .hm-r.ci--feat .hm-r__f span:first-child{color:var(--accent-deep);font-weight:600}
 .cat__grid--v .hm-r__v{aspect-ratio:16/9}
+/* hero: título del video reproduce en el sitio; enlace secundario a la página del tutorial */
+.hm-player__t{text-align:left;font-weight:600;font-size:15px;line-height:1.35;letter-spacing:-.01em;color:var(--fg)}
+.hm-player__t:hover{color:var(--accent-deep)}
+.hm-player__more{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--fg-3);margin-top:4px}
+.hm-player__more svg{width:14px;height:14px}
+.hm-player__more:hover{color:var(--accent-deep)}
