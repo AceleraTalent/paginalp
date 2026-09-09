@@ -280,22 +280,22 @@ def page_home():
     hero = f'''<section class="hm-hero" id="hero-home" data-bg="cream">
   <div class="wrap hm-hero__in">
     <div class="hm-hero__copy">
-      <span class="eyebrow eyebrow--dot">Tutoriales, recursos y retos gratis</span>
+      <span class="eyebrow eyebrow--dot">Para profesionales, gerentes y líderes</span>
       <h1 class="hm-h1">Construye con IA. <em class="serif tint">Aprende haciendo.</em></h1>
       <p class="hm-hero__sub">Videos, guías y retos para usar la IA de verdad en tu trabajo. Abiertos y sin registro.</p>
       <div class="actions">{btn('Ver tutoriales', '/tutoriales/', '', ARROW, 'tutorial_click', {'from': 'hero'})}{btn('Explorar recursos', '/recursos/', 'btn--ghost', ARROW, 'resource_click', {'from': 'hero'})}</div>
       <p class="hm-hero__meta">{len(VIDS)} tutoriales · {len(RES)} recursos · 1 reto guiado</p>
     </div>
     <div class="hm-hero__video">
-      <div class="hm-player" data-yt="{hero_v["id"]}" data-title="{e(hero_v["title"])}" data-video-view="{hero_v["id"]}" role="button" tabindex="0" aria-label="Reproducir: {e(hero_v["title"])}"><img src="{hero_v["thumb"]}" alt="" onerror="this.src='https://img.youtube.com/vi/{hero_v["id"]}/hqdefault.jpg'"><div class="play"><span class="play__b">{PLAY}</span></div></div>
-      <div class="hm-player__cap"><span class="hm-player__k">Empieza por aquí · {hero_v["duration_label"]}</span><a href="/tutoriales/{hero_v["slug"]}/" data-track="tutorial_click" data-track-props="{hp}">{e(hero_v["title"])}</a></div>
+      <div class="hm-player" id="hero-player" data-yt="{hero_v["id"]}" data-title="{e(hero_v["title"])}" data-video-view="{hero_v["id"]}" role="button" tabindex="0" aria-label="Reproducir: {e(hero_v["title"])}"><img src="{hero_v["thumb"]}" alt="" onerror="this.src='https://img.youtube.com/vi/{hero_v["id"]}/hqdefault.jpg'"><div class="play"><span class="play__b">{PLAY}</span></div></div>
+      <div class="hm-player__cap"><span class="hm-player__k">Empieza por aquí · {hero_v["duration_label"]}</span><button type="button" class="hm-player__t" data-play-for="hero-player">{e(hero_v["title"])}</button><a class="hm-player__more" href="/tutoriales/{hero_v["slug"]}/" data-track="tutorial_click" data-track-props="{hp}">Ver el tutorial con sus recursos {ARROW}</a></div>
     </div>
   </div>
 </section>'''
     pills = ''
     for r in ROUTES:
         rp = html.escape(json.dumps({"route": r["slug"], "from": "home"}), quote=True)
-        pills += f'<a class="hm-pill" href="/tutoriales/#ruta-{r["slug"]}" data-track="related_content_click" data-track-props="{rp}"><b>{e(ROUTE_LABELS.get(r["slug"], r["title"]))}</b><span>{len(r["videos"])} videos · {len(r["resources"])} recursos</span>{ARROW}</a>'
+        pills += f'<a class="hm-pill" href="/tutoriales/?r={r["slug"]}" data-track="related_content_click" data-track-props="{rp}"><b>{e(ROUTE_LABELS.get(r["slug"], r["title"]))}</b><span>{len(r["videos"])} videos · {len(r["resources"])} recursos</span>{ARROW}</a>'
     start = f'<section class="sec sec--paper sec--tight" data-bg="paper" id="empezar"><div class="wrap hm-routes" data-reveal><h2 class="hm-title">¿Qué quieres aprender?</h2><div class="hm-pills">{pills}</div></div></section>'
     tut = section(hm_head('Tutoriales', 'Aprende viendo <em class="serif tint">cómo se construye</em>', '/tutoriales/', 'Ver todos los tutoriales') + f'<div class="wrap hm-vgrid">{"".join(hm_video(v, i) for i, v in enumerate(grid_v))}</div>', 'cream')
     res = section(hm_head('Recursos', 'Guías, prompts y configuraciones <em class="serif tint">para usar hoy</em>', '/recursos/', 'Ver todos los recursos') + f'<div class="wrap hm-rgrid">{"".join(hm_res_card(by_slug[s], i) for i, s in enumerate(HOME_RES))}</div>', 'sand')
@@ -329,22 +329,29 @@ def page_home():
       <div>{btn('Agendar una conversación', '/agenda/', 'btn--accent', ARROW, 'agenda_click', {'from': 'home_footer'})}</div></div>''', 'ink', 'sec--tight')
     return layout('Aprende a construir con IA', hero + start + tut + res + reto + showcase + program + luciano + agenda, 'home', 'Tutoriales, recursos y retos gratis para construir con IA. Y un programa para profesionales que quieren ir más lejos.')
 
+ROUTE_TOPIC = {'nuevo': 'empezar', 'claude': 'claude', 'agentes': 'construcciones', 'automatizar': 'automatizaciones'}
+
 def page_tutoriales():
-    ruta_cards = ''.join(f'''<div class="route" data-reveal style="--i:{i}" id="ruta-{r["slug"]}"><span class="route__n">0{i + 1}</span><div><div class="route__t">{e(r["title"])}</div><p class="route__d">{e(r["desc"])}</p>
-      <div class="vlist" style="margin-top:12px">{''.join(vitem(by_vid[v]) for v in r["videos"])}</div>
-      <div class="route__items" style="margin-top:14px">{''.join(f'<a class="chip chip--tone" href="/recursos/{s}/">◆ {e(by_slug[s]["title"][:40])}</a>' for s in r["resources"])}</div></div></div>''' for i, r in enumerate(ROUTES))
-    topics_html = ''
-    for k, name in TOPICS.items():
-        vs = [v for v in VIDS if v["topic"] == k]
-        if not vs: continue
-        topics_html += f'<div class="cat-head" id="{k}"><h3 class="h3">{e(name)}</h3><span class="muted">{len(vs)} video{"s" if len(vs) != 1 else ""}</span></div><div class="row"><div class="row__scroll">{"".join(video_card(v, i) for i, v in enumerate(vs))}</div></div>'
-    body = f'''<section class="hero hero--short" data-bg="ink"><div class="hero__media"><div class="hero__poster"></div></div><div class="hero__in"><div><span class="eyebrow" style="color:var(--on-dark-2)">Tutoriales</span>
-      <h1 class="display display--l" style="margin-top:14px"><span class="hero__line"><span>Ver cómo se construye</span></span><span class="hero__line"><span><em class="serif tint">paso a paso</em></span></span></h1>
-      <p class="hero__sub">{len(VIDS)} videos del canal de YouTube, organizados por tema y por ruta. Cada tutorial enlaza a los recursos que usa.</p>
-      <div class="hero__actions pill-nav">{''.join(f'<a class="chip" href="#{k}" style="color:#fff;border-color:rgba(255,255,255,.3)">{e(n)}</a>' for k, n in TOPICS.items())}</div></div></div></section>
-    {section(head('Rutas de aprendizaje', 'Un orden pensado, <em class="serif tint">no un feed</em>', 'Tres videos y tres recursos por ruta. Empieza por la que se parezca a tu momento.') + f'<div class="wrap routes">{ruta_cards}</div>', 'cream')}
-    {section(head('Por tema', 'Todos los tutoriales', 'Desliza cada fila. Los más vistos primero.') + f'<div class="wrap">{topics_html}</div>', 'paper')}'''
-    return layout('Tutoriales', body, 'tutorials', 'Videos organizados por tema y ruta de aprendizaje.')
+    # Catálogo directo (un click desde Home = videos visibles): título corto + chips de ruta + grid. Sin hero ni bloque de rutas.
+    route_of = {}
+    for r in ROUTES:
+        for v in r["videos"]: route_of.setdefault(v, []).append(r["slug"])
+    for k, t in ROUTE_TOPIC.items():
+        for v in VIDS:
+            if v["topic"] == t: route_of.setdefault(v["id"], []); route_of[v["id"]].append(k) if k not in route_of[v["id"]] else None
+    order = {v: i for i, v in enumerate([x for r in ROUTES for x in r["videos"]])}
+    vs = sorted(VIDS, key=lambda v: (0 if v["featured"] else 1, -v["views"]))
+    cards = ''.join(f'<div class="tc" data-routes="{" ".join(route_of.get(v["id"], []))}" data-topic="{v["topic"]}">{video_card(v, i)}</div>' for i, v in enumerate(vs))
+    counts = {r["slug"]: sum(1 for v in VIDS if r["slug"] in route_of.get(v["id"], [])) for r in ROUTES}
+    chips = f'<button class="chip is-active" data-filter="" type="button">Todos <small>{len(VIDS)}</small></button>'
+    chips += ''.join(f'<button class="chip" data-filter="{r["slug"]}" type="button">{e(ROUTE_LABELS.get(r["slug"], r["title"]))} <small>{counts[r["slug"]]}</small></button>' for r in ROUTES)
+    body = f'''<section class="cat sec--cream" data-bg="cream"><div class="wrap">
+      <div class="cat__head"><div><h1 class="cat__h1">Tutoriales</h1><p class="cat__sub">{len(VIDS)} videos del canal, para ver aquí mismo. Elige un tema o empieza por el primero.</p></div></div>
+      <div class="filters" id="tfilters" role="group" aria-label="Filtrar por tema">{chips}</div>
+      <div class="cat__grid cat__grid--3" id="tgrid">{cards}</div>
+      <p class="cat__empty" id="tempty" hidden>No hay videos en este tema todavía.</p>
+    </div></section>'''
+    return layout('Tutoriales', body, 'tutorials', f'{len(VIDS)} tutoriales en video, organizados por tema.')
 
 def page_video(v):
     rel = [by_slug[s] for s in v["related_resources"] if s in by_slug]

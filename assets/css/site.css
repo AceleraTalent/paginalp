@@ -616,3 +616,13 @@ body[data-page="home"] .sec--tight{padding:clamp(44px,5.5vw,72px) 0}
 @media (max-width:560px){.hm-who{grid-template-columns:1fr}.hm-who__img{max-width:220px}}
 /* deep-link desde Home a las rutas de /tutoriales: que el ancla no quede bajo la barra fija */
 .route[id],.cat-head[id]{scroll-margin-top:calc(var(--nav-h) + 20px)}
+
+/* tutoriales: catálogo directo (un click desde Home = videos) */
+.tc.is-hidden{display:none}
+.tc .card{background:var(--paper);border:1px solid var(--line);overflow:hidden}
+.tc .card:hover{border-color:transparent;box-shadow:0 24px 50px -36px rgba(25,25,24,.45)}
+.hm-player__t{text-align:left;font-weight:600;font-size:15px;line-height:1.35;letter-spacing:-.01em;color:var(--fg)}
+.hm-player__t:hover{color:var(--accent-deep)}
+.hm-player__more{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--fg-3);margin-top:4px}
+.hm-player__more svg{width:14px;height:14px}
+.hm-player__more:hover{color:var(--accent-deep)}
