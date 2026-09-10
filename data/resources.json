@@ -1,0 +1,2048 @@
+{
+ "categories": {
+  "empezar": {
+   "name": "Empezar",
+   "tag": "Empieza con IA",
+   "desc": "Rutas, certificaciones y primeros prompts para arrancar sin perderte."
+  },
+  "claude": {
+   "name": "Claude",
+   "tag": "Claude a fondo",
+   "desc": "Skills, MCPs, plugins, rutinas y ahorro de tokens."
+  },
+  "agentes": {
+   "name": "Agentes",
+   "tag": "Agentes y automatización",
+   "desc": "Sistemas que ejecutan por ti: agentes, flujos y automatizaciones."
+  },
+  "contenido": {
+   "name": "Contenido",
+   "tag": "Contenido y LinkedIn",
+   "desc": "Crear, publicar y vender con contenido."
+  },
+  "creativo": {
+   "name": "Creativo",
+   "tag": "Imagen, video y diseño",
+   "desc": "Producir visual con IA sin resultados genéricos."
+  },
+  "negocio": {
+   "name": "Negocio",
+   "tag": "Operar con IA",
+   "desc": "Stack, atención al cliente, presentaciones y casos de industria."
+  }
+ },
+ "resources": [
+  {
+   "id": "lm-01",
+   "slug": "skill-debrief-claude",
+   "title": "Guía paso a paso para crear un Skill - DEBRIEF en Claude (Notion + Google Calendar)",
+   "category": "claude",
+   "secondary": [
+    "productividad",
+    "agentes"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Planificar el día automáticamente cruzando agenda de Google Calendar con tareas pendientes de Notion desde Claude.",
+   "what_you_get": [
+    "archivo chief-of-staff.skill descargable (4.6 KiB)",
+    "skill completo (SKILL.md) para copiar y pegar",
+    "prompt para que Notion AI cree la base de datos de Tareas",
+    "5 secciones numeradas con 9 capturas de pantalla",
+    "copy de CTA listo para el lead magnet"
+   ],
+   "ideal_for": [],
+   "includes": [],
+   "tools": [
+    "Claude",
+    "Claude Skills",
+    "Claude Connectors",
+    "Notion",
+    "Notion AI",
+    "Google Calendar"
+   ],
+   "words": 2567,
+   "read_min": 13,
+   "related_tutorials": [
+    "5I0naOsMtAQ"
+   ],
+   "related_resources": [
+    "5-niveles-de-claude",
+    "claude-routines",
+    "atajos-de-prompt-claude"
+   ],
+   "collection": null,
+   "featured": true,
+   "notion_url": "https://quiet-fiber-044.notion.site/088e4ca3df4d441983862e8a7dc41eb3",
+   "status": "preview"
+  },
+  {
+   "id": "lm-02",
+   "slug": "gpt-image-2",
+   "title": "GPT Image 2.0: El nuevo modelo que sacó Open AI",
+   "category": "creativo",
+   "secondary": [
+    "herramientas",
+    "contenido"
+   ],
+   "type": "prompts",
+   "type_label": "Prompts",
+   "summary": "Saber para qué sirve GPT Image 2, dónde usarlo y cómo sacar imágenes comerciales con prompts concretos.",
+   "what_you_get": [
+    "5 prompts listos para copiar (branding, mockups, anotaciones, generación masiva con Codex, edición múltiple)",
+    "explicación de 6 capacidades clave",
+    "guía de dónde usarlo (ChatGPT, Playground, Codex) con nota de costos",
+    "4 imágenes de ejemplo",
+    "limitación principal documentada"
+   ],
+   "ideal_for": [
+    "Ads para Meta Platforms / TikTok / YouTube",
+    "Branding y contenido visual",
+    "Mockups de apps y software",
+    "Freelancers, agencias y founders",
+    "Escalar creatividades con IA"
+   ],
+   "includes": [
+    "Qué es GPT Image 2 explicado simple",
+    "5 usos rentables reales",
+    "Prompts listos para copiar",
+    "Cómo usarlo en ChatGPT y Playground",
+    "Casos reales + ejemplos",
+    "Errores y limitaciones clave"
+   ],
+   "tools": [
+    "ChatGPT",
+    "GPT Image 2",
+    "OpenAI Playground",
+    "Codex",
+    "NanoBanana",
+    "Readwise",
+    "Notion",
+    "Google Sheets"
+   ],
+   "words": 1301,
+   "read_min": 7,
+   "related_tutorials": [
+    "aHSszeH4-Ro"
+   ],
+   "related_resources": [
+    "contenido-linkedin",
+    "mi-stack-de-ai",
+    "higgsfield-claude-video"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/350c40c66f09809c9fd8f25cfee4379f",
+   "status": "preview"
+  },
+  {
+   "id": "lm-03",
+   "slug": "agente-mercado",
+   "title": "Cómo construí un agente que hace el mercado del Éxito por mí (y cómo tú puedes hacer lo mismo)",
+   "category": "agentes",
+   "secondary": [
+    "automatizacion",
+    "claude"
+   ],
+   "type": "caso-construido",
+   "type_label": "Caso construido",
+   "summary": "Automatizar el mercado online: un agente conversacional calcula ingredientes y arma el carrito en exito.com solo.",
+   "what_you_get": [
+    "prompt maestro largo para que Claude Code genere el proyecto completo",
+    "7 pasos con 5 capturas (instalación VS Code, Node, Playwright)",
+    "comandos de terminal para instalar y correr",
+    "ejemplo de conversación completa con el agente",
+    "reglas de manejo de popups y plan B para productos no encontrados"
+   ],
+   "ideal_for": [],
+   "includes": [],
+   "tools": [
+    "Claude",
+    "Claude Code",
+    "VS Code",
+    "Node.js",
+    "Playwright"
+   ],
+   "words": 1413,
+   "read_min": 7,
+   "related_tutorials": [
+    "n7w3Y4X1QgE",
+    "5v9PTxXsxU0"
+   ],
+   "related_resources": [
+    "hermes",
+    "jarvis-claude-code",
+    "fathom-make-notion"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/351c40c66f09806eac59ccb95b063b9c",
+   "status": "preview"
+  },
+  {
+   "id": "lm-04",
+   "slug": "contenido-linkedin",
+   "title": "Guía paso a paso para crear contenido en LinkedIn",
+   "category": "contenido",
+   "secondary": [
+    "carrera",
+    "claude"
+   ],
+   "type": "sistema",
+   "type_label": "Sistema",
+   "summary": "'No sé qué publicar': sistema para sacar ideas de 5 fuentes, convertirlas en un insight por post y escribir con voz propia usando IA.",
+   "what_you_get": [
+    "sistema de 5 fuentes de ideas (newsletters, YouTube, libros, conversaciones, historias)",
+    "prompt 'Analizador universal de estilo de escritura' de 10 secciones para copiar",
+    "ejemplo completo del análisis de estilo aplicado a la voz de Luciano (checklist de reglas)",
+    "checklist final del proceso",
+    "6 imágenes y 1 video del proceso de transcripts"
+   ],
+   "ideal_for": [],
+   "includes": [],
+   "tools": [
+    "Claude",
+    "ChatGPT",
+    "Substack",
+    "YouTube",
+    "Gemini",
+    "Claude Code",
+    "Codex",
+    "NotebookLM"
+   ],
+   "words": 6361,
+   "read_min": 32,
+   "related_tutorials": [
+    "loczkTaZ05g",
+    "kJn-jDJL71s"
+   ],
+   "related_resources": [
+    "mi-stack-de-ai",
+    "skills-marketing-claude",
+    "gpt-image-2"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/352c40c66f098089a4b1e238b52bf3b2",
+   "status": "preview"
+  },
+  {
+   "id": "lm-06",
+   "slug": "mi-stack-de-ai",
+   "title": "Mi Stack de AI, así es como mi empresa funciona",
+   "category": "negocio",
+   "secondary": [
+    "herramientas",
+    "productividad"
+   ],
+   "type": "analisis-articulo",
+   "type_label": "Análisis",
+   "summary": "Mostrar qué herramientas y flujos usa Luciano para operar su empresa con IA (Claude, Lovable, LinkedIn, Notion).",
+   "what_you_get": [
+    "explicación de qué es MCP",
+    "4 herramientas explicadas con su uso real (Claude Skills+Code+MCP, Lovable, LinkedIn, Notion)",
+    "sistema de 4 pasos para contenido en LinkedIn con Claude",
+    "7 capturas de pantalla",
+    "reflexión de cierre sobre productividad con IA"
+   ],
+   "ideal_for": [],
+   "includes": [],
+   "tools": [
+    "Claude",
+    "Claude Code",
+    "Claude Skills",
+    "MCP",
+    "ChatGPT",
+    "Lovable",
+    "LinkedIn",
+    "Notion",
+    "Fathom",
+    "Google Drive"
+   ],
+   "words": 1290,
+   "read_min": 6,
+   "related_tutorials": [
+    "0BaH6tekits"
+   ],
+   "related_resources": [
+    "roadmap-claude-5-dias",
+    "fathom-make-notion",
+    "small-business-claude"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/35ec40c66f09809988e4d384e8281d89",
+   "status": "preview"
+  },
+  {
+   "id": "lm-09",
+   "slug": "fathom-make-notion",
+   "title": "Guía: Automatización Fathom → Make → Notion",
+   "category": "agentes",
+   "secondary": [
+    "productividad"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Que cada transcript de llamada grabada en Fathom llegue automáticamente como página a una base de datos de Notion.",
+   "what_you_get": [
+    "5 pasos numerados (Notion, Fathom, escenario Make, prueba, mejoras)",
+    "tabla con el esquema de la base de datos de llamadas (8 columnas)",
+    "bloque de mapeo de campos webhook → Notion",
+    "tabla de troubleshooting (4 problemas)",
+    "links a documentación de Make, Fathom y Notion API"
+   ],
+   "ideal_for": [],
+   "includes": [],
+   "tools": [
+    "Fathom",
+    "Make",
+    "Notion",
+    "Zapier",
+    "Claude",
+    "GPT/OpenAI",
+    "Gmail",
+    "Slack"
+   ],
+   "words": 837,
+   "read_min": 4,
+   "related_tutorials": [
+    "0BaH6tekits"
+   ],
+   "related_resources": [
+    "mi-stack-de-ai",
+    "hermes",
+    "roadmap-claude-5-dias"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/321c40c66f0981e48a5fdb2e47057d36",
+   "status": "preview"
+  },
+  {
+   "id": "lm-10",
+   "slug": "5-mcps-claude",
+   "title": "5 MCPs",
+   "category": "claude",
+   "secondary": [
+    "agentes",
+    "herramientas"
+   ],
+   "type": "lista-curada",
+   "type_label": "Lista curada",
+   "summary": "Qué 5 conectores MCP le dan a Claude capacidad de buscar, navegar, leer docs, planificar y ejecutar.",
+   "what_you_get": [
+    "5 MCPs explicados (qué hace, problema que resuelve, ideal para): Tavily, Playwright, Context7, Task Master, Markdownify",
+    "links a web/docs/repo de cada uno",
+    "stack recomendado combinando los 5"
+   ],
+   "ideal_for": [],
+   "includes": [],
+   "tools": [
+    "Claude",
+    "Tavily",
+    "Playwright",
+    "Context7",
+    "Task Master AI",
+    "Markdownify"
+   ],
+   "words": 469,
+   "read_min": 2,
+   "related_tutorials": [
+    "sn3zkOGdfsM"
+   ],
+   "related_resources": [
+    "4-mcps-agente-real",
+    "markitdown-pdfs-claude",
+    "skill-debrief-claude"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/367c40c66f0980c5a00ccbd47eb70dbe",
+   "status": "preview"
+  },
+  {
+   "id": "lm-13",
+   "slug": "higgsfield-claude-video",
+   "title": "Claude + Higgsfield: Crea video con AI directamente desde Claude",
+   "category": "creativo",
+   "secondary": [
+    "claude",
+    "contenido"
+   ],
+   "type": "prompts",
+   "type_label": "Prompts",
+   "summary": "Generar videos publicitarios con Higgsfield sin salir de Claude, usando el MCP y prompts concretos.",
+   "what_you_get": [
+    "configuración del MCP en 3 pasos (<2 min)",
+    "guía de 3 modelos (Seedance 2.0, Kling 3.0, Marketing Studio) y cuándo usar cada uno",
+    "5 prompts listos para copiar (Meta ad, UGC con avatar, cinematográfico, animación producto, variaciones A/B)",
+    "limitación principal (generación asíncrona) y tip práctico"
+   ],
+   "ideal_for": [
+    "Founders y marketers que producen contenido visual",
+    "Agencias que crean ads para Meta / TikTok",
+    "Equipos que necesitan escalar producción de video",
+    "Cualquiera que ya use Claude y quiera agregarle video"
+   ],
+   "includes": [
+    "Qué es el MCP de Higgsfield y por qué importa",
+    "Cómo configurarlo en menos de 2 minutos",
+    "5 usos reales con prompts listos para copiar",
+    "Los modelos clave y cuándo usar cada uno",
+    "Limitación principal (para no frustrarte)"
+   ],
+   "tools": [
+    "Claude",
+    "Higgsfield",
+    "MCP",
+    "Seedance 2.0",
+    "Kling 3.0",
+    "Marketing Studio",
+    "Meta",
+    "TikTok"
+   ],
+   "words": 1081,
+   "read_min": 5,
+   "related_tutorials": [
+    "T7vHp2fpbo8"
+   ],
+   "related_resources": [
+    "diseno-web-claude",
+    "4-mcps-agente-real",
+    "gpt-image-2"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/374c40c66f09810cbfadf306508a4135",
+   "status": "preview"
+  },
+  {
+   "id": "lm-14",
+   "slug": "second-brain-obsidian-claude",
+   "title": "Obsidian + Nexus + Claude: Construye un Second Brain que realmente recuerda tu trabajo",
+   "category": "claude",
+   "secondary": [
+    "productividad",
+    "herramientas"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Claude empieza cada conversación sin contexto; el sistema convierte notas, decisiones y proyectos en una fuente reutilizable.",
+   "what_you_get": [
+    "Vault de Obsidian con estructura de 6 carpetas",
+    "4 notas base con contenido para copiar",
+    "Plantilla 'Contexto General' para pegar a Claude",
+    "Ruta técnica opcional para conectar Claude Code con Nexus"
+   ],
+   "ideal_for": [
+    "Consultores, founders, managers y profesionales que trabajan con muchos proyectos.",
+    "Equipos que quieren dejar de perder decisiones entre WhatsApp, Drive, reuniones y chats.",
+    "Personas que ya usan Claude o Claude Code.",
+    "Personas que quieren que su conocimiento siga siendo suyo y viva en archivos propios."
+   ],
+   "includes": [
+    "Un vault de Obsidian organizado.",
+    "Una estructura clara para notas, proyectos y reuniones.",
+    "Una nota central de contexto para Claude.",
+    "Un sistema para convertir reuniones y aprendizajes en conocimiento reutilizable.",
+    "Una ruta técnica opcional para conectar Claude Code con Nexus."
+   ],
+   "tools": [
+    "Obsidian",
+    "Claude",
+    "Claude Code",
+    "Nexus"
+   ],
+   "words": 1801,
+   "read_min": 9,
+   "related_tutorials": [
+    "wpYDisTBlE8"
+   ],
+   "related_resources": [
+    "skill-debrief-claude",
+    "5-mcps-claude",
+    "find-skills-claude"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/19a7abe095b146de87396a1be8a9ad4b",
+   "status": "preview"
+  },
+  {
+   "id": "lm-17",
+   "slug": "open-design",
+   "title": "Open Design: 70+ estilos de marcas top para diseñar con cualquier AI",
+   "category": "creativo",
+   "secondary": [
+    "herramientas",
+    "claude"
+   ],
+   "type": "herramienta-config",
+   "type_label": "Configuración",
+   "summary": "Producir interfaces y documentos con identidad visual consistente sin diseñador ni decisiones de estilo desde cero.",
+   "what_you_get": [
+    "Explicación de qué es Open Design y qué lo diferencia",
+    "Lista de 6 estilos de ejemplo (Linear, Stripe, Vercel, Apple, Notion, Tesla) con criterio de elección",
+    "Compatibilidad con Claude Code, Codex, Gemini y uso local",
+    "Comandos de instalación (git clone / npm install / npm run dev)",
+    "2 prompts plantilla para pedirle landing/dashboard desde Claude Code"
+   ],
+   "ideal_for": [
+    "Founders y equipos que construyen con Claude Code o Codex",
+    "Diseñadores que quieren acelerar producción",
+    "Developers que necesitan resultados visuales consistentes",
+    "Cualquiera que use IA para crear interfaces o documentos"
+   ],
+   "includes": [
+    "Qué es Open Design y por qué es diferente",
+    "Los 70+ estilos y cómo elegir el correcto",
+    "Con qué modelos funciona (y el truco del uso local)",
+    "Qué puede crear más allá de páginas web",
+    "Cómo instalarlo y conectarlo con Claude",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Open Design",
+    "Claude Code",
+    "Codex (OpenAI)",
+    "Gemini",
+    "v0",
+    "Lovable",
+    "npm",
+    "git",
+    "GitHub"
+   ],
+   "words": 1099,
+   "read_min": 5,
+   "related_tutorials": [
+    "gIJ18tpbOy8"
+   ],
+   "related_resources": [
+    "diseno-web-claude",
+    "gpt-image-2",
+    "contenido-linkedin"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/375c40c66f0981e88933e8c34713e220",
+   "status": "preview"
+  },
+  {
+   "id": "lm-18",
+   "slug": "small-business-claude",
+   "title": "Small Business: El plugin de Claude que gestiona tu negocio completo",
+   "category": "negocio",
+   "secondary": [
+    "claude",
+    "productividad"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Centralizar marketing, ventas, atención al cliente, operaciones y administración de un negocio pequeño en Claude sin usar 5-10 herramientas.",
+   "what_you_get": [
+    "Instalación del plugin en 5 pasos desde Cowork → Habilidades → Plugins",
+    "Plantilla de instrucciones de proyecto para dar contexto del negocio",
+    "6 habilidades explicadas con cuándo usarlas (/cash-flow-snapshot, /handle-complaint, /call-list, /friday-brief, /content-strategy, /invoice-chase)",
+    "Cómo conectar Gmail y 2 prompts listos para usar con Gmail",
+    "Limitación principal y tip de configuración"
+   ],
+   "ideal_for": [
+    "Emprendedores y dueños de negocio",
+    "Equipos pequeños sin área de operaciones",
+    "Founders que hacen todo solos",
+    "Negocios que quieren automatizar sin contratar"
+   ],
+   "includes": [
+    "Qué es Small Business y qué trae",
+    "Cómo instalarlo paso a paso",
+    "Cómo configurar tu proyecto",
+    "Las habilidades más útiles y cuándo usarlas",
+    "Cómo conectarlo con Gmail y otras integraciones",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Claude Cowork",
+    "Claude Code",
+    "Small Business (plugin)",
+    "Gmail",
+    "Google Calendar",
+    "Notion",
+    "HubSpot",
+    "Slack"
+   ],
+   "words": 1069,
+   "read_min": 5,
+   "related_tutorials": [
+    "wpYDisTBlE8",
+    "sn3zkOGdfsM"
+   ],
+   "related_resources": [
+    "atencion-cliente-claude",
+    "roadmap-claude-5-dias",
+    "5-niveles-de-claude"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/375c40c66f098148a75afcaeb497ee59",
+   "status": "preview"
+  },
+  {
+   "id": "lm-19",
+   "slug": "claude-council",
+   "title": "Claude Council: 5 agentes que evalúan tu idea",
+   "category": "agentes",
+   "secondary": [
+    "claude",
+    "negocio"
+   ],
+   "type": "prompts",
+   "type_label": "Prompts",
+   "summary": "Validar decisiones caras (lanzamiento, precio, contratación, pivote) con un panel de 5 agentes que se contradicen en vez de validación barata.",
+   "what_you_get": [
+    "Descripción de los 5 agentes (Crítico, Estratega, Optimista, Cliente, Pragmático) + Chairman y la pregunta que hace cada uno",
+    "Comando base /council y prompt plantilla genérico",
+    "4 prompts listos para casos: lanzar producto, subir precio, contratar, pivotar",
+    "Guía de cómo leer el veredicto del Chairman",
+    "Limitación y regla de uso"
+   ],
+   "ideal_for": [
+    "Founders antes de lanzar un producto o cambiar precio",
+    "Equipos que necesitan validación real, no cheap yes-men",
+    "Cualquiera que vaya a tomar una decisión cara e irreversible",
+    "Consultores que quieren una segunda (y tercera) opinión instantánea"
+   ],
+   "includes": [
+    "Qué es Claude Council y cómo funciona",
+    "Los 5 agentes y qué busca cada uno",
+    "Cómo activarlo y el prompt base",
+    "4 casos de uso reales con ejemplos",
+    "Cómo leer el veredicto del Chairman",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Claude Council (skill)",
+    "Claude Cowork"
+   ],
+   "words": 1175,
+   "read_min": 6,
+   "related_tutorials": [],
+   "related_resources": [
+    "agente-mercado",
+    "fathom-make-notion",
+    "hermes"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/37bc40c66f0981be835fd5b764e02fad",
+   "status": "preview"
+  },
+  {
+   "id": "lm-20",
+   "slug": "vacantes-linkedin-claude",
+   "title": "LinkedIn + Claude: Encuentra las mejores vacantes en menos de 10 segundos",
+   "category": "empezar",
+   "secondary": [
+    "claude",
+    "herramientas"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Encontrar vacantes de LinkedIn alineadas al CV, con salario y probabilidad de entrevista, sin buscar y filtrar manualmente.",
+   "what_you_get": [
+    "Configuración única en 4 pasos: conector Apify en Claude, cuenta Apify, API key, actor de LinkedIn",
+    "Link al actor apify.com/bebity/linkedin-premium-actor",
+    "Prompt exacto para buscar vacantes cruzando el CV",
+    "Cómo interpretar el % de match y la razón de encaje",
+    "Prompt de seguimiento para preparar la entrevista de la vacante #1"
+   ],
+   "ideal_for": [
+    "Profesionales en búsqueda activa de empleo",
+    "Personas que quieren salarios más altos",
+    "Quienes están hartos de aplicar a ciegas",
+    "Cualquiera que quiera saber exactamente dónde tiene probabilidades reales"
+   ],
+   "includes": [
+    "Cómo funciona el sistema",
+    "Configuración de Apify en Claude (una sola vez)",
+    "El actor de LinkedIn que necesitas instalar",
+    "El prompt exacto para buscar vacantes",
+    "Cómo interpretar los resultados",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Claude",
+    "Apify",
+    "LinkedIn",
+    "Actor LinkedIn Job Search (bebity/linkedin-premium-actor)",
+    "Connectors de Claude"
+   ],
+   "words": 829,
+   "read_min": 4,
+   "related_tutorials": [
+    "gpPmmVT89gA"
+   ],
+   "related_resources": [
+    "roadmap-claude-5-dias",
+    "certificaciones-ia",
+    "chatgpt-privacidad"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/381c40c66f098155af9cec2838cd815c",
+   "status": "preview"
+  },
+  {
+   "id": "lm-21",
+   "slug": "hermes",
+   "title": "Hermes: El agente de IA que ejecuta, no solo responde",
+   "category": "agentes",
+   "secondary": [
+    "productividad",
+    "herramientas"
+   ],
+   "type": "analisis-articulo",
+   "type_label": "Análisis",
+   "summary": "Dejar de ejecutar manualmente lo que la IA solo planifica: un agente que actúa en Gmail, calendario y WhatsApp en tu nombre.",
+   "what_you_get": [
+    "Diferencia chatbot vs agente explicada",
+    "Descripción de la memoria que mejora con el uso",
+    "Canales donde funciona: WhatsApp, Telegram, Discord, computador",
+    "4 prompts de ejemplo (vuelo, correo, calendario, recordatorio)",
+    "3 pasos genéricos para empezar y la limitación de riesgo"
+   ],
+   "ideal_for": [
+    "Profesionales que quieren delegar tareas reales, no solo preguntas",
+    "Equipos que viven entre Gmail, calendario y WhatsApp",
+    "Founders que necesitan un agente, no otro chatbot",
+    "Cualquiera cansado de ejecutar manualmente lo que la IA ya le explicó"
+   ],
+   "includes": [
+    "Qué es Hermes y la diferencia real con un chatbot",
+    "Cómo funciona la memoria que mejora con el uso",
+    "Dónde puedes usarlo (no solo en tu computador)",
+    "4 casos de uso reales con ejemplos",
+    "Cómo empezar",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Hermes",
+    "ChatGPT",
+    "Claude",
+    "Gmail",
+    "Google Calendar",
+    "WhatsApp",
+    "Telegram",
+    "Discord"
+   ],
+   "words": 859,
+   "read_min": 4,
+   "related_tutorials": [
+    "n7w3Y4X1QgE"
+   ],
+   "related_resources": [
+    "agente-mercado",
+    "fathom-make-notion",
+    "5-niveles-de-claude"
+   ],
+   "collection": null,
+   "featured": true,
+   "notion_url": "https://quiet-fiber-044.notion.site/38ac40c66f0981c0a2befd95dee2f632",
+   "status": "preview"
+  },
+  {
+   "id": "lm-22",
+   "slug": "atencion-cliente-claude",
+   "title": "Atención al Cliente con Claude: Respuestas listas sin tocar Gmail",
+   "category": "negocio",
+   "secondary": [
+    "claude",
+    "automatizacion"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Responder correos de clientes con el contexto real del negocio sin perder horas ni sonar genérico.",
+   "what_you_get": [
+    "Flujo de 5 pasos de cómo Claude lee Gmail y propone respuesta con aprobación humana",
+    "Activación en 4 pasos: Cowork → plugin Small Business → conectar Gmail → /smb-onboard",
+    "Plantilla de contexto del negocio para el onboarding (qué vendo, a quién, tono, FAQs, límites)",
+    "3 ejemplos de tipo de correo y qué genera Claude (disponibilidad, queja, precios)",
+    "Limitación y tip de revisión las primeras semanas"
+   ],
+   "ideal_for": [
+    "Dueños de negocio que hacen todo solos",
+    "Emprendedores que pierden horas respondiendo correos",
+    "Negocios sin equipo dedicado a atención al cliente",
+    "Cualquiera que quiera responder rápido sin sonar genérico"
+   ],
+   "includes": [
+    "Qué hace exactamente la skill de atención al cliente",
+    "Cómo se conecta con tu Gmail",
+    "Cómo activarla paso a paso",
+    "Cómo darle el contexto correcto de tu negocio",
+    "3 ejemplos de respuestas reales",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Claude Cowork",
+    "Small Business (plugin)",
+    "Gmail",
+    "Conectores de Claude",
+    "/smb-onboard"
+   ],
+   "words": 889,
+   "read_min": 4,
+   "related_tutorials": [
+    "wpYDisTBlE8",
+    "sn3zkOGdfsM"
+   ],
+   "related_resources": [
+    "small-business-claude",
+    "roadmap-claude-5-dias",
+    "mi-stack-de-ai"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/38ac40c66f098185bc63cf82f559f96e",
+   "status": "preview"
+  },
+  {
+   "id": "lm-23",
+   "slug": "notebooklm-presentaciones",
+   "title": "NotebookLM: Presentaciones que cierran, no que aburren",
+   "category": "negocio",
+   "secondary": [
+    "herramientas",
+    "negocio"
+   ],
+   "type": "tutorial-escrito",
+   "type_label": "Tutorial",
+   "summary": "Construir presentaciones con narrativa e infografías a partir de fuentes propias, sin diseñador ni PowerPoint genérico.",
+   "what_you_get": [
+    "Argumento presentación barata vs bien montada",
+    "Cómo preparar y separar las fuentes antes de subirlas a NotebookLM",
+    "Prompt plantilla para definir la presentación slide por slide",
+    "3 casos de uso (propuesta cliente nuevo, reporte de resultados, alineación interna)",
+    "Limitación (ajustes visuales finales en PowerPoint/Canva)"
+   ],
+   "ideal_for": [
+    "Consultores y agencias que presentan a clientes",
+    "Founders preparando pitch decks",
+    "Equipos que necesitan reportes visuales sin diseñador",
+    "Cualquiera cansado de PowerPoint genérico"
+   ],
+   "includes": [
+    "La diferencia real entre presentación barata y bien montada",
+    "Qué es NotebookLM y cómo genera presentaciones",
+    "Cómo estructurar tus fuentes antes de empezar",
+    "El prompt para definir cada diapositiva",
+    "3 casos de uso reales",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "NotebookLM",
+    "PowerPoint",
+    "Canva"
+   ],
+   "words": 923,
+   "read_min": 5,
+   "related_tutorials": [
+    "wiGN309SE5U",
+    "aHSszeH4-Ro"
+   ],
+   "related_resources": [
+    "mi-stack-de-ai",
+    "small-business-claude",
+    "atencion-cliente-claude"
+   ],
+   "collection": null,
+   "featured": true,
+   "notion_url": "https://quiet-fiber-044.notion.site/38ac40c66f0981f6a76edd845aee1f1b",
+   "status": "preview"
+  },
+  {
+   "id": "lm-24",
+   "slug": "find-skills-claude",
+   "title": "Find Skills: El skill que encuentra el skill correcto por ti",
+   "category": "claude",
+   "secondary": [
+    "herramientas",
+    "agentes"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Encontrar e instalar de forma segura el skill correcto de Claude Code entre miles dispersos en GitHub.",
+   "what_you_get": [
+    "Qué es el directorio Cross AI Tools (crossaitools.com)",
+    "Cómo funciona Find Skills (búsqueda, verificación por instalaciones y reputación)",
+    "Comando exacto de instalación: npx -y skills add vercel-labs/skills --skill find-skills --agent claude-code",
+    "Niveles de auditoría de seguridad (Seguro / Con alertas / Alto riesgo)",
+    "Flujo de 3 pasos y 3 prompts de ejemplo (code review, documentación, research)"
+   ],
+   "ideal_for": [
+    "Cualquiera que use Claude Code regularmente",
+    "Equipos técnicos que quieren dejar de reinventar soluciones",
+    "Founders que automatizan procesos con Claude",
+    "Personas cansadas de buscar skills manualmente en GitHub"
+   ],
+   "includes": [
+    "Qué es Cross AI Tools y por qué importa",
+    "Qué es Find Skills y cómo funciona exactamente",
+    "Cómo instalarlo (comando exacto)",
+    "Cómo verificar seguridad antes de instalar cualquier skill",
+    "El flujo completo: encontrar, verificar, instalar",
+    "3 ejemplos de uso real"
+   ],
+   "tools": [
+    "Find Skills",
+    "Cross AI Tools",
+    "Claude Code",
+    "npx / Node.js",
+    "GitHub",
+    "vercel-labs/skills",
+    "MCP servers",
+    "SKILL.md"
+   ],
+   "words": 1130,
+   "read_min": 6,
+   "related_tutorials": [
+    "sn3zkOGdfsM",
+    "5I0naOsMtAQ"
+   ],
+   "related_resources": [
+    "5-skills-gratuitos-claude",
+    "claude-routines",
+    "5-niveles-de-claude"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/38cc40c66f0981eabe24d34cdccb84fa",
+   "status": "preview"
+  },
+  {
+   "id": "lm-25",
+   "slug": "certificaciones-ia",
+   "title": "5 Certificaciones Gratuitas de IA que Necesitas en tu Hoja de Vida",
+   "category": "empezar",
+   "secondary": [
+    "research"
+   ],
+   "type": "lista-curada",
+   "type_label": "Lista curada",
+   "summary": "Añadir credenciales de IA verificables al CV y LinkedIn en horas y sin costo.",
+   "what_you_get": [
+    "5 certificaciones con emisor, tiempo estimado, costo y por qué importa: Google AI Essentials, LinkedIn AI Learning, HubSpot Academy, Microsoft AI Fundamentals, GitHub Foundations",
+    "Link directo a cada una",
+    "4 tips para aprovecharlas (añadir a LinkedIn, enlace verificable en CV, orden sugerido)",
+    "Resumen rápido con los 5 links"
+   ],
+   "ideal_for": [
+    "Profesionales que buscan empleo en IA",
+    "Personas que quieren actualizar su hoja de vida",
+    "Quienes necesitan credenciales verificables rápido",
+    "Estudiantes y recientes graduados"
+   ],
+   "includes": [
+    "5 certificaciones gratuitas con link directo a cada una",
+    "Tiempo estimado para completar cada una",
+    "Por qué vale la pena cada certificación",
+    "Tips para aprovecharlas al máximo en tu perfil"
+   ],
+   "tools": [
+    "Google AI Essentials",
+    "LinkedIn Learning",
+    "HubSpot Academy",
+    "Microsoft Azure AI Fundamentals",
+    "GitHub Education / GitHub Foundations"
+   ],
+   "words": 822,
+   "read_min": 4,
+   "related_tutorials": [
+    "gpPmmVT89gA"
+   ],
+   "related_resources": [
+    "vacantes-linkedin-claude",
+    "roadmap-claude-5-dias",
+    "chatgpt-privacidad"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/392c40c66f09816d9b02f7a3bedc3588",
+   "status": "preview"
+  },
+  {
+   "id": "lm-26",
+   "slug": "houston-reuniones-contenido",
+   "title": "Houston AI: Convierte tus reuniones en contenido sin sentarte a pensar",
+   "category": "agentes",
+   "secondary": [
+    "contenido",
+    "automatizacion"
+   ],
+   "type": "sistema",
+   "type_label": "Sistema",
+   "summary": "Convertir lo que pasa en reuniones reales en borradores de posts guardados en Notion, sin sentarse a pensar qué publicar.",
+   "what_you_get": [
+    "Qué es Houston (app de escritorio gratuita sobre suscripción GPT, +1,000 integraciones, open source)",
+    "Configuración del agente de contenido en 6 pasos (detecta reunión → pregunta → skill con tu tono → define ángulo → post → guarda en Notion)",
+    "Diagrama de flujo en texto de reunión a post",
+    "Instalación: waitlist, código de invitación, 5 pasos de setup",
+    "Planes Personal / Pro / Teams y limitación de costo de API"
+   ],
+   "ideal_for": [
+    "Founders y consultores que quieren crear contenido desde su trabajo real",
+    "Profesionales sin tiempo para sentarse a pensar qué publicar",
+    "Quienes tienen experiencias valiosas pero no las documentan",
+    "Creadores que quieren posts basados en hechos reales, no en ideas inventadas"
+   ],
+   "includes": [
+    "Qué es Houston y cómo funciona",
+    "El agente de contenido: cómo está configurado",
+    "El flujo completo de una idea a un post",
+    "Cómo instalar Houston y acceder",
+    "Los planes disponibles",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Houston (gethouston.ai)",
+    "GPT / OpenAI API",
+    "ChatGPT",
+    "Claude",
+    "Google Calendar",
+    "Notion",
+    "Gmail",
+    "GitHub (github.com/gethouston/houston)"
+   ],
+   "words": 1069,
+   "read_min": 5,
+   "related_tutorials": [
+    "eCS-sZbsOGs"
+   ],
+   "related_resources": [
+    "houston-preparacion-comercial",
+    "houston-agentes-negocio",
+    "houston-memoria-clientes"
+   ],
+   "collection": "houston",
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/395c40c66f098153950cdd058a92f161",
+   "status": "preview"
+  },
+  {
+   "id": "lm-27",
+   "slug": "houston-preparacion-comercial",
+   "title": "Houston AI: El agente que te prepara para cerrar antes de entrar a la reunión",
+   "category": "agentes",
+   "secondary": [
+    "negocio",
+    "automatizacion"
+   ],
+   "type": "sistema",
+   "type_label": "Sistema",
+   "summary": "Llegar a reuniones de venta con resumen del cliente, historial, objeciones probables y próximos pasos sin buscar en Gmail, CRM y Notion.",
+   "what_you_get": [
+    "Activación en 4 pasos: cuenta, conectar Gmail/CRM/Notion/Drive/Calendar, crear agente, instrucciones",
+    "Instrucciones completas del agente comercial (copiables)",
+    "Prompt de una línea para preparar cada reunión y qué entrega (5 bloques)",
+    "3 prompts post-reunión: resumen a Notion, correo de seguimiento en Gmail, tareas en CRM",
+    "Limitación de costo de tokens y tip"
+   ],
+   "ideal_for": [
+    "Founders y comerciales que se reúnen con clientes frecuentemente",
+    "Equipos que tienen información dispersa en Gmail, CRM y Notion",
+    "Negocios que quieren vender mejor sin agregar más herramientas",
+    "Cualquiera que llega a reuniones sin contexto completo del cliente"
+   ],
+   "includes": [
+    "Qué es Houston y qué lo diferencia",
+    "Cómo activarlo paso a paso",
+    "Cómo configurar el agente comercial",
+    "El prompt exacto para preparar reuniones",
+    "Qué hacer después de la reunión",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Houston (gethouston.ai)",
+    "GPT / OpenAI API",
+    "ChatGPT",
+    "Claude",
+    "Gmail",
+    "CRM",
+    "Notion",
+    "Google Drive",
+    "Google Calendar"
+   ],
+   "words": 979,
+   "read_min": 5,
+   "related_tutorials": [
+    "0BaH6tekits"
+   ],
+   "related_resources": [
+    "houston-reuniones-contenido",
+    "houston-agentes-negocio",
+    "houston-propuestas"
+   ],
+   "collection": "houston",
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/395c40c66f098167afd0e8f4eb018ae2",
+   "status": "preview"
+  },
+  {
+   "id": "lm-28",
+   "slug": "houston-memoria-clientes",
+   "title": "Houston AI: El agente que recuerda todo lo que hablaste con cada cliente",
+   "category": "agentes",
+   "secondary": [
+    "productividad",
+    "automatizacion"
+   ],
+   "type": "sistema",
+   "type_label": "Sistema",
+   "summary": "Evitar que lo hablado, prometido y pendiente de cada llamada se pierda entre calendario, grabación, notas y WhatsApp.",
+   "what_you_get": [
+    "Diagrama en texto del problema (información dispersa → llegar sin contexto)",
+    "Configuración en 4 pasos: instalar Houston, conectar Calendar + grabador (Fathom/Otter/Fireflies) + Notion, crear agente, pegar prompt",
+    "Prompt completo del agente 'Memoria de clientes' (copiable)",
+    "Qué guarda automáticamente en Notion tras cada llamada",
+    "Prompt para consultar contexto antes de la siguiente reunión"
+   ],
+   "ideal_for": [
+    "Founders y comerciales con muchas reuniones a la semana",
+    "Equipos que pierden seguimientos entre llamadas",
+    "Quienes graban llamadas pero nunca revisan las grabaciones",
+    "Cualquiera que haya prometido algo en una reunión y se le olvidado"
+   ],
+   "includes": [
+    "El problema real que resuelve este agente",
+    "Cómo configurarlo paso a paso",
+    "El prompt exacto para el agente (listo para copiar)",
+    "Qué hace automáticamente después de cada llamada",
+    "Cómo consultar el contexto antes de una reunión",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Houston (gethouston.ai)",
+    "GPT / OpenAI API",
+    "Google Calendar",
+    "Fathom",
+    "Otter",
+    "Fireflies",
+    "Notion",
+    "WhatsApp"
+   ],
+   "words": 972,
+   "read_min": 5,
+   "related_tutorials": [
+    "KuJzYu763yU"
+   ],
+   "related_resources": [
+    "houston-reuniones-contenido",
+    "houston-preparacion-comercial",
+    "houston-propuestas"
+   ],
+   "collection": "houston",
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/395c40c66f0981879daefac2d2b73649",
+   "status": "preview"
+  },
+  {
+   "id": "lm-29",
+   "slug": "houston-propuestas",
+   "title": "Houston AI: Propuestas comerciales listas antes de que la reunión se enfríe",
+   "category": "agentes",
+   "secondary": [
+    "negocio",
+    "automatizacion"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Las propuestas comerciales salen días después de la reunión porque la información está dispersa (grabación, CRM, Drive) y se arman a mano.",
+   "what_you_get": [
+    "Diagrama del flujo manual actual vs flujo automatizado",
+    "4 pasos de configuración del agente en Houston (instalar, conectar herramientas, crear agente, pegar prompt)",
+    "Prompt completo del agente generador de propuestas listo para copiar",
+    "Descripción de lo que produce el agente (propuesta personalizada + correo de envío)",
+    "Limitación principal (primer borrador, costo de tokens vía API de GPT) y tip práctico"
+   ],
+   "ideal_for": [
+    "Consultores y agencias que mandan propuestas después de cada reunión",
+    "Equipos comerciales que tardan días en armar una propuesta",
+    "Negocios que quieren personalizar sin hacerlo manualmente",
+    "Cualquiera que haya perdido un cliente por tardar demasiado en responder"
+   ],
+   "includes": [
+    "El problema real del proceso actual",
+    "Cómo configurar el agente paso a paso",
+    "El prompt exacto listo para copiar",
+    "Qué produce el agente y cómo se ve el resultado",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Houston AI",
+    "Fathom",
+    "Otter",
+    "Fireflies",
+    "CRM",
+    "Notion",
+    "Google Drive",
+    "Google Slides",
+    "Canva",
+    "Gmail",
+    "GPT (API)"
+   ],
+   "words": 999,
+   "read_min": 5,
+   "related_tutorials": [
+    "0BaH6tekits"
+   ],
+   "related_resources": [
+    "houston-fathom-gmail",
+    "houston-preparacion-comercial",
+    "houston-reclutador"
+   ],
+   "collection": "houston",
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/395c40c66f0981769346f24fab879e0d",
+   "status": "preview"
+  },
+  {
+   "id": "lm-30",
+   "slug": "houston-metricas",
+   "title": "Houston AI: El agente que reporta tus métricas sin que nadie tenga que pedirlo",
+   "category": "agentes",
+   "secondary": [
+    "automatizacion",
+    "negocio"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Cada semana alguien pierde 2-4 horas copiando métricas de Ads, Analytics y CRM para armar un reporte que nadie lee.",
+   "what_you_get": [
+    "Diagrama del proceso manual de reporte semanal",
+    "Lista de fuentes de datos conectables (Facebook Ads, Google Ads, GA, CRM, Notion) y canales de entrega (Gmail, WhatsApp, Slack)",
+    "4 pasos de configuración del agente en Houston",
+    "Prompt del agente de reporte semanal listo para copiar",
+    "Descripción del reporte que recibe el equipo cada lunes y limitación del plan gratuito"
+   ],
+   "ideal_for": [
+    "Equipos de marketing y ventas que revisan métricas manualmente",
+    "Founders que necesitan visibilidad sin entrar a cinco herramientas",
+    "Agencias que reportan resultados a clientes cada semana",
+    "Cualquiera que reciba números sin contexto ni recomendaciones"
+   ],
+   "includes": [
+    "El problema real del reporte manual",
+    "Las fuentes de datos que puede conectar el agente",
+    "Cómo configurarlo paso a paso",
+    "El prompt exacto listo para copiar",
+    "Dónde puede entregar el reporte",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Houston AI",
+    "Facebook Ads",
+    "Google Ads",
+    "Google Analytics",
+    "HubSpot",
+    "Salesforce",
+    "Pipedrive",
+    "Notion",
+    "Gmail",
+    "WhatsApp",
+    "Slack"
+   ],
+   "words": 975,
+   "read_min": 5,
+   "related_tutorials": [
+    "0BaH6tekits"
+   ],
+   "related_resources": [
+    "houston-agentes-negocio",
+    "houston-propuestas",
+    "houston-reclutador"
+   ],
+   "collection": "houston",
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/395c40c66f098111a8e1caf4afc39083",
+   "status": "preview"
+  },
+  {
+   "id": "lm-31",
+   "slug": "houston-reclutador",
+   "title": "Houston AI: El agente reclutador que filtra, clasifica y agenda por ti",
+   "category": "agentes",
+   "secondary": [
+    "negocio",
+    "automatizacion"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Reclutar sin equipo de RRHH consume horas filtrando CVs, redactando correos y coordinando entrevistas antes de hablar con el primer candidato.",
+   "what_you_get": [
+    "Comparación del flujo manual vs flujo con agente (diagramas)",
+    "4 pasos de configuración (Houston + Gmail + Google Calendar + Drive/Notion)",
+    "Prompt del agente reclutador listo para copiar",
+    "Plantilla de mensaje para cargar una vacante nueva",
+    "Formato del resumen pre-entrevista (experiencia, fortalezas, dudas, 5 preguntas) y limitación"
+   ],
+   "ideal_for": [
+    "Founders que reclutan sin equipo de RRHH",
+    "Equipos pequeños que abren vacantes cada cierto tiempo",
+    "Empresas que quieren profesionalizar su proceso sin contratar un reclutador",
+    "Cualquiera que haya perdido candidatos buenos por responder tarde"
+   ],
+   "includes": [
+    "Qué hace el agente reclutador exactamente",
+    "Cómo configurarlo paso a paso",
+    "El prompt exacto listo para copiar",
+    "Cómo usarlo desde la vacante hasta la entrevista",
+    "El resumen pre-entrevista de cada candidato",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Houston AI",
+    "Gmail",
+    "Google Calendar",
+    "Google Drive",
+    "Notion",
+    "LinkedIn",
+    "ATS"
+   ],
+   "words": 1059,
+   "read_min": 5,
+   "related_tutorials": [
+    "0BaH6tekits"
+   ],
+   "related_resources": [
+    "houston-preparacion-comercial",
+    "houston-propuestas",
+    "houston-metricas"
+   ],
+   "collection": "houston",
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/395c40c66f0981f0a439c13426db578a",
+   "status": "preview"
+  },
+  {
+   "id": "lm-32",
+   "slug": "houston-fathom-gmail",
+   "title": "Houston AI: Reportes de reunión automáticos desde Fathom a Gmail",
+   "category": "agentes",
+   "secondary": [
+    "automatizacion",
+    "productividad"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Después de cada reunión se pierden 15-30 minutos copiando el transcript de Fathom, resumiéndolo y redactando el correo al equipo.",
+   "what_you_get": [
+    "Diagrama del proceso manual (Fathom → ChatGPT/Claude → Gmail)",
+    "4 pasos de configuración con conexión de Fathom y Gmail vía Composio",
+    "Prompt del agente de reportes de reunión listo para copiar",
+    "Mensaje de activación en lenguaje natural",
+    "3 variaciones del mismo agente (reporte al cliente, consolidado semanal, tareas al CRM)"
+   ],
+   "ideal_for": [
+    "Equipos que graban llamadas con Fathom y reportan manualmente",
+    "Founders que necesitan mantener a su equipo informado sin hacerlo ellos",
+    "Comerciales que tienen muchas llamadas y pierden tiempo en el seguimiento",
+    "Cualquiera que haya enviado tarde un resumen de reunión por falta de tiempo"
+   ],
+   "includes": [
+    "El problema real del proceso manual",
+    "Cómo configurar el agente paso a paso",
+    "El prompt exacto listo para copiar",
+    "Cómo conectar Fathom y Gmail vía Composio",
+    "Cómo usarlo después de cada llamada",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Houston AI",
+    "Fathom",
+    "Gmail",
+    "Composio",
+    "ChatGPT",
+    "Claude",
+    "Otter",
+    "Fireflies",
+    "Zoom",
+    "CRM"
+   ],
+   "words": 971,
+   "read_min": 5,
+   "related_tutorials": [
+    "0BaH6tekits"
+   ],
+   "related_resources": [
+    "houston-propuestas",
+    "houston-preparacion-comercial",
+    "houston-reuniones-contenido"
+   ],
+   "collection": "houston",
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/395c40c66f0981ad88c1f5b21614a6a1",
+   "status": "preview"
+  },
+  {
+   "id": "lm-33",
+   "slug": "4-mcps-agente-real",
+   "title": "4 MCPs que convierten a Claude en un agente real",
+   "category": "claude",
+   "secondary": [
+    "herramientas",
+    "research",
+    "creativo"
+   ],
+   "type": "lista-curada",
+   "type_label": "Lista curada",
+   "summary": "Claude solo responde preguntas; sin MCPs no puede buscar en internet, controlar el navegador, rastrear sitios ni generar video.",
+   "what_you_get": [
+    "Explicación breve de qué es un MCP",
+    "4 MCPs (Perplexity, Playwright, Firecrawl, Higgsfield) con casos de uso reales",
+    "11 prompts listos para copiar (2-3 por MCP)",
+    "Links de instalación de cada MCP y pasos genéricos de instalación en Claude",
+    "Limitación (consumo de recursos/créditos por MCP) y tip de por dónde empezar"
+   ],
+   "ideal_for": [
+    "Usuarios de Claude que quieren ir más allá del chat",
+    "Equipos que investigan competidores, mercados o clientes",
+    "Marketers que producen contenido visual con IA",
+    "Founders que quieren automatizar tareas en el navegador"
+   ],
+   "includes": [
+    "Qué es un MCP y por qué cambia todo",
+    "Los 4 MCPs esenciales con casos de uso reales",
+    "Cómo instalar cada uno en Claude",
+    "Prompts listos para copiar",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Claude",
+    "Perplexity MCP",
+    "Playwright MCP",
+    "Firecrawl MCP",
+    "Higgsfield MCP",
+    "Seedance 2.0",
+    "Kling 3.0",
+    "Marketing Studio",
+    "Node.js"
+   ],
+   "words": 1295,
+   "read_min": 6,
+   "related_tutorials": [
+    "sn3zkOGdfsM"
+   ],
+   "related_resources": [
+    "5-mcps-claude",
+    "higgsfield-claude-video",
+    "markitdown-pdfs-claude"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/397c40c66f09814b97e4ca173616ad94",
+   "status": "preview"
+  },
+  {
+   "id": "lm-35",
+   "slug": "5-skills-gratuitos-claude",
+   "title": "5 Skills Gratuitos que Convierten Claude en una Herramienta Completamente Distinta",
+   "category": "claude",
+   "secondary": [
+    "herramientas",
+    "automatizacion"
+   ],
+   "type": "lista-curada",
+   "type_label": "Lista curada",
+   "summary": "Claude olvida el contexto, diseña genérico, no se conecta a herramientas y se pierde en proyectos grandes.",
+   "what_you_get": [
+    "5 recursos (Claude Mem, UI UX Pro Max, N8N MCP, LightRag, Everything Claude Code) con el problema que resuelve cada uno",
+    "Pasos de instalación para cada uno (5 bloques)",
+    "5 prompts de activación/uso listos para copiar",
+    "Resumen rápido de los 5 en un callout",
+    "Limitación (configuración inicial de LightRag y N8N MCP) y por dónde empezar"
+   ],
+   "ideal_for": [
+    "Usuarios de Claude que quieren más que un chatbot",
+    "Founders y equipos que trabajan proyectos largos con Claude",
+    "Developers que usan Claude Code",
+    "Cualquiera que haya recibido resultados genéricos o que Claude \"olvidara\" el contexto"
+   ],
+   "includes": [
+    "Los 5 skills/MCPs con qué problema resuelve cada uno",
+    "Cómo instalar cada uno en Claude",
+    "Prompts para sacarle provecho desde el día uno",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Claude Code",
+    "Claude Mem",
+    "UI UX Pro Max",
+    "N8N",
+    "N8N MCP",
+    "LightRag",
+    "Everything Claude Code"
+   ],
+   "words": 1358,
+   "read_min": 7,
+   "related_tutorials": [
+    "sn3zkOGdfsM",
+    "5I0naOsMtAQ"
+   ],
+   "related_resources": [
+    "find-skills-claude",
+    "5-niveles-de-claude",
+    "claude-routines"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/39ac40c66f098126b2b7defbf6a560d8",
+   "status": "preview"
+  },
+  {
+   "id": "lm-36",
+   "slug": "5-niveles-de-claude",
+   "title": "Los 5 Niveles de Claude: De Chatbot a Agente que Trabaja Solo",
+   "category": "claude",
+   "secondary": [
+    "agentes",
+    "productividad"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "La mayoría usa solo el chat de Claude en el navegador y no sabe qué camino seguir para llegar a agentes autónomos.",
+   "what_you_get": [
+    "Diagrama de la escalera de 5 niveles (Claude Code → Comandos → Skills → MCP → Managed Agents)",
+    "Por cada nivel: qué desbloquea, cómo empezar y un prompt/ejemplo",
+    "Ejemplo de skill personalizada de estilo de escritura",
+    "URLs de 3 MCPs esenciales (Gmail, Google Calendar, Notion)",
+    "Guía 'por dónde empezar según tu nivel actual'"
+   ],
+   "ideal_for": [
+    "Usuarios de Claude que quieren ir más allá del chat básico",
+    "Founders y equipos que usan Claude todos los días",
+    "Profesionales que quieren automatizar sin aprender a programar",
+    "Cualquiera que sienta que Claude podría darle más"
+   ],
+   "includes": [
+    "Los 5 niveles de uso de Claude en orden de profundidad",
+    "Qué desbloquea cada nivel",
+    "Cómo empezar con cada uno",
+    "Prompts y ejemplos listos para copiar",
+    "Por dónde empezar según tu nivel actual"
+   ],
+   "tools": [
+    "Claude Code",
+    "Skills",
+    "MCP",
+    "Gmail",
+    "Google Calendar",
+    "Notion",
+    "Slack",
+    "Houston AI",
+    "Make.com",
+    "N8N",
+    "Claude API"
+   ],
+   "words": 1244,
+   "read_min": 6,
+   "related_tutorials": [
+    "sn3zkOGdfsM",
+    "n7w3Y4X1QgE"
+   ],
+   "related_resources": [
+    "claude-routines",
+    "roadmap-claude-5-dias",
+    "small-business-claude"
+   ],
+   "collection": null,
+   "featured": true,
+   "notion_url": "https://quiet-fiber-044.notion.site/39cc40c66f098148bed0db87ce283d5c",
+   "status": "preview"
+  },
+  {
+   "id": "lm-37",
+   "slug": "claude-routines",
+   "title": "Claude Routines: Configura una vez, Claude trabaja solo mientras duermes",
+   "category": "claude",
+   "secondary": [
+    "automatizacion",
+    "productividad"
+   ],
+   "type": "plantilla",
+   "type_label": "Plantilla",
+   "summary": "Para que Claude haga una tarea recurrente hay que prenderlo y pedírsela cada vez con el computador encendido.",
+   "what_you_get": [
+    "Explicación de qué es Routines y diagrama antes/después",
+    "3 pasos para configurar una Routine (tarea en lenguaje natural, horario, conexiones)",
+    "5 Routines listas para copiar (resumen matutino, reporte semanal de proyectos, monitor de correos, cierre semanal de ventas, revisión de repositorio)",
+    "Pasos para activar Routines en Claude Code",
+    "Limitación (preview, solo planes pagos) y tip sobre OAuth"
+   ],
+   "ideal_for": [
+    "Usuarios de Claude Code con plan pago",
+    "Founders que quieren reportes automáticos sin hacer nada",
+    "Equipos que tienen tareas repetitivas diarias o semanales",
+    "Cualquiera cansado de tener que prender Claude para que trabaje"
+   ],
+   "includes": [
+    "Qué es Routines y qué lo hace diferente",
+    "Cómo configurar una Routine paso a paso",
+    "5 Routines listas para activar hoy",
+    "Cómo conectarla con tus herramientas",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Claude Code",
+    "Routines",
+    "Gmail",
+    "Google Calendar",
+    "Notion",
+    "Google Drive",
+    "Slack",
+    "CRM",
+    "GitHub"
+   ],
+   "words": 1148,
+   "read_min": 6,
+   "related_tutorials": [
+    "sn3zkOGdfsM"
+   ],
+   "related_resources": [
+    "5-niveles-de-claude",
+    "roadmap-claude-5-dias",
+    "small-business-claude"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/39dc40c66f09810c87afca760a8c5299",
+   "status": "preview"
+  },
+  {
+   "id": "lm-38",
+   "slug": "jarvis-claude-code",
+   "title": "Cómo construir tu propio Jarvis con Claude Code y ElevenLabs",
+   "category": "agentes",
+   "secondary": [
+    "claude",
+    "agentes"
+   ],
+   "type": "caso-construido",
+   "type_label": "Caso construido",
+   "summary": "Tener un asistente de IA propio, con voz e interfaz, entrenado en la forma de pensar del usuario, sin saber programar.",
+   "what_you_get": [
+    "Lista de 4 requisitos previos (Claude Code, imagen de interfaz, cuenta ElevenLabs, API key de Claude) con nota de costos",
+    "3 pasos de construcción con prompt maestro para Claude Code",
+    "Prompt para crear un 'perfil de pensamiento' personal y cargarlo al system prompt",
+    "2 opciones para darle control del computador (Playwright MCP, Computer Use) con prompts",
+    "Regla de seguridad y limitación"
+   ],
+   "ideal_for": [
+    "Usuarios de Claude Code que quieren un proyecto concreto",
+    "Founders que quieren un asistente entrenado en su negocio",
+    "Cualquiera que haya soñado con tener un Jarvis propio",
+    "Personas que ya usan Claude o ChatGPT y quieren algo más personalizado"
+   ],
+   "includes": [
+    "Lo que necesitas antes de empezar",
+    "Los 3 pasos para construirlo",
+    "El prompt exacto para darle a Claude Code",
+    "Cómo subirle tu forma de pensar",
+    "Cómo habilitarle control del computador",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Claude Code",
+    "ElevenLabs",
+    "Anthropic Console (API key)",
+    "Playwright MCP",
+    "Computer Use",
+    "Pinterest",
+    "Dribbble"
+   ],
+   "words": 1199,
+   "read_min": 6,
+   "related_tutorials": [
+    "n7w3Y4X1QgE"
+   ],
+   "related_resources": [
+    "agente-mercado",
+    "hermes",
+    "fathom-make-notion"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/39ec40c66f09811a9548facaee32c322",
+   "status": "preview"
+  },
+  {
+   "id": "lm-39",
+   "slug": "roadmap-claude-5-dias",
+   "title": "Guía Oficial para Principiantes en Claude: Roadmap de 5 Días",
+   "category": "empezar",
+   "secondary": [
+    "productividad"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Los principiantes usan Claude solo como chat y saltan a MCPs o Claude Code sin base, por lo que Claude nunca los conoce.",
+   "what_you_get": [
+    "Roadmap día a día: Proyectos → archivos de contexto → Cowork → MCPs → Claude Code",
+    "Ejemplos de estructura de 4 proyectos según perfil (founder, corporativo, creador)",
+    "2 plantillas de archivos de contexto ('Sobre mí' y 'Mi estilo') listas para copiar",
+    "Tabla de MCPs esenciales y prompts de prueba para Cowork, MCP y Claude Code",
+    "Resumen del roadmap, regla de seguridad y limitación"
+   ],
+   "ideal_for": [
+    "Cualquiera que esté empezando con Claude desde cero",
+    "Usuarios que usan Claude solo en el chat y quieren más",
+    "Founders y profesionales que quieren configurarlo bien desde el inicio",
+    "Quienes han probado Claude pero sienten que podría darles más"
+   ],
+   "includes": [
+    "El roadmap completo de 5 días con pasos exactos",
+    "Qué desbloquea cada día",
+    "Plantillas listas para copiar",
+    "Por qué el orden importa",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Claude",
+    "Proyectos de Claude",
+    "Cowork",
+    "MCP",
+    "Gmail",
+    "Google Calendar",
+    "Notion",
+    "Google Drive",
+    "Slack",
+    "Claude Code"
+   ],
+   "words": 1565,
+   "read_min": 8,
+   "related_tutorials": [
+    "wpYDisTBlE8",
+    "gpPmmVT89gA",
+    "sn3zkOGdfsM"
+   ],
+   "related_resources": [
+    "small-business-claude",
+    "5-niveles-de-claude",
+    "claude-routines"
+   ],
+   "collection": null,
+   "featured": true,
+   "notion_url": "https://quiet-fiber-044.notion.site/39fc40c66f0981509b20e5feb647f3fa",
+   "status": "preview"
+  },
+  {
+   "id": "lm-40",
+   "slug": "diseno-web-claude",
+   "title": "Diseño Web con Claude: Los 3 Recursos que Eliminan los Resultados Genéricos",
+   "category": "creativo",
+   "secondary": [
+    "claude",
+    "herramientas"
+   ],
+   "type": "guia-paso-a-paso",
+   "type_label": "Guía paso a paso",
+   "summary": "Al pedirle a Claude una página sin referencia visual, el resultado siempre es genérico (fondo blanco, tipografía de sistema, azul y gris).",
+   "what_you_get": [
+    "3 recursos con links: librerías de estilos (opendesign.so), animaciones (Animista, Magic UI, Aceternity UI) y video de fondo con Higgsfield",
+    "Pasos de uso de cada recurso",
+    "5 prompts exactos (instalar estilo, integrar animación, generar video en Higgsfield, integrar video como fondo)",
+    "Flujo completo en 5 pasos para una sesión",
+    "Limitación (prototipo vs producción) y tip"
+   ],
+   "ideal_for": [
+    "Founders que quieren páginas que se vean profesionales",
+    "Creadores que usan Claude para diseño web",
+    "Cualquiera que haya recibido resultados genéricos de Claude en diseño",
+    "Equipos sin diseñador que necesitan resultados visuales de calidad"
+   ],
+   "includes": [
+    "Por qué Claude diseña genérico sin referencia",
+    "Los 3 recursos con links directos",
+    "Cómo usar cada uno con Claude paso a paso",
+    "Prompts exactos para cada recurso",
+    "Limitación principal a tener en cuenta"
+   ],
+   "tools": [
+    "Claude",
+    "opendesign.so",
+    "Animista",
+    "Magic UI",
+    "Aceternity UI",
+    "Higgsfield",
+    "Seedance 2.0",
+    "Higgsfield MCP"
+   ],
+   "words": 1212,
+   "read_min": 6,
+   "related_tutorials": [
+    "gIJ18tpbOy8"
+   ],
+   "related_resources": [
+    "higgsfield-claude-video",
+    "open-design",
+    "4-mcps-agente-real"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/3a3c40c66f09816d97e2f11940a63005",
+   "status": "preview"
+  },
+  {
+   "id": "lm-41",
+   "slug": "skills-marketing-claude",
+   "title": "6 habilidades que hacen de Claude un genio del Marketing.                          (+4 bonus skills)",
+   "category": "contenido",
+   "secondary": [
+    "claude",
+    "negocio"
+   ],
+   "type": "lista-curada",
+   "type_label": "Lista curada",
+   "summary": "Montar un departamento de marketing (SEO, copy, email, análisis, estrategia, datos) sin contratar a nadie, con skills open source en Claude.",
+   "what_you_get": [
+    "Instrucciones de instalación de una skill en 5 pasos (Claude Code o Cowork)",
+    "6 skills principales + 4 bonus, cada una con qué hace, por qué importa, repo de GitHub con estrellas y lenguaje",
+    "10 prompts de prueba, uno por skill",
+    "10 links directos a repositorios de GitHub"
+   ],
+   "ideal_for": [],
+   "includes": [],
+   "tools": [
+    "Claude Code",
+    "Cowork",
+    "GitHub",
+    "claude-seo",
+    "marketingskills",
+    "aaron-marketing-skills",
+    "ai-marketing-claude",
+    "claude-skills",
+    "openclaudia-skills",
+    "humanizer",
+    "claude-skill-social-post",
+    "taste-skill",
+    "goose-skills"
+   ],
+   "words": 1278,
+   "read_min": 6,
+   "related_tutorials": [
+    "5I0naOsMtAQ",
+    "sn3zkOGdfsM"
+   ],
+   "related_resources": [
+    "find-skills-claude",
+    "contenido-linkedin",
+    "5-skills-gratuitos-claude"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/3b8c40c66f0980eea229e1854521704e",
+   "status": "preview"
+  },
+  {
+   "id": "lm-43",
+   "slug": "chatgpt-privacidad",
+   "title": "ChatGPT Sabe Esto de Ti: Los 6 Prompts para Verlo y Borrarlo",
+   "category": "empezar",
+   "secondary": [
+    "productividad"
+   ],
+   "type": "prompts",
+   "type_label": "Prompts",
+   "summary": "El usuario no sabe qué información ChatGPT guarda e infiere sobre él ni cómo verla, borrarla o impedir que se use para entrenar.",
+   "what_you_get": [
+    "Explicación de las 2 capas de memoria de ChatGPT (memorias guardadas y referencia al historial)",
+    "6 prompts copiables para ver qué sabe e infiere ChatGPT del usuario",
+    "Ruta paso a paso para ver y borrar memorias (Settings → Personalization → Manage Memories)",
+    "Los 2 interruptores a apagar (Memory y 'Improve the model for everyone') con su ubicación exacta",
+    "Aviso sobre lo que no se puede borrar (retención hasta 30 días, datos ya usados en entrenamiento)"
+   ],
+   "ideal_for": [
+    "Cualquier usuario de ChatGPT Free, Plus o Pro",
+    "Profesionales que comparten información sensible en ChatGPT",
+    "Quienes quieren saber exactamente qué sabe ChatGPT de ellos",
+    "Cualquiera preocupado por privacidad y uso de sus datos"
+   ],
+   "includes": [
+    "Cómo funciona la memoria de ChatGPT en 2025-2026",
+    "6 prompts para ver todo lo que sabe de ti",
+    "Dónde ver y borrar las memorias guardadas",
+    "Los 2 interruptores que tienes que apagar (y dónde están)",
+    "Lo que no puedes borrar aunque quieras"
+   ],
+   "tools": [
+    "ChatGPT",
+    "OpenAI"
+   ],
+   "words": 1222,
+   "read_min": 6,
+   "related_tutorials": [
+    "gpPmmVT89gA"
+   ],
+   "related_resources": [
+    "vacantes-linkedin-claude",
+    "certificaciones-ia",
+    "roadmap-claude-5-dias"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/3a8c40c66f09811a997df62e8982302d",
+   "status": "preview"
+  },
+  {
+   "id": "lm-47",
+   "slug": "houston-agentes-negocio",
+   "title": "Houston: Agentes de AI para tu Negocio sin Saber Programar",
+   "category": "agentes",
+   "secondary": [
+    "negocio",
+    "automatizacion"
+   ],
+   "type": "herramienta-config",
+   "type_label": "Configuración",
+   "summary": "Tener agentes de AI que actúan sobre las herramientas del negocio (CRM, Gmail, calendario) sin programar ni usar terminal.",
+   "what_you_get": [
+    "Qué es Houston y en qué se diferencia de un chatbot",
+    "4 agentes prearmados descritos (contabilidad, soporte, ventas, asistente personal) con sus integraciones",
+    "Diagrama en texto del flujo chatbot vs flujo con agente",
+    "Pasos de instalación en 7 puntos y tiempo estimado (15-20 min)",
+    "Limitaciones: beta, corre solo con el PC encendido en plan gratuito, usa tu propia API key"
+   ],
+   "ideal_for": [
+    "Emprendedores y dueños de negocio sin conocimientos técnicos",
+    "Equipos que quieren agentes sin contratar un developer",
+    "Quienes ya usan Claude y quieren llevarlo a sus herramientas reales",
+    "Cualquiera que haya querido automatizar pero no supo cómo empezar"
+   ],
+   "includes": [
+    "Qué es Houston y cómo funciona",
+    "Los agentes prearmados disponibles desde el primer día",
+    "Por qué es diferente a un chat normal",
+    "Cómo se conecta a tus herramientas",
+    "La conexión real con Claude",
+    "Cómo instalarlo"
+   ],
+   "tools": [
+    "Houston (gethouston.ai)",
+    "Claude",
+    "QuickBooks",
+    "Google Sheets",
+    "Gmail",
+    "Zendesk",
+    "Freshdesk",
+    "Intercom",
+    "HubSpot",
+    "Salesforce",
+    "Pipedrive",
+    "Google Calendar",
+    "Notion",
+    "Slack"
+   ],
+   "words": 1001,
+   "read_min": 5,
+   "related_tutorials": [
+    "0BaH6tekits"
+   ],
+   "related_resources": [
+    "houston-metricas",
+    "houston-preparacion-comercial",
+    "houston-reuniones-contenido"
+   ],
+   "collection": "houston",
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/3afc40c66f098174aa11cc00530711e7",
+   "status": "preview"
+  },
+  {
+   "id": "lm-53",
+   "slug": "markitdown-pdfs-claude",
+   "title": "MarkItDown: El Repo de Microsoft ** que evita Claude te cobre doble por tus PDF **",
+   "category": "claude",
+   "secondary": [
+    "herramientas",
+    "productividad"
+   ],
+   "type": "tutorial-escrito",
+   "type_label": "Tutorial",
+   "summary": "Evitar el doble consumo de tokens (imagen + texto por página) al subir PDFs a Claude convirtiéndolos antes a Markdown con MarkItDown.",
+   "what_you_get": [
+    "Explicación del costo oculto de los PDFs en Claude (1.500-3.000 tokens por página + imagen)",
+    "Instalación: pip install 'markitdown[all]' y comando de conversión",
+    "Configuración del servidor MCP (pip install markitdown-mcp + JSON para claude_desktop_config.json)",
+    "Tabla de 4 pasos del flujo y lista de mejores prácticas",
+    "Requisitos previos y lista 'Lo que aprenderás'"
+   ],
+   "ideal_for": [],
+   "includes": [],
+   "tools": [
+    "MarkItDown (Microsoft)",
+    "markitdown-mcp",
+    "Claude",
+    "Claude Desktop",
+    "MCP",
+    "Python",
+    "pip",
+    "VS Code",
+    "iTerm"
+   ],
+   "words": 867,
+   "read_min": 4,
+   "related_tutorials": [
+    "sn3zkOGdfsM"
+   ],
+   "related_resources": [
+    "5-mcps-claude",
+    "4-mcps-agente-real",
+    "5-niveles-de-claude"
+   ],
+   "collection": null,
+   "featured": false,
+   "notion_url": "https://quiet-fiber-044.notion.site/3cec40c66f09803d99a7fd1f23d7dd3d",
+   "status": "preview"
+  },
+  {
+   "id": "lm-54",
+   "slug": "atajos-de-prompt-claude",
+   "title": "Atajos de prompt para Claude",
+   "category": "claude",
+   "secondary": [
+    "productividad",
+    "prompts"
+   ],
+   "type": "plantilla",
+   "type_label": "Plantilla",
+   "summary": "Controlar formato, razonamiento, comportamiento y tarea de Claude con etiquetas cortas (ELI5:, BRUTAL:, PLAN:, SWOT:, etc.) que se pueden combinar.",
+   "what_you_get": [
+    "9 tablas con ~104 atajos organizados por categoría: Formato (20), Razonamiento (20), Comportamiento (10), Aprendizaje (10), Productividad (10), Escritura (10), Negocios (10), Programación (6), Meta (8)",
+    "Explicación de cada atajo en una frase",
+    "Regla de combinación (ej. BRUTAL: DENSE:)",
+    "Disclaimer de que no son comandos oficiales de Anthropic"
+   ],
+   "ideal_for": [],
+   "includes": [],
+   "tools": [
+    "Claude",
+    "Anthropic",
+    "Anki",
+    "Twitter/X"
+   ],
+   "words": 1957,
+   "read_min": 10,
+   "related_tutorials": [
+    "5I0naOsMtAQ"
+   ],
+   "related_resources": [
+    "skill-debrief-claude",
+    "5-mcps-claude",
+    "second-brain-obsidian-claude"
+   ],
+   "collection": null,
+   "featured": true,
+   "notion_url": "https://quiet-fiber-044.notion.site/3cfc40c66f0980568cbbf93594cedb80",
+   "status": "preview"
+  }
+ ]
+}

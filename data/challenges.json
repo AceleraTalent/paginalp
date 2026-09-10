@@ -1,0 +1,117 @@
+{
+ "challenges": [
+  {
+   "slug": "claude-en-5-dias",
+   "title": "Claude en 5 días",
+   "status": "piloto",
+   "level": "Principiante a intermedio",
+   "duration": "5 días · 20 min al día",
+   "result": "Terminas con Claude configurado a tu medida: tu contexto, dos skills propios y una rutina que trabaja sola.",
+   "summary": "Un reto guiado, un correo y un WhatsApp por día. Cada día construyes algo que se queda contigo.",
+   "days": [
+    {
+     "n": 1,
+     "title": "Configura tu Claude",
+     "text": "Proyecto, contexto general y la primera conversación útil.",
+     "resource": "roadmap-claude-5-dias"
+    },
+    {
+     "n": 2,
+     "title": "Tu primer skill",
+     "text": "Un skill que escribe como tú.",
+     "resource": "skill-debrief-claude",
+     "video": "5I0naOsMtAQ"
+    },
+    {
+     "n": 3,
+     "title": "Conecta tus herramientas",
+     "text": "MCPs: Claude entra a tu calendario y tus archivos.",
+     "resource": "4-mcps-agente-real",
+     "video": "sn3zkOGdfsM"
+    },
+    {
+     "n": 4,
+     "title": "Que trabaje solo",
+     "text": "Una rutina programada que te espera cada mañana.",
+     "resource": "claude-routines"
+    },
+    {
+     "n": 5,
+     "title": "Tu sistema",
+     "text": "Lo unes todo y decides qué sigue.",
+     "resource": "5-niveles-de-claude",
+     "video": "wpYDisTBlE8"
+    }
+   ],
+   "fields": [
+    "nombre",
+    "apellido",
+    "email",
+    "whatsapp",
+    "rol",
+    "objetivo",
+    "empresa"
+   ]
+  },
+  {
+   "slug": "construye-tu-primer-agente",
+   "title": "Construye tu primer agente",
+   "status": "proximamente",
+   "level": "Intermedio",
+   "duration": "7 días",
+   "result": "Un agente que ejecuta una tarea real de tu trabajo.",
+   "summary": "",
+   "days": [],
+   "fields": []
+  },
+  {
+   "slug": "automatiza-tu-primer-proceso",
+   "title": "Automatiza tu primer proceso",
+   "status": "proximamente",
+   "level": "Principiante",
+   "duration": "3 días",
+   "result": "Un flujo que corre sin ti.",
+   "summary": "",
+   "days": [],
+   "fields": []
+  }
+ ],
+ "showcase": [
+  {
+   "title": "La operación de una empresa de 50 empleados, con AI y Notion",
+   "kind": "video",
+   "ref": "0BaH6tekits",
+   "tag": "Operación"
+  },
+  {
+   "title": "Una máquina de contenido para una psicóloga",
+   "kind": "video",
+   "ref": "eCS-sZbsOGs",
+   "tag": "Contenido"
+  },
+  {
+   "title": "Una app de IA para una de las donuterías más famosas",
+   "kind": "video",
+   "ref": "foO-yV6BOL8",
+   "tag": "Producto"
+  },
+  {
+   "title": "Software para que una firma de abogados deje de pagar cada mes",
+   "kind": "video",
+   "ref": "y9RakPN56rI",
+   "tag": "Software"
+  },
+  {
+   "title": "Un bot de WhatsApp en 10 minutos",
+   "kind": "video",
+   "ref": "y3NWAa5z6HU",
+   "tag": "Automatización"
+  },
+  {
+   "title": "Un agente que hace el mercado por mí",
+   "kind": "resource",
+   "ref": "agente-mercado",
+   "tag": "Agente"
+  }
+ ]
+}
